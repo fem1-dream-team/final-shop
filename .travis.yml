@@ -5,7 +5,8 @@ dist: trusty
       - "./client/node_modules"
 
   before_script:
-    - npm install --prefix "./cient"
+    - npm install --prefix "./client"
+
 
   script:
     - npm run test --prefix "./client"
