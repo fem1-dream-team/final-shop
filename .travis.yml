@@ -3,9 +3,10 @@ dist: trusty
 cache:
   directories:
     - ./client/node_modules
-
+before_install:
+  - cd client
 before_script:
-  - npm install --prefix ./client
+  - npm install --prefix client
 
 script:
-  - npm run test -- prefix ./client
+  - npm run test -- prefix client
