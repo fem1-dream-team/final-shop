@@ -5,7 +5,7 @@ cache:
     - ./client/node_modules
 
 before_script:
-  - npm install --prefix client
+  - npm install --prefix ./client
 
 script:
-  - npm run test -- prefix client
+  - npm run test -- prefix ./client
