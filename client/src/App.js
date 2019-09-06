@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {BrowserRouter, Route, Link, Switch} from "react-router-dom";
+import 'typeface-roboto';
 
-import Home from "./components/Home";
-import Profile from "./components/Profile";
-import Page404 from "./components/Page404";
+import {Home, Profile, Page404} from "./components";
+import {Footer} from "./commons";
 
 import './App.css';
 
@@ -34,6 +34,7 @@ class App extends Component {
                 <Route path='/profile' component={Profile}/>
                 <Route  path='*' component={Page404}/>
               </Switch>
+              <Footer/>
             </div>
         </BrowserRouter>
 
