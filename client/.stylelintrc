@@ -1,0 +1,15 @@
+{
+  "processors": ["stylelint-processor-styled-components"],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-rational-order",
+    "stylelint-config-styled-components"
+  ],
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+    "number-leading-zero": "never",
+    "no-missing-end-of-source-newline": null
+  }
+}
