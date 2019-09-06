@@ -1,9 +1,14 @@
+language: node.js
+
 dist: trusty
 
 cache:
   directories:
     - ./client/node_modules
-
+    
+before_install:
+  - cd client
+  
 before_script:
   - npm install --prefix client
 
