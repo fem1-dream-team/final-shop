@@ -1,5 +1,4 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
 import {Container, Grid, Box} from "@material-ui/core";
 
 export const Footer = () => {
