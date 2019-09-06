@@ -1,5 +1,3 @@
-language: javascript
-
 dist: trusty
 
 cache:
