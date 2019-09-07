@@ -4,7 +4,8 @@ import {BrowserRouter, Route, Link, Switch} from "react-router-dom";
 import 'typeface-roboto';
 
 import {Home, Profile, Page404} from "./components";
-import {Footer} from "./commons";
+import {Footer, Header} from "./commons";
+
 
 import './App.css';
 
@@ -24,7 +25,7 @@ class App extends Component {
         <BrowserRouter>
 
             <div>
-              Header
+              <Header/>
               <div>
                 <Link to={'/'}> Home </Link>
                 <Link to={'/profile'}> Profile </Link>
