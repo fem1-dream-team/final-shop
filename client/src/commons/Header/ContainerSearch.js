@@ -4,9 +4,9 @@ import styled from 'styled-components';
 export const ContainerSearch = () => {
     return (
     <Container>
-        <img src=""/>
+        {/*<img src="" alt=" "/>*/}
 
-        <img src=""/>
+        {/*<img src="" alt=" "/>*/}
     </Container>
 )
 }
