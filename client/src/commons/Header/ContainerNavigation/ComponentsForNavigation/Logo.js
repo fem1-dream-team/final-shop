@@ -6,7 +6,7 @@ import styled from "styled-components";
 export const Logo = () => {
     return (
             <Container>
-                <img src={logo} width="180" height="180"/>
+                <img src={logo} alt='LOGO' width="180" height="180"/>
             </Container>
     )
 };

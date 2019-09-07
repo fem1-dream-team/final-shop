@@ -14,8 +14,8 @@ export const ContainerNavigation = () => {
 
             <Container>
                 <ContainerLogo>
-                    <NavLink to="/home"><img src={logoCakeWhite} style = {{width: '45px', height: '45px',}}/></NavLink>
-                    <NavLink to="/home"><img src={textLogoWhite} style = {{width: '110px', height: '40px', marginTop: '5px'}}/></NavLink>
+                    <NavLink to="/home"><img src={logoCakeWhite} alt='logoCake' style = {{width: '45px', height: '45px',}}/></NavLink>
+                    <NavLink to="/home"><img src={textLogoWhite} alt='textLogo' style = {{width: '110px', height: '40px', marginTop: '5px'}}/></NavLink>
                 </ContainerLogo>
                 
                 <ContainerNav>
