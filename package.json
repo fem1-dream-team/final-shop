@@ -1,0 +1,24 @@
+{
+  "name": "final-shop",
+  "version": "1.0.0",
+  "description": "Всем привет)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pre-deploy": "",
+    "start": "concurrently \"cd backend && npm start\" \"cd client && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fem1-dream-team/final-shop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fem1-dream-team/final-shop/issues"
+  },
+  "homepage": "https://github.com/fem1-dream-team/final-shop#readme",
+  "dependencies": {
+    "concurrently": "^4.1.2"
+  }
+}
