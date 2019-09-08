@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {BrowserRouter, Route, Link, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch, NavLink} from "react-router-dom";
 import 'typeface-roboto';
 
-import {Home, Profile, Page404} from "./components";
+import {Home} from "./components";
 import {Footer, Header} from "./commons";
-
-
-import './App.css';
+import {Products} from "./commons/Header/ContainerNavigation/ComponentsForNavigation/Products";
+import {SignatureCakes} from "./commons/Header/ContainerNavigation/ComponentsForNavigation/SignatureCakes";
+import {CustomOrders} from "./commons/Header/ContainerNavigation/ComponentsForNavigation/CustomOrders";
+import {WeddingsCakes} from "./commons/Header/ContainerNavigation/ComponentsForNavigation/WeddingCakes";
+import {Cart} from "./commons/Header/ContainerNavigation/ComponentsForNavigation/Cart";
 
 class App extends Component {
   componentDidMount() {
@@ -27,13 +29,23 @@ class App extends Component {
             <div>
               <Header/>
               <div>
-                <Link to={'/'}> Home </Link>
-                <Link to={'/profile'}> Profile </Link>
+                {/*<Link to={'/'}> Home </Link>*/}
+                {/*<Link to={'/profile'}> Profile </Link>*/}
               </div>
               <Switch>
-                <Route exact path='/' component={Home}/>
-                <Route path='/profile' component={Profile}/>
-                <Route  path='*' component={Page404}/>
+                <div>
+                  <Route path='/products' component={Products}/>
+                  <Route path='/signatureCakes' component={SignatureCakes}/>
+                  <Route path='/customOrders' component={CustomOrders}/>
+                  <Route path='/weddingCakes' component={WeddingsCakes}/>
+                  <Route path='/cart' render={() => <Cart/>}/>
+                </div>
+                <div>
+
+                  <Route exact path='/' component={Home}/>
+
+                </div>
+                {/*<Route  path='*' component={Page404}/>*/}
               </Switch>
               <Footer/>
             </div>

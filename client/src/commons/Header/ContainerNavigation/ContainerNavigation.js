@@ -2,20 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import {NavLink} from "react-router-dom";
 import s from './ConteinerNavigation.module.css'
-import {Logo} from "./ComponentsForNavigation/Logo";
 import logoCakeWhite from "../logoImages/logoCakeWhite.png"
 import textLogoWhite from "../logoImages/textLogoWhite.png"
-
 
 export const ContainerNavigation = () => {
     return (
         <div>
-            <NavLink to="/home"><Logo/></NavLink>
-
             <Container>
                 <ContainerLogo>
-                    <NavLink to="/home"><img src={logoCakeWhite} alt='logoCake' style = {{width: '45px', height: '45px',}}/></NavLink>
-                    <NavLink to="/home"><img src={textLogoWhite} alt='textLogo' style = {{width: '110px', height: '40px', marginTop: '5px'}}/></NavLink>
+                    <NavLink to="/"><StyledLinkLogoImg src={logoCakeWhite} alt='logoCake'/></NavLink>
+                    <NavLink to="/"><StyledLinkLogoText src={textLogoWhite} alt='textLogo'/></NavLink>
                 </ContainerLogo>
                 
                 <ContainerNav>
@@ -25,13 +21,6 @@ export const ContainerNavigation = () => {
                             <div>Products</div>
                         </NavLink>
                     </div>
-                          {/*<div>*/}
-                          {/*     <li>Cakes</li>*/}
-                          {/*     <li>Cupcakes</li>*/}
-                          {/*     <li>Candies</li>*/}
-                          {/*     <li>Cookies</li>*/}
-                          {/*     <li>Macaroons</li>*/}
-                          {/*</div>*/}
                     </div>
                     <div className={s.item}>
                         <NavLink activeClassName={s.active} to="/signatureCakes">Signature cakes</NavLink>
@@ -69,7 +58,16 @@ const ContainerNav = styled.div`
 
 `
 const ContainerLogo = styled.div`
-      align-self: center;
+    align-self: center;
      `
 
+const StyledLinkLogoImg = styled.img`
+    width: 45px;
+    height: 45px;
+`
 
+const StyledLinkLogoText = styled.img`
+    width: 110px;
+    height: 40px;
+    margin-top: 5px;
+`
