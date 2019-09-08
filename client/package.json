@@ -30,7 +30,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "watch-styles": "npm-watch",
-    "stylelint-dev": "stylelint 'src/**/*.js', --cache --cache-location ',./.stylelintcache'; exit 0 ",
+    "stylelint-dev": "stylelint \"src/**/*.js\", --cache --cache-location \",./.stylelintcache\"; exit 0 ",
     "stylelint-build": "stylelint 'src/**/*.js' ",
     "stylelint-fix": "stylelint --fix 'src/**/*.js'"
   },
