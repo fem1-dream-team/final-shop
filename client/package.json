@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "private": true,
+  "private": "true",
   "dependencies": {
     "@material-ui/core": "^4.4.0",
     "axios": "^0.19.0",
@@ -10,6 +10,8 @@
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
+    "react-slick": "^0.25.2",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^4.3.2",
     "typeface-roboto": "0.0.75"
   },
@@ -28,9 +30,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "watch-styles": "npm-watch",
-    "stylelint-dev": "stylelint \"src/**/*.js\" --cache --cache-location \"./.stylelintcache\"; exit 0 ",
-    "stylelint-build": "stylelint \"src/**/*.js\" ",
-    "stylelint-fix": "stylelint --fix \"src/**/*.js\""
+    "stylelint-dev": "stylelint 'src/**/*.js', --cache --cache-location ',./.stylelintcache'; exit 0 ",
+    "stylelint-build": "stylelint 'src/**/*.js' ",
+    "stylelint-fix": "stylelint --fix 'src/**/*.js'"
   },
   "eslintConfig": {
     "extends": "react-app"

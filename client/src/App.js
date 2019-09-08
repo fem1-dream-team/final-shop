@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import {BrowserRouter, Route, Link, Switch} from "react-router-dom";
 import 'typeface-roboto';
 
-import {Home, Profile, Page404} from "./components";
+import {Home, Profile, Page404,} from "./components";
 import {Footer} from "./commons";
 
 import './App.css';
