@@ -63,12 +63,12 @@ text-transform: uppercase;
 `;
 
 const EventName = styled.div`
-	position: absolute;
-	bottom: 15%;
-	left: 50%;
-	height: 60px;   
-	border: 2px solid white;
-	transform: translate(-50%, -50%);
+position: absolute;
+bottom: 15%;
+left: 50%;
+height: 60px;   
+border: 2px solid white;
+transform: translate(-50%, -50%);
 `;
 
 const EventNameWrap = styled.div`

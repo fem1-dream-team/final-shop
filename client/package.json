@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "private": "true",g
+  "private": true,
   "dependencies": {
     "@material-ui/core": "^4.4.0",
     "axios": "^0.19.0",

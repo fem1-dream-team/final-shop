@@ -33,7 +33,7 @@ export const Footer = () => {
 };
 
 const TestContainer = styled.div`
-	padding: 10px;
-	font-size: 30px;
-	background-color: limegreen;
+padding: 10px;
+font-size: 30px;
+background-color: limegreen;
 `;
