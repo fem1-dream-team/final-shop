@@ -1,10 +1,10 @@
 import React from 'react';
 
 export const Page404 = () => {
-        return (
-            <div>
+	return (
+		<div>
                 Ooops, can't find that page
                 ERROR 404
-            </div>
-        );
+		</div>
+	);
 };
