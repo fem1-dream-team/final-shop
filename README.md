@@ -1,13 +1,27 @@
 # final-shop
-Всем привет)
+To create development environment:
+- Run <b>npm install</b>  in final-shop folder;
+- Run <b>npm install</b>   in client folder;
+- Run <b>npm install</b>   in backend folder;
 
-Пока будем работать над проекторм, веткой по умолчанию назначу ветку develop.  Ветки develop и master будут защищены. 
+# Scripts available in final-shop folder
 
-Когда закончим работу, напомните вернуть master на его законное место
 
-Ребят, если хотите чтоб в вашем профиле было видно ваше участие в нашей организации:<br/>
--заходите на страницу организации<br/>
--нажимаете на свое фото<br/>
--находите Membership и меняете видимость на Public<br/>
+### `npm start`
+ Creates both environments - client and server, starts create-react-app. We use it for development, when we need running back-end and front-end.`
+    
+# Scripts available in client folder:
 
-Peace ✌️
+### `npm start` 
+Runs watch-styles to start stylelint and eslint checks, then runs start-js to run the app in development mode. 
+
+### `npm run watch-styles`
+Starts stylelint and eslint checks. 
+
+### `npm run stylelint-fix` 
+Fixes problems in styles spelling
+
+### `npm run eslint-fix`
+Fixes problems in js spelling
+
+ ### Peace ✌ 
