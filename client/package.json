@@ -5,17 +5,42 @@
   "dependencies": {
     "@material-ui/core": "^4.4.0",
     "axios": "^0.19.0",
+    "npm-run-all": "^4.1.5",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
+    "react-slick": "^0.25.2",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^4.3.2",
     "typeface-roboto": "0.0.75"
   },
+  "watch": {
+    "stylelint-dev": {
+      "patterns": [
+        "/src/**/*.js"
+      ],
+      "extensions": "js"
+    },
+    "eslint": {
+      "patterns": [
+        "/src/**/*.js"
+      ],
+      "extensions": "js"
+    }
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-styles start-js",
+    "build": "npm run eslint && npm run stylelint-build && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch-styles": "npm-watch",
+    "stylelint-dev": "stylelint \"src/**/*.js\" --cache --cache-location \"./.stylelintcache\"; exit 0 ",
+    "stylelint-build": "stylelint \"src/**/*.js\" ",
+    "stylelint-fix": "stylelint --fix \"src/**/*.js\"",
+    "eslint": "eslint \"src/**/*.js\"",
+    "eslint-fix": "eslint --fix \"src/**/*.js\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,6 +61,14 @@
   "devDependencies": {
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
-    "enzyme-to-json": "^3.4.0"
+    "enzyme-to-json": "^3.4.0",
+    "eslint": "^6.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-react": "^7.14.3",
+    "npm-watch": "^0.3.0",
+    "standard": "^14.1.0",
+    "stylelint": "^10.1.0",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-order": "^3.1.0"
   }
 }
