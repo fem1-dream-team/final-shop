@@ -10,10 +10,9 @@ export const ContainerNavigation = () => {
         <div>
             <Container>
                 <ContainerLogo>
-                    <NavLink to="/"><StyledLinkLogoImg src={logoCakeWhite} alt='logoCake'/></NavLink>
-                    <NavLink to="/"><StyledLinkLogoText src={textLogoWhite} alt='textLogo'/></NavLink>
+                    <NavLink to="/home"><StyledLinkLogoImg src={logoCakeWhite} alt='logoCake'/></NavLink>
+                    <NavLink to="/home"><StyledLinkLogoText src={textLogoWhite} alt='textLogo'/></NavLink>
                 </ContainerLogo>
-                
                 <ContainerNav>
                     <div>
                     <div className={s.item}>

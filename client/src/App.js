@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {BrowserRouter, Route, Switch, NavLink} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import 'typeface-roboto';
 
 import {Home} from "./components";
@@ -10,6 +10,7 @@ import {SignatureCakes} from "./commons/Header/ContainerNavigation/ComponentsFor
 import {CustomOrders} from "./commons/Header/ContainerNavigation/ComponentsForNavigation/CustomOrders";
 import {WeddingsCakes} from "./commons/Header/ContainerNavigation/ComponentsForNavigation/WeddingCakes";
 import {Cart} from "./commons/Header/ContainerNavigation/ComponentsForNavigation/Cart";
+import {Account} from "./commons/Header/ConteinerSearchAccount/Account/Account";
 
 class App extends Component {
   componentDidMount() {
@@ -33,18 +34,13 @@ class App extends Component {
                 {/*<Link to={'/profile'}> Profile </Link>*/}
               </div>
               <Switch>
-                <div>
+                  <Route path='/home' component={Home}/>
                   <Route path='/products' component={Products}/>
                   <Route path='/signatureCakes' component={SignatureCakes}/>
                   <Route path='/customOrders' component={CustomOrders}/>
                   <Route path='/weddingCakes' component={WeddingsCakes}/>
                   <Route path='/cart' render={() => <Cart/>}/>
-                </div>
-                <div>
-
-                  <Route exact path='/' component={Home}/>
-
-                </div>
+                  <Route path='/account' render={() => <Account/>}/>
                 {/*<Route  path='*' component={Page404}/>*/}
               </Switch>
               <Footer/>

@@ -8,10 +8,8 @@ export const Header = (props) => {
     return (
         <div>
                <ContainerSearchAccount/>
-
-                <NavLink to="/"><Logo/></NavLink>
-
-               <div>
+               <NavLink to="/home"><Logo/></NavLink>
+                       <div>
                     <ContainerNavigation/>
                </div>
         </div>

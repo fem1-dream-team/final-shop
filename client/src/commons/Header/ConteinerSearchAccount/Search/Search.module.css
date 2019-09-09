@@ -56,18 +56,20 @@
     transform: translate(0, 10px);
 }
 .searchWrapper .inputHolder .searchIcon {
-    width:50px;
-    height:70px;
-    border:none;
-    border-radius:6px;
-    background: #95d6bf;;
-    padding:0px;
-    outline:none;
+    width: 30px;
+    height: 23px;
+    border: none;
+    border-radius: 6px;
+    background: #95d6bf;
+    padding: 0px;
+    outline: none;
     position: relative;
     z-index: 2;
-    float:right;
+    float: right;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    top: 25px;
+    right: 12px;
 }
 .searchWrapper.active .inputHolder .searchIcon {
     width: 50px;
@@ -128,18 +130,18 @@
 .searchWrapper .close::before, .searchWrapper .close::after {
     position: absolute;
     content:'';
-    background: #FE5F55;
-    border-radius: 2px;
+    background: #fff;
+    border-radius: 4px;
 }
 .searchWrapper .close::before {
     width: 5px;
-    height: 25px;
+    height: 20px;
     left: 10px;
-    top: 0px;
+    top: 2px;
 }
 .searchWrapper .close::after {
-    width: 25px;
+    width: 20px;
     height: 5px;
-    left: 0px;
+    left: 2px;
     top: 10px;
 }

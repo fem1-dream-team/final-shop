@@ -26,12 +26,12 @@ export const Search = (props) => {
 
 const searchToggle = (obj) => {
 
-        let container = $(obj).closest('.searchWrapper');
+        let container = $(obj).closest('.s.searchWrapper');
     if(!container.hasClass('active')){
         container.addClass('active');
         // evt.preventDefault();
     }
-    else if(container.hasClass('active') && $(obj).closest('.inputHolder').length === 0){
+    else if(container.hasClass('active') && $(obj).closest('.s.inputHolder').length === 0){
         container.removeClass('active');
         // clear input
         container.find('.searchInput').val('');
