@@ -1,14 +1,18 @@
-import React, {Component} from 'react';
-import axios from 'axios';
-import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
-import 'typeface-roboto';
-import Button from '@material-ui/core/Button';
+import React, { Component } from 'react'
+import axios from 'axios'
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
+import 'typeface-roboto'
 
-import {Home, Profile, Page404} from './components';
+import { Home } from './components'
+import { Footer, Header } from './commons'
+import { Products } from './commons/Header/ContainerNavigation/ComponentsForNavigation/Products'
+import { SignatureCakes } from './commons/Header/ContainerNavigation/ComponentsForNavigation/SignatureCakes'
+import { CustomOrders } from './commons/Header/ContainerNavigation/ComponentsForNavigation/CustomOrders'
+import { WeddingsCakes } from './commons/Header/ContainerNavigation/ComponentsForNavigation/WeddingCakes'
+import { Cart } from './commons/Header/ContainerNavigation/ComponentsForNavigation/Cart'
+import { Account } from './commons/Header/ConteinerSearchAccount/Account/Account'
 import LoginPage from './components/LoginPage';
-import {Footer} from './commons';
-
-import './App.css';
+import Button from '@material-ui/core/Button';
 
 class App extends Component {
 	componentDidMount () {
@@ -17,31 +21,36 @@ class App extends Component {
 				.then(console.log))
 	}
 
-	inputChanged = (param) => {
-		console.log(param)
-	}
-
-	render () {
-		return (
-			<BrowserRouter>
-				<div>
-					Header
-					<div>
-						<Link to={'/'}> Home </Link>
-						<Link to={'/profile'}> Profile </Link>
-						<Link to={'/customer'}> <Button color="primary" >Sign in</Button> </Link>
-					</div>
-					<Switch>
-						<Route exact path='/' component={Home}/>
-						<Route path='/profile' component={Profile}/>
-						<Route path='/customer' component={LoginPage}/>
-						<Route path='*' component={Page404}/>
-					</Switch>
-					<Footer/>
-				</div>
-			</BrowserRouter>
-		);
-	}
+inputChanged = (param) => {
+	console.log(param)
 }
 
-export default App;
+render () {
+	return (
+		<BrowserRouter>
+
+			<div>
+				<Header/>
+				<div>
+					<Link to={'/customer'}> <Button color="primary" >Sign in</Button> </Link>
+				</div>
+				<Switch>
+					<Route path='/home' component={Home}/>
+					<Route path='/products' component={Products}/>
+					<Route path='/signatureCakes' component={SignatureCakes}/>
+					<Route path='/customOrders' component={CustomOrders}/>
+					<Route path='/weddingCakes' component={WeddingsCakes}/>
+					<Route path='/cart' render={() => <Cart/>}/>
+					<Route path='/account' render={() => <Account/>}/>
+					{/* <Route  path='*' component={Page404}/> */}
+					<Route path='/customer' component={LoginPage}/>
+				</Switch>
+				<Footer/>
+			</div>
+		</BrowserRouter>
+
+	)
+}
+}
+
+export default App

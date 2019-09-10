@@ -55,9 +55,6 @@ export const Register = (props) => {
 			<Button color="primary"> Create your account</Button>
 		</div>
 	);
-}
-const style = {
-	margin: 15,
 };
 
 export default Register;
