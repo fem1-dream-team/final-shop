@@ -1,5 +1,5 @@
 import React from 'react';
-import {ContainerSearchAccount} from './ConteinerSearchAccount/ContainerSearchAccount'
+import {ContainerSearchAccount} from './ContainerSearchLoginPage/ContainerSearchAccount'
 import {ContainerNavigation} from './ContainerNavigation/ContainerNavigation'
 import {Logo} from './Logo';
 import {NavLink} from 'react-router-dom';
