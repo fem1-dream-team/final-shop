@@ -2,17 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const Cart = () => {
-    return (
-        <Container>
+	return (
+		<Container>
             Cart
-        </Container>
-    )
+		</Container>
+	)
 }
 
 const Container = styled.div`
-    display: flex;
-    justify-content: space-around; 
-    color: green;
-    height: 800px;
+	display: flex;
+	justify-content: space-around;
+	height: 800px; 
+	color: green;
     
 `

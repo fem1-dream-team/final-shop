@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "stylelint-config-rational-order"
+  ],
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+    "indentation": "tab",
+    "declaration-empty-line-before": null,
+    "number-leading-zero": "never",
+    "no-missing-end-of-source-newline": null
+  }
+}

@@ -2,16 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const CustomOrders = () => {
-    return (
-        <Container>
+	return (
+		<Container>
             CustomOrders
-        </Container>
-    )
+		</Container>
+	)
 }
 const Container = styled.div`
-    display: flex;
-    justify-content: space-around; 
-    color: green;
-    height: 800px;
+	display: flex;
+	justify-content: space-around;
+	height: 800px; 
+	color: green;
     
 `

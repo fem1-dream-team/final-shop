@@ -2,16 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const SignatureCakes = () => {
-    return (
-        <Container>
+	return (
+		<Container>
             SignatureCakes
-        </Container>
-    )
+		</Container>
+	)
 }
 const Container = styled.div`
-    display: flex;
-    justify-content: space-around; 
-    color: green;
-    height: 800px;
+	display: flex;
+	justify-content: space-around;
+	height: 800px; 
+	color: green;
     
 `
