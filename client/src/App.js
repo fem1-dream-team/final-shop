@@ -10,8 +10,7 @@ import { SignatureCakes } from './commons/Header/ContainerNavigation/ComponentsF
 import { CustomOrders } from './commons/Header/ContainerNavigation/ComponentsForNavigation/CustomOrders'
 import { WeddingsCakes } from './commons/Header/ContainerNavigation/ComponentsForNavigation/WeddingCakes'
 import { Cart } from './commons/Header/ContainerNavigation/ComponentsForNavigation/Cart'
-import { Account } from './commons/Header/ConteinerSearchAccount/Account/Account'
-import LoginPage from './components/LoginPage';
+import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage';
 import Button from '@material-ui/core/Button';
 
 class App extends Component {
@@ -41,7 +40,6 @@ render () {
 					<Route path='/customOrders' component={CustomOrders}/>
 					<Route path='/weddingCakes' component={WeddingsCakes}/>
 					<Route path='/cart' render={() => <Cart/>}/>
-					<Route path='/account' render={() => <Account/>}/>
 					{/* <Route  path='*' component={Page404}/> */}
 					<Route path='/customer' component={LoginPage}/>
 				</Switch>
