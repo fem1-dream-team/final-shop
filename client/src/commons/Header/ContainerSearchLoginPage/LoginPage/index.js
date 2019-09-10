@@ -13,22 +13,13 @@ import {Route, Link, Switch} from 'react-router-dom';
 
 const LoginPage = (props) => {
 	const [open, setOpen] = useState(false);
-	const [state, setState] = useState({
+	const [state] = useState({
 		email: '',
 		password: '',
 		confirmPassword: '',
 		firstName: '',
 		lastName: ''
 	});
-
-	const onChangeHandler = event => {
-		const name = event.target.getAttribute('name');
-		const value = event.target.value;
-		setState({
-			...state,
-			[name]: value,
-		});
-	};
 
 	function handleClickOpen () {
 		setOpen(true);
@@ -80,18 +71,5 @@ Create your account
 		</div>
 	);
 };
-// 	return (
-// 		<div>
-// 			<div>
-// 				<Link to={'/'}>Log In</Link>
-// 				<Link to={'/register'}> Register new user</Link>
-// 			</div>
-// 			<Switch>
-// 				<Route exact path='/' component={Login}/>
-// 				<Route path='/register' component={Register}/>
-// 			</Switch>
-// 		</div>
-// 	)
-// };
 
 export default LoginPage;

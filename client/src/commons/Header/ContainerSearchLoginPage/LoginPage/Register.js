@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 export const Register = (props) => {
-	const [state, setState] = useState({
+	const [state] = useState({
 		first_name: '',
 		last_name: '',
 		email: '',
