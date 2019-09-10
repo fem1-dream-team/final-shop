@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 import 'typeface-roboto'
 
 import { Home } from './components'
@@ -10,7 +10,8 @@ import { SignatureCakes } from './commons/Header/ContainerNavigation/ComponentsF
 import { CustomOrders } from './commons/Header/ContainerNavigation/ComponentsForNavigation/CustomOrders'
 import { WeddingsCakes } from './commons/Header/ContainerNavigation/ComponentsForNavigation/WeddingCakes'
 import { Cart } from './commons/Header/ContainerNavigation/ComponentsForNavigation/Cart'
-import { Account } from './commons/Header/ConteinerSearchAccount/Account/Account'
+import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage';
+import Button from '@material-ui/core/Button';
 
 class App extends Component {
 	componentDidMount () {
@@ -30,8 +31,7 @@ render () {
 			<div>
 				<Header/>
 				<div>
-					{/* <Link to={'/'}> Home </Link> */}
-					{/* <Link to={'/profile'}> Profile </Link> */}
+					<Link to={'/customer'}> <Button color="primary" >Sign in</Button> </Link>
 				</div>
 				<Switch>
 					<Route path='/home' component={Home}/>
@@ -40,8 +40,8 @@ render () {
 					<Route path='/customOrders' component={CustomOrders}/>
 					<Route path='/weddingCakes' component={WeddingsCakes}/>
 					<Route path='/cart' render={() => <Cart/>}/>
-					<Route path='/account' render={() => <Account/>}/>
 					{/* <Route  path='*' component={Page404}/> */}
+					<Route path='/customer' component={LoginPage}/>
 				</Switch>
 				<Footer/>
 			</div>
