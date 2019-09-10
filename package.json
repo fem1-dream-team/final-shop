@@ -1,7 +1,7 @@
 {
   "name": "final-shop",
   "version": "1.0.0",
-  "description": "Всем привет)",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -20,5 +20,6 @@
   "homepage": "https://github.com/fem1-dream-team/final-shop#readme",
   "dependencies": {
     "concurrently": "^4.1.2"
-  }
+  },
+  "devDependencies": {}
 }
