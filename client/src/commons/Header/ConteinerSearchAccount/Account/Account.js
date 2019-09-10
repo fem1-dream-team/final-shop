@@ -17,7 +17,7 @@ function Copyright () {
 	return (
 		<Typography variant="body2" color="textSecondary" align="center">
 			{'Copyright © '}
-			<Link color="inherit" href="https://material-ui.com/">
+			<Link component="a" color="inherit" href="https://material-ui.com/">
                 Your Website
 			</Link>{' '}
 			{new Date().getFullYear()}
@@ -58,14 +58,14 @@ export const Account = () => {
 			<Container component="main" maxWidth="xs" style={{marginTop: '0px'}}>
 				<CssBaseline />
 				<div className={classes.paper}>
-					<Avatar className={classes.avatar}>
+					<Avatar component="div" className={classes.avatar}>
 						<LockOutlinedIcon />
 					</Avatar>
 					<Typography component="h1" variant="h5">
                         Sign in
 					</Typography>
 					<form className={classes.form} noValidate>
-						<TextField
+						<TextField component="div"
 							variant="outlined"
 							margin="normal"
 							required
@@ -76,7 +76,7 @@ export const Account = () => {
 							autoComplete="email"
 							autoFocus
 						/>
-						<TextField
+						<TextField component="div"
 							variant="outlined"
 							margin="normal"
 							required
@@ -91,7 +91,7 @@ export const Account = () => {
 							control={<Checkbox value="remember" color="primary" />}
 							label="Remember me"
 						/>
-						<Button
+						<Button href="#"
 							type="submit"
 							fullWidth
 							variant="contained"
@@ -100,14 +100,14 @@ export const Account = () => {
 						>
                             Sign In
 						</Button>
-						<Grid container>
-							<Grid item xs>
-								<Link href="#" variant="body2">
+						<Grid component="div" container>
+							<Grid component="div" item xs>
+								<Link component="a" href="#" variant="body2">
                                     Forgot password?
 								</Link>
 							</Grid>
-							<Grid item>
-								<Link href="#" variant="body2">
+							<Grid component="div" item>
+								<Link component="a" href="#" variant="body2">
 									{"Don't have an account? Sign Up"}
 								</Link>
 							</Grid>
