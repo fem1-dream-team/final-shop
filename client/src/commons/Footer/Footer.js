@@ -1,6 +1,6 @@
 import React from 'react';
 import {Grid} from '@material-ui/core';
-import logo from '../../images/logo/logo.jpg';
+import logo from "../../commons/Header/logoImages/logo.png"
 import {StdP, StdLogo, StdLogoWrapper, StdFooter, StdLi, StdNavLink} from './FooterStyles';
 // Std = styled
 
