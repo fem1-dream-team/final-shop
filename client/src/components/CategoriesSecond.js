@@ -107,40 +107,40 @@ export const CategoriesSecond = () => {
 	return (
 		<div style={{backgroundColor: '#cce6ff'}}>
 			<h1 style={{textAlign: 'center'}}>SECOND CATEGORIES EXMPL</h1>
-			{/* <Link to={'/profile'}> */}
-			<div className={classes.root}>
-				{images.map(image => (
-					<ButtonBase
-						focusRipple
-						key={image.title}
-						className={classes.image}
-						focusVisibleClassName={classes.focusVisible}
-						style={{
-							width: image.width,
-						}}
-					>
-						<span
-							className={classes.imageSrc}
+			<Link to={'/profile'}>
+				<div className={classes.root}>
+					{images.map(image => (
+						<ButtonBase
+							focusRipple
+							key={image.title}
+							className={classes.image}
+							focusVisibleClassName={classes.focusVisible}
 							style={{
-								backgroundImage: `url(${image.url})`,
+								width: image.width,
 							}}
-						/>
-						<span className={classes.imageBackdrop} />
-						<span className={classes.imageButton}>
-							<Typography
-								component="span"
-								variant="subtitle1"
-								color="inherit"
-								className={classes.imageTitle}
-							>
-								{image.title}
-								<span className={classes.imageMarked} />
-							</Typography>
-						</span>
-					</ButtonBase>
-				))}
-			</div>
-			{/* </Link> */}
+						>
+							<span
+								className={classes.imageSrc}
+								style={{
+									backgroundImage: `url(${image.url})`,
+								}}
+							/>
+							<span className={classes.imageBackdrop} />
+							<span className={classes.imageButton}>
+								<Typography
+									component="span"
+									variant="subtitle1"
+									color="inherit"
+									className={classes.imageTitle}
+								>
+									{image.title}
+									<span className={classes.imageMarked} />
+								</Typography>
+							</span>
+						</ButtonBase>
+					))}
+				</div>
+			</Link>
 		</div>
 	)
 }
