@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import 'typeface-roboto'
 
 import { Home } from './components'
@@ -11,7 +11,6 @@ import { CustomOrders } from './commons/Header/ContainerNavigation/ComponentsFor
 import { WeddingsCakes } from './commons/Header/ContainerNavigation/ComponentsForNavigation/WeddingCakes'
 import { Cart } from './commons/Header/ContainerNavigation/ComponentsForNavigation/Cart'
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage';
-import Button from '@material-ui/core/Button';
 
 class App extends Component {
 	componentDidMount () {
@@ -30,9 +29,6 @@ render () {
 
 			<div>
 				<Header/>
-				<div>
-					<Link to={'/customer'}> <Button color="primary" >Sign in</Button> </Link>
-				</div>
 				<Switch>
 					<Route path='/home' component={Home}/>
 					<Route path='/products' component={Products}/>
