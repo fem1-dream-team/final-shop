@@ -1,6 +1,5 @@
 import React from 'react';
 import {Grid} from '@material-ui/core';
-import logo from '../../images/logo/logo.jpg';
 import {StdP, StdLogo, StdLogoWrapper, StdFooter, StdLi, StdNavLink} from './FooterStyles';
 // Std = styled
 
@@ -16,7 +15,7 @@ export const Footer = () => {
 			<Grid item>
 				<StdNavLink exact to="/">
 					<StdLogoWrapper>
-						<StdLogo src={logo} alt="bakery logo"/>
+						<StdLogo src='img/logoImages/logo.png' alt="bakery logo"/>
 					</StdLogoWrapper>
 				</StdNavLink>
 			</Grid>

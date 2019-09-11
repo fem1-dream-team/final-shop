@@ -3,7 +3,7 @@ import axios from 'axios'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import 'typeface-roboto'
 
-import { Home } from './components'
+import { Home, Page404 } from './components'
 import { Footer, Header } from './commons'
 import { Products } from './commons/Header/ContainerNavigation/ComponentsForNavigation/Products'
 import { SignatureCakes } from './commons/Header/ContainerNavigation/ComponentsForNavigation/SignatureCakes'
@@ -12,18 +12,7 @@ import { WeddingsCakes } from './commons/Header/ContainerNavigation/ComponentsFo
 import { Cart } from './commons/Header/ContainerNavigation/ComponentsForNavigation/Cart'
 import { Account } from './commons/Header/ConteinerSearchAccount/Account/Account'
 
-class App extends Component {
-	componentDidMount () {
-		axios.get('/data')
-			.then(res => axios.post('/postData', res)
-				.then(console.log))
-	}
-
-inputChanged = (param) => {
-	console.log(param)
-}
-
-render () {
+function App () {
 	return (
 		<BrowserRouter>
 
@@ -34,21 +23,20 @@ render () {
 					{/* <Link to={'/profile'}> Profile </Link> */}
 				</div>
 				<Switch>
-					<Route path='/home' component={Home}/>
+					<Route exact path='/' component={Home}/>
 					<Route path='/products' component={Products}/>
 					<Route path='/signatureCakes' component={SignatureCakes}/>
 					<Route path='/customOrders' component={CustomOrders}/>
 					<Route path='/weddingCakes' component={WeddingsCakes}/>
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route path='/account' render={() => <Account/>}/>
-					{/* <Route  path='*' component={Page404}/> */}
+					<Route path='*' component={Page404}/>
 				</Switch>
 				<Footer/>
 			</div>
 		</BrowserRouter>
 
 	)
-}
 }
 
 export default App

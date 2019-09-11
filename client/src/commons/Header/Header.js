@@ -8,10 +8,10 @@ export const Header = (props) => {
 	return (
 		<div>
 			<ContainerSearchAccount/>
-			<NavLink to="/home"><Logo/></NavLink>
+			<NavLink exact to="/"><Logo/></NavLink>
 			<div>
 				<ContainerNavigation/>
 			</div>
 		</div>
 	)
-}
+};
