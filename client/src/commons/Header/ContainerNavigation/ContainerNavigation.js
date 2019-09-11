@@ -8,8 +8,8 @@ export const ContainerNavigation = () => {
 		<div>
 			<Container>
 				<ContainerLogo>
-					<NavLink to="/home"><StyledLinkLogoImg src='img/logoImages/logoCakeWhite.png' alt='logoCake'/></NavLink>
-					<NavLink to="/home"><StyledLinkLogoText src='img//logoImages/textLogoWhite.png' alt='textLogo'/></NavLink>
+					<NavLink to="/"><StyledLinkLogoImg src='img/logoImages/logoCakeWhite.png' alt='logoCake'/></NavLink>
+					<NavLink to="/"><StyledLinkLogoText src='img//logoImages/textLogoWhite.png' alt='textLogo'/></NavLink>
 				</ContainerLogo>
 				<ContainerNav>
 					<div>
@@ -20,7 +20,7 @@ export const ContainerNavigation = () => {
 						</div>
 					</div>
 					<div className={s.item}>
-						<NavLink activeClassName={s.active} to="/signatureCakes">Signature cakes</NavLink>
+						<NavLink activeClassName={s.active} to="/cakes">Сakes</NavLink>
 					</div>
 					<div className={s.item}>
 						<NavLink activeClassName={s.active} to="/customOrders">Custom orders</NavLink>

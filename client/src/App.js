@@ -3,10 +3,10 @@ import axios from 'axios'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import 'typeface-roboto'
 
-import { Home, Page404 } from './components'
+import { Home, Page404, Products, Cakes } from './components'
 import { Footer, Header } from './commons'
-import { Products } from './commons/Header/ContainerNavigation/ComponentsForNavigation/Products'
-import { SignatureCakes } from './commons/Header/ContainerNavigation/ComponentsForNavigation/SignatureCakes'
+// import { Products } from './commons/Header/ContainerNavigation/ComponentsForNavigation/Products'
+// import { Cakes } from './commons/Header/ContainerNavigation/ComponentsForNavigation/SignatureCakes'
 import { CustomOrders } from './commons/Header/ContainerNavigation/ComponentsForNavigation/CustomOrders'
 import { WeddingsCakes } from './commons/Header/ContainerNavigation/ComponentsForNavigation/WeddingCakes'
 import { Cart } from './commons/Header/ContainerNavigation/ComponentsForNavigation/Cart'
@@ -25,7 +25,7 @@ function App () {
 				<Switch>
 					<Route exact path='/' component={Home}/>
 					<Route path='/products' component={Products}/>
-					<Route path='/signatureCakes' component={SignatureCakes}/>
+					<Route path='/cakes' component={Cakes}/>
 					<Route path='/customOrders' component={CustomOrders}/>
 					<Route path='/weddingCakes' component={WeddingsCakes}/>
 					<Route path='/cart' render={() => <Cart/>}/>
