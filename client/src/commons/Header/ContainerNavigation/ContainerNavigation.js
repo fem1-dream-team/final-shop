@@ -8,8 +8,8 @@ export const ContainerNavigation = () => {
 		<div>
 			<Container>
 				<ContainerLogo>
-					<NavLink to="/home"><StyledLinkLogoImg src='img/logoImages/logoCakeWhite.png' alt='logoCake'/></NavLink>
-					<NavLink to="/home"><StyledLinkLogoText src='img//logoImages/textLogoWhite.png' alt='textLogo'/></NavLink>
+					<NavLink to="/"><StyledLinkLogoImg src='img/logoImages/logoCakeWhite.png' alt='logoCake'/></NavLink>
+					<NavLink to="/"><StyledLinkLogoText src='img//logoImages/textLogoWhite.png' alt='textLogo'/></NavLink>
 				</ContainerLogo>
 				<ContainerNav>
 					<div>

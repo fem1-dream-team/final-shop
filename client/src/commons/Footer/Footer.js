@@ -23,30 +23,30 @@ export const Footer = () => {
 				<Grid container component="nav" justify="space-between" spacing={3}>
 					<Grid item component="ul">
 						<StdLi>
-							<StdNavLink to="/seazon"> Сезонні тарти </StdNavLink>
+							<StdNavLink to="/tarts"> Тарти  </StdNavLink>
 						</StdLi>
 						<StdLi>
-							<StdNavLink to="/seazon"> Сезонні тарти </StdNavLink>
+							<StdNavLink to="/cupcakes"> Капкейки  </StdNavLink>
 						</StdLi>
 						<StdLi>
-							<StdNavLink to="/seazon"> Сезонні тарти </StdNavLink>
+							<StdNavLink to="/cookies"> Печиво </StdNavLink>
 						</StdLi>
 						<StdLi>
-							<StdNavLink to="/seazon"> Сезонні тарти </StdNavLink>
+							<StdNavLink to="/cakes"> Торти </StdNavLink>
+						</StdLi>
+						<StdLi>
+							<StdNavLink to="/pies"> Пироги </StdNavLink>
 						</StdLi>
 					</Grid>
 					<Grid item component="ul">
 						<StdLi>
-							<StdNavLink to="/seazon"> Сезонні тарти </StdNavLink>
+							<StdNavLink to="/delivery"> Доставка </StdNavLink>
 						</StdLi>
 						<StdLi>
-							<StdNavLink to="/seazon"> Сезонні тарти </StdNavLink>
+							<StdNavLink to="/customers"> Особистий кабінет  </StdNavLink>
 						</StdLi>
 						<StdLi>
-							<StdNavLink to="/seazon"> Сезонні тарти </StdNavLink>
-						</StdLi>
-						<StdLi>
-							<StdNavLink to="/seazon"> Сезонні тарти </StdNavLink>
+							<StdNavLink to="/contacts"> Контакти </StdNavLink>
 						</StdLi>
 					</Grid>
 				</Grid>

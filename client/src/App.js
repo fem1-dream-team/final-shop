@@ -15,13 +15,8 @@ import { Account } from './commons/Header/ConteinerSearchAccount/Account/Account
 function App () {
 	return (
 		<BrowserRouter>
-
 			<div>
 				<Header/>
-				<div>
-					{/* <Link to={'/'}> Home </Link> */}
-					{/* <Link to={'/profile'}> Profile </Link> */}
-				</div>
 				<Switch>
 					<Route exact path='/' component={Home}/>
 					<Route path='/products' component={Products}/>
