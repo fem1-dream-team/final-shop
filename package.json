@@ -1,12 +1,12 @@
 {
   "name": "final-shop",
   "version": "1.0.0",
-  "description": "",
+  "description": "To create development environment: - Run <b>npm install</b>  in final-shop folder; - Run <b>npm install</b>   in client folder; - Run <b>npm install</b>   in backend folder;",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "pre-deploy": "",
-    "start": "concurrently \"cd backend && npm start\" \"cd client && npm start\""
+    "start": "concurrently \"cd backend && node server.js\" \"cd client && npm start\""
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,6 @@
     "concurrently": "^4.1.2",
     "mongodb": "^3.3.2"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "keywords": []
 }

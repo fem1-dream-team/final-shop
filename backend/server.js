@@ -3,7 +3,7 @@ const express = require('express');
 var cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const Data = require('./data');
+const Product = require('./product');
 
 const API_PORT = 3001;
 const app = express();
@@ -12,7 +12,7 @@ const router = express.Router();
 
 // this is our MongoDB database
 const dbRoute =
-	'mongodb+srv://admin:admin@cluster0-37y1n.mongodb.net/test?retryWrites=true&w=majority';
+	'mongodb+srv://admin:admin@cluster0-37y1n.mongodb.net/bakery_shop?retryWrites=true&w=majority';
 
 // connects our back end code with the database
 mongoose.connect(dbRoute, { useNewUrlParser: true });
@@ -33,7 +33,10 @@ app.use(logger('dev'));
 // this is our get method
 // this method fetches all available data in our database
 router.get('/getData', (req, res) => {
-	Data.find((err, data) => {
+	// res.json({ success: false, data: ['named'] });
+	// Product.findOne(function(error, result) { return res.json({ success: true, data: result }); });
+	// res.send('hello world')
+	Product.find((err, data) => {
 		if (err) return res.json({ success: false, error: err });
 		return res.json({ success: true, data: data });
 	});
