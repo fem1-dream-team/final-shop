@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import 'typeface-roboto'
@@ -13,7 +13,6 @@ import { WeddingsCakes } from './commons/Header/ContainerNavigation/ComponentsFo
 import { Cart } from './commons/Header/ContainerNavigation/ComponentsForNavigation/Cart'
 import { Account } from './commons/Header/ConteinerSearchAccount/Account/Account'
 
-
 class App extends Component {
 	// initialize our state
 	state = {
@@ -26,7 +25,7 @@ class App extends Component {
 		objectToUpdate: null,
 	};
 
-	componentDidMount() {
+	componentDidMount () {
 		// this.getDataFromDb();
 		// if (!this.state.intervalIsSet) {
 		// 	let interval = setInterval(this.getDataFromDb, 1000);
@@ -34,7 +33,7 @@ class App extends Component {
 		// }
 	}
 
-	componentWillUnmount() {
+	componentWillUnmount () {
 		// if (this.state.intervalIsSet) {
 		// 	clearInterval(this.state.intervalIsSet);
 		// 	this.setState({ intervalIsSet: null });
@@ -47,7 +46,7 @@ class App extends Component {
 			.then((res) => this.setState({ data: res.product }));
 	};
 
-	render() {
+	render () {
 		const { data } = this.state;
 		return (
 			<BrowserRouter>
