@@ -5,13 +5,16 @@ import 'typeface-roboto'
 
 import { Home } from './components'
 import { Footer, Header } from './commons'
-import { Products } from './commons/Header/ContainerNavigation/ComponentsForNavigation/Products'
-import { SignatureCakes } from './commons/Header/ContainerNavigation/ComponentsForNavigation/SignatureCakes'
-import { CustomOrders } from './commons/Header/ContainerNavigation/ComponentsForNavigation/CustomOrders'
-import { WeddingsCakes } from './commons/Header/ContainerNavigation/ComponentsForNavigation/WeddingCakes'
-import { Cart } from './commons/Header/ContainerNavigation/ComponentsForNavigation/Cart'
+
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage';
 import Button from '@material-ui/core/Button';
+import { Cakes } from './components/ContainerNavigation/ComponentsForNavigation/Cakes'
+import { Tarts } from './components/ContainerNavigation/ComponentsForNavigation/Tarts'
+import { Cupcakes } from './components/ContainerNavigation/ComponentsForNavigation/Cupcakes'
+import { Biscuits } from './components/ContainerNavigation/ComponentsForNavigation/Biscuits'
+import { Cart } from './components/ContainerNavigation/ComponentsForNavigation/Cart'
+import { Desserts } from './components/ContainerNavigation/ComponentsForNavigation/Desserts'
+import { ContainerNavigation } from './components/ContainerNavigation/ContainerNavigation'
 
 class App extends Component {
 	componentDidMount () {
@@ -30,15 +33,17 @@ render () {
 
 			<div>
 				<Header/>
+				<ContainerNavigation/>
 				<div>
 					<Link to={'/customer'}> <Button color="primary" >Sign in</Button> </Link>
 				</div>
 				<Switch>
 					<Route path='/home' component={Home}/>
-					<Route path='/products' component={Products}/>
-					<Route path='/signatureCakes' component={SignatureCakes}/>
-					<Route path='/customOrders' component={CustomOrders}/>
-					<Route path='/weddingCakes' component={WeddingsCakes}/>
+					<Route path='/cakes' component={Cakes}/>
+					<Route path='/tarts' component={Tarts}/>
+					<Route path='/cupcakes' component={Cupcakes}/>
+					<Route path='/biscuits' component={Biscuits}/>
+					<Route path='/desserts' component={Desserts}/>
 					<Route path='/cart' render={() => <Cart/>}/>
 					{/* <Route  path='*' component={Page404}/> */}
 					<Route path='/customer' component={LoginPage}/>

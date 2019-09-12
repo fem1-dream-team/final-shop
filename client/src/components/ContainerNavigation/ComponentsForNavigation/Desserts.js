@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const Products = () => {
+export const Desserts = () => {
 	return (
-		<ContainerProducts>
+		<Container>
 			<div>
-				<div>Products</div>
+				<div>Desserts</div>
 			</div>
-		</ContainerProducts>
+		</Container>
 	)
 }
 
-const ContainerProducts = styled.div`
+const Container = styled.div`
 	display: flex;
 	justify-content: space-around;
 	height: 800px; 

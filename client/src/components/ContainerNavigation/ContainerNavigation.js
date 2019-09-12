@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import {NavLink} from 'react-router-dom';
 import s from './ConteinerNavigation.module.css'
-import logoCakeWhite from '../logoImages/logoCakeWhite.png'
-import textLogoWhite from '../logoImages/textLogoWhite.png'
+import logoCakeWhite from './logoImages/logoCakeWhite.png'
+import textLogoWhite from './logoImages/textLogoWhite.png'
 
 export const ContainerNavigation = () => {
 	return (
@@ -16,22 +16,25 @@ export const ContainerNavigation = () => {
 				<ContainerNav>
 					<div>
 						<div className={s.item}>
-							<NavLink activeClassName={s.active} to="/products">
-								<div>Products</div>
+							<NavLink activeClassName={s.active} to="/cakes">
+								<div>CAKES</div>
 							</NavLink>
 						</div>
 					</div>
 					<div className={s.item}>
-						<NavLink activeClassName={s.active} to="/signatureCakes">Signature cakes</NavLink>
+						<NavLink activeClassName={s.active} to="/tarts">TARTS</NavLink>
 					</div>
 					<div className={s.item}>
-						<NavLink activeClassName={s.active} to="/customOrders">Custom orders</NavLink>
+						<NavLink activeClassName={s.active} to="/cupcakes">CUPCAKES</NavLink>
 					</div>
 					<div className={s.item}>
-						<NavLink activeClassName={s.active} to="/weddingCakes">Weddings cakes</NavLink>
+						<NavLink activeClassName={s.active} to="/biscuits">BISCUITS</NavLink>
 					</div>
 					<div className={s.item}>
-						<NavLink activeClassName={s.active} to="/cart">Cart</NavLink>
+						<NavLink activeClassName={s.active} to="/desserts">DESSERTS</NavLink>
+					</div>
+					<div className={s.item}>
+						<NavLink activeClassName={s.active} to="/cart">CART</NavLink>
 					</div>
 				</ContainerNav>
 			</Container>
@@ -53,7 +56,7 @@ const Container = styled.div`
 const ContainerNav = styled.div`
 	display: flex;
 	justify-content: space-between;
-	width: 600px;
+	width: 740px;
 
 `
 const ContainerLogo = styled.div`
