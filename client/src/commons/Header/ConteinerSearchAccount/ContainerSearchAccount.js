@@ -2,7 +2,6 @@ import React from 'react';
 
 import {Search} from './Search/Search'
 import styled from 'styled-components';
-import account from './userAccount.png'
 import {NavLink} from 'react-router-dom';
 // import {Account} from "./Account/Account";
 
@@ -12,7 +11,7 @@ export const ContainerSearchAccount = (props) => {
 			<Container>
 
 				<LogDiv>
-					<NavLink to='/account'><img src={account} alt='account' style={{width: '25px', height: '25 px'}}/></NavLink>
+					<NavLink to='/account'><img src='img/icons/userAccount.png' alt='account' style={{width: '25px', height: '25 px'}}/></NavLink>
 				</LogDiv>
 				<SearchDiv>
 					<Search/>

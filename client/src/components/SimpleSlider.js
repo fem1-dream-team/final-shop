@@ -19,22 +19,22 @@ export class SimpleSlider extends Component {
 				<SliderTitle> News & Promotions</SliderTitle>
 				<Slider {...settings}>
 					<div>
-						<img alt="cake1" src="../images/1.jpg"/>
+						<StyledImg alt="cake1" src="img/slider-img/1.jpg"/>
 					</div>
 					<div>
-						<img alt="cake2" src="../images/2.jpg"/>
+						<StyledImg alt="cake2" src="img/slider-img/2.jpg"/>
 					</div>
 					<div>
-						<img alt="cake3" src="../images/3.jpg"/>
+						<StyledImg alt="cake3" src="img/slider-img/3.jpg"/>
 					</div>
 					<div>
-						<img alt="cake4" src="../images/4.jpg"/>
+						<StyledImg alt="cake4" src="img/slider-img/4.jpg"/>
 					</div>
 					<div>
-						<img alt="cake5" src="../images/5.jpg"/>
+						<StyledImg alt="cake5" src="img/slider-img/5.jpg"/>
 					</div>
 					<div>
-						<img alt="cake6" src="../images/6.jpg"/>
+						<StyledImg alt="cake6" src="img/slider-img/6.jpg"/>
 					</div>
 				</Slider>
 
@@ -80,4 +80,8 @@ font-size: 10px;
 text-align: center;
 text-transform: uppercase;
 border: 2px solid white;
+`;
+
+const StyledImg = styled.img`
+height: 200px;
 `;
