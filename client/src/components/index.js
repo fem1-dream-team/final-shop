@@ -5,4 +5,3 @@ export {SimpleSlider} from './SimpleSlider';
 export {Categories} from './Categories'
 export {Products} from './Products/Products';
 export {Cakes} from './Cakes/Cakes';
-
