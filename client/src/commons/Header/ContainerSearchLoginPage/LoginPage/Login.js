@@ -9,14 +9,15 @@ const useStyles = makeStyles(theme => ({
 	},
 
 }));
-export const Login = () => {
+export const Login = (props) => {
 	const classes = useStyles();
 	const [state, setState] = useState({
 		email: '',
 		password: '',
-		confirmPassword: '',
-		firstName: '',
-		lastName: ''
+		formErrors: {email: '', password: ''},
+		emailValid: false,
+		passwordValid: false,
+		formValid: false
 	});
 
 	const onChangeHandler = event => {
@@ -27,6 +28,10 @@ export const Login = () => {
 			[name]: value,
 		});
 	};
+
+	const onSubmit = () => {
+		console.log(state);
+	}
 
 	return (
 		<div>
@@ -56,7 +61,9 @@ export const Login = () => {
 					value={state.password}
 					onChange={onChangeHandler}
 				/>
-				<Button variant="outlined" color="primary" className={classes.button}>Log In</Button>
+				<div>
+				</div>
+				<Button variant="outlined" color="primary" className={classes.button} onClick={onSubmit}>Log In</Button>
 			</form>
 		</div>
 	);

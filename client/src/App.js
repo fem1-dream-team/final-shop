@@ -26,11 +26,10 @@ inputChanged = (param) => {
 render () {
 	return (
 		<BrowserRouter>
-
 			<div>
 				<Header/>
 				<Switch>
-					<Route path='/home' component={Home}/>
+					<Route path='/' exact component={Home}/>
 					<Route path='/products' component={Products}/>
 					<Route path='/signatureCakes' component={SignatureCakes}/>
 					<Route path='/customOrders' component={CustomOrders}/>
@@ -42,7 +41,6 @@ render () {
 				<Footer/>
 			</div>
 		</BrowserRouter>
-
 	)
 }
 }

@@ -4,14 +4,20 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import Register from './Register';
 import {Login} from './Login';
-
-import {NavLink} from 'react-router-dom';
-import login from '../userLoginPage.png';
 import {makeStyles} from '@material-ui/core';
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 
 const useStyles = makeStyles(theme => ({
 	button: {
 		margin: theme.spacing(1),
+		borderRadius: 17,
+		backgroundColor: '#f186a0'
+	},
+	icon: {
+		width: 25,
+		height: 25,
+		color: '#fff',
+		cursor: 'pointer'
 	},
 
 }));
@@ -23,7 +29,6 @@ const LoginPage = (props) => {
 	
 	function toggleState () {
 		setIsOpen(!isOpen);
-		console.log('Is Open: ' + isOpen);
 	}
 	
 	function handleClickOpen () {
@@ -32,12 +37,12 @@ const LoginPage = (props) => {
 
 	function handleClose (props) {
 		setOpen(false);
-		window.location = '/';
+		// window.location = '/';
 	}
 
 	return (
 		<div>
-			<NavLink to='/customers' ><img src={login} onClick={handleClickOpen} alt='login' style={{width: '25px', height: '25 px'}}/></NavLink>
+			<AccountCircleOutlinedIcon className={classes.icon} onClick={handleClickOpen}/>
 			<Dialog open={open} scroll='paper' onClose={handleClose} aria-labelledby="form-dialog-title">
 				<DialogContent>
 					{

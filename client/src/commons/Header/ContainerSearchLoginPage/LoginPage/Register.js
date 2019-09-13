@@ -11,12 +11,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Register = (props) => {
+	console.log(props);
 	const [state, setState] = useState({
 		password: '',
 		login: '',
 		email: '',
 		last_name: '',
 		first_name: '',
+
 	});
 	const classes = useStyles();
 	function registrationSubmit (e) {
@@ -30,6 +32,7 @@ const Register = (props) => {
 		setState({
 			...state,
 			[name]: value,
+
 		});
 	};
 
@@ -54,6 +57,7 @@ const Register = (props) => {
 					variant="outlined"
 					value={state.login}
 					onChange={onChangeHandler}
+					style={{ color: 'red'}}
 				/>
 				<TextField
 					margin="dense"
