@@ -42,7 +42,7 @@ render () {
 					<Route path='/biscuits' component={Biscuits}/>
 					<Route path='/desserts' component={Desserts}/>
 					<Route path='/cart' render={() => <Cart/>}/>
-					<Route path='/home' render={() => <Collections/>}/>
+					<Route path='/home' render={() => <Cakes/>}/>
 					{/* <Route  path='*' component={Page404}/> */}
 					<Route exect path='/customer' component={LoginPage}/>
 				</Switch>
