@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import 'typeface-roboto'
 
 import { Home } from './components'
 import { Footer, Header } from './commons'
 
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage';
-//import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import { Cakes } from './components/ContainerNavigation/ComponentsForNavigation/Cakes'
 import { Tarts } from './components/ContainerNavigation/ComponentsForNavigation/Tarts'
 import { Cupcakes } from './components/ContainerNavigation/ComponentsForNavigation/Cupcakes'
@@ -15,7 +15,6 @@ import { Biscuits } from './components/ContainerNavigation/ComponentsForNavigati
 import { Cart } from './components/ContainerNavigation/ComponentsForNavigation/Cart'
 import { Desserts } from './components/ContainerNavigation/ComponentsForNavigation/Desserts'
 import { ContainerNavigation } from './components/ContainerNavigation/ContainerNavigation'
-import { Collections } from './components/Collections/Collections'
 
 class App extends Component {
 	componentDidMount () {

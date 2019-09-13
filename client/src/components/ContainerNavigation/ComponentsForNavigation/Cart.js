@@ -11,7 +11,6 @@ export const Cart = () => {
 		</Container>
 	)
 }
-
 const Container = styled.div`
 	margin: 0 auto;
 	color: black; 
