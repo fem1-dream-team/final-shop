@@ -15,6 +15,7 @@ import { Biscuits } from './components/ContainerNavigation/ComponentsForNavigati
 import { Cart } from './components/ContainerNavigation/ComponentsForNavigation/Cart'
 import { Desserts } from './components/ContainerNavigation/ComponentsForNavigation/Desserts'
 import { ContainerNavigation } from './components/ContainerNavigation/ContainerNavigation'
+import { Collections } from './components/Collections/Collections'
 
 class App extends Component {
 	componentDidMount () {
@@ -34,9 +35,6 @@ render () {
 			<div>
 				<Header/>
 				<ContainerNavigation/>
-				<div>
-					<Link to={'/customer'}> <Button color="primary" >Sign in</Button> </Link>
-				</div>
 				<Switch>
 					<Route path='/home' component={Home}/>
 					<Route path='/cakes' component={Cakes}/>
@@ -45,8 +43,9 @@ render () {
 					<Route path='/biscuits' component={Biscuits}/>
 					<Route path='/desserts' component={Desserts}/>
 					<Route path='/cart' render={() => <Cart/>}/>
+					<Route path='/home' render={() => <Collections/>}/>
 					{/* <Route  path='*' component={Page404}/> */}
-					<Route path='/customer' component={LoginPage}/>
+					<Route exect path='/customer' component={LoginPage}/>
 				</Switch>
 				<Footer/>
 			</div>
