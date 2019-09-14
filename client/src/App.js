@@ -2,19 +2,17 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import 'typeface-roboto'
-
 import { Home } from './components'
 import { Footer, Header } from './commons'
-
+import { Cakes } from './components/ComponentsForNavigation/Cakes/Cakes'
+import { Biscuits } from './components/ComponentsForNavigation/Biscuits'
+import { Cart } from './components/ComponentsForNavigation/Cart'
+import { Cupcakes } from './components/ComponentsForNavigation/Cupcakes'
+import { Desserts } from './components/ComponentsForNavigation/Desserts'
+import { Tarts } from './components/ComponentsForNavigation/Tarts'
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage';
 // import Button from '@material-ui/core/Button';
-import { Cakes } from './components/ContainerNavigation/ComponentsForNavigation/Cakes'
-import { Tarts } from './components/ContainerNavigation/ComponentsForNavigation/Tarts'
-import { Cupcakes } from './components/ContainerNavigation/ComponentsForNavigation/Cupcakes'
-import { Biscuits } from './components/ContainerNavigation/ComponentsForNavigation/Biscuits'
-import { Cart } from './components/ContainerNavigation/ComponentsForNavigation/Cart'
-import { Desserts } from './components/ContainerNavigation/ComponentsForNavigation/Desserts'
-import { ContainerNavigation } from './components/ContainerNavigation/ContainerNavigation'
+import { ContainerNavigation } from './commons/ContainerNavigation/ContainerNavigation'
 
 class App extends Component {
 	componentDidMount () {
@@ -49,7 +47,6 @@ render () {
 				<Footer/>
 			</div>
 		</BrowserRouter>
-
 	)
 }
 }
