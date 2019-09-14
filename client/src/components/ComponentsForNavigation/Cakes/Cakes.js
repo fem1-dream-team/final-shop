@@ -1,8 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-//import cakesImg from './cakesImg.jpg'
 import s from './cakes.module.css'
-
 
 export const Cakes = () => {
 	return (
@@ -13,10 +10,3 @@ export const Cakes = () => {
 			</div>
 	)
 }
-
-
-
-
-const ContainerDiv = styled.div`
-	background: url('cakesImg.jpg') 100% 100% no-repeat fixed;
-`
