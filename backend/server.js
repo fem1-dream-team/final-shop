@@ -32,11 +32,11 @@ app.use(logger('dev'));
 
 // this is our get method
 // this method fetches all available data in our database
-router.get('/getData', (req, res) => {
+router.get('/getData/category/:categoryName', (req, res) => {
 	// res.json({ success: false, data: ['named'] });
 	// Product.findOne(function(error, result) { return res.json({ success: true, data: result }); });
 	// res.send('hello world')
-	Product.find((err, data) => {
+	Product.find({ category: req.params.categoryName}, function (err, data) {
 		if (err) return res.json({ success: false, error: err });
 		return res.json({ success: true, data: data });
 	});
