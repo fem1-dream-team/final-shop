@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-// import axios from 'axios'
-
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import axios from 'axios'
+import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import 'typeface-roboto'
 
 import {Home, Products, SimpleSlider} from './components'
@@ -21,17 +20,6 @@ import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage';
 import { ContainerNavigation } from './commons/ContainerNavigation/ContainerNavigation'
 
 class App extends Component {
-	// initialize our state
-	state = {
-		data: [],
-		id: 0,
-		message: null,
-		intervalIsSet: false,
-		idToDelete: null,
-		idToUpdate: null,
-		objectToUpdate: null,
-	};
-
 	componentDidMount () {
 		// axios.get('http://localhost:3001/api/getData');
 	}
@@ -72,4 +60,4 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default App

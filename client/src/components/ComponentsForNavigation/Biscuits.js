@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const Cart = () => {
+export const Biscuits = () => {
 	return (
 		<Container>
-            Cart
+			<div>
+				<div>Biscuits</div>
+			</div>
 		</Container>
 	)
 }

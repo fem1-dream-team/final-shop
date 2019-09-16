@@ -1,10 +1,11 @@
 import React from 'react';
+import logo from './logo.png'
 import styled from 'styled-components';
 
-export const Logo = () => {
+export const LogoImg = () => {
 	return (
 		<Container>
-			<img src='img//logoImages/logo.png' alt='LOGO' width="180" height="180"/>
+			<img src={logo} alt='LOGO' width="180" height="180" display="block"/>
 		</Container>
 	)
 };

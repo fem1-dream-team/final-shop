@@ -1,17 +1,13 @@
 import React from 'react';
-import {ContainerSearchAccount} from './ConteinerSearchAccount/ContainerSearchAccount'
-import {ContainerNavigation} from './ContainerNavigation/ContainerNavigation'
-import {Logo} from './Logo';
-import {NavLink} from 'react-router-dom';
+import {ContainerSearchLoginPage} from './ContainerSearchLoginPage/ContainerSearchLoginPage'
+// import {LogoImg} from './LogoImg';
+// import {NavLink} from 'react-router-dom';
 
 export const Header = (props) => {
 	return (
 		<div>
-			<ContainerSearchAccount/>
-			<NavLink exact to="/"><Logo/></NavLink>
-			<div>
-				<ContainerNavigation/>
-			</div>
+			<ContainerSearchLoginPage/>
+			{/* <NavLink to="/home"><LogoImg/></NavLink> */}
 		</div>
 	)
-};
+}
