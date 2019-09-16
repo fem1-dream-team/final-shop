@@ -1,5 +1,5 @@
 .container {
-    background: url("cakeImg.jpg") 80% 55% no-repeat fixed;
+    background: url("cupcakesImage.jpg") 80% 90% no-repeat fixed;
     background-size: cover;
     padding-bottom: 200px;
     text-align: center;
@@ -8,7 +8,7 @@
 .text {
     width: 75%;
     /*margin: 0 auto;*/
-    color: antiquewhite;
+    color: #95d6bf;
     text-transform: uppercase;
     position: absolute;
     top: 35%;

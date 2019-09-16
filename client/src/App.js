@@ -5,14 +5,14 @@ import 'typeface-roboto'
 import { Home } from './components'
 import { Footer, Header } from './commons'
 import { Cakes } from './components/ComponentsForNavigation/Cakes/Cakes'
-import { Biscuits } from './components/ComponentsForNavigation/Biscuits'
+import { Macaroons } from './components/ComponentsForNavigation/Macaroons/Macaroons'
 import { Cart } from './components/ComponentsForNavigation/Cart'
-import { Cupcakes } from './components/ComponentsForNavigation/Cupcakes'
+import { Cupcakes } from './components/ComponentsForNavigation/Cupcakes/Cupcakes'
 import { Desserts } from './components/ComponentsForNavigation/Desserts'
 import { Tarts } from './components/ComponentsForNavigation/Tarts'
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage';
-// import Button from '@material-ui/core/Button';
 import { ContainerNavigation } from './commons/ContainerNavigation/ContainerNavigation'
+import { ProductDescriptionForBuy } from './components/ProductDescriptionForBuy/ProductDescriptionForBuy'
 
 class App extends Component {
 	componentDidMount () {
@@ -21,34 +21,41 @@ class App extends Component {
 				.then(console.log))
 	}
 
-inputChanged = (param) => {
-	console.log(param)
-}
+	inputChanged = (param) => {
+		console.log(param)
+	}
 
-render () {
-	return (
-		<BrowserRouter>
+	render () {
+		return (
+			<BrowserRouter>
 
-			<div>
-				<Header/>
-				<ContainerNavigation/>
-				<Switch>
-					<Route path='/home' component={Home}/>
-					<Route path='/cakes' component={Cakes}/>
-					<Route path='/tarts' component={Tarts}/>
-					<Route path='/cupcakes' component={Cupcakes}/>
-					<Route path='/biscuits' component={Biscuits}/>
-					<Route path='/desserts' component={Desserts}/>
-					<Route path='/cart' render={() => <Cart/>}/>
-					<Route path='/home' render={() => <Cakes/>}/>
-					{/* <Route  path='*' component={Page404}/> */}
-					<Route exect path='/customer' component={LoginPage}/>
-				</Switch>
-				<Footer/>
-			</div>
-		</BrowserRouter>
-	)
-}
+				<div>
+					<Header/>
+					<ContainerNavigation/>
+
+					<Switch>
+						<Route exact path='/' component={Home}/>
+
+						<Route exact path='/cakes' component={Cakes}/>
+						<Route path='/tarts' component={Tarts}/>
+						<Route path='/cupcakes' component={Cupcakes}/>
+						<Route path='/macaroons' component={Macaroons}/>
+						<Route path='/desserts' component={Desserts}/>
+
+						<Route path='/cakes/buy/:id' component={ProductDescriptionForBuy}/>
+
+						<Route path='/cart' render={() => <Cart/>}/>
+
+						<Route exact path='/' render={() => <Cakes/>}/>
+
+						 {/* <Route  path='*' component={Page404}/> */}
+						<Route path='/customer' component={LoginPage}/>
+					</Switch>
+					<Footer/>
+				</div>
+			</BrowserRouter>
+		)
+	}
 }
 
 export default App

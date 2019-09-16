@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
@@ -32,9 +31,9 @@ const images = [
 	},
 	{
 		url: '../images/1.jpg',
-		title: 'Biscuits',
+		title: 'Macaroons',
 		width: '30%',
-		path: '/Biscuits',
+		path: '/Macaroons',
 	}
 ];
 

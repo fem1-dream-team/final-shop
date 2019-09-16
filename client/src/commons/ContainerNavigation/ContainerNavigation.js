@@ -10,8 +10,8 @@ export const ContainerNavigation = () => {
 		<div>
 			<Container>
 				<ContainerLogo>
-					<NavLink to="/home"><StyledLinkLogoImg src={logoCakeWhite} alt='logoCake'/></NavLink>
-					<NavLink to="/home"><StyledLinkLogoText src={textLogoWhite} alt='textLogo'/></NavLink>
+					<NavLink to="/"><StyledLinkLogoImg src={logoCakeWhite} alt='logoCake'/></NavLink>
+					<NavLink to="/"><StyledLinkLogoText src={textLogoWhite} alt='textLogo'/></NavLink>
 				</ContainerLogo>
 				<ContainerNav>
 					<div>
@@ -28,7 +28,7 @@ export const ContainerNavigation = () => {
 						<NavLink activeClassName={s.active} to="/cupcakes">CUPCAKES</NavLink>
 					</div>
 					<div className={s.item}>
-						<NavLink activeClassName={s.active} to="/biscuits">BISCUITS</NavLink>
+						<NavLink activeClassName={s.active} to="/macaroons">MACAROONS</NavLink>
 					</div>
 					<div className={s.item}>
 						<NavLink activeClassName={s.active} to="/desserts">DESSERTS</NavLink>
