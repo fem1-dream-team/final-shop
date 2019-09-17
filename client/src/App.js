@@ -1,18 +1,10 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import 'typeface-roboto'
-
-import {Home, Products, SimpleSlider} from './components'
+import {Home, Products} from './components'
+// import {SimpleSlider} from './components'
 import { Footer, Header } from './commons'
-import { Categories} from './components';
-
-import { Cakes } from './components/ComponentsForNavigation/Cakes/Cakes'
-import { Biscuits } from './components/ComponentsForNavigation/Biscuits'
-import { Cupcakes } from './components/ComponentsForNavigation/Cupcakes'
-import { Desserts } from './components/ComponentsForNavigation/Desserts'
-import { Tarts } from './components/ComponentsForNavigation/Tarts'
-
 import { Cart } from './components/ComponentsForNavigation/Cart'
 
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage';
@@ -45,14 +37,28 @@ class App extends Component {
 							path='/tarts'
 							component={props => <Products {...props} category={'tarts'} />}
 						/>
-						<Route path='/cupcakes' component={Cupcakes}/>
-						<Route path='/biscuits' component={Biscuits}/>
-						<Route path='/desserts' component={Desserts}/>
+
+						<Route
+							path='/cupcakes'
+							component={props => <Products {...props} category={'cupcakes'} />}
+						/>
+
+						<Route
+							path='/biscuits'
+							component={props => <Products {...props} category={'biscuits'} />}
+						/>
+
+						<Route
+							path='/desserts'
+							component={props => <Products {...props} category={'desserts'} />}
+						/>
+
 						<Route path='/cart' render={() => <Cart/>}/>
 						{/* <Route  path='*' component={Page404}/> */}
 						<Route exect path='/customer' component={LoginPage}/>
 
 					</Switch>
+
 					<Footer/>
 				</div>
 			</BrowserRouter>
