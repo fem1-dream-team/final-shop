@@ -53,12 +53,12 @@ export const Products = (props) => {
 		const response = await fetch('http://localhost:3001/api/getData/category/' + props.category);
 		const responseJSON = await response.json();
 		setProductsList(responseJSON.data);
-		console.log(responseJSON);
+		// console.log(responseJSON);
 	};
 
 	useEffect(() => {
 		getProductsList()
-	}, []);
+	});
 
 	return (
 		<Container>
