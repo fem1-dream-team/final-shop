@@ -20,6 +20,7 @@
   "homepage": "https://github.com/fem1-dream-team/final-shop#readme",
   "dependencies": {
     "concurrently": "^4.1.2",
+    "express": "^4.17.1",
     "mongodb": "^3.3.2"
   },
   "devDependencies": {},

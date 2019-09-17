@@ -160,7 +160,6 @@ export const Cakes = () => {
 				</Grid>
 			)
 		})
-
 	return (
 		<div>
 			<div className={s.container}>

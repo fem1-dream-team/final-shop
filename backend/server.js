@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const express = require('express');
-var cors = require('cors');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const Product = require('./product');
@@ -32,11 +32,11 @@ app.use(logger('dev'));
 
 // this is our get method
 // this method fetches all available data in our database
-router.get('/getData', (req, res) => {
+router.get('/getData/category/:categoryName', (req, res) => {
 	// res.json({ success: false, data: ['named'] });
 	// Product.findOne(function(error, result) { return res.json({ success: true, data: result }); });
 	// res.send('hello world')
-	Product.find((err, data) => {
+	Product.find({ category: req.params.categoryName}, function (err, data) {
 		if (err) return res.json({ success: false, error: err });
 		return res.json({ success: true, data: data });
 	});
@@ -62,7 +62,7 @@ router.delete('/deleteData', (req, res) => {
 	});
 });
 
-// this is our create methid
+// this is our create method
 // this method adds new data in our database
 router.post('/putData', (req, res) => {
 	let data = new Data();

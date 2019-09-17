@@ -1,6 +1,6 @@
 import React from 'react';
 import {SimpleSlider} from '../SimpleSlider';
-import { Categories } from '../Categories'
+import {Categories} from '../Categories';
 
 export const Home = () => {
 	return (
