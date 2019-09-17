@@ -21,7 +21,7 @@ export const Products = (props) => {
 							component="img"
 							alt="Product image not found"
 							height="140"
-							image="img/slider-img/2.jpg"
+							image={item.image}
 							title="Contemplative Reptile"
 						/>
 						<CardContent>
