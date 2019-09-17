@@ -6,6 +6,7 @@ import Register from './Register';
 import {Login} from './Login';
 import {makeStyles} from '@material-ui/core';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 
 const useStyles = makeStyles(theme => ({
 	button: {
@@ -19,14 +20,16 @@ const useStyles = makeStyles(theme => ({
 		color: '#fff',
 		cursor: 'pointer'
 	},
-
+	greeting: {
+		color: '#fff',
+	},
 }));
 
-const LoginPage = (props) => {
+const LoginPage = () => {
 	const classes = useStyles();
 	const [isOpen, setIsOpen] = useState(false);
 	const [open, setOpen] = useState(false);
-	
+
 	function toggleState () {
 		setIsOpen(!isOpen);
 	}
@@ -35,23 +38,45 @@ const LoginPage = (props) => {
 		setOpen(true);
 	}
 
-	function handleClose (props) {
+	function handleClose () {
 		setOpen(false);
-		// window.location = '/';
 	}
+	//= ===
+	const [lola, setLola] = useState(
+		{name: ''}
+	);
+	const updateData = (value) => {
+		setLola({name: value})
+	};
 
+	//= ===
 	return (
 		<div>
-			<AccountCircleOutlinedIcon className={classes.icon} onClick={handleClickOpen}/>
+
+			{lola.name
+				? <div>
+					<ExitToAppOutlinedIcon
+						className={classes.icon}
+						onClick={
+							() => {
+								setLola({
+									...lola,
+									name: ''
+								});
+							}} />
+					<span className={classes.greeting}> Hello, {lola.name}</span>
+				</div>
+				:				<AccountCircleOutlinedIcon className={classes.icon} onClick={handleClickOpen}/>
+			}
 			<Dialog open={open} scroll='paper' onClose={handleClose} aria-labelledby="form-dialog-title">
 				<DialogContent>
 					{
 						isOpen
 							? <div>
-								<Register/>
+								<Register updateData={updateData} listNameOfData={lola} handleClose={handleClose}/>
 							</div>
 							:							<div>
-								<Login/>
+								<Login updateData={updateData} listNameOfData={lola} handleClose={handleClose}/>
 							</div>
 					}
 					<Button onClick={toggleState} variant="outlined" className={classes.button}>

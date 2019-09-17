@@ -14,10 +14,7 @@ export const Login = (props) => {
 	const [state, setState] = useState({
 		email: '',
 		password: '',
-		formErrors: {email: '', password: ''},
-		emailValid: false,
-		passwordValid: false,
-		formValid: false
+		isAuth: false,
 	});
 
 	const onChangeHandler = event => {
@@ -30,8 +27,9 @@ export const Login = (props) => {
 	};
 
 	const onSubmit = () => {
-		console.log(state);
-	}
+		props.updateData(state.email);
+		props.handleClose();
+	};
 
 	return (
 		<div>
