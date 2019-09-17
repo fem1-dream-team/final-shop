@@ -89,13 +89,6 @@ export const Cookies = () => {
 			price: 30,
 		},
 		{
-			id: 5,
-			image: 'img/cookies/5.jpg',
-			name: 'Cake with figs',
-			description: "We discovered the classic message with a saber, weighed the Kurdish recipe for P'Пr Erme, who snapped up on the Swiss meringue.",
-			price: 30,
-		},
-		{
 			id: 6,
 			image: 'img/cookies/6.jpg',
 			name: 'Raspberry and strawberry cake',

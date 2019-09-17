@@ -139,7 +139,7 @@ export const Cakes = () => {
 		},
 		{
 			id: 12,
-			image: 'img/cakes/cupcakeImg.jpg',
+			image: 'img/cakes/12.jpg',
 			name: 'Classic napoleon decorated with seasonal berries',
 			description: "We discovered the classic message with a saber, weighed the Kurdish recipe for P'Пr Erme, who snapped up on the Swiss meringue.",
 			price: 30,
