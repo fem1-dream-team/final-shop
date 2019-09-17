@@ -20,32 +20,32 @@ class App extends Component {
 				.then(console.log))
 	}
 
-	inputChanged = (param) => {
-		console.log(param)
-	}
+inputChanged = (param) => {
+	console.log(param)
+}
 
-	render () {
-		return (
-			<BrowserRouter>
-				<div>
-					<Header/>
-					<ContainerNavigation/>
-					<Switch>
-						<Route exact path='/' component={Home}/>
-						<Route exact path='/cakes' component={Cakes}/>
-						<Route path='/cupcakes' component={Cupcakes}/>
-						<Route path='/macaroons' component={Macaroons}/>
-						<Route path='/cookies' component={Cookies}/>
-						<Route path='/cakes/buy/:id' component={ProductDescriptionForBuy}/>
-						<Route path='/cart' render={() => <Cart/>}/>
-						<Route exact path='/' render={() => <Cakes/>}/>
-						 {/* <Route  path='*' component={Page404}/> */}
-						<Route path='/customer' component={LoginPage}/>
-					</Switch>
-					<Footer/>
-				</div>
-			</BrowserRouter>
-		)
-	}
+render () {
+	return (
+		<BrowserRouter>
+			<div>
+				<Header/>
+				<ContainerNavigation/>
+				<Switch>
+					<Route exact path='/' component={Home}/>
+					<Route exact path='/cakes' component={Cakes}/>
+					<Route path='/cupcakes' component={Cupcakes}/>
+					<Route path='/macaroons' component={Macaroons}/>
+					<Route path='/cookies' component={Cookies}/>
+					<Route path='/cakes/buy/:id' component={ProductDescriptionForBuy}/>
+					<Route path='/cart' render={() => <Cart/>}/>
+					<Route exact path='/' render={() => <Cakes/>}/>
+					{/* <Route  path='*' component={Page404}/> */}
+					<Route path='/customer' component={LoginPage}/>
+				</Switch>
+				<Footer/>
+			</div>
+		</BrowserRouter>
+	)
+}
 }
 export default App
