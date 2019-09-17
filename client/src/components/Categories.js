@@ -117,7 +117,7 @@ export const Categories = () => {
 
 	return (
 		<div>
-
+			<p></p>
 			<div className={classes.root}>
 				{images.map(image => (
 
@@ -151,10 +151,9 @@ export const Categories = () => {
 							</span>
 						</Link>
 					</ButtonBase>
-
 				))}
 			</div>
-
+			<p></p>
 		</div>
 	)
 }
