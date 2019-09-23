@@ -24,30 +24,24 @@ export const Footer = () => {
 				<Grid container component="nav" justify="space-between" spacing={3}>
 					<Grid item component="ul">
 						<StdLi>
-							<StdNavLink to="/seazon"> Сезонні тарти </StdNavLink>
+							<StdNavLink to="/cakes"> Cakes </StdNavLink>
 						</StdLi>
 						<StdLi>
-							<StdNavLink to="/seazon"> Сезонні тарти </StdNavLink>
+							<StdNavLink to="/tarts"> Tarts </StdNavLink>
 						</StdLi>
 						<StdLi>
-							<StdNavLink to="/seazon"> Сезонні тарти </StdNavLink>
-						</StdLi>
-						<StdLi>
-							<StdNavLink to="/seazon"> Сезонні тарти </StdNavLink>
+							<StdNavLink to="/cupcakes"> Cupcakes </StdNavLink>
 						</StdLi>
 					</Grid>
 					<Grid item component="ul">
 						<StdLi>
-							<StdNavLink to="/seazon"> Сезонні тарти </StdNavLink>
+							<StdNavLink to="/cookies"> Cookies </StdNavLink>
 						</StdLi>
 						<StdLi>
-							<StdNavLink to="/seazon"> Сезонні тарти </StdNavLink>
+							<StdNavLink to="/desserts"> Desserts </StdNavLink>
 						</StdLi>
 						<StdLi>
-							<StdNavLink to="/seazon"> Сезонні тарти </StdNavLink>
-						</StdLi>
-						<StdLi>
-							<StdNavLink to="/seazon"> Сезонні тарти </StdNavLink>
+							<StdNavLink to="/macaroons"> Macaroons </StdNavLink>
 						</StdLi>
 					</Grid>
 				</Grid>
