@@ -8,7 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Container, Grid } from '@material-ui/core';
-import s from './cakes.module.css'
+import s from './category.module.css'
 
 export const Products = (props) => {
 	const [productsList, setProductsList] = useState([]);
