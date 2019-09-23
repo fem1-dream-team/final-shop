@@ -50,13 +50,18 @@ class App extends Component {
 						/>
 
 						<Route
-							path='/biscuits'
-							component={props => <Products {...props} category={'biscuits'} />}
+							path='/cookies'
+							component={props => <Products {...props} category={'cookies'} />}
 						/>
 
 						<Route
 							path='/desserts'
 							component={props => <Products {...props} category={'desserts'} />}
+						/>
+
+						<Route
+							path='/macaroons'
+							component={props => <Products {...props} category={'macaroons'} />}
 						/>
 
 						<Route path='/cart' render={() => <Cart/>}/>
