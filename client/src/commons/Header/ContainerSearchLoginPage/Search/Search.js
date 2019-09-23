@@ -4,8 +4,8 @@ import './Search.css'
 export const Search = (props) => {
 	return (
 		<div className="d6">
-			<form>
-				<input type="text" placeholder="Search..."/>
+			<form method="GET" action="/search">
+				<input type="text" name="q" placeholder="Search..."/>
 				<div><Icon/></div>
 			</form>
 		</div>

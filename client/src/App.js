@@ -29,6 +29,12 @@ class App extends Component {
 					<Switch>
 						<Route exact path='/' component={Home}/>
 						<Route path='/home' render={() => <Home/>}/>
+
+						<Route
+							path='/search'
+							component={props => <Products {...props} category={'search'} />}
+						/>
+
 						<Route
 							path='/cakes'
 							component={props => <Products {...props} category={'cakes'} />}
