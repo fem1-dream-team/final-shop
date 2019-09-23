@@ -17,20 +17,21 @@ export const ContainerSearchLoginPage = (props) => {
 			</Container>
 		</div>
 	)
-}
+};
 
 const Container = styled.div`
 	display: flex;
 	justify-content: space-between;
 	height: 27px;
 	background-color: #95d6bf;
-    
 `;
 const SearchDiv = styled.div`
 	margin-right: 25px;
 	margin-left: 25px;
-`
+`;
 const LogDiv = styled.div`
+	display: flex;
+	justify-content: flex-start;
 	margin-right: 25px;
 	margin-left: 25px;
-`
+`;

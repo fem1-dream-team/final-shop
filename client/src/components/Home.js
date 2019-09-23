@@ -1,7 +1,7 @@
 import React from 'react';
 // import styled from "styled-components";
 // import {NavLink} from "react-router-dom";
-// import {Logo} from "../commons/Header/Logo";
+// import {LogoImg} from "../commons/Header/LogoImg";
 
 export const Home = () => {
 	return (

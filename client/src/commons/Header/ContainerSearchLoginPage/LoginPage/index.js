@@ -6,7 +6,6 @@ import Register from './Register';
 import {Login} from './Login';
 import {makeStyles} from '@material-ui/core';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
-import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 
 const useStyles = makeStyles(theme => ({
 	button: {
@@ -20,12 +19,10 @@ const useStyles = makeStyles(theme => ({
 		color: '#fff',
 		cursor: 'pointer'
 	},
-	greeting: {
-		color: '#fff',
-	},
+
 }));
 
-const LoginPage = () => {
+const LoginPage = (props) => {
 	const classes = useStyles();
 	const [isOpen, setIsOpen] = useState(false);
 	const [open, setOpen] = useState(false);
@@ -33,58 +30,26 @@ const LoginPage = () => {
 	function toggleState () {
 		setIsOpen(!isOpen);
 	}
-	
+
 	function handleClickOpen () {
 		setOpen(true);
 	}
 
-	function handleClose () {
+	function handleClose (props) {
 		setOpen(false);
+		// window.location = '/';
 	}
-	//= ===
-	const [lola, setLola] = useState(
-		{name: ''}
-	);
-	const updateData = (value) => {
-		setLola({name: value})
-	};
 
-	//= ===
 	return (
 		<div>
-
-			{lola.name
-				? <div>
-					<ExitToAppOutlinedIcon
-						className={classes.icon}
-						onClick={
-							() => {
-								setLola({
-									...lola,
-									name: ''
-								});
-							}} />
-					<span className={classes.greeting}> Hello, {lola.name}</span>
-				</div>
-				:				<AccountCircleOutlinedIcon className={classes.icon} onClick={handleClickOpen}/>
-			}
+			<div>
+				<AccountCircleOutlinedIcon className={classes.icon} onClick={handleClickOpen}/>
+			</div>
 			<Dialog open={open} scroll='paper' onClose={handleClose} aria-labelledby="form-dialog-title">
 				<DialogContent>
-					{
-						isOpen
-							? <div>
-								<Register updateData={updateData} listNameOfData={lola} handleClose={handleClose}/>
-							</div>
-							:							<div>
-								<Login updateData={updateData} listNameOfData={lola} handleClose={handleClose}/>
-							</div>
-					}
+					{ isOpen ? <div><Register/></div> : <div><Login/></div> }
 					<Button onClick={toggleState} variant="outlined" className={classes.button}>
-						{
-							isOpen
-								?						<div>Log In</div>
-								:						<div>Register</div>
-						}
+						{ isOpen ? <div>Log In</div> : <div>Register</div>	}
 					</Button>
 				</DialogContent>
 			</Dialog>

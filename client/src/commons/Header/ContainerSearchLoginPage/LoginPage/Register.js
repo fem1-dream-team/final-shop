@@ -32,19 +32,20 @@ const Register = (props) => {
 		setState({
 			...state,
 			[name]: value,
+
 		});
 	};
 
-	const onSubmit = () => {
-		props.updateData(state.email);
-		props.handleClose();
-	};
+	function handleSubmit (event) {
+		alert('A name was submitted:');
+		event.preventDefault();
+	}
 
 	return (
 		<div>
 			<h2>Create your account</h2>
 			<div> Please enter your register details </div>
-			<form>
+			<form onSubmit={handleSubmit}>
 				<TextField
 					autoFocus
 					margin="dense"
@@ -111,7 +112,7 @@ const Register = (props) => {
 					fullWidth
 					variant="outlined"
 				/>
-				<Button variant="outlined" color="primary" className={classes.button} onClick={onSubmit}> Create your account</Button>
+				<Button variant="outlined" color="primary" className={classes.button} onClick={registrationSubmit}> Create your account</Button>
 			</form>
 		</div>
 	);
