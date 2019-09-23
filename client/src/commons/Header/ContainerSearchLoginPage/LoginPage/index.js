@@ -16,10 +16,9 @@ const useStyles = makeStyles(theme => ({
 	icon: {
 		width: 25,
 		height: 25,
-		color: '#fff',
-		cursor: 'pointer'
+		cursor: 'pointer',
+		color: '#ffffff',
 	},
-
 }));
 
 const LoginPage = (props) => {
@@ -37,7 +36,6 @@ const LoginPage = (props) => {
 
 	function handleClose (props) {
 		setOpen(false);
-		// window.location = '/';
 	}
 
 	return (

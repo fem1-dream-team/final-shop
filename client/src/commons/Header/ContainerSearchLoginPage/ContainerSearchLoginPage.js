@@ -8,9 +8,9 @@ export const ContainerSearchLoginPage = (props) => {
 	return (
 		<div>
 			<Container>
-				<LogDiv>
-					<LoginPage/>
-				</LogDiv>
+				 <LogDiv>
+					 <LoginPage/>
+				 </LogDiv>
 				<SearchDiv>
 					<Search/>
 				</SearchDiv>
@@ -30,8 +30,6 @@ const SearchDiv = styled.div`
 	margin-left: 25px;
 `;
 const LogDiv = styled.div`
-	display: flex;
-	justify-content: flex-start;
 	margin-right: 25px;
 	margin-left: 25px;
 `;
