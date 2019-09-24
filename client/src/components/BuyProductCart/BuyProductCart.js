@@ -6,7 +6,7 @@ export const BuyProductCart = (props) => {
 		<div>
 			<p className={s.header}>YOUR ORDER</p>
 			<div>
-				<img src="" alt='image'/>
+
 				<h3></h3>
 				<p></p>
 
