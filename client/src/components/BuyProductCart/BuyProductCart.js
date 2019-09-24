@@ -1,12 +1,12 @@
+import React from 'react'
 import s from './BuyProductCart.module.css'
 
-export const BuyProductCart = (props) => {
-
+export const BuyProductCart = () => {
 	return (
 		<div className={s.header}>
-			<div>
-				<p></p>
-			</div>
+			<p>
+
+			</p>
 		</div>
 	);
 }
