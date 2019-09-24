@@ -64,7 +64,6 @@ class App extends Component {
 							path='/macaroons'
 							component={props => <Products {...props} category={'macaroons'} />}
 						/>
-
 						<Route path='/buyProductCart/:category/:_id' render={() => <BuyProductCart/>}/>
 						<Route path='/cart' render={() => <Cart/>}/>
 						{/* <Route  path='*' component={Page404}/> */}
@@ -78,4 +77,5 @@ class App extends Component {
 		)
 	}
 }
+
 export default App

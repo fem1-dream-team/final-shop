@@ -161,7 +161,7 @@ export const Categories = () => {
 
 				))}
 			</div>
-
+			<p></p>
 		</div>
 	)
 }

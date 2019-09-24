@@ -27,7 +27,7 @@ export const Products = (props) => {
 							title="Contemplative Reptile"
 						/>
 						<CardContent>
-							<Typography gutterBottom variant="h5" component="h2">
+							<Typography gutterBottom variant="h5" component="h2" className={s.name}>
 								{item.name}
 							</Typography>
 							<Typography variant="body2" color="textSecondary" component="p">
@@ -41,11 +41,11 @@ export const Products = (props) => {
 					<CardActions>
 						<NavLink to={`/buyProductCart/${item.category}/${item._id}`}>
 							<Button size="small" color="primary">
-							Buy
+								<p className={s.btnBuy}>Buy</p>
 							</Button>
 						</NavLink>
 						<Button size="small" color="primary">
-							Details
+							<p className={s.btnDetails}>Details</p>
 						</Button>
 					</CardActions>
 				</Card>
