@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Container, Grid } from '@material-ui/core';
+import { NavLink } from 'react-router-dom'
 
 export const Products = (props) => {
 	const [productsList, setProductsList] = useState([]);
@@ -37,9 +38,11 @@ export const Products = (props) => {
 						</CardContent>
 					</CardActionArea>
 					<CardActions>
-						<Button size="small" color="primary">
-							Buy
-						</Button>
+						<NavLink to='/buyProductCart'>
+							<Button size="small" color="primary">
+								Buy
+							</Button>
+						</NavLink>
 						<Button size="small" color="primary">
 							Details
 						</Button>
@@ -69,10 +72,12 @@ export const Products = (props) => {
 
 	return (
 		<Container>
+			<p></p>
 			<h1>Products List Page</h1>
 			<Grid container component="div" direction="row" justify='space-between' spacing={4}>
 				{products}
 			</Grid>
+			<p></p>
 		</Container>
 	);
 };

@@ -7,7 +7,7 @@ export const Cart = () => {
 		<Container>
 			<h1>YOUR CART</h1>
 			<span>Your cart is empty.</span>
-			<LinkDiv to='/home'><DivButton>CONTINUE BROWSING HERE</DivButton></LinkDiv>
+			<LinkDiv to='/'><DivButton>CONTINUE BROWSING HERE</DivButton></LinkDiv>
 		</Container>
 	)
 }

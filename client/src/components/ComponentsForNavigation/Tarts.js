@@ -16,5 +16,4 @@ const Container = styled.div`
 	justify-content: space-around;
 	height: 800px; 
 	color: green;
-    
 `

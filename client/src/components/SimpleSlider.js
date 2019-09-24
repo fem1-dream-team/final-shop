@@ -14,35 +14,37 @@ export class SimpleSlider extends Component {
 			slidesToScroll: 1
 		};
 		return (
-			<SliderConstructor>
+			<div>
+				<SliderConstructor>
 
-				<SliderTitle> News & Promotions</SliderTitle>
-				<Slider {...settings}>
-					<div>
-						<StyledImg alt="cake1" src="img/slider-img/1.jpg"/>
-					</div>
-					<div>
-						<StyledImg alt="cake2" src="img/slider-img/2.jpg"/>
-					</div>
-					<div>
-						<StyledImg alt="cake3" src="img/slider-img/3.jpg"/>
-					</div>
-					<div>
-						<StyledImg alt="cake4" src="img/slider-img/4.jpg"/>
-					</div>
-					<div>
-						<StyledImg alt="cake5" src="img/slider-img/5.jpg"/>
-					</div>
-					<div>
-						<StyledImg alt="cake6" src="img/slider-img/6.jpg"/>
-					</div>
-				</Slider>
+					<SliderTitle> News & Promotions</SliderTitle>
+					<Slider {...settings}>
+						<div>
+							<StyledImg alt="cake1" src="img/slider-img/1.jpg"/>
+						</div>
+						<div>
+							<StyledImg alt="cake2" src="img/slider-img/2.jpg"/>
+						</div>
+						<div>
+							<StyledImg alt="cake3" src="img/slider-img/3.jpg"/>
+						</div>
+						<div>
+							<StyledImg alt="cake4" src="img/slider-img/4.jpg"/>
+						</div>
+						<div>
+							<StyledImg alt="cake5" src="img/slider-img/5.jpg"/>
+						</div>
+						<div>
+							<StyledImg alt="cake6" src="img/slider-img/6.jpg"/>
+						</div>
+					</Slider>
 
-				<EventName>
-					<EventNameWrap>Until the end of the sale:</EventNameWrap>
-				</EventName>
+					<EventName>
+						<EventNameWrap>Until the end of the sale:</EventNameWrap>
+					</EventName>
 
-			</SliderConstructor>
+				</SliderConstructor>
+			</div>
 		);
 	}
 }

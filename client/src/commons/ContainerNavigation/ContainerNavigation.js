@@ -57,7 +57,6 @@ const ContainerNav = styled.div`
 	display: flex;
 	justify-content: space-between;
 	width: 740px;
-
 `
 const ContainerLogo = styled.div`
 	align-self: center;
