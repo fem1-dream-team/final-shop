@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Container, Grid } from '@material-ui/core';
+import s from './category.module.css'
 import { NavLink } from 'react-router-dom'
 
 export const Products = (props) => {
@@ -15,7 +16,7 @@ export const Products = (props) => {
 
 	const products = productsList.map((item) => {
 		return (
-			<Grid item component="div" sm={3} key={item._id}>
+			<Grid item component="div" sm={3} key={item._id} spacing={4}>
 				<Card className="div">
 					<CardActionArea>
 						<CardMedia
@@ -38,10 +39,10 @@ export const Products = (props) => {
 						</CardContent>
 					</CardActionArea>
 					<CardActions>
-						<NavLink to='/buyProductCart'>
+						<NavLink to={`/buyProductCart/${item.category}/${item._id}`}>
 							<Button size="small" color="primary">
-								Buy
-							</Button>
+							Buy
+						</Button>
 						</NavLink>
 						<Button size="small" color="primary">
 							Details
@@ -72,12 +73,14 @@ export const Products = (props) => {
 
 	return (
 		<Container>
-			<p></p>
-			<h1>Products List Page</h1>
-			<Grid container component="div" direction="row" justify='space-between' spacing={4}>
+			<div className={s.container}>
+				<h1 className={s.text}>{props.category}</h1>
+			</div>
+			<Grid container component="div" direction="row" justify='flex-start' spacing={4}>
 				{products}
 			</Grid>
 			<p></p>
 		</Container>
 	);
 };
+

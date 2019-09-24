@@ -51,8 +51,8 @@ class App extends Component {
 						/>
 
 						<Route
-							path='/biscuits'
-							component={props => <Products {...props} category={'biscuits'} />}
+							path='/cookies'
+							component={props => <Products {...props} category={'cookies'} />}
 						/>
 
 						<Route
@@ -60,8 +60,12 @@ class App extends Component {
 							component={props => <Products {...props} category={'desserts'} />}
 						/>
 
-						<Route path='/buyProductCart' render={() => <BuyProductCart/>}/>
+						<Route
+							path='/macaroons'
+							component={props => <Products {...props} category={'macaroons'} />}
+						/>
 
+						<Route path='/buyProductCart/:category/:_id' render={() => <BuyProductCart/>}/>
 						<Route path='/cart' render={() => <Cart/>}/>
 						{/* <Route  path='*' component={Page404}/> */}
 						<Route exect path='/customer' component={LoginPage}/>
@@ -76,3 +80,6 @@ class App extends Component {
 }
 
 export default App
+
+
+

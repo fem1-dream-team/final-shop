@@ -28,10 +28,13 @@ export const ContainerNavigation = () => {
 						<NavLink activeClassName={s.active} to="/cupcakes">CUPCAKES</NavLink>
 					</div>
 					<div className={s.item}>
-						<NavLink activeClassName={s.active} to="/biscuits">BISCUITS</NavLink>
+						<NavLink activeClassName={s.active} to="/cookies">COOKIES</NavLink>
 					</div>
 					<div className={s.item}>
 						<NavLink activeClassName={s.active} to="/desserts">DESSERTS</NavLink>
+					</div>
+					<div className={s.item}>
+						<NavLink activeClassName={s.active} to="/macaroons">MACAROONS</NavLink>
 					</div>
 					<div className={s.item}>
 						<NavLink activeClassName={s.active} to="/cart">CART</NavLink>
