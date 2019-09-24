@@ -31,9 +31,14 @@
       "extensions": "js"
     },
     "eslint": {
+      "plugins": ["react-hooks"],
       "patterns": [
         "/src/**/*.js"
       ],
+      "rules": {
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn"
+      },
       "extensions": "js"
     }
   },
