@@ -10,6 +10,7 @@ import { Cart } from './components/ComponentsForNavigation/Cart'
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage';
 // import Button from '@material-ui/core/Button';
 import { ContainerNavigation } from './commons/ContainerNavigation/ContainerNavigation'
+import { BuyProductCart } from './components/BuyProductCart/BuyProductCart'
 
 class App extends Component {
 	componentDidMount () {
@@ -58,6 +59,8 @@ class App extends Component {
 							path='/desserts'
 							component={props => <Products {...props} category={'desserts'} />}
 						/>
+
+						<Route path='/buyProductCart' render={() => <BuyProductCart/>}/>
 
 						<Route path='/cart' render={() => <Cart/>}/>
 						{/* <Route  path='*' component={Page404}/> */}
