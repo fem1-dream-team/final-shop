@@ -1,21 +1,15 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import 'typeface-roboto'
 import {Home, Products} from './components'
 // import {SimpleSlider} from './components'
 import { Footer, Header } from './commons'
-import { Cakes } from './components/ComponentsForNavigation/Cakes/Cakes'
-import { Biscuits } from './components/ComponentsForNavigation/Biscuits'
 import { Cart } from './components/ComponentsForNavigation/Cart'
-import { Cupcakes } from './components/ComponentsForNavigation/Cupcakes'
-import { Desserts } from './components/ComponentsForNavigation/Desserts'
-import { Tarts } from './components/ComponentsForNavigation/Tarts'
+
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage';
 // import Button from '@material-ui/core/Button';
 import { ContainerNavigation } from './commons/ContainerNavigation/ContainerNavigation'
-import { ProductDescriptionForBuy } from './components/ProductDescriptionForBuy/ProductDescriptionForBuy'
-import { Cookies } from './components/ComponentsForNavigation/Cookies/Cookies'
 
 class App extends Component {
 	componentDidMount () {
@@ -26,30 +20,56 @@ class App extends Component {
 		console.log(param)
 	};
 
-render () {
-	return (
-		<BrowserRouter>
+	render () {
+		return (
+			<BrowserRouter>
+				<div>
+					<Header/>
+					<ContainerNavigation/>
+					<Switch>
+						<Route exact path='/' component={Home}/>
+						<Route path='/home' render={() => <Home/>}/>
 
-			<div>
-				<Header/>
-				<ContainerNavigation/>
-				<Switch>
-					<Route path='/home' component={Home}/>
-					<Route path='/cakes' component={Cakes}/>
-					<Route path='/tarts' component={Tarts}/>
-					<Route path='/cupcakes' component={Cupcakes}/>
-					<Route path='/biscuits' component={Biscuits}/>
-					<Route path='/desserts' component={Desserts}/>
-					<Route path='/cart' render={() => <Cart/>}/>
-					<Route path='/home' render={() => <Cakes/>}/>
-					{/* <Route  path='*' component={Page404}/> */}
-					<Route exect path='/customer' component={LoginPage}/>
-				</Switch>
-				<Footer/>
-			</div>
-		</BrowserRouter>
-	)
-}
+						<Route
+							path='/search'
+							component={props => <Products {...props} category={'search'} />}
+						/>
+
+						<Route
+							path='/cakes'
+							component={props => <Products {...props} category={'cakes'} />}
+						/>
+						<Route
+							path='/tarts'
+							component={props => <Products {...props} category={'tarts'} />}
+						/>
+
+						<Route
+							path='/cupcakes'
+							component={props => <Products {...props} category={'cupcakes'} />}
+						/>
+
+						<Route
+							path='/biscuits'
+							component={props => <Products {...props} category={'biscuits'} />}
+						/>
+
+						<Route
+							path='/desserts'
+							component={props => <Products {...props} category={'desserts'} />}
+						/>
+
+						<Route path='/cart' render={() => <Cart/>}/>
+						{/* <Route  path='*' component={Page404}/> */}
+						<Route exect path='/customer' component={LoginPage}/>
+
+					</Switch>
+
+					<Footer/>
+				</div>
+			</BrowserRouter>
+		)
+	}
 }
 
 export default App

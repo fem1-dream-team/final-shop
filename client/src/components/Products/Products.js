@@ -21,7 +21,7 @@ export const Products = (props) => {
 							component="img"
 							alt="Product image not found"
 							height="140"
-							image="img/slider-img/2.jpg"
+							image={item.image}
 							title="Contemplative Reptile"
 						/>
 						<CardContent>
@@ -50,15 +50,22 @@ export const Products = (props) => {
 	});
 
 	const getProductsList = async () => {
-		const response = await fetch('http://localhost:3001/api/getData/category/' + props.category);
+		let response;
+		if (props.category === 'search') {
+			// eslint-disable-next-line no-restricted-globals
+			const q = window.location.search.split('q=')[1] ? location.search.split('q=')[1] : '';
+			response = await fetch('http://localhost:3001/api/search?q=' + q);
+		} else {
+			response = await fetch('http://localhost:3001/api/getData/category/' + props.category);
+		}
 		const responseJSON = await response.json();
 		setProductsList(responseJSON.data);
-		// console.log(responseJSON);
 	};
 
 	useEffect(() => {
 		getProductsList()
-	});
+		// eslint-disable-next-line
+	}, []);
 
 	return (
 		<Container>

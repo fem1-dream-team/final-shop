@@ -1,5 +1,5 @@
-import React from 'react'
-import s from './cakes.module.css'
+import React from 'react';
+import s from './cookies.module.css'
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { Container, Grid } from '@material-ui/core';
 import { NavLink } from 'react-router-dom'
 
-export const CakeDescription = (props) => {
+export const CookiesDescription = (props) => {
 	return (
 		<div>
 			<CardMedia
@@ -33,15 +33,11 @@ export const CakeDescription = (props) => {
 	)
 }
 
-const CakeProductCard = (props) => {
-	const ShowProductDescription = () => {
-		alert('Hello!')
-	}
-
+const CookiesProductCard = (props) => {
 	return (
-		<Card className="div" id={props.id}>
+		<Card className="div" >
 			<CardActionArea>
-				<CakeDescription
+				<CookiesDescription
 					id= {props.id}
 					name={props.name}
 					image={props.image}
@@ -49,12 +45,12 @@ const CakeProductCard = (props) => {
 				/>
 			</CardActionArea>
 			<CardActions>
-				 <NavLink to={`/cakes/buy/${props.id}`}>
+				<NavLink to={`/cookies/buy/${props.id}`}>
 					<Button size="small" color="primary">
 						BUY
 					</Button>
-				 </NavLink>
-				<Button size="small" color="primary" onClick={ShowProductDescription}>
+				</NavLink>
+				<Button size="small" color="primary">
 					DETAILS
 				</Button>
 			</CardActions>
@@ -62,32 +58,33 @@ const CakeProductCard = (props) => {
 	)
 }
 
-export const Cakes = (props) => {
-	const CakesElements = props.cakes
-		.map(cake => {
+export const Cookies = (props) => {
+	const CookiesElements = props.cookies
+		.map(cookie => {
 			return (
 				<Grid item component="div" sm={3}>
-					<CakeProductCard
-						id= {cake.id}
-						image={cake.image}
-						name={cake.name}
-						description={cake.description}
-						price={cake.price}
+					<CookiesProductCard
+						id= {cookie.id}
+						image={cookie.image}
+						name={cookie.name}
+						description={cookie.description}
+						price={cookie.price}
 					/>
 				</Grid>
 			)
 		})
+
 	return (
 		<div>
 			<div className={s.container}>
 				<p className={s.text}>
-					Make a Bittersweet cake part of your celebration tradition – because a party without a cake is just a meeting and share the joy with friends and family!
+					C O O K I E S
 				</p>
 			</div>
 			<Container>
 				<p></p>
 				<Grid container component="div" direction="row" justify='space-between' spacing={4}>
-					{ CakesElements }
+					{ CookiesElements }
 				</Grid>
 				<p></p>
 			</Container>

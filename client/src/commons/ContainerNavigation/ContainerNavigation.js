@@ -10,8 +10,8 @@ export const ContainerNavigation = () => {
 		<div>
 			<Container>
 				<ContainerLogo>
-					<NavLink to="/"><StyledLinkLogoImg src={logoCakeWhite} alt='logoCake'/></NavLink>
-					<NavLink to="/"><StyledLinkLogoText src={textLogoWhite} alt='textLogo'/></NavLink>
+					<NavLink to="/home"><StyledLinkLogoImg src={logoCakeWhite} alt='logoCake'/></NavLink>
+					<NavLink to="/home"><StyledLinkLogoText src={textLogoWhite} alt='textLogo'/></NavLink>
 				</ContainerLogo>
 				<ContainerNav>
 					<div>
@@ -22,13 +22,16 @@ export const ContainerNavigation = () => {
 						</div>
 					</div>
 					<div className={s.item}>
+						<NavLink activeClassName={s.active} to="/tarts">TARTS</NavLink>
+					</div>
+					<div className={s.item}>
 						<NavLink activeClassName={s.active} to="/cupcakes">CUPCAKES</NavLink>
 					</div>
 					<div className={s.item}>
-						<NavLink activeClassName={s.active} to="/macaroons">MACAROONS</NavLink>
+						<NavLink activeClassName={s.active} to="/biscuits">BISCUITS</NavLink>
 					</div>
 					<div className={s.item}>
-						<NavLink activeClassName={s.active} to="/cookies">COOKIES</NavLink>
+						<NavLink activeClassName={s.active} to="/desserts">DESSERTS</NavLink>
 					</div>
 					<div className={s.item}>
 						<NavLink activeClassName={s.active} to="/cart">CART</NavLink>
@@ -54,7 +57,6 @@ const ContainerNav = styled.div`
 	display: flex;
 	justify-content: space-between;
 	width: 740px;
-
 `
 const ContainerLogo = styled.div`
 	align-self: center;
