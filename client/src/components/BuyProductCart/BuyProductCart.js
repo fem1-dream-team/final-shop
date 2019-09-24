@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import s from './BuyProductCart.module.css'
 
 export const BuyProductCart = (props) => {
