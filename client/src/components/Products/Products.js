@@ -42,7 +42,7 @@ export const Products = (props) => {
 						<NavLink to={`/buyProductCart/${item.category}/${item._id}`}>
 							<Button size="small" color="primary">
 							Buy
-						</Button>
+							</Button>
 						</NavLink>
 						<Button size="small" color="primary">
 							Details
@@ -83,4 +83,3 @@ export const Products = (props) => {
 		</Container>
 	);
 };
-
