@@ -3,7 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const Product = require('./product');
+const Product = require('./shemas/product');
+const userRouter = require('./routes/user');
 
 const API_PORT = 3001;
 const app = express();
@@ -15,7 +16,7 @@ const dbRoute =
 	'mongodb+srv://admin:admin@cluster0-37y1n.mongodb.net/bakery_shop?retryWrites=true&w=majority';
 
 // connects our back end code with the database
-mongoose.connect(dbRoute, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(dbRoute, { useNewUrlParser: true , useUnifiedTopology: true });
 
 let db = mongoose.connection;
 
@@ -83,6 +84,9 @@ router.post('/putData', (req, res) => {
 		return res.json({ success: true });
 	});
 });
+
+// Add new user
+app.use('/api', userRouter);
 
 // append /api for our http requests
 app.use('/api', router);
