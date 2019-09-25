@@ -4,6 +4,7 @@ import {NavLink} from 'react-router-dom';
 
 // Std = styled
 export const StdFooter = styled(Grid)`
+margin-top: 50px;
 max-width: 100%;
 background-color: #95d6bf;
 `;
@@ -17,7 +18,7 @@ text-decoration: none;
 export const StdLogoWrapper = styled.div`
 display: flex;
 align-items: center;
-max-width: 20vw;
+max-width: 13vw;
 `;
 
 export const StdLogo = styled.img`

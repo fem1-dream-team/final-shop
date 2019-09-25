@@ -19,6 +19,11 @@ const useStyles = makeStyles(theme => ({
 		color: '#fff',
 		cursor: 'pointer'
 	},
+	swgWrapper: {
+		position: 'relative',
+		left: 50,
+		bottom: 1
+	}
 
 }));
 
@@ -42,7 +47,7 @@ const LoginPage = (props) => {
 
 	return (
 		<div>
-			<div>
+			<div className={classes.swgWrapper} >
 				<AccountCircleOutlinedIcon className={classes.icon} onClick={handleClickOpen}/>
 			</div>
 			<Dialog open={open} scroll='paper' onClose={handleClose} aria-labelledby="form-dialog-title">
