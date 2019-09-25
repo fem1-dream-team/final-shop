@@ -1,5 +1,5 @@
-import React, { useState, useEffect} from 'react';
-import {Link, withRouter} from 'react-router-dom'
+import React, { useState} from 'react';
+import {withRouter} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
@@ -29,15 +29,6 @@ const Register = (props) => {
 	});
 
 	const classes = useStyles();
-
-	useEffect(() => {
-		if (props.errors) {
-			setState({
-				...state,
-				errors: {...props.errors}
-			})
-		}
-	}, []);
 
 	const onChangeHandler = event => {
 		const name = event.target.getAttribute('name');

@@ -4,8 +4,8 @@ import {NavLink} from 'react-router-dom';
 
 // Std = styled
 export const StdFooter = styled(Grid)`
-margin-top: 50px;
 max-width: 100%;
+margin-top: 50px;
 background-color: #95d6bf;
 `;
 
