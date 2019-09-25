@@ -15,7 +15,7 @@ const dbRoute =
 	'mongodb+srv://admin:admin@cluster0-37y1n.mongodb.net/bakery_shop?retryWrites=true&w=majority';
 
 // connects our back end code with the database
-mongoose.connect(dbRoute, { useNewUrlParser: true });
+mongoose.connect(dbRoute, { useNewUrlParser: true, useUnifiedTopology: true });
 
 let db = mongoose.connection;
 

@@ -30,7 +30,9 @@
       "extensions": "js"
     },
     "eslint": {
-      "plugins": ["react-hooks"],
+      "plugins": [
+        "react-hooks"
+      ],
       "patterns": [
         "/src/**/*.js"
       ],
