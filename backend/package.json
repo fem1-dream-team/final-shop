@@ -17,12 +17,17 @@
   },
   "homepage": "https://github.com/fem1-dream-team/final-shop#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^5.7.0",
+    "is-empty": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.1",
     "morgan": "^1.9.1",
-    "path": "^0.12.7"
+    "passport": "^0.4.0",
+    "path": "^0.12.7",
+    "validator": "^11.1.0"
   },
   "devDependencies": {},
   "description": ""
