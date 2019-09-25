@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 
-export const Login = () => {
+const useStyles = makeStyles(theme => ({
+	button: {
+		margin: theme.spacing(1),
+	},
+
+}));
+export const Login = (props) => {
+	const classes = useStyles();
 	const [state, setState] = useState({
 		email: '',
 		password: '',
-		confirmPassword: '',
-		firstName: '',
-		lastName: ''
+		formErrors: {email: '', password: ''},
+		emailValid: false,
+		passwordValid: false,
+		formValid: false
 	});
 
 	const onChangeHandler = event => {
@@ -20,32 +29,42 @@ export const Login = () => {
 		});
 	};
 
+	const onSubmit = () => {
+		console.log(state);
+	}
+
 	return (
 		<div>
-			<TextField
-				autoFocus
-				margin="dense"
-				name="email"
-				id="email"
-				placeholder="Email address"
-				type="email"
-				fullWidth
-				variant="outlined"
-				value={state.email}
-				onChange={onChangeHandler}
-			/>
-			<TextField
-				margin="dense"
-				name="password"
-				id="password"
-				placeholder="Password"
-				type="password"
-				fullWidth
-				variant="outlined"
-				value={state.password}
-				onChange={onChangeHandler}
-			/>
-			<Button color="primary">Log In</Button>
+			<h2>Log In</h2>
+			<div> Please enter your account details </div>
+			<form>
+				<TextField
+					autoFocus
+					margin="dense"
+					name="email"
+					id="email"
+					placeholder="Email address"
+					type="email"
+					fullWidth
+					variant="outlined"
+					value={state.email}
+					onChange={onChangeHandler}
+				/>
+				<TextField
+					margin="dense"
+					name="password"
+					id="password"
+					placeholder="Password"
+					type="password"
+					fullWidth
+					variant="outlined"
+					value={state.password}
+					onChange={onChangeHandler}
+				/>
+				<div>
+				</div>
+				<Button variant="outlined" color="primary" className={classes.button} onClick={onSubmit}>Log In</Button>
+			</form>
 		</div>
 	);
 };

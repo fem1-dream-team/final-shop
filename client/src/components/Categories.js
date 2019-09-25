@@ -121,7 +121,6 @@ const useStyles = makeStyles(theme => ({
 
 export const Categories = () => {
 	const classes = useStyles();
-
 	return (
 		<div>
 
