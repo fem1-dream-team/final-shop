@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
-import { Container } from "@material-ui/core";
+import { Container } from '@material-ui/core';
 
 export class SimpleSlider extends Component {
 	render () {
@@ -16,21 +16,20 @@ export class SimpleSlider extends Component {
 		};
 		return (
 			<Container>
-			<SliderConstructor>
-				<SliderTitle> News & Promotions</SliderTitle>
-				<Slider {...settings}>
+				<SliderConstructor>
+					<SliderTitle> News & Promotions</SliderTitle>
+					<Slider {...settings}>
 						<img alt="cake1" src="img/slider-img/10.jpg"/>
 						<img alt="cake2" src="img/slider-img/20.jpg"/>
 						<img alt="cake3" src="img/slider-img/30.jpg"/>
 						<img alt="cake4" src="img/slider-img/40.jpg"/>
 						<img alt="cake5" src="img/slider-img/50.jpg"/>
 						<img alt="cake6" src="img/slider-img/60.jpg"/>
-				</Slider>
-				<EventName>
-					<EventNameWrap>SALE</EventNameWrap>
+					</Slider>
+					<EventName>
+						<EventNameWrap>SALE</EventNameWrap>
 				</EventName>
-
-			</SliderConstructor>
+				</SliderConstructor>
 			</Container>
 		);
 	}
