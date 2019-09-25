@@ -28,7 +28,7 @@ export class SimpleSlider extends Component {
 					</Slider>
 					<EventName>
 						<EventNameWrap>SALE</EventNameWrap>
-				</EventName>
+					</EventName>
 				</SliderConstructor>
 			</Container>
 		);
