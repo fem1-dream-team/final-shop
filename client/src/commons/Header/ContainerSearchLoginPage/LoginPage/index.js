@@ -1,72 +1,57 @@
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-
 import Register from './Register';
 import {Login} from './Login';
+import {makeStyles} from '@material-ui/core';
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 
-import {Route, Link, Switch} from 'react-router-dom';
+const useStyles = makeStyles(theme => ({
+	button: {
+		margin: theme.spacing(1),
+		borderRadius: 17,
+		backgroundColor: '#f186a0'
+	},
+	icon: {
+		width: 25,
+		height: 25,
+		color: '#fff',
+		cursor: 'pointer'
+	},
+
+}));
 
 const LoginPage = (props) => {
+	const classes = useStyles();
+	const [isOpen, setIsOpen] = useState(false);
 	const [open, setOpen] = useState(false);
-	const [state] = useState({
-		email: '',
-		password: '',
-		confirmPassword: '',
-		firstName: '',
-		lastName: ''
-	});
+
+	function toggleState () {
+		setIsOpen(!isOpen);
+	}
 
 	function handleClickOpen () {
 		setOpen(true);
 	}
 
-	//= ==
-	function handleClose () {
+	function handleClose (props) {
 		setOpen(false);
-	}
-	//= ==
-	function logIn () {
-		console.log(state);
-		handleClose();
-	}
-	function createNewAcc () {
-		alert('Create your account');
-		handleClose();
+		// window.location = '/';
 	}
 
 	return (
 		<div>
-			<Button variant="outlined" color="primary" onClick={handleClickOpen}>
-Log In
-			</Button>
-			<Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-				<DialogTitle id="form-dialog-title">Log In</DialogTitle>
+			<div>
+				<AccountCircleOutlinedIcon className={classes.icon} onClick={handleClickOpen}/>
+			</div>
+			<Dialog open={open} scroll='paper' onClose={handleClose} aria-labelledby="form-dialog-title">
 				<DialogContent>
-					<DialogContentText color="inherit">
-Please enter your account details
-					</DialogContentText>
-					<div>
-						<Login/>
-						<Register/>
-						<Link to={'/register'}> Register new user</Link>
-					</div>
-					<Switch>
-						<Route path='/register' component={Register}/>
-					</Switch>
+					{ isOpen ? <div><Register/></div> : <div><Login/></div> }
+					<Button onClick={toggleState} variant="outlined" className={classes.button}>
+						{ isOpen ? <div>Log In</div> : <div>Register</div>	}
+					</Button>
 				</DialogContent>
-				<DialogActions>
-					<Button onClick={logIn} color="primary">
-Log In
-					</Button>
-					<Button onClick={createNewAcc} color="inherit">
-Create your account
-					</Button>
-				</DialogActions>
 			</Dialog>
 		</div>
 	);
