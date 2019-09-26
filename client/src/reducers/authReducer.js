@@ -5,7 +5,7 @@ const isEmpty = require('is-empty');
 const initialState = {
 	isAuth: false,
 	customer: {},
-	loading: false
+	loading: false,
 };
 
 const authReducer = (state = initialState, action) => {
