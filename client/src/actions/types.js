@@ -14,4 +14,4 @@ export const SHOW_REGISTER = 'SHOW_REGISTER'
 export const SHOW_SAGA_LOGIN = 'SHOW_SAGA_LOGIN'
 export const SHOW_LOGIN = 'SHOW_LOGIN'
 
-export const POST_NEW_USER = 'POST_NEW_USER
+export const POST_NEW_USER = 'POST_NEW_USER'
