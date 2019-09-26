@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogContent from '@material-ui/core/DialogContent'
@@ -26,27 +26,11 @@ const useStyles = makeStyles(theme => ({
 		left: 50,
 		bottom: 1
 	}
-
 }))
 
 const LoginPage = (props) => {
 	const classes = useStyles()
-	// const [isOpen, setIsOpen] = useState(false)
-	// const [open, setOpen] = useState(false)
-	//
-	// function toggleState () {
-	// 	setIsOpen(!isOpen)
-	// }
-	//
-	// function handleClickOpen () {
-	// 	setOpen(true)
-	// }
-	//
-	// function handleClose (props) {
-	// 	setOpen(false)
-	// 	// window.location = '/';
-	// }
-// debugger
+
 	return (
 		<div>
 			<div className={classes.swgWrapper}>
