@@ -82,42 +82,19 @@ function * authFormSaga () {
 
 // Reducer
 
-const initialState = {
-	open: false,
-	needsRegistration: false
+// const initialState = {
+// 	open: false,
+// 	needsRegistration: false
+//
+// }
 
-}
-
-export function authFormReducer (state = initialState, action) {
-	switch (action.type) {
-	case SHOW_AUTH_FORM: {
-		return {
-			...state,
-			open: action.payload
-		}
-	}
-	case HIDE_AUTH_FORM: {
-		return {
-			...state,
-			open: action.payload
-		}
-	}
-	case SHOW_REGISTER: {
-		return {
-			...state,
-			needsRegistration: action.payload
-		}
-	}
-	case SHOW_LOGIN: {
-		return {
-			...state,
-			needsRegistration: action.payload
-		}
-	}
-	default:
-		return state
-	}
-}
+// export function authFormReducer (state = initialState, action) {
+// 	switch (action.type) {
+//
+// 	default:
+// 		return state
+// 	}
+// }
 
 export function * rootSaga () {
 	yield all([authFormSaga(), postNewUserSaga()])

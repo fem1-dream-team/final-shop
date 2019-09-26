@@ -66,8 +66,8 @@ const LoginPage = (props) => {
 
 const mapStateToProps = state => {
 	return {
-		open: state.authForm.open,
-		needsRegistration: state.authForm.needsRegistration
+		open: state.auth.open,
+		needsRegistration: state.auth.needsRegistration
 	}
 }
 

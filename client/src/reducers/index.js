@@ -1,12 +1,12 @@
 import {combineReducers} from 'redux';
 import authReducer from './authReducer'
 import errorReducer from './errorReducer'
-import {authFormReducer} from '../actions/sagaAuthForm'
+// import {authFormReducer} from '../actions/sagaAuthForm'
 
 const rootReducer = combineReducers({
-	auth: {authReducer},
+	auth: authReducer,
 	errors: errorReducer,
-	authForm: authFormReducer,
+	// authForm: authFormReducer,
 });
 
 export default rootReducer
