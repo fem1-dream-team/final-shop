@@ -1,11 +1,20 @@
-import { SET_CURRENT_USER, USER_LOADING} from '../actions/types';
+import {
+	HIDE_AUTH_FORM,
+	SET_CURRENT_USER,
+	SHOW_AUTH_FORM,
+	SHOW_LOGIN,
+	SHOW_REGISTER,
+	USER_LOADING
+} from '../actions/types'
 
 const isEmpty = require('is-empty');
 
 const initialState = {
 	isAuth: false,
 	customer: {},
-	loading: false
+	loading: false,
+	open: false,
+	needsRegistration: false
 };
 
 const authReducer = (state = initialState, action) => {
@@ -21,6 +30,30 @@ const authReducer = (state = initialState, action) => {
 			...state,
 			loading: true
 		};
+	case SHOW_AUTH_FORM: {
+		return {
+			...state,
+			open: action.payload
+		}
+	}
+	case HIDE_AUTH_FORM: {
+		return {
+			...state,
+			open: action.payload
+		}
+	}
+	case SHOW_REGISTER: {
+		return {
+			...state,
+			needsRegistration: action.payload
+		}
+	}
+	case SHOW_LOGIN: {
+		return {
+			...state,
+			needsRegistration: action.payload
+		}
+	}
 	default:
 		return state
 	}
