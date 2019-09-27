@@ -1,12 +1,15 @@
+
 import React from 'react'
+import { connect } from 'react-redux'
+
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogContent from '@material-ui/core/DialogContent'
-import Register from './Register'
-import { Login } from './Login'
 import { makeStyles } from '@material-ui/core'
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
-import { connect } from 'react-redux'
+
+import Register from './Register'
+import { Login } from './Login'
 import { hideSagaAuthForm, showSagaAuthForm, showSagaLogin, showSagaRegister } from '../../../../actions/sagaAuthForm'
 
 const useStyles = makeStyles(theme => ({

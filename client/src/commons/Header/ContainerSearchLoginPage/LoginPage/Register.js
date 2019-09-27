@@ -12,7 +12,6 @@ const useStyles = makeStyles(theme => ({
 	button: {
 		margin: theme.spacing(1),
 	},
-
 }));
 
 const Register = (props) => {
@@ -24,7 +23,6 @@ const Register = (props) => {
 		password: '',
 		confirm_password: '',
 		errors: {}
-
 	});
 
 	const classes = useStyles();

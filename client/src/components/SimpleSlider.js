@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
+import { Container } from '@material-ui/core';
 
 export class SimpleSlider extends Component {
 	render () {
@@ -14,43 +15,29 @@ export class SimpleSlider extends Component {
 			slidesToScroll: 1
 		};
 		return (
-			<SliderConstructor>
-
-				<SliderTitle> News & Promotions</SliderTitle>
-				<Slider {...settings}>
-					<div>
-						<StyledImg alt="cake1" src="img/slider-img/1.jpg"/>
-					</div>
-					<div>
-						<StyledImg alt="cake2" src="img/slider-img/2.jpg"/>
-					</div>
-					<div>
-						<StyledImg alt="cake3" src="img/slider-img/3.jpg"/>
-					</div>
-					<div>
-						<StyledImg alt="cake4" src="img/slider-img/4.jpg"/>
-					</div>
-					<div>
-						<StyledImg alt="cake5" src="img/slider-img/5.jpg"/>
-					</div>
-					<div>
-						<StyledImg alt="cake6" src="img/slider-img/6.jpg"/>
-					</div>
-				</Slider>
-
-				<EventName>
-					<EventNameWrap>Until the end of the sale:</EventNameWrap>
-				</EventName>
-
-			</SliderConstructor>
+			<Container>
+				<SliderConstructor>
+					<SliderTitle> News & Promotions</SliderTitle>
+					<Slider {...settings}>
+						<img alt="cake1" src="img/slider-img/10.jpg"/>
+						<img alt="cake2" src="img/slider-img/20.jpg"/>
+						<img alt="cake3" src="img/slider-img/30.jpg"/>
+						<img alt="cake4" src="img/slider-img/40.jpg"/>
+						<img alt="cake5" src="img/slider-img/50.jpg"/>
+						<img alt="cake6" src="img/slider-img/60.jpg"/>
+					</Slider>
+					<EventName>
+						<EventNameWrap>SALE</EventNameWrap>
+					</EventName>
+				</SliderConstructor>
+			</Container>
 		);
 	}
 }
 
 const SliderConstructor = styled.div`
 position: relative;
-height: 300px;
-background-color: #FFE4C4;
+background-color: transparent;
 `;
 
 const SliderTitle = styled.div`
@@ -80,8 +67,4 @@ font-size: 10px;
 text-align: center;
 text-transform: uppercase;
 border: 2px solid white;
-`;
-
-const StyledImg = styled.img`
-height: 200px;
 `;

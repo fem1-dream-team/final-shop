@@ -38,7 +38,7 @@ export const Products = (props) => {
 						</CardContent>
 					</CardActionArea>
 					<CardActions>
-						<Button size="small" color="primary">
+						<Button size="small" variant="contained" color="primary">
 							Buy
 						</Button>
 						<Button size="small" color="primary">
