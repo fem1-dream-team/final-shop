@@ -19,7 +19,7 @@ const registerFailed = (err) => {
 
 function * createNewUser (action) {
 	try {
-		yield call(() => axios.post('/api/register', action.payload));
+		yield call(() => axios.post('http://localhost:3001/api/register', action.payload));
 		yield put(showSagaLogin())
 	} catch (err) {
 		console.log(yield err)
