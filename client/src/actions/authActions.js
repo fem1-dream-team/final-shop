@@ -1,13 +1,32 @@
-import axios from 'axios';
-// import setAuthToken from '../utils/setAuthToken';
-// import jwtDecode from 'jwt-decode';
-import {GET_ERRORS} from './types';
+import axios from 'axios'
+import { call, put, takeEvery} from 'redux-saga/effects'
+import { GET_ERRORS, POST_NEW_USER } from './types'
+import { showSagaLogin } from './sagaAuthForm'
 
-export const registerUser = (userData, history) => (dispatch) => {
-	axios.post('http://localhost:3001/api/register', userData)
-		.then(res => history.push('/login'))
-		.catch(err => dispatch({
-			type: GET_ERRORS,
-			payload: err.response.data
-		}))
-};
+export const registerUser = (userData) => {
+	return {
+		type: POST_NEW_USER,
+		payload: userData
+	}
+}
+
+const registerFailed = (err) => {
+	return {
+		type: GET_ERRORS,
+		payload: err
+	}
+}
+
+function * createNewUser (action) {
+	try {
+		yield call(() => axios.post('http://localhost:3001/api/register', action.payload));
+		yield put(showSagaLogin())
+	} catch (err) {
+		console.log(yield err)
+		yield put(registerFailed(err))
+	}
+}
+
+export function * postNewUserSaga () {
+	yield takeEvery(POST_NEW_USER, createNewUser)
+}

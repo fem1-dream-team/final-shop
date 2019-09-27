@@ -3,17 +3,15 @@ import {withRouter} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
-import {registerUser} from '../../../../actions/authActions';
-
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import { registerUser } from '../../../../actions/authActions'
 
 const useStyles = makeStyles(theme => ({
 	button: {
 		margin: theme.spacing(1),
 	},
-
 }));
 
 const Register = (props) => {
@@ -25,7 +23,6 @@ const Register = (props) => {
 		password: '',
 		confirm_password: '',
 		errors: {}
-
 	});
 
 	const classes = useStyles();
@@ -50,7 +47,7 @@ const Register = (props) => {
 			confirm_password: state.confirm_password
 		};
 
-		props.registerUser(newUser, props.history);
+		props.registerUser(newUser);
 	}
 
 	return (

@@ -20,7 +20,6 @@ export class SimpleSlider extends Component {
 		return (
 			<Container>
 				<SliderConstructor>
-
 					<SliderTitle></SliderTitle>
 					<Slider {...settings}>
 						<SliderImg1></SliderImg1>
