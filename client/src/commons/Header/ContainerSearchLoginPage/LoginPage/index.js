@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core'
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 
 import Register from './Register'
-import { Login } from './Login'
+import Login from './Login'
 import { hideSagaAuthForm, showSagaAuthForm, showSagaLogin, showSagaRegister } from '../../../../actions/sagaAuthForm'
 
 const useStyles = makeStyles(theme => ({

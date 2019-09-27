@@ -67,7 +67,7 @@ router.post('/login', (req, res) => {
 				.then (isMatch => {
 					if (isMatch) {
 						const payload = {
-							id: user.id,
+							id: user._id,
 							first_name: user.first_name,
 							last_name: user.last_name
 						}
@@ -81,7 +81,7 @@ router.post('/login', (req, res) => {
 							}
 							)
 					} else {
-						return res.status(400).json({ wrong_password: "Wrong password. Try again" })
+						return res.status(400).json({ password: "Wrong password. Try again" })
 					}
 				})
 		})
