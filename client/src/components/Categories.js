@@ -7,34 +7,40 @@ import Typography from '@material-ui/core/Typography';
 
 const images = [
 	{
-		url: 'https://media.eggs.ca/assets/RecipeThumbs/_resampled/FillWyIxMjgwIiwiNzIwIl0/Grab-n-Go-Egg-Breakfast-Box2-CMS.jpg',
-		title: 'Breakfast',
+		url: '../img/products/cakes/1.jpg',
+		title: 'CAKES',
 		width: '30%',
-		path: '/Breakfast',
+		path: '/cakes',
 	},
 	{
-		url: 'https://media1.s-nbcnews.com/j/newscms/2019_21/2870431/190524-classic-american-cheeseburger-ew-207p_d9270c5c545b30ea094084c7f2342eb4.fit-760w.jpg',
-		title: 'Burgers',
+		url: '../img/products/tarts/apricot-tart.jpg',
+		title: 'TARTS',
 		width: '30%',
-		path: '/Burgers',
+		path: '/tarts',
 	},
 	{
-		url: 'https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056.jpg',
-		title: 'Cake',
+		url: '../img/products/cupcakes/muffin-3607780_1280.jpg',
+		title: 'CUPCAKES',
 		width: '30%',
-		path: '/Cake',
+		path: '/cupcakes',
 	},
 	{
-		url: 'https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056.jpg',
-		title: 'Pie',
+		url: '../img/products/cookies/13.jpg',
+		title: 'COOKIES',
 		width: '30%',
-		path: '/Pie',
+		path: '/cookies',
 	},
 	{
-		url: '../images/1.jpg',
-		title: 'Biscuits',
+		url: '../img/products/desserts/blueberries-dessert.jpg',
+		title: 'DESSERTS',
 		width: '30%',
-		path: '/Biscuits',
+		path: '/desserts',
+	},
+	{
+		url: '../img/products/macaroons/21.jpg',
+		title: 'MACAROONS',
+		width: '30%',
+		path: '/macaroons',
 	}
 ];
 
@@ -115,7 +121,6 @@ const useStyles = makeStyles(theme => ({
 
 export const Categories = () => {
 	const classes = useStyles();
-
 	return (
 		<div>
 

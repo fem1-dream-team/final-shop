@@ -1,31 +1,10 @@
+import {combineReducers} from 'redux';
+import authReducer from './authReducer'
+import errorReducer from './errorReducer'
 
-import { LOGIN_SUCCESS, LOGIN_FAIL } from '../actions/login'
+const rootReducer = combineReducers({
+	auth: authReducer,
+	errors: errorReducer,
+});
 
-const initialState = {
-	isLogin: false,
-	loginData: {
-		// id: '',
-		email: '',
-		last_name: '',
-		first_name: '',
-	},
-};
-
-function login(state = initialState, action) {
-
-	switch (action.type) {
-		case LOGIN_SUCCESS:
-			return {...state,
-				isLogin: true,
-			};
-		case LOGIN_FAIL:
-			return {...state,
-
-			};
-		default:
-			return {...state}
-
-	}
-}
-
-export default login
+export default rootReducer

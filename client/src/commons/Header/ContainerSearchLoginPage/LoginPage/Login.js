@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import connect from "react-redux/lib/connect/connect";
 
 const useStyles = makeStyles(theme => ({
 	button: {
@@ -10,14 +9,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 }));
-
-const mapStateToProps = (state)=>{
-	console.log(state);
-	return state;
-};
-
-
-export const Login = connect(mapStateToProps)(props => {
+export const Login = (props) => {
 	const classes = useStyles();
 	const [state, setState] = useState({
 		email: '',
@@ -75,4 +67,4 @@ export const Login = connect(mapStateToProps)(props => {
 			</form>
 		</div>
 	);
-});
+};

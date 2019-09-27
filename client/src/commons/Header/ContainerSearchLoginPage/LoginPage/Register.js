@@ -1,30 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
+import {withRouter} from 'react-router-dom'
+import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
+
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import { registerUser } from '../../../../actions/authActions'
 
 const useStyles = makeStyles(theme => ({
 	button: {
 		margin: theme.spacing(1),
 	},
-
 }));
 
 const Register = (props) => {
 	console.log(props);
 	const [state, setState] = useState({
-		password: '',
-		login: '',
-		email: '',
-		last_name: '',
 		first_name: '',
-
+		last_name: '',
+		email: '',
+		password: '',
+		confirm_password: '',
+		errors: {}
 	});
+
 	const classes = useStyles();
-	function registrationSubmit (e) {
-		e.preventDefault();
-		console.log(state);
-	}
 
 	const onChangeHandler = event => {
 		const name = event.target.getAttribute('name');
@@ -32,33 +33,28 @@ const Register = (props) => {
 		setState({
 			...state,
 			[name]: value,
-
 		});
 	};
 
 	function handleSubmit (event) {
-		alert('A name was submitted:');
 		event.preventDefault();
+
+		const newUser = {
+			first_name: state.first_name,
+			last_name: state.last_name,
+			email: state.email,
+			password: state.password,
+			confirm_password: state.confirm_password
+		};
+
+		props.registerUser(newUser);
 	}
 
 	return (
 		<div>
 			<h2>Create your account</h2>
 			<div> Please enter your register details </div>
-			<form onSubmit={handleSubmit}>
-				<TextField
-					autoFocus
-					margin="dense"
-					name="login"
-					id="login"
-					placeholder="Login"
-					type="text"
-					fullWidth
-					variant="outlined"
-					value={state.login}
-					onChange={onChangeHandler}
-					style={{ color: 'red'}}
-				/>
+			<form noValidate onSubmit={handleSubmit}>
 				<TextField
 					margin="dense"
 					name="first_name"
@@ -68,6 +64,7 @@ const Register = (props) => {
 					fullWidth
 					variant="outlined"
 					value={state.first_name}
+					error={state.errors.first_name}
 					onChange={onChangeHandler}
 				/>
 				<TextField
@@ -79,6 +76,7 @@ const Register = (props) => {
 					fullWidth
 					variant="outlined"
 					value={state.last_name}
+					error={state.errors.last_name}
 					onChange={onChangeHandler}
 				/>
 				<TextField
@@ -90,32 +88,48 @@ const Register = (props) => {
 					fullWidth
 					variant="outlined"
 					value={state.email}
+					error={state.errors.email}
 					onChange={onChangeHandler}
 				/>
 				<TextField
 					margin="dense"
 					name="password"
 					id="password"
-					placeholder="Password"
+					placeholder="Password. Minimum 8 characters"
 					type="password"
 					fullWidth
 					variant="outlined"
 					value={state.password}
+					error={state.errors.password}
 					onChange={onChangeHandler}
 				/>
 				<TextField
 					margin="dense"
-					name="password"
+					name="confirm_password"
 					id="confirmPassword"
 					placeholder="Confirm Password"
 					type="password"
 					fullWidth
 					variant="outlined"
+					value={state.confirm_password}
+					error={state.errors.confirm_password}
+					onChange={onChangeHandler}
 				/>
-				<Button variant="outlined" color="primary" className={classes.button} onClick={registrationSubmit}> Create your account</Button>
+				<Button type='submit' variant="outlined" color="primary" className={classes.button}> Create your account</Button>
 			</form>
 		</div>
 	);
 };
 
-export default Register;
+Register.propTypes = {
+	registerUser: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired,
+	errors: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = state => ({
+	auth: state.auth,
+	errors: state.errors
+});
+
+export default connect(mapStateToProps, {registerUser})(withRouter(Register));
