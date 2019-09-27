@@ -30,7 +30,9 @@
       "extensions": "js"
     },
     "eslint": {
-      "plugins": ["react-hooks"],
+      "plugins": [
+        "react-hooks"
+      ],
       "patterns": [
         "/src/**/*.js"
       ],
@@ -78,6 +80,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-react": "^7.14.3",
     "npm-watch": "^0.3.0",
+    "react-redux": "^7.1.1",
     "standard": "^14.1.0",
     "stylelint": "^10.1.0",
     "stylelint-config-rational-order": "^0.1.2",

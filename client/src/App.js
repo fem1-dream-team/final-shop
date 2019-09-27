@@ -8,8 +8,10 @@ import { Footer, Header } from './commons'
 import { Cart } from './components/ComponentsForNavigation/Cart'
 
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage';
-// import Button from '@material-ui/core/Button';
 import { ContainerNavigation } from './commons/ContainerNavigation/ContainerNavigation'
+import { Provider } from "react-redux";
+
+import store from "./store";
 
 class App extends Component {
 	componentDidMount () {
@@ -22,52 +24,54 @@ class App extends Component {
 
 	render () {
 		return (
-			<BrowserRouter>
-				<div>
-					<Header/>
-					<ContainerNavigation/>
-					<Switch>
-						<Route exact path='/' component={Home}/>
-						<Route path='/home' render={() => <Home/>}/>
+			<Provider store={store}>
+				<BrowserRouter>
+					<div>
+						<Header/>
+						<ContainerNavigation/>
+						<Switch>
+							<Route exact path='/' component={Home}/>
+							<Route path='/home' render={() => <Home/>}/>
 
-						<Route
-							path='/search'
-							component={props => <Products {...props} category={'search'} />}
-						/>
+							<Route
+								path='/search'
+								component={props => <Products {...props} category={'search'} />}
+							/>
 
-						<Route
-							path='/cakes'
-							component={props => <Products {...props} category={'cakes'} />}
-						/>
-						<Route
-							path='/tarts'
-							component={props => <Products {...props} category={'tarts'} />}
-						/>
+							<Route
+								path='/cakes'
+								component={props => <Products {...props} category={'cakes'} />}
+							/>
+							<Route
+								path='/tarts'
+								component={props => <Products {...props} category={'tarts'} />}
+							/>
 
-						<Route
-							path='/cupcakes'
-							component={props => <Products {...props} category={'cupcakes'} />}
-						/>
+							<Route
+								path='/cupcakes'
+								component={props => <Products {...props} category={'cupcakes'} />}
+							/>
 
-						<Route
-							path='/biscuits'
-							component={props => <Products {...props} category={'biscuits'} />}
-						/>
+							<Route
+								path='/biscuits'
+								component={props => <Products {...props} category={'biscuits'} />}
+							/>
 
-						<Route
-							path='/desserts'
-							component={props => <Products {...props} category={'desserts'} />}
-						/>
+							<Route
+								path='/desserts'
+								component={props => <Products {...props} category={'desserts'} />}
+							/>
 
-						<Route path='/cart' render={() => <Cart/>}/>
-						{/* <Route  path='*' component={Page404}/> */}
-						<Route exect path='/customer' component={LoginPage}/>
+							<Route path='/cart' render={() => <Cart/>}/>
+							{/* <Route  path='*' component={Page404}/> */}
+							<Route exect path='/customer' component={LoginPage}/>
 
-					</Switch>
+						</Switch>
 
-					<Footer/>
-				</div>
-			</BrowserRouter>
+						<Footer/>
+					</div>
+				</BrowserRouter>
+			</Provider>
 		)
 	}
 }
