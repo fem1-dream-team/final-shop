@@ -22,8 +22,8 @@ function * createNewUser (action) {
 		yield call(() => axios.post('http://localhost:3001/api/register', action.payload));
 		yield put(showSagaLogin())
 	} catch (err) {
-		console.log(yield err)
-		yield put(registerFailed(err))
+		console.error(err.response.data)
+		yield put(registerFailed(err.response.data))
 	}
 }
 
