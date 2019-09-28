@@ -14,6 +14,12 @@ const useStyles = makeStyles(theme => ({
 		borderRadius: 17,
 		backgroundColor: '#f186a0'
 	},
+	buttonOnLoading: {
+		margin: theme.spacing(1),
+		borderRadius: 17,
+		backgroundColor: '#f186a0',
+		cursor: 'wait'
+	},
 	icon: {
 		width: 25,
 		height: 25,
@@ -56,7 +62,7 @@ const LoginPage = (props) => {
 					{props.needsRegistration ? <div><Register/></div> : <div><Login/></div>}
 					<Button
 						onClick={props.needsRegistration ? () => { props.showRegister(false) } : () => { props.showRegister(true) }}
-						className={props.loading ? [classes.button, classes.loading] : classes.button}
+						className={props.loading ? classes.buttonOnLoading : classes.button}
 						variant="outlined"
 					>
 						{props.needsRegistration ? <div>Log In</div> : <div>Register</div>}
