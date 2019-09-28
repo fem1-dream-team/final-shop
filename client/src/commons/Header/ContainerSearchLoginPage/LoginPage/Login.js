@@ -10,6 +10,9 @@ const useStyles = makeStyles(theme => ({
 	button: {
 		margin: theme.spacing(1),
 	},
+	loading: {
+		cursor: 'wait'
+	},
 	errorMsg: {
 		marginTop: 0,
 		paddingLeft: 10,
@@ -71,6 +74,7 @@ const Login = (props) => {
 						fullWidth
 						variant="outlined"
 						value={state.email}
+						disabled={props.loading}
 						onChange={onChangeHandler}
 					/>
 					{errors.email ? <p className={classes.errorMsg}> {errors.email} </p> : null}
@@ -85,11 +89,19 @@ const Login = (props) => {
 						fullWidth
 						variant="outlined"
 						value={state.password}
+						disabled={props.loading}
 						onChange={onChangeHandler}
 					/>
 					{errors.password ? <p className={classes.errorMsg}> {errors.password} </p> : null}
 				</div>
-				<Button variant="outlined" color="primary" className={classes.button} onClick={onSubmit}>Log In</Button>
+				<Button
+					variant="outlined"
+					type='submit'
+					color="primary"
+					className={props.loading ? [classes.button, classes.loading] : classes.button}
+				>
+					Log In
+				</Button>
 			</form>
 		</div>
 	)
@@ -98,7 +110,8 @@ const Login = (props) => {
 const mapStateToProps = (state) => {
 	return {
 		auth: state.auth,
-		errors: state.errors
+		loading: state.general.loading,
+		errors: state.general.errors
 	}
 }
 // export default Login

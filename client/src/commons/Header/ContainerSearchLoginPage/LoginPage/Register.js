@@ -7,9 +7,12 @@ import isEmpty from 'is-empty'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
-import { registerUser } from '../../../../actions/authActions'
+import { registerUserAction } from '../../../../actions/authActions'
 
 const useStyles = makeStyles(theme => ({
+	loading: {
+		cursor: 'wait'
+	},
 	button: {
 		margin: theme.spacing(1),
 	},
@@ -55,7 +58,7 @@ const Register = (props) => {
 			confirm_password: state.confirm_password
 		}
 
-		props.registerUser(newUser)
+		props.registerUserAction(newUser)
 	}
 
 	const errors = props.errors
@@ -68,6 +71,7 @@ const Register = (props) => {
 			<form noValidate onSubmit={handleSubmit}>
 				<div>
 					<TextField
+						// className={props.loading ? classes.loading : null}
 						margin="dense"
 						name="first_name"
 						id="first_name"
@@ -76,7 +80,7 @@ const Register = (props) => {
 						fullWidth
 						variant="outlined"
 						value={state.first_name}
-						error={state.errors.first_name}
+						disabled={props.loading}
 						onChange={onChangeHandler}
 					/>
 					{errors.first_name ? <p className={classes.errorMsg}> {errors.first_name} </p> : null}
@@ -91,7 +95,7 @@ const Register = (props) => {
 						fullWidth
 						variant="outlined"
 						value={state.last_name}
-						error={state.errors.last_name}
+						disabled={props.loading}
 						onChange={onChangeHandler}
 					/>
 					{errors.last_name ? <p className={classes.errorMsg}> {errors.last_name} </p> : null}
@@ -106,7 +110,7 @@ const Register = (props) => {
 						fullWidth
 						variant="outlined"
 						value={state.email}
-						error={state.errors.email}
+						disabled={props.loading}
 						onChange={onChangeHandler}
 					/>
 					{errors.email ? <p className={classes.errorMsg}> {errors.email} </p> : null}
@@ -121,7 +125,7 @@ const Register = (props) => {
 						fullWidth
 						variant="outlined"
 						value={state.password}
-						error={state.errors.password}
+						disabled={props.loading}
 						onChange={onChangeHandler}
 					/>
 					{errors.password ? <p className={classes.errorMsg}> {errors.password} </p> : null}
@@ -136,27 +140,35 @@ const Register = (props) => {
 						fullWidth
 						variant="outlined"
 						value={state.confirm_password}
-						error={state.errors.confirm_password}
+						disabled={props.loading}
 						onChange={onChangeHandler}
 					/>
 					{errors.confirm_password ? <p className={classes.errorMsg}> {errors.confirm_password} </p> : null}
 				</div>
-				<Button type='submit' variant="outlined" color="primary" className={classes.button}> Create your
-					account</Button>
+				<Button
+					type='submit'
+					variant="outlined"
+					color="primary"
+					className={props.loading ? [classes.button, classes.loading] : classes.button}
+				>
+					Create your	account
+				</Button>
 			</form>
 		</div>
 	)
 }
 
 Register.propTypes = {
-	registerUser: PropTypes.func.isRequired,
+	registerUserAction: PropTypes.func.isRequired,
 	auth: PropTypes.object.isRequired,
 	errors: PropTypes.object.isRequired,
+	loading: PropTypes.bool
 }
 
 const mapStateToProps = state => ({
-	auth: state.auth,
-	errors: state.errors
+	loading: state.general.loading,
+	errors: state.general.errors,
+	auth: state.auth
 })
 
-export default connect(mapStateToProps, { registerUser })(withRouter(Register))
+export default connect(mapStateToProps, { registerUserAction })(withRouter(Register))

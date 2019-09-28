@@ -1,10 +1,6 @@
-import axios from 'axios'
-import jwt_decode from 'jwt-decode'
-import { call, put, takeEvery} from 'redux-saga/effects'
-import { GET_ERRORS, LOGIN_USER, POST_NEW_USER } from './types'
-import { showSagaLogin } from './sagaAuthForm'
+import { LOGIN_USER, POST_NEW_USER, SET_CURRENT_USER } from './types'
 
-export const registerUser = (userData) => {
+export const registerUserAction = (userData) => {
 	return {
 		type: POST_NEW_USER,
 		payload: userData
@@ -18,40 +14,9 @@ export const loginUserAction = (userToLogin) => {
 	}
 }
 
-const authFailed = (err) => {
+export const setCurrentUser = (currentUser) => {
 	return {
-		type: GET_ERRORS,
-		payload: err
+		type: SET_CURRENT_USER,
+		payload: currentUser
 	}
-}
-
-function * createNewUserWorker (action) {
-	try {
-		yield call(() => axios.post('http://localhost:3001/api/register', action.payload));
-		yield put(showSagaLogin())
-	} catch (err) {
-		console.error(err.response.data)
-		yield put(authFailed(err.response.data))
-	}
-}
-
-function * loginUserWorker (action) {
-//	TODO
-	try {
-		const response = yield call(() => axios.post('http://localhost:3001/api/login', action.payload));
-		const decoded = jwt_decode(response.data.token)
-		yield localStorage.setItem('jwtToken', response.data.token)
-		// yield localStorage.setItem('expirationDate', decoded.exp)
-		// yield localStorage.setItem('userId', decoded.id)
-		yield console.log('welcome, ' + decoded.first_name)
-		// debugger
-	} catch (err) {
-		console.log(err.response.data)
-		yield put(authFailed(err.response.data))
-	}
-}
-
-export function * watchNewUserSaga () {
-	yield takeEvery(POST_NEW_USER, createNewUserWorker)
-	yield takeEvery(LOGIN_USER, loginUserWorker)
 }
