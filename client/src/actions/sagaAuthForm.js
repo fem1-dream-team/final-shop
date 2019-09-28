@@ -7,14 +7,12 @@ import {
 	SHOW_SAGA_LOGIN,
 	SHOW_SAGA_REGISTER
 } from './types'
-import { postNewUserSaga } from './authActions'
 
 export const showSagaAuthForm = () => {
 	return {
 		type: SHOW_SAGA_AUTH_FORM
 	}
 }
-
 export const hideSagaAuthForm = () => {
 	return {
 		type: HIDE_SAGA_AUTH_FORM
@@ -71,31 +69,11 @@ function * showLogin () {
 	}
 }
 
-function * authFormSaga () {
+export function * authFormSaga () {
 	yield all([
 		showAuthFormSaga(),
 		hideAthFormSaga(),
 		showRegister(),
 		showLogin()
 	])
-}
-
-// Reducer
-
-// const initialState = {
-// 	open: false,
-// 	needsRegistration: false
-//
-// }
-
-// export function authFormReducer (state = initialState, action) {
-// 	switch (action.type) {
-//
-// 	default:
-// 		return state
-// 	}
-// }
-
-export function * rootSaga () {
-	yield all([authFormSaga(), postNewUserSaga()])
 }

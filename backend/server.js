@@ -3,17 +3,20 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
+const passport = require('passport')
+
 const Product = require('./shemas/product');
 const userRouter = require('./routes/user');
+const dbRoute = require('./config/keys').mongoURI
+require('./config/passport')(passport)
 
 const API_PORT = 3001;
 const app = express();
 app.use(cors());
+app.use(passport.initialize())
 const router = express.Router();
 
 // this is our MongoDB database
-const dbRoute =
-	'mongodb+srv://admin:admin@cluster0-37y1n.mongodb.net/bakery_shop?retryWrites=true&w=majority';
 
 // connects our back end code with the database
 mongoose.connect(dbRoute, { useNewUrlParser: true , useUnifiedTopology: true });
