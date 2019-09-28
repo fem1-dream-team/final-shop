@@ -50,13 +50,11 @@ const useStyles = makeStyles(theme => ({
 
 const LoginPage = (props) => {
 	const classes = useStyles()
-	const openCabinet = () => {
-		props.history.push('/cabinet')
-	}
 
 	const onIconClick = () => {
 		props.isAuth ? 	props.history.push('/cabinet') : props.showAuthForm(true)
 	}
+
 	return (
 		<div>
 			<div className={classes.flex}>
