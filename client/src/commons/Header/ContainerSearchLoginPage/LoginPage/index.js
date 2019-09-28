@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { makeStyles, Button, Dialog, DialogContent} from '@material-ui/core'
+import { makeStyles, Button, Dialog, DialogContent } from '@material-ui/core'
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 
 import Register from './Register'
 import Login from './Login'
 import { showAuthForm, showRegister } from '../../../../actions/authFormActions'
+import { Link, withRouter } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
 	button: {
@@ -34,8 +35,14 @@ const useStyles = makeStyles(theme => ({
 		left: 50,
 		bottom: 1
 	},
+	flex: {
+		display: 'flex',
+		flexDirection: 'row',
+	},
 	welcome: {
-
+		position: 'relative',
+		paddingTop: 5,
+		left: 20,
 		margin: 0,
 		fontSize: 12,
 	}
@@ -43,12 +50,20 @@ const useStyles = makeStyles(theme => ({
 
 const LoginPage = (props) => {
 	const classes = useStyles()
+	const openCabinet = () => {
+		props.history.push('/cabinet')
+	}
 
+	const onIconClick = () => {
+		props.isAuth ? 	props.history.push('/cabinet') : props.showAuthForm(true)
+	}
 	return (
 		<div>
-			{props.isAuth ? <p className={classes.welcome}> Welcome, {props.first_name} </p> : null }
-			<div className={classes.swgWrapper}>
-				<AccountCircleOutlinedIcon className={classes.icon} onClick={() => { props.showAuthForm(true) }}/>
+			<div className={classes.flex}>
+				<div className={classes.swgWrapper}>
+					<AccountCircleOutlinedIcon className={classes.icon} onClick={ onIconClick }/>
+				</div>
+				{props.isAuth ? <Link to='/cabinet' className={classes.welcome}> Welcome, {props.first_name} </Link> : null}
 			</div>
 
 			<Dialog
@@ -83,4 +98,4 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, {showAuthForm, showRegister})(LoginPage)
+export default connect(mapStateToProps, { showAuthForm, showRegister })(withRouter(LoginPage))
