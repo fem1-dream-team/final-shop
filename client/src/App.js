@@ -3,6 +3,7 @@ import {Provider} from 'react-redux'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 import store from './store';
+import {checkIfIsLoggedIn} from './actions/authActions'
 import 'typeface-roboto'
 import {Home, Page404, Products} from './components'
 // import {SimpleSlider} from './components'
@@ -15,6 +16,8 @@ import {ContainerNavigation} from './commons/ContainerNavigation/ContainerNaviga
 
 class App extends Component {
 	render () {
+		checkIfIsLoggedIn()
+
 		return (
 			<Provider store={store}>
 				<BrowserRouter>
