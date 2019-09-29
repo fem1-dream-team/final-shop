@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import { checkIfIsLoggedIn } from './actions/authActions'
 import 'typeface-roboto'
-import { Home, Page404, Products } from './components'
+import {Home, Page404, Products, Profile} from './components'
 // import {SimpleSlider} from './components'
 import { Footer, Header } from './commons'
 import { Cart } from './components/ComponentsForNavigation/Cart'
@@ -53,6 +53,8 @@ const App = () => {
 					/>
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
+					<Route exect path='/cabinet' component={Profile}/>
+
 					<Route path='*' component={Page404}/>
 				</Switch>
 
