@@ -1,16 +1,14 @@
-
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Button from '@material-ui/core/Button'
-import Dialog from '@material-ui/core/Dialog'
-import DialogContent from '@material-ui/core/DialogContent'
-import { makeStyles } from '@material-ui/core'
+import { makeStyles, Button, Dialog, DialogContent } from '@material-ui/core'
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 
 import Register from './Register'
 import Login from './Login'
-import { hideSagaAuthForm, showSagaAuthForm, showSagaLogin, showSagaRegister } from '../../../../actions/sagaAuthForm'
+import { showAuthForm, showRegister } from '../../../../actions/authFormActions'
+import { withRouter } from 'react-router-dom'
+import { checkIfIsLoggedIn, logoutCurrentUser } from '../../../../actions/authActions'
 
 const useStyles = makeStyles(theme => ({
 	button: {
@@ -18,31 +16,74 @@ const useStyles = makeStyles(theme => ({
 		borderRadius: 17,
 		backgroundColor: '#f186a0'
 	},
+	buttonOnLoading: {
+		margin: theme.spacing(1),
+		borderRadius: 17,
+		backgroundColor: '#f186a0',
+		cursor: 'wait'
+	},
 	icon: {
 		width: 25,
 		height: 25,
 		color: '#fff',
 		cursor: 'pointer'
 	},
+	loading: {
+		cursor: 'wait'
+	},
 	swgWrapper: {
 		position: 'relative',
 		left: 50,
 		bottom: 1
+	},
+	flex: {
+		display: 'flex',
+		flexDirection: 'row',
+	},
+	welcome: {
+		position: 'relative',
+		paddingTop: 5,
+		left: 20,
+		margin: 0,
+		fontSize: 12,
 	}
 }))
 
 const LoginPage = (props) => {
 	const classes = useStyles()
 
+	const onIconClick = () => {
+		props.isAuth ? props.history.push('/cabinet') : props.checkIfIsLoggedIn()
+	}
+
 	return (
 		<div>
-			<div className={classes.swgWrapper}>
-				<AccountCircleOutlinedIcon className={classes.icon} onClick={props.showSagaAuthForm}/>
+			<div className={classes.flex}>
+				<div className={classes.swgWrapper}>
+					<AccountCircleOutlinedIcon className={classes.icon} onClick={onIconClick}/>
+				</div>
+				{props.isAuth
+					? <div>
+						<Button className={classes.welcome} onClick={() => { props.history.push('/cabinet')}}> Welcome, {props.first_name} </Button>
+						<Button className={classes.welcome} onClick={props.logoutCurrentUser}> Logout </Button>
+					</div>
+					: null}
 			</div>
-			<Dialog open={props.open} scroll='paper' onClose={props.hideSagaAuthForm} aria-labelledby="form-dialog-title">
+
+			<Dialog
+				open={props.open}
+				className={props.loading ? classes.loading : null}
+				onClose={() => { props.showAuthForm(false) }}
+				scroll='paper'
+				aria-labelledby="form-dialog-title"
+			>
 				<DialogContent>
 					{props.needsRegistration ? <div><Register/></div> : <div><Login/></div>}
-					<Button onClick={props.needsRegistration ? props.showSagaLogin : props.showSagaRegister} variant="outlined" className={classes.button}>
+					<Button
+						onClick={props.needsRegistration ? () => { props.showRegister(false) } : () => { props.showRegister(true) }}
+						className={props.loading ? classes.buttonOnLoading : classes.button}
+						variant="outlined"
+					>
 						{props.needsRegistration ? <div>Log In</div> : <div>Register</div>}
 					</Button>
 				</DialogContent>
@@ -53,9 +94,17 @@ const LoginPage = (props) => {
 
 const mapStateToProps = state => {
 	return {
+		loading: state.general.loading,
 		open: state.auth.open,
-		needsRegistration: state.auth.needsRegistration
+		needsRegistration: state.auth.needsRegistration,
+		isAuth: state.auth.isAuth,
+		first_name: state.auth.customer.first_name
 	}
 }
 
-export default connect(mapStateToProps, {showSagaAuthForm, hideSagaAuthForm, showSagaRegister, showSagaLogin})(LoginPage)
+export default connect(mapStateToProps, {
+	showAuthForm,
+	showRegister,
+	logoutCurrentUser,
+	checkIfIsLoggedIn
+})(withRouter(LoginPage))
