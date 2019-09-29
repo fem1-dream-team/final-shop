@@ -7,7 +7,8 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import Register from './Register'
 import Login from './Login'
 import { showAuthForm, showRegister } from '../../../../actions/authFormActions'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+import { logoutCurrentUser } from '../../../../actions/authActions'
 
 const useStyles = makeStyles(theme => ({
 	button: {
@@ -61,7 +62,7 @@ const LoginPage = (props) => {
 				<div className={classes.swgWrapper}>
 					<AccountCircleOutlinedIcon className={classes.icon} onClick={ onIconClick }/>
 				</div>
-				{props.isAuth ? <Link to='/cabinet' className={classes.welcome}> Welcome, {props.first_name} </Link> : null}
+				{props.isAuth ? <Button className={classes.welcome} onClick={props.logoutCurrentUser}> {props.first_name}, wanna go away </Button> : null}
 			</div>
 
 			<Dialog
@@ -96,4 +97,4 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, { showAuthForm, showRegister })(withRouter(LoginPage))
+export default connect(mapStateToProps, { showAuthForm, showRegister, logoutCurrentUser})(withRouter(LoginPage))

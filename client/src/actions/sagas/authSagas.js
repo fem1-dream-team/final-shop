@@ -11,7 +11,6 @@ import setAuthToken from '../../utils/setAuthToken'
 export function * watchNewUserSaga () {
 	yield takeEvery(POST_NEW_USER, createNewUserWorker)
 	yield takeEvery(LOGIN_USER, loginUserWorker)
-	debugger
 	yield takeEvery(CHECK_LOGIN_SAGA, checkLoginWorker)
 	yield takeEvery(LOGOUT_CURRENT_USER_SAGA, logoutUserWorker)
 }
@@ -29,21 +28,17 @@ function * createNewUserWorker (action) {
 }
 
 function * checkLoginWorker (action) {
-	debugger
 	const {payload} = action
 	if (payload) {
 		yield setAuthToken(payload)
 		const decoded = jwt_decode(payload)
 		const currentTime = (Date.now() / 1000)
-		yield (decoded.exp > currentTime) ? put(setCurrentUser(decoded)) : put(logoutCurrentUser())
+		decoded.exp > currentTime ? yield put(setCurrentUser(decoded)) : yield put(logoutCurrentUser())
 	}
 }
 
 function * loginUserWorker (action) {
-//	TODO
-
 	try {
-		debugger
 		yield put(isLoading(true))
 		const response = yield call(() => axios.post('http://localhost:3001/api/login', action.payload));
 		yield localStorage.setItem('jwtToken', response.data.token)
@@ -57,8 +52,7 @@ function * loginUserWorker (action) {
 	}
 }
 
-function * logoutUserWorker(action) {
-	debugger
+function * logoutUserWorker (action) {
 	yield localStorage.removeItem('jwtToken')
 	setAuthToken(false)
 	yield put(setCurrentUser({}))
