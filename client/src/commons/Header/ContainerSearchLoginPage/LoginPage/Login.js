@@ -10,6 +10,13 @@ const useStyles = makeStyles(theme => ({
 	button: {
 		margin: theme.spacing(1),
 	},
+	loading: {
+		cursor: 'wait'
+	},
+	buttonOnLoading: {
+		margin: theme.spacing(1),
+		cursor: 'wait'
+	},
 	errorMsg: {
 		marginTop: 0,
 		paddingLeft: 10,
@@ -24,10 +31,6 @@ const Login = (props) => {
 	const [state, setState] = useState({
 		email: '',
 		password: '',
-		// formErrors: { email: '', password: '' },
-		// emailValid: false,
-		// passwordValid: false,
-		// formValid: false,
 		errors: {}
 	})
 
@@ -55,41 +58,50 @@ const Login = (props) => {
 	const errors = props.errors
 	isEmpty(errors) ? console.log('empty') : console.warn(errors)
 
+	const loginFields = [
+		{
+			id: 'email',
+			placeholder: 'Email',
+			value: state.email,
+			errors: errors.email
+		},
+		{
+			id: 'password',
+			placeholder: 'Password. Minimum 8 characters',
+			type: 'password',
+			errors: errors.password
+		}]
+
 	return (
 		<div>
 			<h2>Log In</h2>
 			<div> Please enter your account details</div>
 			<form noValidate onSubmit={onSubmit}>
-				<div>
-					<TextField
-						autoFocus
-						margin="dense"
-						name="email"
-						id="email"
-						placeholder="Email address"
-						type="email"
-						fullWidth
-						variant="outlined"
-						value={state.email}
-						onChange={onChangeHandler}
-					/>
-					{errors.email ? <p className={classes.errorMsg}> {errors.email} </p> : null}
-				</div>
-				<div>
-					<TextField
-						margin="dense"
-						name="password"
-						id="password"
-						placeholder="Password"
-						type="password"
-						fullWidth
-						variant="outlined"
-						value={state.password}
-						onChange={onChangeHandler}
-					/>
-					{errors.password ? <p className={classes.errorMsg}> {errors.password} </p> : null}
-				</div>
-				<Button variant="outlined" color="primary" className={classes.button} onClick={onSubmit}>Log In</Button>
+				{loginFields.map(field => {
+					return (
+						<div key={field.id}>
+							<TextField
+								margin="dense"
+								name={field.id}
+								id={field.id}
+								placeholder={field.placeholder}
+								type={field.id}
+								fullWidth
+								variant="outlined"
+								value={field.value}
+								disabled={props.loading}
+								onChange={onChangeHandler}
+							/>
+							{field.errors ? <p className={classes.errorMsg}> {field.errors} </p> : null}
+						</div>
+					)
+				})}
+				<Button
+					variant="outlined"
+					type='submit'
+					color="primary"
+					className={props.loading ? classes.buttonOnLoading : classes.button}
+				> Log In </Button>
 			</form>
 		</div>
 	)
@@ -98,9 +110,10 @@ const Login = (props) => {
 const mapStateToProps = (state) => {
 	return {
 		auth: state.auth,
-		errors: state.errors
+		loading: state.general.loading,
+		errors: state.general.errors
 	}
 }
 // export default Login
-export default connect(mapStateToProps, {loginUserAction})(Login)
+export default connect(mapStateToProps, { loginUserAction })(Login)
 // export default connect(mapStateToProps, {})(Login)
