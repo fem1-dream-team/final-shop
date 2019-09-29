@@ -8,7 +8,7 @@ import Register from './Register'
 import Login from './Login'
 import { showAuthForm, showRegister } from '../../../../actions/authFormActions'
 import { withRouter } from 'react-router-dom'
-import { logoutCurrentUser } from '../../../../actions/authActions'
+import { checkIfIsLoggedIn, logoutCurrentUser } from '../../../../actions/authActions'
 
 const useStyles = makeStyles(theme => ({
 	button: {
@@ -53,16 +53,21 @@ const LoginPage = (props) => {
 	const classes = useStyles()
 
 	const onIconClick = () => {
-		props.isAuth ? 	props.history.push('/cabinet') : props.showAuthForm(true)
+		props.isAuth ? props.history.push('/cabinet') : props.checkIfIsLoggedIn()
 	}
 
 	return (
 		<div>
 			<div className={classes.flex}>
 				<div className={classes.swgWrapper}>
-					<AccountCircleOutlinedIcon className={classes.icon} onClick={ onIconClick }/>
+					<AccountCircleOutlinedIcon className={classes.icon} onClick={onIconClick}/>
 				</div>
-				{props.isAuth ? <Button className={classes.welcome} onClick={props.logoutCurrentUser}> {props.first_name}, wanna go away </Button> : null}
+				{props.isAuth
+					? <div>
+						<Button className={classes.welcome} onClick={() => { props.history.push('/cabinet')}}> Welcome, {props.first_name} </Button>
+						<Button className={classes.welcome} onClick={props.logoutCurrentUser}> Logout </Button>
+					</div>
+					: null}
 			</div>
 
 			<Dialog
@@ -97,4 +102,9 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, { showAuthForm, showRegister, logoutCurrentUser})(withRouter(LoginPage))
+export default connect(mapStateToProps, {
+	showAuthForm,
+	showRegister,
+	logoutCurrentUser,
+	checkIfIsLoggedIn
+})(withRouter(LoginPage))

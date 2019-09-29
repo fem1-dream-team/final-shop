@@ -23,7 +23,7 @@ export const setCurrentUser = (currentUser) => {
 export const checkIfIsLoggedIn = () => {
 	return {
 		type: CHECK_LOGIN_SAGA,
-		payload: localStorage['jwtToken']
+		payload: localStorage.jwtToken
 	}
 }
 

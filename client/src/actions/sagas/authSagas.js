@@ -29,11 +29,16 @@ function * createNewUserWorker (action) {
 
 function * checkLoginWorker (action) {
 	const {payload} = action
+
+	// const data = localStorage.jwtToken
 	if (payload) {
 		yield setAuthToken(payload)
 		const decoded = jwt_decode(payload)
+		console.log(decoded)
 		const currentTime = (Date.now() / 1000)
 		decoded.exp > currentTime ? yield put(setCurrentUser(decoded)) : yield put(logoutCurrentUser())
+	} else {
+		yield put(showAuthForm(true))
 	}
 }
 
