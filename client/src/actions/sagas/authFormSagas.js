@@ -1,6 +1,6 @@
 import { put, takeEvery } from 'redux-saga/effects'
 
-import { clearErrors } from '../errorActions'
+import { clearErrors, isLoading } from '../generalActions'
 import {
 	SHOW_AUTH_FORM, SHOW_AUTH_FORM_SAGA,
 	SHOW_REGISTER, SHOW_REGISTER_SAGA
@@ -12,6 +12,7 @@ export function * watchAuthFormSaga () {
 }
 
 function * showAuthFormSaga (action) {
+	yield put(isLoading(false))
 	yield put(clearErrors())
 	yield put({
 		type: SHOW_AUTH_FORM,
@@ -20,6 +21,7 @@ function * showAuthFormSaga (action) {
 }
 
 function * showRegisterSaga (action) {
+	yield put(isLoading(false))
 	yield put(clearErrors())
 	yield put({
 		type: SHOW_REGISTER,

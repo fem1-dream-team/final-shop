@@ -64,7 +64,7 @@ const LoginPage = (props) => {
 				</div>
 				{props.isAuth
 					? <div>
-						<Button className={classes.welcome} onClick={() => { props.history.push('/cabinet')}}> Welcome, {props.first_name} </Button>
+						<Button className={classes.welcome} onClick={() => { props.history.push('/cabinet') }}> Welcome, {props.first_name} </Button>
 						<Button className={classes.welcome} onClick={props.logoutCurrentUser}> Logout </Button>
 					</div>
 					: null}

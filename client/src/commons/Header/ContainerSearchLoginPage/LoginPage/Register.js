@@ -71,30 +71,35 @@ const Register = (props) => {
 		{
 			id: 'first_name',
 			placeholder: 'First name',
+			type: 'text',
 			value: state.first_name,
 			errors: errors.first_name
 		},
 		{
 			id: 'last_name',
 			placeholder: 'Last name',
+			type: 'text',
 			value: state.last_name,
 			errors: errors.last_name
 		},
 		{
 			id: 'email',
 			placeholder: 'Email',
+			type: 'email',
 			value: state.email,
 			errors: errors.email
 		},
 		{
 			id: 'password',
 			placeholder: 'Password. Minimum 8 characters',
+			type: 'password',
 			value: state.password,
 			errors: errors.password
 		},
 		{
 			id: 'confirm_password',
 			placeholder: 'Confirm password',
+			type: 'password',
 			value: state.confirm_password,
 			errors: errors.confirm_password
 		},
@@ -116,7 +121,7 @@ const Register = (props) => {
 								name={field.id}
 								id={field.id}
 								placeholder={field.placeholder}
-								type="text"
+								type={field.type}
 								fullWidth
 								variant="outlined"
 								value={field.value}

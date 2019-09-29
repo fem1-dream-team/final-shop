@@ -68,7 +68,7 @@ const Login = (props) => {
 		{
 			id: 'password',
 			placeholder: 'Password. Minimum 8 characters',
-			value: state.password,
+			type: 'password',
 			errors: errors.password
 		}]
 

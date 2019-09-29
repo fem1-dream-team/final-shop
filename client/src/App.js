@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import { checkIfIsLoggedIn } from './actions/authActions'
@@ -13,10 +12,9 @@ import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 // import Button from '@material-ui/core/Button';
 import { ContainerNavigation } from './commons/ContainerNavigation/ContainerNavigation'
 
-const App = props => {
+const App = () => {
 	checkIfIsLoggedIn()
 
-	console.log(props.auth)
 	return (
 		<BrowserRouter>
 			<div>
@@ -25,12 +23,10 @@ const App = props => {
 				<Switch>
 					<Route exact path='/' component={Home}/>
 					<Route path='/home' render={() => <Home/>}/>
-
 					<Route
 						path='/search'
 						component={props => <Products {...props} category={'search'}/>}
 					/>
-
 					<Route
 						path='/cakes'
 						component={props => <Products {...props} category={'cakes'}/>}
@@ -39,31 +35,25 @@ const App = props => {
 						path='/tarts'
 						component={props => <Products {...props} category={'tarts'}/>}
 					/>
-
 					<Route
 						path='/cupcakes'
 						component={props => <Products {...props} category={'cupcakes'}/>}
 					/>
-
 					<Route
 						path='/cookies'
 						component={props => <Products {...props} category={'cookies'}/>}
 					/>
-
 					<Route
 						path='/desserts'
 						component={props => <Products {...props} category={'desserts'}/>}
 					/>
-
 					<Route
 						path='/macaroons'
 						component={props => <Products {...props} category={'macaroons'}/>}
 					/>
-
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
 					<Route path='*' component={Page404}/>
-
 				</Switch>
 
 				<Footer/>
@@ -72,9 +62,4 @@ const App = props => {
 	)
 }
 
-const mapStateToProps = (state) => {
-	return {
-		auth: state.auth
-	}
-}
-export default connect(mapStateToProps, {})(App)
+export default App
