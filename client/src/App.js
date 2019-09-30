@@ -12,13 +12,13 @@ import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 // import Button from '@material-ui/core/Button';
 import { ContainerNavigation } from './commons/ContainerNavigation/ContainerNavigation'
 import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
+import { connect } from 'react-redux'
 
-const App = () => {
-	checkIfIsLoggedIn()
+const App = (props) => {
 
 	return (
 		<BrowserRouter>
-			<div>
+			<div auth={props.checkIfIsLoggedIn()}>
 				<Header/>
 				<ContainerNavigation/>
 				<Switch>
@@ -70,4 +70,4 @@ const App = () => {
 	)
 }
 
-export default App
+export default connect({checkIfIsLoggedIn})(App)
