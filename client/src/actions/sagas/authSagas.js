@@ -36,7 +36,6 @@ function * loginUserWorker (action) {
 		yield put(showAuthForm(false))
 	} catch (err) {
 		yield put(isLoading(false))
-		console.log(err.response.data)
 		yield put(getErrors(err.response.data))
 	}
 }
@@ -49,7 +48,6 @@ function * checkLoginWorker (action) {
 	if (payload) {
 		yield setAuthToken(payload)
 		const decoded = jwt_decode(payload)
-		console.log(decoded)
 		const currentTime = (Date.now() / 1000)
 		decoded.exp > currentTime ? yield put(setCurrentUser(decoded)) : yield put(logoutCurrentUser())
 		yield put(isLoading(false))
