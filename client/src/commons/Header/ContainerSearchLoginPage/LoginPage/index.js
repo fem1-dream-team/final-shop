@@ -9,6 +9,7 @@ import Login from './Login'
 import { showAuthForm, showRegister } from '../../../../actions/authFormActions'
 import { withRouter } from 'react-router-dom'
 import { checkIfIsLoggedIn, logoutCurrentUser } from '../../../../actions/authActions'
+// import {Profile} from "../../../../components";
 
 const useStyles = makeStyles(theme => ({
 	button: {
@@ -43,9 +44,14 @@ const useStyles = makeStyles(theme => ({
 	welcome: {
 		position: 'relative',
 		paddingTop: 5,
+		color: '#fff',
 		left: 20,
 		margin: 0,
 		fontSize: 12,
+	},
+	welcomeText: {
+		marginLeft: 25,
+		color: '#fff',
 	}
 }))
 
@@ -53,7 +59,11 @@ const LoginPage = (props) => {
 	const classes = useStyles()
 
 	const onIconClick = () => {
-		props.isAuth ? props.history.push('/cabinet') : props.checkIfIsLoggedIn()
+		if (props.isAuth) {
+			props.history.push('/profile')
+		} else {
+			props.checkIfIsLoggedIn()
+		}
 	}
 
 	return (
@@ -64,7 +74,7 @@ const LoginPage = (props) => {
 				</div>
 				{props.isAuth
 					? <div>
-						<Button className={classes.welcome} onClick={() => { props.history.push('/cabinet') }}> Welcome, {props.first_name} </Button>
+						<span className={classes.welcomeText}>Welcome, {props.first_name}</span>
 						<Button className={classes.welcome} onClick={props.logoutCurrentUser}> Logout </Button>
 					</div>
 					: null}

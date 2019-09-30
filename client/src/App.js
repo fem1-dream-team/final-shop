@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import { checkIfIsLoggedIn } from './actions/authActions'
 import 'typeface-roboto'
-import { Home, Page404, Products } from './components'
+import {Home, Page404, Products, Profile} from './components'
 // import {SimpleSlider} from './components'
 import { Footer, Header } from './commons'
 import { Cart } from './components/ComponentsForNavigation/Cart'
@@ -11,6 +11,7 @@ import { Cart } from './components/ComponentsForNavigation/Cart'
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 // import Button from '@material-ui/core/Button';
 import { ContainerNavigation } from './commons/ContainerNavigation/ContainerNavigation'
+import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
 
 const App = () => {
 	checkIfIsLoggedIn()
@@ -53,6 +54,13 @@ const App = () => {
 					/>
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
+
+					<Route exect path='/profile' component={Profile}/>
+
+					<Route exect path='/profile/personal-information/' component={PersonalInfo}/>
+					{/* <Route exect path='/profile/basket' component={Profile}/> */}
+					<Route exect path='/profile' component={Profile}/>
+
 					<Route path='*' component={Page404}/>
 				</Switch>
 

@@ -4,3 +4,4 @@ export {Page404} from './Page404/Page404';
 export {SimpleSlider} from './SimpleSlider';
 export {Categories} from './Categories';
 export {Products} from './Products/Products';
+// export {Profile} from './Profile/Profile';
