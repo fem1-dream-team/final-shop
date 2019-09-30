@@ -19,7 +19,6 @@ import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
 
 const App = (props) => {
-
 	return (
 		<BrowserRouter>
 			<div auth={props.checkIfIsLoggedIn()}>
