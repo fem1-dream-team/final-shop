@@ -27,7 +27,7 @@ const generalReducer = (state = initialState, action) => {
 		return {
 			...state,
 			navbarState: action.payload,
-			}
+		}
 	default:
 		return state
 	}
