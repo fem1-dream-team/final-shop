@@ -44,12 +44,14 @@ const useStyles = makeStyles(theme => ({
 	welcome: {
 		position: 'relative',
 		paddingTop: 5,
+		color: '#fff',
 		left: 20,
 		margin: 0,
 		fontSize: 12,
 	},
 	welcomeText: {
 		marginLeft: 25,
+		color: '#fff',
 	}
 }))
 
@@ -58,7 +60,7 @@ const LoginPage = (props) => {
 
 	const onIconClick = () => {
 		if (props.isAuth) {
-			props.history.push('/cabinet')
+			props.history.push('/profile')
 		} else {
 			props.checkIfIsLoggedIn()
 		}

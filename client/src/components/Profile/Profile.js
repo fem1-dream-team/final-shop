@@ -1,11 +1,11 @@
 import React from 'react';
-import clasess from './Profile.module.css';
+import classes from './Profile.module.css';
 import Navigation from './Navigation/Navigation';
 import PersonalInfo from './PersonalInfo/PersonalInfo';
 
 export const Profile = () => {
 	return (
-		<div className={clasess.profileWrapper}>
+		<div className={classes.profileWrapper}>
 			<Navigation/>
 			<PersonalInfo/>
 		</div>

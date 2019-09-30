@@ -11,6 +11,7 @@ import { Cart } from './components/ComponentsForNavigation/Cart'
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 // import Button from '@material-ui/core/Button';
 import { ContainerNavigation } from './commons/ContainerNavigation/ContainerNavigation'
+import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
 
 const App = () => {
 	checkIfIsLoggedIn()
@@ -53,7 +54,12 @@ const App = () => {
 					/>
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
-					<Route exect path='/cabinet' component={Profile}/>
+
+					<Route exect path='/profile' component={Profile}/>
+
+					<Route exect path='/profile/personal-information/' component={PersonalInfo}/>
+					{/* <Route exect path='/profile/basket' component={Profile}/> */}
+					<Route exect path='/profile' component={Profile}/>
 
 					<Route path='*' component={Page404}/>
 				</Switch>
