@@ -1,32 +1,34 @@
-import axios from 'axios'
-import { call, put, takeEvery} from 'redux-saga/effects'
-import { GET_ERRORS, POST_NEW_USER } from './types'
-import { showSagaLogin } from './sagaAuthForm'
+import { CHECK_LOGIN_SAGA, LOGIN_USER, LOGOUT_CURRENT_USER_SAGA, POST_NEW_USER, SET_CURRENT_USER } from './types'
 
-export const registerUser = (userData) => {
+export const registerUserAction = (userData) => {
 	return {
 		type: POST_NEW_USER,
 		payload: userData
 	}
 }
 
-const registerFailed = (err) => {
+export const loginUserAction = (userToLogin) => {
 	return {
-		type: GET_ERRORS,
-		payload: err
+		type: LOGIN_USER,
+		payload: userToLogin
 	}
 }
 
-function * createNewUser (action) {
-	try {
-		yield call(() => axios.post('http://localhost:3001/api/register', action.payload));
-		yield put(showSagaLogin())
-	} catch (err) {
-		console.log(yield err)
-		yield put(registerFailed(err))
+export const setCurrentUser = (currentUser) => {
+	return {
+		type: SET_CURRENT_USER,
+		payload: currentUser
+	}
+}
+export const checkIfIsLoggedIn = () => {
+	return {
+		type: CHECK_LOGIN_SAGA,
+		payload: localStorage.jwtToken
 	}
 }
 
-export function * postNewUserSaga () {
-	yield takeEvery(POST_NEW_USER, createNewUser)
+export const logoutCurrentUser = () => {
+	return {
+		type: LOGOUT_CURRENT_USER_SAGA
+	}
 }

@@ -1,90 +1,78 @@
-import React, {Component} from 'react'
-import {Provider} from 'react-redux'
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
+import { checkIfIsLoggedIn } from './actions/authActions'
+import 'typeface-roboto'
 import Navbar from './components/navbar/Navbar';
 import GlobalStyle from './styles/Global';
 
-import store from './store';
-import 'typeface-roboto'
-import {Home, Page404, Products} from './components';
+import {Home, Page404, Products, Profile} from './components'
 // import {SimpleSlider} from './components'
-import {Footer, Header} from './commons'
-import {Cart} from './components/ComponentsForNavigation/Cart'
+import { Footer, Header } from './commons'
+import { Cart } from './components/ComponentsForNavigation/Cart'
 
-import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage';
+import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 // import Button from '@material-ui/core/Button';
+import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
 
-class App extends Component {
-	state = {
-		navbarOpen: false
-	};
+const App = () => {
+	checkIfIsLoggedIn()
 
-	handleNavbar = () => {
-		this.setState({ navbarOpen: !this.state.navbarOpen });
-	};
+	return (
+		<BrowserRouter>
+			<div>
+				<Header/>
+				<Navbar
+					navbarState={this.state.navbarOpen}
+					handleNavbar={this.handleNavbar}
+				/>
+				<GlobalStyle />				<Switch>
+					<Route exact path='/' component={Home}/>
+					<Route path='/home' render={() => <Home/>}/>
+					<Route
+						path='/search'
+						component={props => <Products {...props} category={'search'}/>}
+					/>
+					<Route
+						path='/cakes'
+						component={props => <Products {...props} category={'cakes'}/>}
+					/>
+					<Route
+						path='/tarts'
+						component={props => <Products {...props} category={'tarts'}/>}
+					/>
+					<Route
+						path='/cupcakes'
+						component={props => <Products {...props} category={'cupcakes'}/>}
+					/>
+					<Route
+						path='/cookies'
+						component={props => <Products {...props} category={'cookies'}/>}
+					/>
+					<Route
+						path='/desserts'
+						component={props => <Products {...props} category={'desserts'}/>}
+					/>
+					<Route
+						path='/macaroons'
+						component={props => <Products {...props} category={'macaroons'}/>}
+					/>
+					<Route path='/cart' render={() => <Cart/>}/>
+					<Route exect path='/customer' component={LoginPage}/>
 
-	render () {
-		return (
-			<Provider store={store}>
+					<Route exect path='/profile' component={Profile}/>
 
-				<BrowserRouter>
-					<div>
-						<Header/>
-						<Navbar
-							navbarState={this.state.navbarOpen}
-							handleNavbar={this.handleNavbar}
-						/>
-						<GlobalStyle />
-						<Switch>
-							<Route exact path='/' component={Home}/>
-							<Route path='/home' render={() => <Home/>}/>
+					<Route exect path='/profile/personal-information/' component={PersonalInfo}/>
+					{/* <Route exect path='/profile/basket' component={Profile}/> */}
+					<Route exect path='/profile' component={Profile}/>
 
-							<Route
-								path='/search'
-								component={props => <Products {...props} category={'search'}/>}
-							/>
+					<Route path='*' component={Page404}/>
+				</Switch>
 
-							<Route
-								path='/cakes'
-								component={props => <Products {...props} category={'cakes'}/>}
-							/>
-							<Route
-								path='/tarts'
-								component={props => <Products {...props} category={'tarts'}/>}
-							/>
-
-							<Route
-								path='/cupcakes'
-								component={props => <Products {...props} category={'cupcakes'}/>}
-							/>
-
-							<Route
-								path='/cookies'
-								component={props => <Products {...props} category={'cookies'}/>}
-							/>
-
-							<Route
-								path='/desserts'
-								component={props => <Products {...props} category={'desserts'}/>}
-							/>
-
-							<Route
-								path='/macaroons'
-								component={props => <Products {...props} category={'macaroons'}/>}
-							/>
-
-							<Route path='/cart' render={() => <Cart/>}/>
-							<Route exect path='/customer' component={LoginPage}/>
-							<Route path='*' component={Page404}/>
-
-						</Switch>
-
-						<Footer/>
-					</div>
-				</BrowserRouter>
-			</Provider>
-		)
-	}
+				<Footer/>
+			</div>
+		</BrowserRouter>
+	)
 }
 
 export default App
