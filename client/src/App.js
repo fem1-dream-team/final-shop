@@ -15,8 +15,7 @@ import { Cart } from './components/ComponentsForNavigation/Cart'
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 // import Button from '@material-ui/core/Button';
 import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
-import {handleNavbar} from "./actions/generalActions";
-
+import {handleNavbar} from './actions/generalActions';
 
 const App = (props) => {
 	checkIfIsLoggedIn()
