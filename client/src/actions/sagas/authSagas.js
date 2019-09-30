@@ -53,8 +53,6 @@ function * checkLoginWorker (action) {
 		const currentTime = (Date.now() / 1000)
 		decoded.exp > currentTime ? yield put(setCurrentUser(decoded)) : yield put(logoutCurrentUser())
 		yield put(isLoading(false))
-	} else {
-		yield put(showAuthForm(true))
 	}
 }
 

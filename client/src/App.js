@@ -15,7 +15,6 @@ import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
 import { connect } from 'react-redux'
 
 const App = (props) => {
-
 	return (
 		<BrowserRouter>
 			<div auth={props.checkIfIsLoggedIn()}>
@@ -70,4 +69,10 @@ const App = (props) => {
 	)
 }
 
-export default connect({checkIfIsLoggedIn})(App)
+const mapStateToProps = state => {
+	return {
+
+	}
+}
+
+export default connect(mapStateToProps, {checkIfIsLoggedIn})(App)
