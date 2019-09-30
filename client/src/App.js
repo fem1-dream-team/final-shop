@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import {Provider} from 'react-redux'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import Navbar from "./components/navbar/Navbar";
+import Navbar from './components/navbar/Navbar';
 import GlobalStyle from './styles/Global';
-
 
 import store from './store';
 import 'typeface-roboto'
@@ -14,7 +13,6 @@ import {Cart} from './components/ComponentsForNavigation/Cart'
 
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage';
 // import Button from '@material-ui/core/Button';
-import {ContainerNavigation} from './commons/ContainerNavigation/ContainerNavigation';
 
 class App extends Component {
 	state = {
@@ -24,21 +22,19 @@ class App extends Component {
 	handleNavbar = () => {
 		this.setState({ navbarOpen: !this.state.navbarOpen });
 	};
+
 	render () {
 		return (
 			<Provider store={store}>
-
-
 
 				<BrowserRouter>
 					<div>
 						<Header/>
 						<Navbar
-								navbarState={this.state.navbarOpen}
-								handleNavbar={this.handleNavbar}
-							/>
-							<GlobalStyle />
-						<ContainerNavigation/>
+							navbarState={this.state.navbarOpen}
+							handleNavbar={this.handleNavbar}
+						/>
+						<GlobalStyle />
 						<Switch>
 							<Route exact path='/' component={Home}/>
 							<Route path='/home' render={() => <Home/>}/>
