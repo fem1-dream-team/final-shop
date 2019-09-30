@@ -1,8 +1,9 @@
-import { CLEAR_ERRORS, GET_ERRORS, IS_LOADING } from '../actions/types'
+import {CLEAR_ERRORS, GET_ERRORS, IS_LOADING, SHOW_NAVBAR} from '../actions/types'
 
 const initialState = {
 	isLoading: false,
-	errors: {}
+	errors: {},
+	navbarState: false,
 }
 
 const generalReducer = (state = initialState, action) => {
@@ -22,6 +23,11 @@ const generalReducer = (state = initialState, action) => {
 			...state,
 			errors: action.payload
 		}
+		case SHOW_NAVBAR:
+			return {
+				...state,
+			navbarState: action.payload,
+			}
 	default:
 		return state
 	}

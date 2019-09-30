@@ -1,6 +1,7 @@
 export const IS_LOADING = 'IS_LOADING'
 export const GET_ERRORS = 'GET_ERRORS'
 export const CLEAR_ERRORS = 'CLEAR_ERRORS'
+export const SHOW_NAVBAR = 'SHOW_NAVBAR'
 
 export const SHOW_AUTH_FORM = 'SHOW_AUTH_FORM'
 export const SHOW_REGISTER = 'SHOW_REGISTER'
