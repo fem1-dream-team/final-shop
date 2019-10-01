@@ -12,11 +12,13 @@ import { connect } from 'react-redux'
 import { getProductCategories, getSearchProducts } from '../../actions/productsActions'
 import { withRouter } from 'react-router-dom'
 
+debugger
 const Products = (props) => {
 	const productsList = props.productsList
 
 	const products = productsList
 		? productsList.map((item) => {
+			const productId = item._id
 			return (
 				<Grid item component="div" sm={3} key={item._id}>
 					<Card className="div">
@@ -44,7 +46,7 @@ const Products = (props) => {
 							<Button size="small" variant="contained" color="primary">
 								Buy
 							</Button>
-							<Button size="small" color="primary">
+							<Button onClick={ () => { props.history.push(`${productId}`) } } size="small" color="primary">
 								Details
 							</Button>
 						</CardActions>

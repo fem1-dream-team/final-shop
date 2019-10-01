@@ -12,7 +12,7 @@ import { connect } from 'react-redux'
 import { getProductCategories, getSearchProducts } from '../../actions/productsActions'
 import { withRouter } from 'react-router-dom'
 
-	debugger
+	// debugger
 const ProductDetailed = (props) => {
 	// const productsList = props.kuku
 	const id = props.history.location.pathname

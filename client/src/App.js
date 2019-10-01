@@ -6,7 +6,7 @@ import 'typeface-roboto'
 import {Home, Page404, Profile} from './components'
 
 // import {SimpleSlider} from './components'
-import { Footer, Header } from './commons'
+import { Header } from './commons'
 import { Cart } from './components/ComponentsForNavigation/Cart'
 
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
@@ -16,6 +16,8 @@ import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
 import { connect } from 'react-redux'
 import { getProductCategories } from './actions/productsActions'
 import Products from './components/Products/Products'
+import ProductDetailed from './components/Products/ProductDetailed'
+import {Footer} from './commons/Footer/Footer'
 
 const App = (props) => {
 	return (
@@ -34,6 +36,8 @@ const App = (props) => {
 					<Route path='/cookies'	component={Products} />
 					<Route path='/desserts'	component={Products} />
 					<Route path='/macaroons'	component={Products} />
+
+					<Route path='/:productId'	component={ProductDetailed} />
 
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
