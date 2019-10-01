@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import isEmpty from 'is-empty'
 
 import { registerUserAction } from '../../../../actions/authActions'
 
@@ -29,7 +28,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Register = (props) => {
-	console.log(props)
 	const classes = useStyles()
 
 	const [state, setState] = useState({
@@ -65,7 +63,6 @@ const Register = (props) => {
 	}
 
 	const errors = props.errors
-	isEmpty(errors) ? console.log('empty') : console.warn(errors)
 
 	const registerFields = [
 		{

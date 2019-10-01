@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { checkIfIsLoggedIn } from './actions/authActions'
+import {handleNavbar} from './actions/generalActions';
+
 import 'typeface-roboto'
 import Navbar from './components/navbar/Navbar';
 import GlobalStyle from './styles/Global';
@@ -15,13 +17,11 @@ import { Cart } from './components/ComponentsForNavigation/Cart'
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 // import Button from '@material-ui/core/Button';
 import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
-import {handleNavbar} from './actions/generalActions';
 
 const App = (props) => {
-	checkIfIsLoggedIn()
 	return (
 		<BrowserRouter>
-			<div>
+			<div auth={props.checkIfIsLoggedIn()}>
 				<Header/>
 				<Navbar
 					navbarState={props.navbarState}
@@ -83,4 +83,4 @@ const mapStateProps = state => {
 	}
 };
 
-export default connect(mapStateProps, {handleNavbar})(App)
+export default connect(mapStateProps, {handleNavbar, checkIfIsLoggedIn})(App)
