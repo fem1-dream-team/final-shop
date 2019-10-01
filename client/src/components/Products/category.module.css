@@ -1,9 +1,5 @@
 .container {
-<<<<<<<< HEAD:client/src/components/Products/category.module.css
     background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)), url("candies.jpg") no-repeat 80% 55% fixed;
-========
-    background: url("cakeImg.jpg") 80% 55% no-repeat fixed;
->>>>>>>> 87b056ae9a3d930b2849e1d28258e2a9ba2f41b0:client/src/components/ComponentsForNavigation/Cakes/cakes.module.css
     background-size: cover;
     padding-bottom: 200px;
     text-align: center;

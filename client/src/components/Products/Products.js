@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react'
-
 import BasketProductsContainer from '../BuyProductCart/BasketProducts/BasketProductsContainer'
-
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
