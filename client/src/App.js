@@ -18,7 +18,6 @@ import { Cart } from './components/ComponentsForNavigation/Cart'
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 // import Button from '@material-ui/core/Button';
 import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
-import { getProductCategories } from './actions/productsActions'
 import Products from './components/Products/Products'
 
 const App = (props) => {
