@@ -61,11 +61,10 @@ const App = (props) => {
 	)
 };
 
-const mapStateProps = state => {
+const mapStateToProps = state => {
 	return {
 		navbarState: state.general.navbarState,
 	}
 };
 
-export default connect(mapStateToProps, {checkIfIsLoggedIn, getProductCategories})(App)
-
+export default connect(mapStateToProps, {checkIfIsLoggedIn, handleNavbar})(App)
