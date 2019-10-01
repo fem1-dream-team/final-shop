@@ -1,0 +1,99 @@
+/*.scroll {*/
+/*    overflow-y: auto;*/
+/*}*/
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 360px;
+    margin: 0 auto;
+    font-weight: bold;
+    font-family: Serif, sans-serif;
+}
+.name {
+    text-align: center;
+    color: mediumseagreen;
+
+}
+.descriptionOrder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: SansSerif, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+.imgSize {
+    width: 60px;
+    padding: 5px;
+}
+img {
+    width: 100%;
+}
+.nameProduct {
+    align-self: baseline;
+    font-size: 10px;
+    width: 70px;
+}
+.plusMinusCount {
+    display: flex;
+    justify-content: space-between;
+    width: 65px;
+}
+.plusMinus {
+    text-align: center;
+    width: 15px;
+    height: 15px;
+    border: 2px solid mediumseagreen;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.priceContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 60px;
+}
+.priceText {
+    color: mediumseagreen;
+    font-size: 18px;
+}
+.delete {
+    text-align: center;
+    width: 15px;
+    height: 15px;
+    border: 2px solid mediumseagreen;
+    border-radius: 50%;
+    transform: rotate(42deg);
+    cursor: pointer;
+}
+.line {
+    width: 360px;
+    border-bottom: #f186a0 1px solid;
+}
+.right {
+    width: 360px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: right;
+}
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+}
+.headerInput {
+    padding: 7px 10px 0px 10px
+}
+.inputStyle {
+    border: 1px solid #95d6bf;
+    border-radius: 10px;
+    padding: 7px 5px;
+}
+.radioBtnStyle {
+    padding-top: 0;
+    font-size: 12px;
+}
+.fileTextStyle {
+    font-size: 9px;
+    padding-left: 10px;
+    padding-top: 0;
+}

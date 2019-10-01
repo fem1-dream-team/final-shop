@@ -12,6 +12,7 @@ import GlobalStyle from './styles/Global';
 
 import {Home, Page404, Profile} from './components'
 // import {SimpleSlider} from './components'
+// import {Home, Products} from './components'
 import { Footer, Header } from './commons'
 import { Cart } from './components/ComponentsForNavigation/Cart'
 

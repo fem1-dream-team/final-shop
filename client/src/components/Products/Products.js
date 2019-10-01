@@ -1,4 +1,7 @@
 import React, { useEffect } from 'react'
+
+import BasketProductsContainer from '../BuyProductCart/BasketProducts/BasketProductsContainer'
+
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
@@ -41,9 +44,13 @@ const Products = (props) => {
 							</CardContent>
 						</CardActionArea>
 						<CardActions>
-							<Button size="small" variant="contained" color="primary">
-								Buy
-							</Button>
+							<BasketProductsContainer
+								id={item._id}
+								image={item.image}
+								name={item.name}
+								description={item.description}
+								price={item.price}
+							/>
 							<Button size="small" color="primary">
 								Details
 							</Button>
@@ -64,7 +71,6 @@ const Products = (props) => {
 	// eslint-disable-next-line
 	}, [])
 
-	// debugger
 	return (
 		<Container>
 			<div className={s.container}>
