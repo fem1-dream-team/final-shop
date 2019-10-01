@@ -9,7 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import { Container, Grid } from '@material-ui/core';
 import s from './category.module.css'
 import BasketProductsContainer from '../BuyProductCart/BasketProducts/BasketProductsContainer'
-//import { NavLink } from 'react-router-dom'
 
 export const Products = (props) => {
 	const [productsList, setProductsList] = useState([]);
@@ -46,21 +45,18 @@ export const Products = (props) => {
 							description={item.description}
 							price={item.price}
 						/>
-						{/*<NavLink to={`/details/${item.category}/${item._id}`}>*/}
-							<Button size="small" color="primary">
-								<p className={s.btnDetails}>Details</p>
-							</Button>
-						{/*</NavLink>*/}
+						<Button size="small" color="primary">
+							<p className={s.btnDetails}>Details</p>
+						</Button>
 					</CardActions>
 				</Card>
 			</Grid>
 		)
 	});
 
-const getProductsList = async () => {
+	const getProductsList = async () => {
 		let response;
 		if (props.category === 'search') {
-			// eslint-disable-next-line no-restricted-globals
 			const q = window.location.search.split('q=')[1] ? location.search.split('q=')[1] : '';
 			response = await fetch('/api/search?q=' + q);
 		} else {
@@ -72,8 +68,7 @@ const getProductsList = async () => {
 
 	useEffect(() => {
 		getProductsList()
-		// eslint-disable-next-line
-	}, []);
+	}, [getProductsList]);
 
 	return (
 		<Container>

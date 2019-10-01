@@ -6,7 +6,7 @@ import { OrderApplicationForm } from '../OrderApplicationForm/OrderApplicationFo
 import s from './basketProducts.module.css'
 import { Dialog } from '@material-ui/core'
 import Backdrop from '@material-ui/core/Backdrop/Backdrop'
-//import { AxiosInstance as axios } from 'axios'
+// import { AxiosInstance as axios } from 'axios'
 
 const useStyles = makeStyles(theme => ({
 	modal: {
@@ -50,23 +50,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const BasketProducts = (props) => {
-
-// let products = (props) => {
-// 		if (props.productsBasket.length === 0) {
-// 		axios.get("http://localhost:3001/api/getData/category/" + props.category)
-// 			.then(response => {
-// 				console.log(response)
-// 				props.addToCart(response.data.id)
-// 			})
-// 	}
-// }
-
 	const classes = useStyles();
 
 	const [open, setOpen] = React.useState(false);
 	const handleOpenBasket = () => {
 		setOpen(true)
-		//props.addToCart(id, price, total)
 	};
 
 	const [openCart, setOpenCart] = React.useState(false);
@@ -119,5 +107,5 @@ export const BasketProducts = (props) => {
 				</div>
 			</Fade>
 		</div>
-		)
-	}
+	)
+}

@@ -1,47 +1,44 @@
 import React, { Component } from 'react'
 import s from './OrderApplicationForm.module.css'
 
-
 export class OrderApplicationForm extends Component {
-	constructor(props) {
+	constructor (props) {
 		super(props);
 		this.state = {
 			count: 0
 		};
-
 	}
 
 	handlePlus = () => {
 		this.setState({
 			count: this.state.count + 1
 		});
-
 	}
 
 	handleMinus = () => {
-		if(this.state.count< 1){
+		if (this.state.count < 1) {
 			this.setState({
-				count:1
+				count: 1
 			});
-		}else {
+		} else {
 			this.setState({
-				count: this.state.count- 1
+				count: this.state.count - 1
 			});
 		}
 	}
-	render() {
+
+	render () {
 		const {price} = this.props.price;
 		let totalQuantity = 1;
 		let totalPrice = 0
 		totalQuantity += this.state.count;
-		totalPrice += this.state.count * {price} ;
-		console.log("Quantity:" + totalQuantity);
-		console.log("Total Price:" + totalPrice);
+		totalPrice += this.state.count * {price};
+		console.log('Quantity:' + totalQuantity);
+		console.log('Total Price:' + totalPrice);
 
 		return (
 			<div className={s.header}>
 				<h1 className={s.name}>Your order</h1>
-
 				<div className={s.line}></div>
 				<div className={s.descriptionOrder}>
 					<div className={s.imgSize}><img src={this.props.image} alt="Product img"/></div>
@@ -70,7 +67,6 @@ export class OrderApplicationForm extends Component {
 					<span className={s.headerInput}>E-mail</span>
 					<input className={s.inputStyle} type="text" name='email'
 					       placeholder='Email address for communication'/>
-
 					<p>
 						<span className={s.headerInput}>Shipping method</span><br/>
 						<input className={s.radioBtnStyle} type="radio" name="shippingMethod" value="courier"/>Delivery
@@ -94,7 +90,6 @@ export class OrderApplicationForm extends Component {
 					<textarea className={s.inputStyle} name='comment' rows='3'></textarea>
 					<div className={s.right}><span className={s.priceText}>Price:</span> {price} UAH</div>
 					<input className={s.inputStyle} type="submit" name='checkout' value='Checkout'/>
-
 				</div>
 			</div>
 		)

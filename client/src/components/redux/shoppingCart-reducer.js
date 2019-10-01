@@ -1,25 +1,21 @@
 const OPEN_BASKET_ADD_PRICE = 'OPEN_BASKET_ADD_PRICE'
 const ADD_TO_CART = 'ADD_TO_CART';
 const REMOVE_CART = 'REMOVE_CART';
-
 // import getProductsList from '../Products/Products'
 
 const initialState = {
-
 	products: [],
 	productsBasket: [],
 	productsCart: [],
 	total: 0,
-
 }
-
 const basketReducer = (state = initialState, action) => {
 	switch (action.type) {
 	case OPEN_BASKET_ADD_PRICE: {
 		return {
 			...state,
 			productsBasket: state.productsBasket.map(p => {
-				if(p.id === action.id) {
+				if (p.id === action.id) {
 					return {...p, status: true}
 				}
 			})
@@ -76,9 +72,7 @@ const basketReducer = (state = initialState, action) => {
 }
 
 export const openBasketAddPrice = (id, open, price) => { return {type: OPEN_BASKET_ADD_PRICE, id, open, price} }
-
 export const addToCart = (id, price, total) => { return {type: ADD_TO_CART, id, price, total} }
-
 export const removeCart = (id) => { return {type: REMOVE_CART, id} }
 
 export default basketReducer

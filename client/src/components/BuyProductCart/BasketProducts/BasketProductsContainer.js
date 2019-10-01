@@ -2,7 +2,7 @@ import React from 'react'
 import connect from 'react-redux/es/connect/connect'
 import { addToCart, openBasketAddPrice, removeCart } from '../../redux/shoppingCart-reducer'
 import { BasketProducts } from './BasketProducts'
-//import { Products } from '../..'
+// import { Products } from '../..'
 
 export const BasketProductsContainer = (props) => {
 	return (
