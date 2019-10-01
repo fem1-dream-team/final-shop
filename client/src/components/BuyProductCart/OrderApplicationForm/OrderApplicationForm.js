@@ -44,7 +44,6 @@ render () {
 				<div className={s.imgSize}><img src={this.props.image} alt="Product img"/></div>
 				<div className={s.nameProduct}>
 					<p>{this.props.name}</p>
-					{/* <p>{props.description}</p> */}
 				</div>
 				<div className={s.plusMinusCount}>
 					<p onClick={this.handleMinus} className={s.plusMinus}>-</p>
@@ -57,7 +56,6 @@ render () {
 				<div className={s.delete}>+</div>
 			</div>
 			<div className={s.line}></div>
-
 			<div className={s.right}><span className={s.priceText}>Price:</span> {price} UAH</div>
 			<div className={s.inputContainer}>
 				<span className={s.headerInput}>Name</span>
