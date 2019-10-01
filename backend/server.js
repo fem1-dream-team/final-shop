@@ -41,12 +41,10 @@ router.get('/getData/category/:categoryName', (req, res) => {
 		return res.json({ success: true, data: data });
 	});
 });
-
+debugger
 router.get('/search', (req, res) => {
 	const q = req.query.q;
-	// console.log(q)
-	console.log('q is ' +q)
-	Product.findOne({ description: q  }, function (err, data) {
+	Product.find({ $text: { $search: q }}, function (err, data) {
 		if (err) return res.json({ success: false, error: err });
 		return res.json({ success: true, data: data });
 	});

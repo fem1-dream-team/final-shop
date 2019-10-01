@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-// import { makeStyles } from '@material-ui/core/styles';
+import React, { useEffect } from 'react'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
@@ -54,35 +53,16 @@ const Products = (props) => {
 		})
 		: null
 
-	// const getProductsList = async () => {
-	// 	let response;
-	// 	if (props.category === 'search') {
-	// 		// eslint-disable-next-line no-restricted-globals
-	// 		const q = window.location.search.split('q=')[1] ? location.search.split('q=')[1] : '';
-	// 		response = await fetch('http://localhost:3001/api/search?q=' + q);
-	// 	} else {
-	// 		response = await fetch('http://localhost:3001/api/getData/category/' + props.category);
-	// 	}
-	// 	const responseJSON = await response.json();
-	// 	setProductsList(responseJSON.data);
-	// };
-
-	// useEffect(() => {
-	// 	getProductsList()
-	// 	// eslint-disable-next-line
-	// }, []);
-	// debugger
-	// console.log('data type ' + typeof (props.productsList))
-
 	// eslint-disable-next-line no-restricted-globals
 	const q = window.location.search.split('q=')[1] ? location.search.split('q=')[1] : ''
 	console.log('q= ' + q)
 
 	useEffect(() => {
 		(props.location.pathname === '/search')
-			? props.getSearchProducts(`${props.location.pathname}?=${q}`)
+			? props.getSearchProducts(`${props.location.pathname}?q=${q}`)
 			: props.getProductCategories(props.location.pathname)
-	}, [props, q])
+	// eslint-disable-next-line
+	}, [])
 
 	// debugger
 	return (
@@ -94,7 +74,6 @@ const Products = (props) => {
 				{props.productsList
 					? products
 					: null
-					// : <button onClick={() => { props.getProductCategories(props.location.pathname) }}> load category </button>
 				}
 			</Grid>
 		</Container>
@@ -102,10 +81,8 @@ const Products = (props) => {
 }
 
 const mapStateToProps = state => {
-	// debugger
 	return {
 		productsList: state.products.productsList,
-
 		category: state.products.categoryName
 	}
 }
