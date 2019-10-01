@@ -64,15 +64,15 @@ render () {
 				<input className={s.inputStyle} type="text" name='phone' placeholder='Your phone'/>
 				<span className={s.headerInput}>E-mail</span>
 				<input className={s.inputStyle} type="text" name='email'
-			       placeholder='Email address for communication'/>
+		       placeholder='Email address for communication'/>
 				<p>
 					<span className={s.headerInput}>Shipping method</span><br/>
 					<input className={s.radioBtnStyle} type="radio" name="shippingMethod" value="courier"/>Delivery
-				by courier<br/>
+			by courier<br/>
 					<input className={s.radioBtnStyle} type="radio" name="shippingMethod" value="taxi"/>Departure by
-				taxi<br/>
+			taxi<br/>
 					<input className={s.radioBtnStyle} type="radio" name="shippingMethod"
-				       value="pickup"/>Pickup<br/>
+			       value="pickup"/>Pickup<br/>
 				</p>
 				<span className={s.headerInput}>Delivery address</span>
 				<input className={s.inputStyle} type="text" name='address'/>
@@ -82,7 +82,7 @@ render () {
 
 				<span className={s.headerInput}>Time of delivery</span>
 				<input className={s.inputStyle} type="text" name='time' placeholder='Estimated delivery time'
-			       style={{ width: '180px' }}/>
+		       style={{ width: '180px' }}/>
 
 				<span className={s.headerInput}>Order comment</span>
 				<textarea className={s.inputStyle} name='comment' rows='3'></textarea>
