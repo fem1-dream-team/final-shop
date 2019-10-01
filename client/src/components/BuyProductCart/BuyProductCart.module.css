@@ -1,6 +1,4 @@
-.header {
-    width: 170px;
-    margin: 0 auto;
-    letter-spacing: 5px;
+.btnBuy {
+    color: mediumseagreen;
     font-weight: bold;
 }

@@ -3,19 +3,23 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const Product = require('./product');
+const passport = require('passport')
+
+const Product = require('./shemas/product');
+const userRouter = require('./routes/user');
+const dbRoute = require('./config/keys').mongoURI
+require('./config/passport')(passport)
 
 const API_PORT = 3001;
 const app = express();
 app.use(cors());
+app.use(passport.initialize())
 const router = express.Router();
 
 // this is our MongoDB database
-const dbRoute =
-	'mongodb+srv://admin:admin@cluster0-37y1n.mongodb.net/bakery_shop?retryWrites=true&w=majority';
 
 // connects our back end code with the database
-mongoose.connect(dbRoute, { useNewUrlParser: true });
+mongoose.connect(dbRoute, { useNewUrlParser: true , useUnifiedTopology: true });
 
 let db = mongoose.connection;
 
@@ -31,6 +35,7 @@ app.use(bodyParser.json());
 app.use(logger('dev'));
 
 router.get('/getData/category/:categoryName', (req, res) => {
+	console.log("categoryName back: " + req.params.categoryName)
 	Product.find({ category: req.params.categoryName}, function (err, data) {
 		if (err) return res.json({ success: false, error: err });
 		return res.json({ success: true, data: data });
@@ -39,7 +44,7 @@ router.get('/getData/category/:categoryName', (req, res) => {
 
 router.get('/search', (req, res) => {
 	const q = req.query.q;
-	Product.find({ $text: { $search: q } }, function (err, data) {
+	Product.find({ $text: { $search: q }}, function (err, data) {
 		if (err) return res.json({ success: false, error: err });
 		return res.json({ success: true, data: data });
 	});
@@ -67,9 +72,7 @@ router.delete('/deleteData', (req, res) => {
 // this method adds new data in our database
 router.post('/putData', (req, res) => {
 	let data = new Data();
-
 	const { id, message } = req.body;
-
 	if ((!id && id !== 0) || !message) {
 		return res.json({
 			success: false,
@@ -83,6 +86,9 @@ router.post('/putData', (req, res) => {
 		return res.json({ success: true });
 	});
 });
+
+// Add new user
+app.use('/api', userRouter);
 
 // append /api for our http requests
 app.use('/api', router);

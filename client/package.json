@@ -14,6 +14,7 @@
     "react-dom": "^16.9.0",
     "react-icons": "^3.7.0",
     "react-native-ionicons": "^4.6.1",
+    "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
     "react-search-input": "^0.11.3",
@@ -65,7 +66,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3001",
   "devDependencies": {
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
@@ -78,5 +78,6 @@
     "stylelint": "^10.1.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-order": "^3.1.0"
-  }
+  },
+  "proxy": "http://localhost:3001"
 }

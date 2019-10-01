@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-// import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -9,7 +8,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Container, Grid } from '@material-ui/core';
 import s from './category.module.css'
-import { NavLink } from 'react-router-dom'
+import BasketProductsContainer from '../BuyProductCart/BasketProducts/BasketProductsContainer'
+//import { NavLink } from 'react-router-dom'
 
 export const Products = (props) => {
 	const [productsList, setProductsList] = useState([]);
@@ -39,28 +39,32 @@ export const Products = (props) => {
 						</CardContent>
 					</CardActionArea>
 					<CardActions>
-						<NavLink to={`/buyProductCart/${item.category}/${item._id}`}>
+						<BasketProductsContainer
+							id={item._id}
+							image={item.image}
+							name={item.name}
+							description={item.description}
+							price={item.price}
+						/>
+						{/*<NavLink to={`/details/${item.category}/${item._id}`}>*/}
 							<Button size="small" color="primary">
-								<p className={s.btnBuy}>Buy</p>
+								<p className={s.btnDetails}>Details</p>
 							</Button>
-						</NavLink>
-						<Button size="small" color="primary">
-							<p className={s.btnDetails}>Details</p>
-						</Button>
+						{/*</NavLink>*/}
 					</CardActions>
 				</Card>
 			</Grid>
 		)
 	});
 
-	const getProductsList = async () => {
+const getProductsList = async () => {
 		let response;
 		if (props.category === 'search') {
 			// eslint-disable-next-line no-restricted-globals
 			const q = window.location.search.split('q=')[1] ? location.search.split('q=')[1] : '';
-			response = await fetch('http://localhost:3001/api/search?q=' + q);
+			response = await fetch('/api/search?q=' + q);
 		} else {
-			response = await fetch('http://localhost:3001/api/getData/category/' + props.category);
+			response = await fetch('/api/getData/category/' + props.category);
 		}
 		const responseJSON = await response.json();
 		setProductsList(responseJSON.data);
