@@ -55,19 +55,19 @@ const basketReducer = (state = initialState, action) => {
 		}
 	}
 	case REMOVE_CART: {
-		// const cartToRemove = state.addedCarts.find(cart => action.id === cart.id)
-		// const new_carts = state.addedItems.filter(cart => action.id !== cart.id)
+		//const cartToRemove = state.addedCarts.find(cart => action.id === cart.id)
+		//const new_carts = state.addedItems.filter(cart => action.id !== cart.id)
 		//
-		// // calculating the total
-		// const newTotal = state.total - (cartToRemove.price * cartToRemove.quantity)
-		// console.log(cartToRemove)
-		// return {
+		//calculating the total
+		//const newTotal = state.total - (cartToRemove.price * cartToRemove.quantity)
+		//console.log(cartToRemove)
+		//return {
 		// 	...state,
-		// 	addedItems: new_carts,
-		// 	total: newTotal
+		//addedItems: new_carts,
+		//total: newTotal
 		// }
 	}
-	default: return state
+	return state
 	}
 }
 

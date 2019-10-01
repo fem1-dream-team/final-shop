@@ -46,21 +46,21 @@ export const Products = (props) => {
 							description={item.description}
 							price={item.price}
 						/>
-						{/*<NavLink to={`/details/${item.category}/${item._id}`}>*/}
-							<Button size="small" color="primary">
-								<p className={s.btnDetails}>Details</p>
-							</Button>
-						{/*</NavLink>*/}
+{/* <NavLink to={`/details/${item.category}/${item._id}`}> */}
+						<Button size="small" color="primary">
+							<p className={s.btnDetails}>Details</p>
+						</Button>
+{/* </NavLink> */}
 					</CardActions>
 				</Card>
 			</Grid>
 		)
 	});
 
-const getProductsList = async () => {
+	const getProductsList = async () => {
 		let response;
 		if (props.category === 'search') {
-			// eslint-disable-next-line no-restricted-globals
+			//eslint-disable-next-line no-restricted-globals
 			const q = window.location.search.split('q=')[1] ? location.search.split('q=')[1] : '';
 			response = await fetch('/api/search?q=' + q);
 		} else {
@@ -72,7 +72,7 @@ const getProductsList = async () => {
 
 	useEffect(() => {
 		getProductsList()
-		// eslint-disable-next-line
+		//eslint-disable-next-line
 	}, []);
 
 	return (
