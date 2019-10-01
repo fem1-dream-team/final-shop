@@ -1,17 +1,22 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import { checkIfIsLoggedIn } from './actions/authActions'
-import 'typeface-roboto'
-import {Home, Page404, Profile} from './components'
+import {handleNavbar} from './actions/generalActions';
 
+import 'typeface-roboto'
+
+import Navbar from './components/navbar/Navbar';
+import GlobalStyle from './styles/Global';
+
+import {Home, Page404, Products, Profile} from './components'
 // import {SimpleSlider} from './components'
 import { Footer, Header } from './commons'
 import { Cart } from './components/ComponentsForNavigation/Cart'
 
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 // import Button from '@material-ui/core/Button';
-import { ContainerNavigation } from './commons/ContainerNavigation/ContainerNavigation'
 import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
 import { connect } from 'react-redux'
 import { getProductCategories } from './actions/productsActions'
@@ -22,7 +27,11 @@ const App = (props) => {
 		<BrowserRouter>
 			<div auth={props.checkIfIsLoggedIn()}>
 				<Header/>
-				<ContainerNavigation/>
+				<Navbar
+					navbarState={props.navbarState}
+					handleNavbar={props.handleNavbar}
+				/>
+				<GlobalStyle />
 				<Switch>
 					<Route exact path='/' component={Home}/>
 					<Route path='/home' render={() => <Home/>} />
@@ -51,12 +60,13 @@ const App = (props) => {
 			</div>
 		</BrowserRouter>
 	)
-}
+};
 
-const mapStateToProps = state => {
+const mapStateProps = state => {
 	return {
-
+		navbarState: state.general.navbarState,
 	}
-}
+};
 
 export default connect(mapStateToProps, {checkIfIsLoggedIn, getProductCategories})(App)
+

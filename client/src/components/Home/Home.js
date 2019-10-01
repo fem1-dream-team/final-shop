@@ -11,7 +11,6 @@ export const Home = () => {
 				<h1 className={s.text}>Our Products</h1>
 			</div>
 			<Categories/>
-
 		</div>
 	)
 };
