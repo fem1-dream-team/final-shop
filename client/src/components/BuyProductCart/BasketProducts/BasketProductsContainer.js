@@ -5,7 +5,6 @@ import { BasketProducts } from './BasketProducts'
 //import { Products } from '../..'
 
 export const BasketProductsContainer = (props) => {
-
 	return (
 		<div>
 			<BasketProducts

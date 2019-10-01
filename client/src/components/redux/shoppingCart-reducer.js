@@ -19,13 +19,12 @@ const basketReducer = (state = initialState, action) => {
 		return {
 			...state,
 			productsBasket: state.productsBasket.map(p => {
-				if(p.id===action.id) {
+				if(p.id === action.id) {
 					return {...p, status: true}
 				}
 			})
 			// productsBasket: {...state, productsBasket: [...action.products]}
 		}
-
 		// return {
 		// 	...state,
 		// 	products: state.products.map(product => {

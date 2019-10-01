@@ -6,7 +6,7 @@ import { OrderApplicationForm } from '../OrderApplicationForm/OrderApplicationFo
 import s from './basketProducts.module.css'
 import { Dialog } from '@material-ui/core'
 import Backdrop from '@material-ui/core/Backdrop/Backdrop'
-import { AxiosInstance as axios } from 'axios'
+//import { AxiosInstance as axios } from 'axios'
 
 const useStyles = makeStyles(theme => ({
 	modal: {
@@ -121,6 +121,3 @@ export const BasketProducts = (props) => {
 		</div>
 		)
 	}
-
-
-

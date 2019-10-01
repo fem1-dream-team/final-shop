@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Provider} from 'react-redux'
 // import axios from 'axios'
-import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import 'typeface-roboto'
 import {Home, Products} from './components'
 import { Footer, Header } from './commons'
@@ -9,7 +9,6 @@ import { Cart } from './components/ComponentsForNavigation/Cart'
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage';
 import { ContainerNavigation } from './commons/ContainerNavigation/ContainerNavigation'
 import store from './components/redux/redux-store'
-import { Details } from './components/Products/Details'
 
 class App extends Component {
 	componentDidMount () {
@@ -64,13 +63,10 @@ class App extends Component {
 								path='/macaroons'
 								component={props => <Products {...props} category={'macaroons'} />}
 							/>
-							 {/*<Route path='/details/:category/:_id' render={() => <Details/>}/>*/}
 							<Route path='/cart' render={() => <Cart/>}/>
 							{/* <Route  path='*' component={Page404}/> */}
 							<Route exect path='/customer' component={LoginPage}/>
-
 						</Switch>
-
 						<Footer/>
 					</div>
 				</BrowserRouter>
