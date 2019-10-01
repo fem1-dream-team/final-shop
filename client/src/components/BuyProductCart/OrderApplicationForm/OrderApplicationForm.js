@@ -79,8 +79,7 @@ render () {
 				<input className={s.inputStyle} type="date" name='date' style={{ width: '180px' }}/>
 
 				<span className={s.headerInput}>Time of delivery</span>
-				<input className={s.inputStyle} type="text" name='time' placeholder='Estimated delivery time'
-		       style={{ width: '180px' }}/>
+				<input className={s.inputStyle} type="text" name='time' placeholder='Estimated delivery time' style={{ width: '180px' }}/>
 				<span className={s.headerInput}>Order comment</span>
 				<textarea className={s.inputStyle} name='comment' rows='3'></textarea>
 				<div className={s.right}><span className={s.priceText}>Price:</span> {price} UAH</div>
