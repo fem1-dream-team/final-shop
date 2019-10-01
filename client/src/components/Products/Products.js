@@ -8,7 +8,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Container, Grid } from '@material-ui/core';
-import s from './category.module.css'
+import s from './category.module.css';
+import {Link} from 'react-router-dom';
 
 export const Products = (props) => {
 	const [productsList, setProductsList] = useState([]);
@@ -23,7 +24,7 @@ export const Products = (props) => {
 							alt="Product image not found"
 							height="140"
 							image={item.image}
-							title="Contemplative Reptile"
+							title="Product Image"
 						/>
 						<CardContent>
 							<Typography gutterBottom variant="h5" component="h2">
@@ -41,9 +42,9 @@ export const Products = (props) => {
 						<Button size="small" variant="contained" color="primary">
 							Buy
 						</Button>
-						<Button size="small" color="primary">
+						<Link size="small" color="primary">
 							Details
-						</Button>
+						</Link>
 					</CardActions>
 				</Card>
 			</Grid>

@@ -31,6 +31,7 @@ const App = (props) => {
 				<Switch>
 					<Route exact path='/' component={Home}/>
 					<Route path='/home' render={() => <Home/>}/>
+
 					<Route
 						path='/search'
 						component={props => <Products {...props} category={'search'}/>}
