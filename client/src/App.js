@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import { checkIfIsLoggedIn } from './actions/authActions'
 import 'typeface-roboto'
-import {Home, Page404, Products, Profile} from './components'
+import {Home, Page404, Profile} from './components'
+
 // import {SimpleSlider} from './components'
 import { Footer, Header } from './commons'
 import { Cart } from './components/ComponentsForNavigation/Cart'
@@ -13,6 +14,8 @@ import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 import { ContainerNavigation } from './commons/ContainerNavigation/ContainerNavigation'
 import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
 import { connect } from 'react-redux'
+import { getProductCategories } from './actions/productsActions'
+import Products from './components/Products/Products'
 
 const App = (props) => {
 	return (
@@ -29,27 +32,27 @@ const App = (props) => {
 					/>
 					<Route
 						path='/cakes'
-						component={props => <Products {...props} category={'cakes'}/>}
+						component={() => <Products />}
 					/>
 					<Route
 						path='/tarts'
-						component={props => <Products {...props} category={'tarts'}/>}
+						component={() => <Products />}
 					/>
 					<Route
 						path='/cupcakes'
-						component={props => <Products {...props} category={'cupcakes'}/>}
+						component={() => <Products />}
 					/>
 					<Route
 						path='/cookies'
-						component={props => <Products {...props} category={'cookies'}/>}
+						component={() => <Products />}
 					/>
 					<Route
 						path='/desserts'
-						component={props => <Products {...props} category={'desserts'}/>}
+						component={() => <Products />}
 					/>
 					<Route
 						path='/macaroons'
-						component={props => <Products {...props} category={'macaroons'}/>}
+						component={() => <Products />}
 					/>
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
@@ -75,4 +78,4 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, {checkIfIsLoggedIn})(App)
+export default connect(mapStateToProps, {checkIfIsLoggedIn, getProductCategories})(App)
