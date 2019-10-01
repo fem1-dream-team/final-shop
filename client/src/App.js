@@ -25,35 +25,16 @@ const App = (props) => {
 				<ContainerNavigation/>
 				<Switch>
 					<Route exact path='/' component={Home}/>
-					<Route path='/home' render={() => <Home/>}/>
-					<Route
-						path='/search'
-						component={props => <Products {...props} category={'search'}/>}
-					/>
-					<Route
-						path='/cakes'
-						component={() => <Products />}
-					/>
-					<Route
-						path='/tarts'
-						component={() => <Products />}
-					/>
-					<Route
-						path='/cupcakes'
-						component={() => <Products />}
-					/>
-					<Route
-						path='/cookies'
-						component={() => <Products />}
-					/>
-					<Route
-						path='/desserts'
-						component={() => <Products />}
-					/>
-					<Route
-						path='/macaroons'
-						component={() => <Products />}
-					/>
+					<Route path='/home' render={() => <Home/>} />
+
+					<Route path='/search' component={Products}	/>
+					<Route path='/cakes'	component={Products} />
+					<Route path='/tarts'	component={Products} />
+					<Route path='/cupcakes'	component={Products} />
+					<Route path='/cookies'	component={Products} />
+					<Route path='/desserts'	component={Products} />
+					<Route path='/macaroons'	component={Products} />
+
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
 
