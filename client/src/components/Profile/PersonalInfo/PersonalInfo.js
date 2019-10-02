@@ -12,7 +12,7 @@ const PersonalInfo = (props) => {
 				<p className={classes.item}>First Name: {props.first_name}</p>
 				<p className={classes.item}>Last Name: {props.last_name} </p>
 				<p className={classes.item}>Email: {props.email}</p>
-				<button className={classes.button} onClick={()=>{alert("Edit data")}}> Edit profile</button>
+				<button className={classes.button} onClick={() => { alert('Edit data') }}> Edit profile</button>
 			</div>
 		)
 	} else {
