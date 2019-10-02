@@ -1,15 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useSpring, animated, config } from 'react-spring'
+import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import Brand from './Brand'
 import BurgerMenu from './BurgerMenu'
 import CollapseMenu from './CollapseMenu'
-import { NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { getProductCategories } from '../../actions/productsActions'
-
-import {NavLink} from 'react-router-dom';
 
 const Navbar = (props) => {
 	const barAnimation = useSpring({
