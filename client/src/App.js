@@ -1,6 +1,6 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import { checkIfIsLoggedIn } from './actions/authActions'
 import {handleNavbar} from './actions/generalActions';
@@ -18,8 +18,6 @@ import { Cart } from './components/ComponentsForNavigation/Cart'
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 // import Button from '@material-ui/core/Button';
 // import { ContainerNavigation } from './commons/ContainerNavigation/ContainerNavigation'
-import OrderHistory from './components/Profile/OrderHistory/OrderHistory';
-import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
 import Products from './components/Products/Products'
 
 const App = (props) => {
@@ -46,11 +44,7 @@ const App = (props) => {
 
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
-
-					{/* routes for My Account Page */}
 					<Route exect path='/profile' component={Profile}/>
-					<Route exact path='/profile/personal-information/' component={PersonalInfo}/>
-					<Route exact path='/profile/my-orders' component={OrderHistory}/>
 
 					<Route path='*' component={Page404}/>
 				</Switch>

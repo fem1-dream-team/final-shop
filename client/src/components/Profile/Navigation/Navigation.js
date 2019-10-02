@@ -6,14 +6,29 @@ const Navigation = () => {
 	return (
 		<nav className={classes.navWrap}>
 			<div className={classes.item}>
-				<NavLink to='/profile/personal-information/' activeClassName={classes.active}>Personal information</NavLink>
+				<NavLink
+					to='/profile/personal-information/'
+					className={classes.itemLink}
+					activeClassName={classes.active}>
+					Personal information
+				</NavLink>
 			</div>
 			<div className={classes.item}>
-				<NavLink to='/profile/basket' activeClassName={classes.active}>Basket</NavLink>
+				<NavLink
+					to='/profile/basket'
+					className={classes.itemLink}
+					activeClassName={classes.active}>
+					Basket
+				</NavLink>
 			</div>
 
 			<div className={classes.item}>
-				<NavLink to='/profile/my-orders' activeClassName={classes.active}>Order History</NavLink>
+				<NavLink
+					to='/profile/my-orders'
+					className={classes.itemLink}
+					activeClassName={classes.active}>
+					Order History
+				</NavLink>
 			</div>
 		</nav>
 	)

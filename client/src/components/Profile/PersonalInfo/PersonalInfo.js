@@ -5,18 +5,20 @@ import {connect} from 'react-redux';
 const PersonalInfo = (props) => {
 	// debugger
 	console.log(props);
+
 	if (props.isAuth) {
 		return (
 			<div className={classes.personalWrap}>
-				<p>First Name: {props.first_name}</p>
-				<p>Last Name: {props.last_name} </p>
-				<p>Email: {props.email}</p>
+				<p className={classes.item}>First Name: {props.first_name}</p>
+				<p className={classes.item}>Last Name: {props.last_name} </p>
+				<p className={classes.item}>Email: {props.email}</p>
+				<button className={classes.button} onClick={()=>{alert("Edit data")}}> Edit profile</button>
 			</div>
 		)
 	} else {
 		return (
 			<div>
-				<p>Нет данных</p>
+				<p>No data</p>
 			</div>
 		)
 	}
