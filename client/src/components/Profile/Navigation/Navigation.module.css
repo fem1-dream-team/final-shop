@@ -1,10 +1,17 @@
 .navWrap {
     grid-area: nav;
     padding: 20px;
-    background-color: #774444;
+    border-right: 1px solid #000000;
 }
 
 .item {
     padding-left: 15px;
-    color: #282c34;
+}
+.itemLink {
+    text-decoration: none;
+    color: #000000;
+
+}
+.active {
+    font-weight: 700;
 }

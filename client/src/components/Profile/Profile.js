@@ -2,15 +2,19 @@ import React from 'react';
 import classes from './Profile.module.css';
 import Navigation from './Navigation/Navigation';
 import PersonalInfo from './PersonalInfo/PersonalInfo';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import OrderHistory from './OrderHistory/OrderHistory';
 
 export const Profile = () => {
 	return (
-		<div className={classes.profileWrapper}>
-			<Navigation/>
-			<PersonalInfo/>
-		</div>
-	);
+		<BrowserRouter>
+			<div className={classes.profileWrapper}>
+				<Navigation/>
+				<Switch>
+					<Route path='/profile/personal-information/' component={PersonalInfo}/>
+					<Route path='/profile/my-orders' component={OrderHistory}/>
+				</Switch>
+			</div>
+		</BrowserRouter>
+	)
 };
-
-/* Cтили, прописать компоенты присутствующие в кабинете, и переход по ним. аТак же защита страницы, ( не авт пользователь не может зайти.
-* Опрокинуть данные пользователя */

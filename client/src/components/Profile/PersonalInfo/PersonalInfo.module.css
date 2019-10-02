@@ -1,4 +1,12 @@
 .personalWrap {
-    background-color: #blue;
     padding: 25px;
 }
+
+.item {
+    padding-bottom: 5px;
+}
+
+.button {
+    margin: 5px;
+}
+

@@ -17,7 +17,6 @@ import { Cart } from './components/ComponentsForNavigation/Cart'
 
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 // import Button from '@material-ui/core/Button';
-import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo'
 import Products from './components/Products/Products'
 import ProductDetailed from './components/Products/ProductDetailed'
 import Footer from './commons/Footer/Footer'
@@ -49,11 +48,7 @@ const App = (props) => {
 
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
-
 					<Route exect path='/profile' component={Profile}/>
-					<Route exect path='/profile/personal-information/' component={PersonalInfo}/>
-
-					<Route exect path='/profile/basket' component={Profile}/>
 
 					<Route path='*' component={Page404}/>
 				</Switch>
