@@ -8,3 +8,7 @@
     padding-left: 15px;
     color: #282c34;
 }
+
+.active {
+    color: black;
+}
