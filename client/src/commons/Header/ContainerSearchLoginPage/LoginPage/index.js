@@ -63,6 +63,7 @@ const LoginPage = (props) => {
 			props.history.push('/profile')
 		} else {
 			props.checkIfIsLoggedIn()
+			props.showAuthForm(true)
 		}
 	}
 

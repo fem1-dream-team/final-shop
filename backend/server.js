@@ -35,6 +35,7 @@ app.use(bodyParser.json());
 app.use(logger('dev'));
 
 router.get('/getData/category/:categoryName', (req, res) => {
+	console.log("categoryName back: " + req.params.categoryName)
 	Product.find({ category: req.params.categoryName}, function (err, data) {
 		if (err) return res.json({ success: false, error: err });
 		return res.json({ success: true, data: data });
@@ -43,7 +44,7 @@ router.get('/getData/category/:categoryName', (req, res) => {
 
 router.get('/search', (req, res) => {
 	const q = req.query.q;
-	Product.find({ $text: { $search: q } }, function (err, data) {
+	Product.find({ $text: { $search: q }}, function (err, data) {
 		if (err) return res.json({ success: false, error: err });
 		return res.json({ success: true, data: data });
 	});
@@ -71,9 +72,7 @@ router.delete('/deleteData', (req, res) => {
 // this method adds new data in our database
 router.post('/putData', (req, res) => {
 	let data = new Data();
-
 	const { id, message } = req.body;
-
 	if ((!id && id !== 0) || !message) {
 		return res.json({
 			success: false,
