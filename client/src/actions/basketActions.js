@@ -1,24 +1,41 @@
-import { ADD_TO_CART, OPEN_BASKET_ADD_PRICE, REMOVE_CART } from './types'
+import { ADD_TO_CART, ADD_PRICE_TO_BASKET, REMOVE_CART, BUY_BTN_HANDLER_SAGA } from './types'
 
-export const openBasketAddPrice = (id, open, price) => {
+export const addPriceToBasket = (id, price) => {
 	return {
-		type: OPEN_BASKET_ADD_PRICE,
-		id,
-		open,
-		price
+		type: ADD_PRICE_TO_BASKET,
+		payload: {
+			id,
+			price
+		}
 	}
 }
 export const addToCart = (id, price, total) => {
 	return {
 		type: ADD_TO_CART,
-		id,
-		price,
-		total
+		payload: {
+			id,
+			price,
+			total
+		}
 	}
 }
 export const removeCart = (id) => {
 	return {
 		type: REMOVE_CART,
-		id
+		payload: {
+			id
+		}
+	}
+}
+
+export const buyBtnHandler = (productID, price) => {
+	return {
+		type: BUY_BTN_HANDLER_SAGA,
+		payload: {
+			productId: productID,
+			price: price,
+			// totalPrice: totalPrice,
+			// totalAmount: totalAmount
+		}
 	}
 }

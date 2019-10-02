@@ -6,7 +6,9 @@ import { OrderApplicationForm } from '../OrderApplicationForm/OrderApplicationFo
 import s from './basketProducts.module.css'
 import { Dialog } from '@material-ui/core'
 import Backdrop from '@material-ui/core/Backdrop/Backdrop'
-// import { AxiosInstance as axios } from 'axios'
+import { buyBtnHandler } from '../../../actions/basketActions'
+import connect from 'react-redux/es/connect/connect'
+import isEmpty from 'is-empty'
 
 const useStyles = makeStyles(theme => ({
 	modal: {
@@ -52,10 +54,10 @@ const useStyles = makeStyles(theme => ({
 export const BasketProducts = (props) => {
 	const classes = useStyles();
 
-	const [open, setOpen] = React.useState(false);
-	const handleOpenBasket = () => {
-		setOpen(true)
-	};
+	// const [open, setOpen] = React.useState(false);
+	// const handleOpenBasket = () => {
+	// 	setOpen(true)
+	// };
 
 	const [openCart, setOpenCart] = React.useState(false);
 
@@ -65,17 +67,22 @@ export const BasketProducts = (props) => {
 	const handleCloseCart = () => {
 		setOpenCart(false);
 	};
+
+	// alert(`Is arr empty? ${isEmpty([])}`)
+	console.log(`Is props.productsBasket empty?  ${isEmpty(props.productsBasket)}`)
+	console.log('props.productsBasket: ' + props.productsBasket)
+
 	return (
 		<div>
-			<Button size="small" color="primary" onClick={handleOpenBasket}>
-				<p>Buy</p>
-			</Button>
-			<Fade in={open}>
+			{/* <Button size="small" color="primary" onClick={()=>{props.buyBtnHandler()}}> */}
+			{/*	<p>Buy</p> */}
+			{/* </Button> */}
+			<Fade in={!isEmpty(props.productsBasket)}>
 				<div onScroll='paper'>
-					<Button variant="contained" className={classes.button} onClick={handleOpenCart} >
+					<Button variant="contained" className={classes.button} onClick={handleOpenCart}>
 						<img className={s.imgBasket} src='img/basket/shopping-cart-728408_1280.png' alt='basket'/>
 					</Button>
-					<div className={classes.div}>{props.price} UAH</div>
+					<div className={classes.div}>{props.totalAmount}</div>
 
 					<Dialog
 						aria-labelledby="transition-modal-title"
@@ -91,7 +98,7 @@ export const BasketProducts = (props) => {
 						}}
 					>
 						<div style={{overflowY: 'scroll'}}>
-							<Fade in={open}>
+							<Fade in={openCart}>
 								<div className={classes.paper} >
 									<OrderApplicationForm
 										id={props.id}
@@ -109,3 +116,20 @@ export const BasketProducts = (props) => {
 		</div>
 	)
 }
+
+const mapStateToProps = (state) => {
+	return {
+		productsBasket: state.basket.productsBasket,
+		totalAmount: state.basket.totalAmount,
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		buyBtnHandler: (productID) => { dispatch(buyBtnHandler(productID)) },
+		// addPriceToBasket: (id, price) => { dispatch(addPriceToBasket(id, price)) },
+		// addToCart: (id, quantity) => { dispatch(addToCart(id, quantity)) },
+		// removeCart: (id) => { dispatch(removeCart(id)) },
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(BasketProducts)

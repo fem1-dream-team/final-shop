@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import BasketProductsContainer from '../BuyProductCart/BasketProducts/BasketProductsContainer'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
@@ -12,9 +11,22 @@ import s from './category.module.css'
 import { connect } from 'react-redux'
 import { getProductCategories, getSearchProducts } from '../../actions/productsActions'
 import { withRouter } from 'react-router-dom'
+import BasketProducts from '../BuyProductCart/BasketProducts/BasketProducts'
+import { buyBtnHandler } from '../../actions/basketActions'
 
 const Products = (props) => {
+
 	const productsList = props.productsList
+
+	const priceArr = props.productsBasket.map((item) => { return (item.price) })
+	const reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
+	const totalPrice = priceArr.reduce(reducer, 0)
+	const totalAmount = priceArr.length
+
+	const onBuyClick = (itemId, price) => {
+		alert({totalAmount, totalPrice})
+		props.buyBtnHandler(itemId, price)
+	}
 
 	const products = productsList
 		? productsList.map((item) => {
@@ -42,13 +54,16 @@ const Products = (props) => {
 							</CardContent>
 						</CardActionArea>
 						<CardActions>
-							<BasketProductsContainer
-								id={item._id}
-								image={item.image}
-								name={item.name}
-								description={item.description}
-								price={item.price}
-							/>
+							<Button size="small" color="primary" onClick={() => { onBuyClick(item._id, item.price)}}>
+								<p>Buy</p>
+							</Button>
+							{/* <BasketProducts */}
+							{/*	id={item._id} */}
+							{/*	image={item.image} */}
+							{/*	name={item.name} */}
+							{/*	description={item.description} */}
+							{/*	price={item.price} */}
+							{/* /> */}
 							<Button size="small" color="primary">
 								Details
 							</Button>
@@ -75,6 +90,7 @@ const Products = (props) => {
 				<h1 className={s.text}>{props.category}</h1>
 			</div>
 			<Grid container component="div" direction="row" justify='flex-start' spacing={4}>
+				<BasketProducts/>
 				{props.productsList
 					? products
 					: null
@@ -87,8 +103,9 @@ const Products = (props) => {
 const mapStateToProps = state => {
 	return {
 		productsList: state.products.productsList,
-		category: state.products.categoryName
+		category: state.products.categoryName,
+		productsBasket: state.basket.productsBasket
 	}
 }
 
-export default connect(mapStateToProps, { getProductCategories, getSearchProducts })(withRouter(Products))
+export default connect(mapStateToProps, { getProductCategories, buyBtnHandler, getSearchProducts })(withRouter(Products))
