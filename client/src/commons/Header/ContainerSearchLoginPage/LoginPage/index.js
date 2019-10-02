@@ -109,7 +109,8 @@ const mapStateToProps = state => {
 		open: state.auth.open,
 		needsRegistration: state.auth.needsRegistration,
 		isAuth: state.auth.isAuth,
-		first_name: state.auth.customer.first_name
+		first_name: state.auth.customer.first_name,
+		email: state.auth.customer.email,
 	}
 }
 

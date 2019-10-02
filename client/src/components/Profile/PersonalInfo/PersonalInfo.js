@@ -1,26 +1,35 @@
 import React from 'react';
 import classes from './PersonalInfo.module.css';
+import {connect} from 'react-redux';
 
 const PersonalInfo = (props) => {
+	// debugger
 	console.log(props);
 	if (props.isAuth) {
 		return (
 			<div className={classes.personalWrap}>
-				<p>Foto</p>
-				<div>
-					<p>First Name: {props.first_name}</p>
-					<p>Last Name: {props.last_name}</p>
-					<p>Email:</p>
-					<p>Auth: {props.history}</p>
-				</div>
+				<p>First Name: {props.first_name}</p>
+				<p>Last Name: {props.last_name} </p>
+				<p>Email: {props.email}</p>
 			</div>
 		)
 	} else {
 		return (
-			<div className={classes.personalWrap}>
-				<p>Данные из props  не приходят.</p>
-			</div>)
+			<div>
+				<p>Нет данных</p>
+			</div>
+		)
 	}
 }
 
-export default PersonalInfo;
+const mapStateToProps = state => {
+	return {
+		isAuth: state.auth.isAuth,
+		first_name: state.auth.customer.first_name,
+		last_name: state.auth.customer.last_name,
+		email: state.auth.customer.email,
+		id: state.auth.customer.id
+	}
+}
+
+export default connect(mapStateToProps)(PersonalInfo);

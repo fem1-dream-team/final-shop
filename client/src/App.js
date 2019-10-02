@@ -11,18 +11,14 @@ import {Home, Page404, Profile} from './components'
 import Navbar from './components/navbar/Navbar';
 import GlobalStyle from './styles/Global';
 
-import {Home, Page404, Profile} from './components'
 // import {SimpleSlider} from './components'
 import { Footer, Header } from './commons'
 import { Cart } from './components/ComponentsForNavigation/Cart'
 
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 // import Button from '@material-ui/core/Button';
-import { ContainerNavigation } from './commons/ContainerNavigation/ContainerNavigation'
-import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
+// import { ContainerNavigation } from './commons/ContainerNavigation/ContainerNavigation'
 import OrderHistory from './components/Profile/OrderHistory/OrderHistory';
-/*
-import Profile from './components' */
 import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
 import Products from './components/Products/Products'
 
@@ -50,7 +46,6 @@ const App = (props) => {
 
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
-
 
 					{/* routes for My Account Page */}
 					<Route exect path='/profile' component={Profile}/>
