@@ -12,7 +12,6 @@ import { connect } from 'react-redux'
 import { getProductCategories, getSearchProducts } from '../../actions/productsActions'
 import { withRouter } from 'react-router-dom'
 
-// debugger
 const Products = (props) => {
 	// eslint-disable-next-line no-restricted-globals
 	const q = window.location.search.split('q=')[1] ? location.search.split('q=')[1] : ''
@@ -56,14 +55,14 @@ const Products = (props) => {
 											<Typography gutterBottom variant="h5" component="h2">
 												{item.name}
 											</Typography>
-											<Typography variant="body2" color="textSecondary" component="p">
-												{item.description}
-											</Typography>
-											<Typography gutterBottom variant="h6" component="h2">
-												{item.price} UAH
+											<Typography className={s.description} variant="body2" color="textSecondary" component="div">
+												<p>{item.description}</p>
 											</Typography>
 										</CardContent>
 									</CardActionArea>
+									<Typography className={s.price} variant="h6" component="h2">
+										{item.price} UAH
+									</Typography>
 									<CardActions>
 										<Button size="small" variant="contained" color="primary">
 											Buy
