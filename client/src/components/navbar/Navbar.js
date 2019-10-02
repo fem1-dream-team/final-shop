@@ -1,10 +1,13 @@
 import React from 'react'
-import styled from 'styled-components';
-import { useSpring, animated, config } from 'react-spring';
+import styled from 'styled-components'
+import { useSpring, animated, config } from 'react-spring'
 
-import Brand from './Brand';
-import BurgerMenu from './BurgerMenu';
-import CollapseMenu from './CollapseMenu';
+import Brand from './Brand'
+import BurgerMenu from './BurgerMenu'
+import CollapseMenu from './CollapseMenu'
+import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { getProductCategories } from '../../actions/productsActions'
 
 import {NavLink} from 'react-router-dom';
 
@@ -12,14 +15,14 @@ const Navbar = (props) => {
 	const barAnimation = useSpring({
 		from: { transform: 'translate3d(0, -10rem, 0)' },
 		transform: 'translate3d(0, 0, 0)',
-	});
+	})
 
 	const linkAnimation = useSpring({
 		from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
 		to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
 		delay: 800,
 		config: config.wobbly,
-	});
+	})
 
 	return (
 		<div>
@@ -27,33 +30,31 @@ const Navbar = (props) => {
 			<NavBar style={barAnimation}>
 
 				<FlexContainer>
-					<Brand />
+					<Brand/>
 					<NavLinks style={linkAnimation}>
-						<NavLink to="/cakes">CAKES</NavLink>
-						<NavLink to="/tarts">TARTS</NavLink>
-						<NavLink to="/cupcakes">CUPCAKES</NavLink>
-						<NavLink to="/cookies">COOKIES</NavLink>
-						<NavLink to="/desserts">DESSERTS</NavLink>
-						<NavLink to="/macaroons">MACAROONS</NavLink>
-						<NavLink to="/cart">CART</NavLink>
+						<NavLink to="/cakes" onClick={() => { props.getProductCategories('/cakes') }}>CAKES</NavLink>
+						<NavLink to="/tarts" onClick={() => { props.getProductCategories('/tarts') }}>TARTS</NavLink>
+						<NavLink to="/cupcakes" onClick={() => { props.getProductCategories('/cupcakes') }}>CUPCAKES</NavLink>
+						<NavLink to="/cookies" onClick={() => { props.getProductCategories('/cookies') }}>COOKIES</NavLink>
+						<NavLink to="/desserts" onClick={() => { props.getProductCategories('/desserts') }}>DESSERTS</NavLink>
+						<NavLink to="/macaroons" onClick={() => { props.getProductCategories('/macaroons') }}>MACAROONS</NavLink>
+						<NavLink to="/cart" >CART</NavLink>
 					</NavLinks>
 					<BurgerWrapper>
-						<BurgerMenu
-							navbarState={props.navbarState}
-							handleNavbar={props.handleNavbar}
-						/>
+						<BurgerMenu/>
 					</BurgerWrapper>
 				</FlexContainer>
 			</NavBar>
-			<CollapseMenu
-				navbarState={props.navbarState}
-				handleNavbar={props.handleNavbar}
-			/>
+			<CollapseMenu/>
 		</div>
 	)
-};
+}
 
-export default Navbar
+const mapStateToProps = () => {
+	return {}
+}
+
+export default connect(mapStateToProps, {getProductCategories })(Navbar)
 
 const NavBar = styled(animated.nav)`
 	position: relative;
@@ -63,7 +64,7 @@ const NavBar = styled(animated.nav)`
 	width: 100%;
 	font-size: 1.4rem;
 	background: #2d3436;
-`;
+`
 
 const FlexContainer = styled.div`
 	display: flex;;
@@ -72,7 +73,7 @@ const FlexContainer = styled.div`
 	height: 5rem;
 	margin: auto;
 	padding: 0 2rem;
-`;
+`
 
 const NavLinks = styled(animated.ul)`
 justify-self: end;
@@ -98,7 +99,7 @@ list-style-type: none;
 		display: none;
 	}
 }
-`;
+`
 
 const BurgerWrapper = styled.div`
 	margin: auto 0;  
@@ -106,4 +107,4 @@ const BurgerWrapper = styled.div`
 	@media (min-width: 769px) {
 		display: none;
 	}
-`;
+`
