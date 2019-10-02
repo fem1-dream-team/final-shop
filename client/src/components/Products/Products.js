@@ -12,68 +12,69 @@ import { connect } from 'react-redux'
 import { getProductCategories, getSearchProducts } from '../../actions/productsActions'
 import { withRouter } from 'react-router-dom'
 
+// debugger
 const Products = (props) => {
-	const productsList = props.productsList
-
-	const products = productsList
-		? productsList.map((item) => {
-			return (
-				<Grid item component="div" sm={3} key={item._id}>
-					<Card className="div">
-						<CardActionArea>
-							<CardMedia
-								component="img"
-								alt="Product image not found"
-								height="140"
-								image={item.image}
-								title="Contemplative Reptile"
-							/>
-							<CardContent>
-								<Typography gutterBottom variant="h5" component="h2">
-									{item.name}
-								</Typography>
-								<Typography variant="body2" color="textSecondary" component="p">
-									{item.description}
-								</Typography>
-								<Typography gutterBottom variant="h6" component="h2">
-									{item.price} UAH
-								</Typography>
-							</CardContent>
-						</CardActionArea>
-						<CardActions>
-							<Button size="small" variant="contained" color="primary">
-								Buy
-							</Button>
-							<Button size="small" color="primary">
-								Details
-							</Button>
-						</CardActions>
-					</Card>
-				</Grid>)
-		})
-		: null
-
 	// eslint-disable-next-line no-restricted-globals
 	const q = window.location.search.split('q=')[1] ? location.search.split('q=')[1] : ''
-	console.log('q= ' + q)
 
 	useEffect(() => {
-		(props.location.pathname === '/search')
+		props.location.pathname === '/search'
 			? props.getSearchProducts(`${props.location.pathname}?q=${q}`)
 			: props.getProductCategories(props.location.pathname)
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, [])
 
 	// debugger
 	return (
 		<Container>
 			<div className={s.container}>
-				<h1 className={s.text}>{props.category}</h1>
+				<h1 className={s.text}> {
+					props.productsList
+						? props.location.pathname.slice(1)
+						: 'Loading...'
+				}
+				</h1>
 			</div>
 			<Grid container component="div" direction="row" justify='flex-start' spacing={4}>
-				{props.productsList
-					? products
-					: null
+
+				{!props.productsList
+					? null
+					: props.productsList.map((item) => {
+						const detailedPath = item._id
+						return (
+							<Grid item component="div" sm={3} key={item._id}>
+								<Card className="div">
+									<CardActionArea onClick={() => { props.history.push(`${detailedPath}`) }}>
+										<CardMedia
+											component="img"
+											alt="Product image not found"
+											height="140"
+											image={item.image}
+											title="Contemplative Reptile"
+										/>
+										<CardContent>
+											<Typography gutterBottom variant="h5" component="h2">
+												{item.name}
+											</Typography>
+											<Typography variant="body2" color="textSecondary" component="p">
+												{item.description}
+											</Typography>
+											<Typography gutterBottom variant="h6" component="h2">
+												{item.price} UAH
+											</Typography>
+										</CardContent>
+									</CardActionArea>
+									<CardActions>
+										<Button size="small" variant="contained" color="primary">
+											Buy
+										</Button>
+										<Button onClick={() => { props.history.push(`${detailedPath}`) }} size="small" color="primary">
+											Details
+										</Button>
+									</CardActions>
+								</Card>
+							</Grid>)
+					})
 				}
 			</Grid>
 		</Container>
@@ -83,8 +84,7 @@ const Products = (props) => {
 const mapStateToProps = state => {
 	return {
 		productsList: state.products.productsList,
-		category: state.products.categoryName
 	}
 }
 
-export default connect(mapStateToProps, { getProductCategories, getSearchProducts })(withRouter(Products))
+export default connect(mapStateToProps, { getSearchProducts, getProductCategories })(withRouter(Products))

@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { connect } from 'react-redux'
+import { handleNavbar } from '../../actions/generalActions'
+// debugger
 const Burgermenu = (props) => {
 	const showMenu = () => {
 		props.handleNavbar(!props.navbarState)
@@ -17,7 +19,12 @@ const Burgermenu = (props) => {
 	);
 };
 
-export default Burgermenu;
+const mapStateToProps = state => {
+	return {
+		navbarState: state.general.navbar
+	}
+}
+export default connect(mapStateToProps, {handleNavbar})(Burgermenu);
 
 const Wrapper = styled.div`
 	position: absolute;
