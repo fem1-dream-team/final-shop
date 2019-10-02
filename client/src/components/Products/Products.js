@@ -16,7 +16,6 @@ import { withRouter } from 'react-router-dom'
 const Products = (props) => {
 	// eslint-disable-next-line no-restricted-globals
 	const q = window.location.search.split('q=')[1] ? location.search.split('q=')[1] : ''
-	console.log('q= ' + q)
 
 	useEffect(() => {
 		props.location.pathname === '/search'
@@ -29,18 +28,23 @@ const Products = (props) => {
 	return (
 		<Container>
 			<div className={s.container}>
-				<h1 className={s.text}>{props.category}</h1>
+				<h1 className={s.text}> {
+					props.productsList
+						? props.location.pathname.slice(1)
+						: 'Loading...'
+				}
+				</h1>
 			</div>
 			<Grid container component="div" direction="row" justify='flex-start' spacing={4}>
 
 				{!props.productsList
-					? <Button onClick={() => { props.history.push('/') } }> Oops, can't find it, try on the main page </Button>
+					? null
 					: props.productsList.map((item) => {
 						const detailedPath = item._id
 						return (
 							<Grid item component="div" sm={3} key={item._id}>
 								<Card className="div">
-									<CardActionArea>
+									<CardActionArea onClick={() => { props.history.push(`${detailedPath}`) }}>
 										<CardMedia
 											component="img"
 											alt="Product image not found"
@@ -72,7 +76,6 @@ const Products = (props) => {
 							</Grid>)
 					})
 				}
-
 			</Grid>
 		</Container>
 	)

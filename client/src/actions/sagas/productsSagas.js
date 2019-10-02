@@ -7,7 +7,7 @@ import {
 	GO_FROM_MENU_SAGA,
 	GET_DETAILED_PRODUCT_SAGA
 } from '../types'
-import { handleNavbar, isLoading } from '../generalActions'
+import { handleNavbar } from '../generalActions'
 import { getProductCategories, setDetailedProduct } from '../productsActions'
 
 export function * watchProductsSaga () {
@@ -18,11 +18,8 @@ export function * watchProductsSaga () {
 }
 
 function * getProdCategorySaga (action) {
-	console.log('ama in getProdCategorySaga')
-	yield put(isLoading(true))
 	try {
 		const categoryName = action.payload
-		console.log(categoryName)
 		const response = yield call(() => axios.get(`http://localhost:3001/api/getData/category${categoryName}`))
 		const data = response.data.data
 		yield put({
@@ -36,10 +33,7 @@ function * getProdCategorySaga (action) {
 	}
 }
 
-// debugger
 function * getProdSearchSaga (action) {
-	console.log('ama in getProdSearchSaga')
-
 	try {
 		const response = yield call(() => axios.get(`http://localhost:3001/api${action.payload}`))
 		const data = response.data.data
@@ -56,13 +50,9 @@ function * getProdSearchSaga (action) {
 }
 
 function * getDetailedProductSaga (action) {
-	console.log('im in getDetailedProductSaga')
 	try {
 		const response = yield call(() => axios.get(`http://localhost:3001/api/getData/${action.payload}`))
-		console.log(action.payload)
-
 		const data = response.data.data
-		console.log('response: ' + data)
 		yield put(setDetailedProduct(data))
 	} catch (err) {
 		console.log('detaildproductERR: ' + err)

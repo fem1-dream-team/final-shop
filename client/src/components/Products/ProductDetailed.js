@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
@@ -15,25 +15,34 @@ const ProductDetailed = (props) => {
 	const productToShow = props.productsList ? props.productsList.find((el) => { return el._id === productId })
 		: props.detailedProduct
 
-	console.log('detailedProduct: ' + props.detailedProduct)
-
-	console.log('productToShow: ' + productToShow)
 	function onBtnCl () {
 		props.getDetailedProduct(productId)
 	}
+
+	useEffect(() => {
+		if (!props.productsList) {
+			props.getDetailedProduct(productId)
+		}
+		// eslint-disable-next-line
+	}, [])
+
 	return (
 		<div>
-			{
-				!productToShow ? <Button onClick={onBtnCl}> show me </Button>
-					:	<Container>
+			{props.isLoading ? <div> Wait, i'm working on it...</div>
+				: !productToShow ? <Button onClick={onBtnCl}> show me </Button>
+					: <Container>
 						<div className={s.container}>
-							<h1 className={s.text}>{productToShow.category}</h1>
+							<h1 className={s.text}>{
+								productToShow ? productToShow.category : 'Loading...'
+							}
+							</h1>
 						</div>
 						< Grid container component="div" direction="row" justify="space-evenly" alignItems="flex-start" spacing={5}>
 
 							<Grid item>
 								<CardMedia
 									component="img"
+									height="300"
 									className={s.productimg}
 									src={productToShow.image}
 									alt="not found"
@@ -71,6 +80,7 @@ const mapStateToProps = state => {
 	return {
 		productsList: state.products.productsList,
 		detailedProduct: state.products.detailedProduct,
+		isLoading: state.general.isLoading
 	}
 }
 

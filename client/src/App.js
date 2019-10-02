@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -23,9 +23,13 @@ import ProductDetailed from './components/Products/ProductDetailed'
 import Footer from './commons/Footer/Footer'
 
 const App = (props) => {
+	useEffect(() => {
+		props.checkIfIsLoggedIn()
+		// eslint-disable-next-line
+	}, [])
 	return (
 		<BrowserRouter>
-			<div auth={props.checkIfIsLoggedIn()}>
+			<div>
 				<Header/>
 				<Navbar/>
 				<GlobalStyle/>

@@ -1,8 +1,21 @@
+const express = require('express');
+const router = express.Router();
 const Product = require('../shemas/product');
 
 router.get('/getData/category/:categoryName', (req, res) => {
 	console.log("categoryName back: " + req.params.categoryName)
 	Product.find({ category: req.params.categoryName}, function (err, data) {
+		if (err) return res.json({ success: false, error: err });
+		return res.json({ success: true, data: data });
+	});
+});
+
+router.get('/getData/:productId', (req, res) => {
+	// console.log(req)
+	const productId = req.params.productId;
+	console.log('q is ' + productId)
+	Product.findOne({ _id: productId }, function (err, data) {
+		console.log('res.data: '+ res.data)
 		if (err) return res.json({ success: false, error: err });
 		return res.json({ success: true, data: data });
 	});
@@ -54,3 +67,5 @@ router.post('/putData', (req, res) => {
 		return res.json({ success: true });
 	});
 });
+
+module.exports = router
