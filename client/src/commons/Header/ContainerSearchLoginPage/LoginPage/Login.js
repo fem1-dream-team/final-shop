@@ -3,7 +3,6 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
-import isEmpty from 'is-empty'
 import { loginUserAction } from '../../../../actions/authActions'
 
 const useStyles = makeStyles(theme => ({
@@ -51,12 +50,10 @@ const Login = (props) => {
 			password: state.password
 		}
 
-		console.log(userToLogin)
 		props.loginUserAction(userToLogin)
 	}
 
 	const errors = props.errors
-	isEmpty(errors) ? console.log('empty') : console.warn(errors)
 
 	const loginFields = [
 		{

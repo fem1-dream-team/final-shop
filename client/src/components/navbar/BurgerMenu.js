@@ -25,7 +25,9 @@ const Wrapper = styled.div`
 	right: 10px;
 	display: block;
 	padding-top: .7rem;
+	font-size: 62.5%;
 	cursor: pointer;
+
 
 	& span {
 		position: relative;

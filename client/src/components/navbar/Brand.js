@@ -21,5 +21,6 @@ export default Brand
 const Image = styled.img`
 	height: 85%;
 	margin: auto 0;
+	font-size: 62.5%;
 	cursor: pointer;
 `;

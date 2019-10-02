@@ -6,6 +6,8 @@ import Brand from './Brand';
 import BurgerMenu from './BurgerMenu';
 import CollapseMenu from './CollapseMenu';
 
+import {NavLink} from 'react-router-dom';
+
 const Navbar = (props) => {
 	const barAnimation = useSpring({
 		from: { transform: 'translate3d(0, -10rem, 0)' },
@@ -27,13 +29,13 @@ const Navbar = (props) => {
 				<FlexContainer>
 					<Brand />
 					<NavLinks style={linkAnimation}>
-						<a href="/cakes">CAKES</a>
-						<a href="/tarts">TARTS</a>
-						<a href="/cupcakes">CUPCAKES</a>
-						<a href="/cookies">COOKIES</a>
-						<a href="/desserts">DESSERTS</a>
-						<a href="/macaroons">MACAROONS</a>
-						<a href="/cart">CART</a>
+						<NavLink to="/cakes">CAKES</NavLink>
+						<NavLink to="/tarts">TARTS</NavLink>
+						<NavLink to="/cupcakes">CUPCAKES</NavLink>
+						<NavLink to="/cookies">COOKIES</NavLink>
+						<NavLink to="/desserts">DESSERTS</NavLink>
+						<NavLink to="/macaroons">MACAROONS</NavLink>
+						<NavLink to="/cart">CART</NavLink>
 					</NavLinks>
 					<BurgerWrapper>
 						<BurgerMenu

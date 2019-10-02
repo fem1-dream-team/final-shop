@@ -3,11 +3,14 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { checkIfIsLoggedIn } from './actions/authActions'
+import {handleNavbar} from './actions/generalActions';
+
 import 'typeface-roboto'
+
 import Navbar from './components/navbar/Navbar';
 import GlobalStyle from './styles/Global';
 
-import {Home, Page404, Products, Profile} from './components'
+import {Home, Page404, Profile} from './components'
 // import {SimpleSlider} from './components'
 import { Footer, Header } from './commons'
 import { Cart } from './components/ComponentsForNavigation/Cart'
@@ -15,13 +18,12 @@ import { Cart } from './components/ComponentsForNavigation/Cart'
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 // import Button from '@material-ui/core/Button';
 import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
-import {handleNavbar} from './actions/generalActions';
+import Products from './components/Products/Products'
 
 const App = (props) => {
-	checkIfIsLoggedIn()
 	return (
 		<BrowserRouter>
-			<div>
+			<div auth={props.checkIfIsLoggedIn()}>
 				<Header/>
 				<Navbar
 					navbarState={props.navbarState}
@@ -30,36 +32,16 @@ const App = (props) => {
 				<GlobalStyle />
 				<Switch>
 					<Route exact path='/' component={Home}/>
-					<Route path='/home' render={() => <Home/>}/>
+					<Route path='/home' render={() => <Home/>} />
 
-					<Route
-						path='/search'
-						component={props => <Products {...props} category={'search'}/>}
-					/>
-					<Route
-						path='/cakes'
-						component={props => <Products {...props} category={'cakes'}/>}
-					/>
-					<Route
-						path='/tarts'
-						component={props => <Products {...props} category={'tarts'}/>}
-					/>
-					<Route
-						path='/cupcakes'
-						component={props => <Products {...props} category={'cupcakes'}/>}
-					/>
-					<Route
-						path='/cookies'
-						component={props => <Products {...props} category={'cookies'}/>}
-					/>
-					<Route
-						path='/desserts'
-						component={props => <Products {...props} category={'desserts'}/>}
-					/>
-					<Route
-						path='/macaroons'
-						component={props => <Products {...props} category={'macaroons'}/>}
-					/>
+					<Route path='/search' component={Products}	/>
+					<Route path='/cakes'	component={Products} />
+					<Route path='/tarts'	component={Products} />
+					<Route path='/cupcakes'	component={Products} />
+					<Route path='/cookies'	component={Products} />
+					<Route path='/desserts'	component={Products} />
+					<Route path='/macaroons'	component={Products} />
+
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
 
@@ -78,10 +60,10 @@ const App = (props) => {
 	)
 };
 
-const mapStateProps = state => {
+const mapStateToProps = state => {
 	return {
 		navbarState: state.general.navbarState,
 	}
 };
 
-export default connect(mapStateProps, {handleNavbar})(App)
+export default connect(mapStateToProps, {checkIfIsLoggedIn, handleNavbar})(App)

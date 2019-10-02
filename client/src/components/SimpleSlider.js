@@ -58,21 +58,19 @@ const EventName = styled.div`
 position: absolute;
 bottom: 15%;
 left: 50%;
-height: 60px;   
+height: 50px;
 background: linear-gradient(rgba(0, 0, 0, .3),rgba(0, 0, 0, .3));
-border: 2px solid white;
+border: 2px solid antiquewhite;
 transform: translate(-50%, -50%);
 `;
 
 const EventNameWrap = styled.div`
-height: 20px;
-margin: 6px;
-padding: 21px 64px 0px 64px;
+padding: 0 60px 0px 60px;
 color: antiquewhite;
 font-size: 10px;
 text-align: center;
 text-transform: uppercase;
-border: 2px solid white;
+vertical-align: center;
 `;
 
 const SliderImg1 = styled.div`
