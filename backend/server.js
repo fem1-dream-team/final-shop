@@ -41,10 +41,21 @@ router.get('/getData/category/:categoryName', (req, res) => {
 		return res.json({ success: true, data: data });
 	});
 });
-debugger
+
 router.get('/search', (req, res) => {
 	const q = req.query.q;
 	Product.find({ $text: { $search: q }}, function (err, data) {
+		if (err) return res.json({ success: false, error: err });
+		return res.json({ success: true, data: data });
+	});
+});
+
+router.get('/getData/:productId', (req, res) => {
+	// console.log(req)
+	const productId = req.params.productId;
+	console.log('q is ' + productId)
+	Product.findOne({ _id: productId }, function (err, data) {
+		console.log('res.data: '+ res.data)
 		if (err) return res.json({ success: false, error: err });
 		return res.json({ success: true, data: data });
 	});
@@ -72,9 +83,7 @@ router.delete('/deleteData', (req, res) => {
 // this method adds new data in our database
 router.post('/putData', (req, res) => {
 	let data = new Data();
-
 	const { id, message } = req.body;
-
 	if ((!id && id !== 0) || !message) {
 		return res.json({
 			success: false,

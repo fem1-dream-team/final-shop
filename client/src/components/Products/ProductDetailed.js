@@ -1,90 +1,77 @@
-import React, { useEffect } from 'react'
-import Card from '@material-ui/core/Card'
-import CardActionArea from '@material-ui/core/CardActionArea'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
-import { Container, Grid } from '@material-ui/core'
-import s from './category.module.css'
+import React from 'react'
 import { connect } from 'react-redux'
-import { getProductCategories, getSearchProducts } from '../../actions/productsActions'
 import { withRouter } from 'react-router-dom'
 
-	// debugger
-const ProductDetailed = (props) => {
-	// const productsList = props.kuku
-	const id = props.history.location.pathname
+import { Container, Grid, Button, Typography, CardMedia } from '@material-ui/core'
+import s from './category.module.css'
 
-	const products = props.kuku
-		? props.kuku.map((item) => {
-			if (`/${item._id}` === (id)) {
-				return (
-					<Grid item component="div" sm={3} key={item._id}>
-						<Card className="div">
-							<CardActionArea>
+import { getDetailedProduct } from '../../actions/productsActions'
+
+// debugger
+const ProductDetailed = (props) => {
+	const pathname = props.history.location.pathname
+	const productId = pathname.slice(1)
+
+	const productToShow = props.productsList ? props.productsList.find((el) => { return el._id === productId })
+		: props.detailedProduct
+
+	console.log('detailedProduct: ' + props.detailedProduct)
+
+	console.log('productToShow: ' + productToShow)
+	function onBtnCl () {
+		props.getDetailedProduct(productId)
+	}
+	return (
+		<div>
+			{
+				!productToShow ? <Button onClick={onBtnCl}> show me </Button>
+					:	<Container>
+						<div className={s.container}>
+							<h1 className={s.text}>{productToShow.category}</h1>
+						</div>
+						< Grid container component="div" direction="row" justify="space-evenly" alignItems="flex-start" spacing={5}>
+
+							<Grid item>
 								<CardMedia
 									component="img"
-									alt="Product image not found"
-									height="140"
-									image={item.image}
-									title="Contemplative Reptile"
-								/>
-								<CardContent>
-									<Typography gutterBottom variant="h5" component="h2">
-										{item.name}
-									</Typography>
-									<Typography variant="body2" color="textSecondary" component="p">
-										{item.description}
-									</Typography>
-									<Typography gutterBottom variant="h6" component="h2">
-										{item.price} UAH
-									</Typography>
-								</CardContent>
-							</CardActionArea>
-							<CardActions>
-								<Button size="small" variant="contained" color="primary">
-									Buy
-								</Button>
-								<Button size="small" color="primary">
-									Details
-								</Button>
-							</CardActions>
-						</Card>
-					</Grid>)
+									className={s.productimg}
+									src={productToShow.image}
+									alt="not found"
+									title="Contemplative Reptile"/>
+							</Grid>
+
+							<Grid item>
+								<Grid container direction='column' spacing={5}>
+									<Grid item>
+										<Typography gutterBottom variant="h5" component="h2">
+											{productToShow.name}
+										</Typography>
+										<Typography variant="body2" color="textSecondary" component="p">
+											{productToShow.description}
+										</Typography>
+									</Grid>
+									<Grid item>
+										<Typography gutterBottom variant="h6" component="h2">
+											{productToShow.price} UAH
+										</Typography>
+										<Button size="small" variant="contained" color="primary">
+											Buy
+										</Button>
+									</Grid>
+								</Grid>
+							</Grid>
+						</Grid>
+					</Container>
 			}
-		})
-		: null
-
-	// eslint-disable-next-line no-restricted-globals
-	const q = window.location.search.split('q=')[1] ? location.search.split('q=')[1] : ''
-	console.log('q= ' + q)
-
-	useEffect(() => {
-	}, [])
-
-	// debugger
-	return (
-		<Container>
-			<div className={s.container}>
-				<h1 className={s.text}>{props.category}</h1>
-			</div>
-			<Grid container component="div" direction="row" justify='flex-start' spacing={4}>
-				{props.kuku
-					? products
-					: null
-				}
-			</Grid>
-		</Container>
+		</div>
 	)
 }
 
 const mapStateToProps = state => {
 	return {
-		kuku: state.products.productsList,
-		category: state.products.categoryName
+		productsList: state.products.productsList,
+		detailedProduct: state.products.detailedProduct,
 	}
 }
 
-export default connect(mapStateToProps, { getProductCategories, getSearchProducts })(withRouter(ProductDetailed))
+export default connect(mapStateToProps, { getDetailedProduct })(withRouter(ProductDetailed))

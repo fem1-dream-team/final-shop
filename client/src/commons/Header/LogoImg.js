@@ -13,4 +13,4 @@ export const LogoImg = () => {
 const Container = styled.div`
 	width: 180px;
 	margin: 0 auto;
-`
+`;

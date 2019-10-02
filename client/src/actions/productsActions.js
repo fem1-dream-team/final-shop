@@ -1,4 +1,8 @@
-import { GET_PRODUCTS_CATEGORY_SAGA, GET_PRODUCTS_SEARCH_SAGA, SET_PRODUCTS_LIST } from './types'
+import {
+	GET_PRODUCTS_CATEGORY_SAGA,
+	GET_DETAILED_PRODUCT_SAGA, SET_DETAILED_PRODUCT,
+	GET_PRODUCTS_SEARCH_SAGA
+} from './types'
 
 export const getProductCategories = (category) => {
 	return {
@@ -13,10 +17,16 @@ export const getSearchProducts = (req) => {
 	}
 }
 
-export const setProductsList = (products) => {
-	console.log('products: ' + products)
+export const getDetailedProduct = (productId) => {
 	return {
-		type: SET_PRODUCTS_LIST,
-		payload: products
+		type: GET_DETAILED_PRODUCT_SAGA,
+		payload: productId
+	}
+}
+
+export const setDetailedProduct = (data) => {
+	return {
+		type: SET_DETAILED_PRODUCT,
+		payload: data
 	}
 }
