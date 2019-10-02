@@ -1,46 +1,50 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import { checkIfIsLoggedIn } from './actions/authActions'
-import {handleNavbar} from './actions/generalActions';
+import { handleNavbar } from './actions/generalActions'
 
 import 'typeface-roboto'
-import {Home, Page404, Profile} from './components'
 
-import Navbar from './components/navbar/Navbar';
-import GlobalStyle from './styles/Global';
+import Navbar from './components/navbar/Navbar'
+import GlobalStyle from './styles/Global'
 
+import { Home, Page404, Profile } from './components'
 // import {SimpleSlider} from './components'
-import { Footer, Header } from './commons'
+import { Header } from './commons'
 import { Cart } from './components/ComponentsForNavigation/Cart'
 
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 // import Button from '@material-ui/core/Button';
-// import { ContainerNavigation } from './commons/ContainerNavigation/ContainerNavigation'
 import Products from './components/Products/Products'
+import ProductDetailed from './components/Products/ProductDetailed'
+import Footer from './commons/Footer/Footer'
 
 const App = (props) => {
+	useEffect(() => {
+		props.checkIfIsLoggedIn()
+		// eslint-disable-next-line
+	}, [])
 	return (
 		<BrowserRouter>
-			<div auth={props.checkIfIsLoggedIn()}>
+			<div>
 				<Header/>
-				<Navbar
-					navbarState={props.navbarState}
-					handleNavbar={props.handleNavbar}
-				/>
-				<GlobalStyle />
+				<Navbar/>
+				<GlobalStyle/>
 				<Switch>
 					<Route exact path='/' component={Home}/>
-					<Route path='/home' render={() => <Home/>} />
+					<Route path='/home' render={() => <Home/>}/>
 
-					<Route path='/search' component={Products}	/>
-					<Route path='/cakes'	component={Products} />
-					<Route path='/tarts'	component={Products} />
-					<Route path='/cupcakes'	component={Products} />
-					<Route path='/cookies'	component={Products} />
-					<Route path='/desserts'	component={Products} />
-					<Route path='/macaroons'	component={Products} />
+					<Route path='/search' component={Products}/>
+					<Route path='/cakes' component={Products}/>
+					<Route path='/tarts' component={Products}/>
+					<Route path='/cupcakes' component={Products}/>
+					<Route path='/cookies' component={Products}/>
+					<Route path='/desserts' component={Products}/>
+					<Route path='/macaroons' component={Products}/>
+
+					<Route path='/:detailedPath' component={ProductDetailed}/>
 
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
@@ -53,12 +57,10 @@ const App = (props) => {
 			</div>
 		</BrowserRouter>
 	)
-};
+}
 
-const mapStateToProps = state => {
-	return {
-		navbarState: state.general.navbarState,
-	}
-};
+const mapStateToProps = () => {
+	return {}
+}
 
-export default connect(mapStateToProps, {checkIfIsLoggedIn, handleNavbar})(App)
+export default connect(mapStateToProps, { checkIfIsLoggedIn, handleNavbar })(App)
