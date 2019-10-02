@@ -57,13 +57,13 @@ const Products = (props) => {
 												{item.name}
 											</Typography>
 											<Typography className={s.description} variant="body2" color="textSecondary" component="div">
-									      <p>{item.description}</p>
+												<p>{item.description}</p>
 											</Typography>
 										</CardContent>
 									</CardActionArea>
-                  <Typography className={s.price} variant="h6" component="h2">
-							      {item.price} UAH
-						      </Typography>
+									<Typography className={s.price} variant="h6" component="h2">
+										{item.price} UAH
+									</Typography>
 									<CardActions>
 										<Button size="small" variant="contained" color="primary">
 											Buy
