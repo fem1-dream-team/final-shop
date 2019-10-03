@@ -13,8 +13,8 @@ export const Profile = () => {
 
 				<div className={classes.profileWrapper}>
 					<Switch>
-					<Route path='/user/profile/personal-information/' component={PersonalInfo}/>
-					<Route path='/user/profile/my-orders' component={OrderHistory}/>
+						<Route path='/user/profile/personal-information/' component={PersonalInfo}/>
+						<Route path='/user/profile/my-orders' component={OrderHistory}/>
 					</Switch>
 				</div>
 
