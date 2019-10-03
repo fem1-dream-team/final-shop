@@ -1,4 +1,4 @@
-import { ADD_TO_CART, ADD_PRICE_TO_BASKET, REMOVE_CART, BUY_BTN_HANDLER } from '../actions/types'
+import { ADD_TO_CART, ADD_PRICE_TO_BASKET, REMOVE_CART, BUY_BTN_HANDLER, BTN_HANDLER_BASKET } from '../actions/types'
 
 const initialState = {
 	products: null,
@@ -8,7 +8,6 @@ const initialState = {
 	// totalAmount: 0,
 }
 const basketReducer = (state = initialState, action) => {
-
 	switch (action.type) {
 	case BUY_BTN_HANDLER: {
 		return {
@@ -18,7 +17,23 @@ const basketReducer = (state = initialState, action) => {
 			productsBasket: [...state.productsBasket, {
 				id: action.payload.id,
 				amount: action.payload.amount,
-				price: action.payload.price
+				price: action.payload.price,
+				image: action.payload.image,
+				name: action.payload.name,
+			}]
+		}
+	}
+	case BTN_HANDLER_BASKET: {
+		return {
+			...state,
+			totalPrice: action.payload.totalPrice,
+			totalAmount: action.payload.totalAmount,
+			productsBasket: [...state.productsBasket, {
+				id: action.payload.id,
+				amount: action.payload.amount,
+				price: action.payload.price,
+				image: action.payload.image,
+				name: action.payload.name,
 			}]
 		}
 	}

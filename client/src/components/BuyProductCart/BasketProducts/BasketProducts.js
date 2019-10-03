@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Fade from '@material-ui/core/Fade'
-import { OrderApplicationForm } from '../OrderApplicationForm/OrderApplicationForm'
+import OrderApplicationForm from '../OrderApplicationForm/OrderApplicationForm'
 import s from './basketProducts.module.css'
 import { Dialog } from '@material-ui/core'
 import Backdrop from '@material-ui/core/Backdrop/Backdrop'
@@ -38,14 +38,15 @@ const useStyles = makeStyles(theme => ({
 	},
 	div: {
 		margin: theme.spacing(1),
-		display: 'block',
+		// display: 'block',
 		position: 'fixed',
 		top: '15%',
 		right: '0',
 		zIndex: '101',
 		width: '70px',
 		height: '70px',
-		fontSize: '10px',
+		fontSize: '14px',
+		fontFamily: 'SansSerif',
 		fontWeight: 'bolt',
 		color: 'darkgreen',
 	}
@@ -54,23 +55,23 @@ const useStyles = makeStyles(theme => ({
 export const BasketProducts = (props) => {
 	const classes = useStyles();
 
-	// const [open, setOpen] = React.useState(false);
-	// const handleOpenBasket = () => {
-	// 	setOpen(true)
-	// };
-
-	const [openCart, setOpenCart] = React.useState(false);
-
+	const [open, setOpen] = React.useState(false);
 	const handleOpenCart = () => {
-		setOpenCart(true);
+		setOpen(true)
+		// props.btnBasketHandler(id, image, price, name)
 	};
 	const handleCloseCart = () => {
-		setOpenCart(false);
-	};
+		setOpen(false)
+	}
 
 	// alert(`Is arr empty? ${isEmpty([])}`)
-	console.log(`Is props.productsBasket empty?  ${isEmpty(props.productsBasket)}`)
-	console.log('props.productsBasket: ' + props.productsBasket)
+	// console.log(`Is props.productsBasket empty?  ${isEmpty(props.productsBasket)}`)
+	// console.log('props.productsBasket: ' + props.productsBasket)
+	// debugger
+	const priceArr = props.productsBasket.map((item) => { return (item.price) })
+	const reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
+	const totalPrice = priceArr.reduce(reducer, props.price)
+	const totalAmount = priceArr.length
 
 	return (
 		<div>
@@ -82,13 +83,13 @@ export const BasketProducts = (props) => {
 					<Button variant="contained" className={classes.button} onClick={handleOpenCart}>
 						<img className={s.imgBasket} src='img/basket/shopping-cart-728408_1280.png' alt='basket'/>
 					</Button>
-					<div className={classes.div}>{props.totalAmount}</div>
+					<div className={classes.div}>{totalAmount}</div>
 
 					<Dialog
 						aria-labelledby="transition-modal-title"
 						aria-describedby="transition-modal-description"
 						className={classes.modal}
-						open={openCart}
+						open={open}
 						scroll='paper'
 						onClose={handleCloseCart}
 						closeAfterTransition
@@ -98,14 +99,15 @@ export const BasketProducts = (props) => {
 						}}
 					>
 						<div style={{overflowY: 'scroll'}}>
-							<Fade in={openCart}>
+							<Fade in={open}>
 								<div className={classes.paper} >
 									<OrderApplicationForm
-										id={props.id}
-										image={props.image}
-										name={props.name}
-										description={props.description}
-										price={props.price}
+										// id={props.id}
+										// image={props.image}
+										// name={props.name}
+										// description={props.description}
+										// price={totalPrice}
+										// total={totalAmount}
 									/>
 								</div>
 							</Fade>
@@ -120,14 +122,14 @@ export const BasketProducts = (props) => {
 const mapStateToProps = (state) => {
 	return {
 		productsBasket: state.basket.productsBasket,
-		totalAmount: state.basket.totalAmount,
+		// totalAmount: state.basket.totalAmount,
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		buyBtnHandler: (productID) => { dispatch(buyBtnHandler(productID)) },
-		// addPriceToBasket: (id, price) => { dispatch(addPriceToBasket(id, price)) },
+		// btnBasketHandler: (id, image, price, name) => { dispatch(btnBasketHandler(id, image, price, name)) },
 		// addToCart: (id, quantity) => { dispatch(addToCart(id, quantity)) },
 		// removeCart: (id) => { dispatch(removeCart(id)) },
 	}

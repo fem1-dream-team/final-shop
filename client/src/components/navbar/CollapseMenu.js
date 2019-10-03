@@ -1,10 +1,18 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated } from 'react-spring'
+import { NavLink } from 'react-router-dom'
+import { goFromCollapseMenu, handleNavbar } from '../../actions/generalActions'
+import { connect } from 'react-redux'
+// debugger
 
 const CollapseMenu = (props) => {
-	const { open } = useSpring({ open: props.navbarState ? 0 : 1 });
+	const { open } = useSpring({ open: props.navbarState ? 0 : 1 })
+
+	const onLinkClick = (where) => {
+		props.goFromCollapseMenu(where)
+	}
 
 	if (props.navbarState === true) {
 		return (
@@ -17,21 +25,26 @@ const CollapseMenu = (props) => {
 			}}
 			>
 				<NavLinks>
-					<li><a href="/cakes" onClick={props.handleNavbar}>CAKES</a></li>
-					<li><a href="/tarts" onClick={props.handleNavbar}>TARTS</a></li>
-					<li><a href="/cupcakes" onClick={props.handleNavbar}>CUPCAKES</a></li>
-					<li><a href="/cookies" onClick={props.handleNavbar}>COOKIES</a></li>
-					<li><a href="/desserts" onClick={props.handleNavbar}>DESSERTS</a></li>
-					<li><a href="/macaroons" onClick={props.handleNavbar}>MACAROONS</a></li>
-					<li><a href="/cart" onClick={props.handleNavbar}>CART</a></li>
+					<li><NavLink to="/cakes" onClick={() => { onLinkClick('/cakes') }}>CAKES</NavLink></li>
+					<li><NavLink to="/tarts" onClick={() => { onLinkClick('/tarts') }}>TARTS</NavLink></li>
+					<li><NavLink to="/cupcakes" onClick={() => { onLinkClick('/cupcakes') }}>CUPCAKES</NavLink></li>
+					<li><NavLink to="/cookies" onClick={() => { onLinkClick('/cookies') }}>COOKIES</NavLink></li>
+					<li><NavLink to="/desserts" onClick={() => { onLinkClick('/desserts') }}>DESSERTS</NavLink></li>
+					<li><NavLink to="/macaroons" onClick={() => { onLinkClick('/macaroons') }}>MACAROONS</NavLink></li>
+					<li><NavLink to="/cart" onClick={() => { props.handleNavbar(false) }}>CART</NavLink></li>
 				</NavLinks>
 			</CollapseWrapper>
-		);
+		)
 	}
-	return null;
-};
+	return null
+}
 
-export default CollapseMenu;
+const mapStateToProps = state => {
+	return {
+		navbarState: state.general.navbar
+	}
+}
+export default connect(mapStateToProps, { goFromCollapseMenu, handleNavbar })(CollapseMenu)
 
 const CollapseWrapper = styled(animated.div)`
 	top: 5.5rem;
@@ -39,7 +52,7 @@ const CollapseWrapper = styled(animated.div)`
 	left: 0;
 	min-width: 320px;
 	background: #2d3436;
-`;
+`
 
 const NavLinks = styled.ul`
 	padding: 2rem 1rem 2rem 2rem;
@@ -58,8 +71,8 @@ const NavLinks = styled.ul`
 		cursor: pointer;
 
 		&:hover {
-			color: #fdcb6e;
-			border-bottom: 1px solid #fdcb6e;
+			color: antiquewhite;
+			border-bottom: 1px solid antiquewhite;
 		}
 	}
-`;
+`

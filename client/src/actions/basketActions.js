@@ -1,4 +1,4 @@
-import { ADD_TO_CART, ADD_PRICE_TO_BASKET, REMOVE_CART, BUY_BTN_HANDLER_SAGA } from './types'
+import { ADD_TO_CART, ADD_PRICE_TO_BASKET, REMOVE_CART, BUY_BTN_HANDLER_SAGA, BTN_HANDLER_BASKET } from './types'
 
 export const addPriceToBasket = (id, price) => {
 	return {
@@ -28,12 +28,28 @@ export const removeCart = (id) => {
 	}
 }
 
-export const buyBtnHandler = (productID, price) => {
+export const buyBtnHandler = (productID, price, image, name) => {
 	return {
 		type: BUY_BTN_HANDLER_SAGA,
 		payload: {
 			productId: productID,
 			price: price,
+			image: image,
+			name: name,
+			// totalPrice: totalPrice,
+			// totalAmount: totalAmount
+		}
+	}
+}
+
+export const btnBasketHandler = (productID, image, price, name) => {
+	return {
+		type: BTN_HANDLER_BASKET,
+		payload: {
+			productId: productID,
+			price: price,
+			image: image,
+			name: name,
 			// totalPrice: totalPrice,
 			// totalAmount: totalAmount
 		}

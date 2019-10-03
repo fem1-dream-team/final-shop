@@ -11,89 +11,83 @@ import s from './category.module.css'
 import { connect } from 'react-redux'
 import { getProductCategories, getSearchProducts } from '../../actions/productsActions'
 import { withRouter } from 'react-router-dom'
-import BasketProducts from '../BuyProductCart/BasketProducts/BasketProducts'
 import { buyBtnHandler } from '../../actions/basketActions'
+import BasketProducts from '../BuyProductCart/BasketProducts/BasketProducts'
 
+// debugger
 const Products = (props) => {
-
-	const productsList = props.productsList
-
-	const priceArr = props.productsBasket.map((item) => { return (item.price) })
-	const reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
-	const totalPrice = priceArr.reduce(reducer, 0)
-	const totalAmount = priceArr.length
-
-	const onBuyClick = (itemId, price) => {
-		alert({totalAmount, totalPrice})
-		props.buyBtnHandler(itemId, price)
-	}
-
-	const products = productsList
-		? productsList.map((item) => {
-			return (
-				<Grid item component="div" sm={3} key={item._id}>
-					<Card className="div">
-						<CardActionArea>
-							<CardMedia
-								component="img"
-								alt="Product image not found"
-								height="140"
-								image={item.image}
-								title="Contemplative Reptile"
-							/>
-							<CardContent>
-								<Typography gutterBottom variant="h5" component="h2">
-									{item.name}
-								</Typography>
-								<Typography variant="body2" color="textSecondary" component="p">
-									{item.description}
-								</Typography>
-								<Typography gutterBottom variant="h6" component="h2">
-									{item.price} UAH
-								</Typography>
-							</CardContent>
-						</CardActionArea>
-						<CardActions>
-							<Button size="small" color="primary" onClick={() => { onBuyClick(item._id, item.price)}}>
-								<p>Buy</p>
-							</Button>
-							{/* <BasketProducts */}
-							{/*	id={item._id} */}
-							{/*	image={item.image} */}
-							{/*	name={item.name} */}
-							{/*	description={item.description} */}
-							{/*	price={item.price} */}
-							{/* /> */}
-							<Button size="small" color="primary">
-								Details
-							</Button>
-						</CardActions>
-					</Card>
-				</Grid>)
-		})
-		: null
-
 	// eslint-disable-next-line no-restricted-globals
 	const q = window.location.search.split('q=')[1] ? location.search.split('q=')[1] : ''
-	console.log('q= ' + q)
 
 	useEffect(() => {
-		(props.location.pathname === '/search')
+		props.location.pathname === '/search'
 			? props.getSearchProducts(`${props.location.pathname}?q=${q}`)
 			: props.getProductCategories(props.location.pathname)
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, [])
 
 	return (
 		<Container>
 			<div className={s.container}>
-				<h1 className={s.text}>{props.category}</h1>
+				<h1 className={s.text}> {
+					props.productsList
+						? props.location.pathname.slice(1)
+						: 'Loading...'
+				}
+				</h1>
 			</div>
 			<Grid container component="div" direction="row" justify='flex-start' spacing={4}>
-				<BasketProducts/>
-				{props.productsList
-					? products
-					: null
+
+				{!props.productsList
+					? null
+					: props.productsList.map((item) => {
+						const detailedPath = item._id
+
+						// const priceArr = props.productsBasket.map((item) => { return (item.price) })
+						// const reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
+						// const totalPrice = priceArr.reduce(reducer, item.price)
+						// const totalAmount = priceArr.length
+
+						const onBuyClick = (itemId, price, image, name) => {
+							// alert(totalPrice)
+							props.buyBtnHandler(itemId, price, image, name)
+						}
+						return (
+							<Grid item component="div" sm={3} key={item._id}>
+								<Card className="div">
+									<CardActionArea onClick={() => { props.history.push(`${detailedPath}`) }}>
+										<CardMedia
+											component="img"
+											alt="Product image not found"
+											height="140"
+											image={item.image}
+											title="Contemplative Reptile"
+										/>
+										<CardContent>
+											<Typography gutterBottom variant="h5" component="h2">
+												{item.name}
+											</Typography>
+											<Typography className={s.description} variant="body2" color="textSecondary" component="div">
+												<p>{item.description}</p>
+											</Typography>
+										</CardContent>
+									</CardActionArea>
+									<Typography className={s.price} variant="h6" component="h2">
+										{item.price} UAH
+									</Typography>
+									<CardActions>
+
+										<Button size="small" color="primary" onClick={() => { onBuyClick(item._id, item.price, item.image, item.name) }}>
+											<p>Buy</p>
+										</Button>
+										<BasketProducts/>
+										<Button onClick={() => { props.history.push(`${detailedPath}`) }} size="small" color="primary">
+											Details
+										</Button>
+									</CardActions>
+								</Card>
+							</Grid>)
+					})
 				}
 			</Grid>
 		</Container>

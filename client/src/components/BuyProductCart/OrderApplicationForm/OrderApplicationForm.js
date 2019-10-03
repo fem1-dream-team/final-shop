@@ -1,62 +1,47 @@
-import React, { Component } from 'react'
+import React from 'react'
 import s from './OrderApplicationForm.module.css'
+import { buyBtnHandler } from '../../../actions/basketActions'
+import connect from 'react-redux/es/connect/connect'
 
-export class OrderApplicationForm extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			count: 0
-		};
-	}
-
-handlePlus = () => {
-	this.setState({
-		count: this.state.count + 1
-	});
-}
-
-handleMinus = () => {
-	if (this.state.count < 1) {
-		this.setState({
-			count: 1
-		});
-	} else {
-		this.setState({
-			count: this.state.count - 1
-		});
-	}
-}
-
-render () {
-	const {price} = this.props.price;
-	let totalQuantity = 1;
-	let totalPrice = 0
-	totalQuantity += this.state.count;
-	totalPrice += this.state.count * {price};
-	console.log('Quantity:' + totalQuantity);
-	console.log('Total Price:' + totalPrice);
-
+const OrderApplicationForm = (props) => {
+	console.log(props.productsBasket)
+	let priceArr, totalPrice, reducer;
 	return (
 		<div className={s.header}>
 			<h1 className={s.name}>Your order</h1>
 			<div className={s.line}></div>
-			<div className={s.descriptionOrder}>
-				<div className={s.imgSize}><img src={this.props.image} alt="Product img"/></div>
-				<div className={s.nameProduct}>
-					<p>{this.props.name}</p>
-				</div>
-				<div className={s.plusMinusCount}>
-					<p onClick={this.handleMinus} className={s.plusMinus}>-</p>
-					<p>{this.state.count}</p>
-					<p onClick={this.handlePlus} className={s.plusMinus}>+</p>
-				</div>
-				<div className={s.priceContainer}>
-					{totalPrice} UAH
-				</div>
-				<div className={s.delete}>+</div>
-			</div>
+
+			{!props.productsBasket
+				? null
+				: props.productsBasket.map((item) => {
+					priceArr = props.productsBasket.map((item) => { return (item.price) })
+					reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
+					totalPrice = Number(priceArr.reduce(reducer, 0))
+
+					return (
+						<div className={s.descriptionOrder}>
+							<div className={s.imgSize}><img src={item.image} alt="Product img"/></div>
+							<div className={s.nameProduct}>
+								<p>{item.name}</p>
+							</div>
+							<div className={s.plusMinusCount}>
+								<p className={s.plusMinus}>-</p>
+								<p></p>
+								<p className={s.plusMinus}>+</p>
+							</div>
+							<div className={s.priceContainer}>
+								{item.price} UAH
+							</div>
+							<props className="price log"></props>
+							<div className={s.delete} onClick={() => { props.productsBasket.filter(item => (item === item.id)) }}>+</div>
+						</div>
+					)
+				})
+			}
 			<div className={s.line}></div>
-			<div className={s.right}><span className={s.priceText}>Price:</span> {price} UAH</div>
+
+			<div className={s.right}><span className={s.priceText}>Price:</span> {totalPrice} UAH</div>
+
 			<div className={s.inputContainer}>
 				<span className={s.headerInput}>Name</span>
 				<input className={s.inputStyle} type="text" name='name' placeholder='Your name'/>
@@ -82,10 +67,28 @@ render () {
 				<input className={s.inputStyle} type="text" name='time' placeholder='Estimated delivery time' style={{ width: '180px' }}/>
 				<span className={s.headerInput}>Order comment</span>
 				<textarea className={s.inputStyle} name='comment' rows='3'></textarea>
-				<div className={s.right}><span className={s.priceText}>Price:</span> {price} UAH</div>
+				<div className={s.right}><span className={s.priceText}>Price:</span> {totalPrice} UAH</div>
 				<input className={s.inputStyle} type="submit" name='checkout' value='Checkout'/>
+
 			</div>
+
 		</div>
 	)
 }
+const mapStateToProps = (state) => {
+	return {
+		productsBasket: state.basket.productsBasket,
+		// totalAmount: state.basket.totalAmount,
+		// totalPrice: state.basket.productsBasket.totalPrice,
+	}
 }
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		buyBtnHandler: (productID) => { dispatch(buyBtnHandler(productID)) },
+		// btnBasketHandler: (id, image, price, name) => { dispatch(btnBasketHandler(id, image, price, name)) },
+		// addToCart: (id, quantity) => { dispatch(addToCart(id, quantity)) },
+		// removeCart: (id) => { dispatch(removeCart(id)) },
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(OrderApplicationForm)

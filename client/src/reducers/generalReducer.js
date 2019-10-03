@@ -3,7 +3,7 @@ import {CLEAR_ERRORS, GET_ERRORS, IS_LOADING, SHOW_NAVBAR} from '../actions/type
 const initialState = {
 	isLoading: false,
 	errors: {},
-	navbarState: false,
+	navbar: false,
 }
 
 const generalReducer = (state = initialState, action) => {
@@ -26,7 +26,7 @@ const generalReducer = (state = initialState, action) => {
 	case SHOW_NAVBAR:
 		return {
 			...state,
-			navbarState: action.payload,
+			navbar: action.payload,
 		}
 	default:
 		return state
