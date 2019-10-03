@@ -20,8 +20,6 @@ import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 import Products from './components/Products/Products'
 import ProductDetailed from './components/Products/ProductDetailed'
 import Footer from './commons/Footer/Footer'
-import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
-import OrderHistory from './components/Profile/OrderHistory/OrderHistory';
 
 const App = (props) => {
 	useEffect(() => {
