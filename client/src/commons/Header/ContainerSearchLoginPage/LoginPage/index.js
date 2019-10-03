@@ -60,7 +60,7 @@ const LoginPage = (props) => {
 
 	const onIconClick = () => {
 		if (props.isAuth) {
-			props.history.push('/profile')
+			props.history.push('/user/profile')
 		} else {
 			props.checkIfIsLoggedIn()
 			props.showAuthForm(true)

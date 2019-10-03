@@ -20,6 +20,8 @@ import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 import Products from './components/Products/Products'
 import ProductDetailed from './components/Products/ProductDetailed'
 import Footer from './commons/Footer/Footer'
+import PersonalInfo from "./components/Profile/PersonalInfo/PersonalInfo";
+import OrderHistory from "./components/Profile/OrderHistory/OrderHistory";
 
 const App = (props) => {
 	useEffect(() => {
@@ -44,11 +46,12 @@ const App = (props) => {
 					<Route path='/desserts' component={Products}/>
 					<Route path='/macaroons' component={Products}/>
 
-					<Route path='/:detailedPath' component={ProductDetailed}/>
+					<Route exact path='/:detailedPath' component={ProductDetailed}/>
 
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
-					<Route exect path='/profile' component={Profile}/>
+					<Route exact path='/user/profile' component={Profile}/>
+
 
 					<Route path='*' component={Page404}/>
 				</Switch>
