@@ -69,8 +69,8 @@ export const BasketProducts = (props) => {
 	// console.log('props.productsBasket: ' + props.productsBasket)
 	// debugger
 	const priceArr = props.productsBasket.map((item) => { return (item.price) })
-	const reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
-	const totalPrice = priceArr.reduce(reducer, props.price)
+	// const reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
+	// const totalPrice = priceArr.reduce(reducer, props.price)
 	const totalAmount = priceArr.length
 
 	return (

@@ -1,5 +1,5 @@
 import {put, takeEvery} from 'redux-saga/effects'
-import { BTN_HANDLER_BASKET, BTN_HANDLER_BASKET_SAGA, BUY_BTN_HANDLER, BUY_BTN_HANDLER_SAGA } from '../types'
+import { BUY_BTN_HANDLER, BUY_BTN_HANDLER_SAGA } from '../types'
 
 export function * watchBasketSagas () {
 	yield takeEvery(BUY_BTN_HANDLER_SAGA, buyBtnHandlerSaga)

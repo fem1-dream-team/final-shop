@@ -1,4 +1,4 @@
-import { ADD_TO_CART, ADD_PRICE_TO_BASKET, REMOVE_CART, BUY_BTN_HANDLER, BTN_HANDLER_BASKET } from '../actions/types'
+import { BUY_BTN_HANDLER, BTN_HANDLER_BASKET } from '../actions/types'
 
 const initialState = {
 	products: null,
