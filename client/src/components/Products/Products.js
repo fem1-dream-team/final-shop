@@ -11,6 +11,8 @@ import s from './category.module.css'
 import { connect } from 'react-redux'
 import { getProductCategories, getSearchProducts } from '../../actions/productsActions'
 import { withRouter } from 'react-router-dom'
+import { buyBtnHandler } from '../../actions/basketActions'
+import BasketProducts from '../BuyProductCart/BasketProducts/BasketProducts'
 
 const Products = (props) => {
 	// eslint-disable-next-line no-restricted-globals
@@ -23,7 +25,6 @@ const Products = (props) => {
 		// eslint-disable-next-line
 	}, [])
 
-	// debugger
 	return (
 		<Container>
 			<div className={s.container}>
@@ -40,6 +41,16 @@ const Products = (props) => {
 					? null
 					: props.productsList.map((item) => {
 						const detailedPath = item._id
+
+						// const priceArr = props.productsBasket.map((item) => { return (item.price) })
+						// const reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
+						// const totalPrice = priceArr.reduce(reducer, item.price)
+						// const totalAmount = priceArr.length
+
+						const onBuyClick = (itemId, price, image, name) => {
+							// alert(totalPrice)
+							props.buyBtnHandler(itemId, price, image, name)
+						}
 						return (
 							<Grid item component="div" sm={3} key={item._id}>
 								<Card className="div">
@@ -64,9 +75,11 @@ const Products = (props) => {
 										{item.price} UAH
 									</Typography>
 									<CardActions>
-										<Button size="small" variant="contained" color="primary">
-											Buy
+
+										<Button size="small" color="primary" onClick={() => { onBuyClick(item._id, item.price, item.image, item.name) }}>
+											<p>Buy</p>
 										</Button>
+										<BasketProducts/>
 										<Button onClick={() => { props.history.push(`${detailedPath}`) }} size="small" color="primary">
 											Details
 										</Button>
@@ -83,7 +96,9 @@ const Products = (props) => {
 const mapStateToProps = state => {
 	return {
 		productsList: state.products.productsList,
+		category: state.products.categoryName,
+		productsBasket: state.basket.productsBasket
 	}
 }
 
-export default connect(mapStateToProps, { getSearchProducts, getProductCategories })(withRouter(Products))
+export default connect(mapStateToProps, { getProductCategories, buyBtnHandler, getSearchProducts })(withRouter(Products))
