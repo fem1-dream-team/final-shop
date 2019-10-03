@@ -7,10 +7,9 @@ import s from './category.module.css'
 
 import { getDetailedProduct } from '../../actions/productsActions'
 
-// debugger
 const ProductDetailed = (props) => {
 	const pathname = props.history.location.pathname
-	const productId = pathname.slice(1)
+	const productId = pathname.slice(16)
 
 	const productToShow = props.productsList ? props.productsList.find((el) => { return el._id === productId })
 		: props.detailedProduct
@@ -31,7 +30,7 @@ const ProductDetailed = (props) => {
 			{props.isLoading ? <div> Wait, i'm working on it...</div>
 				: !productToShow ? <Button onClick={onBtnCl}> show me </Button>
 					: <Container>
-						<div className={s.container} style={{ cursor: 'pointer' }} onClick={() => { props.history.push(`${productToShow.category}`) }}>
+						<div className={s.container} style={{ cursor: 'pointer' }} onClick={() => { props.history.push(`../${productToShow.category}`) }}>
 							<h1 className={s.text}>{
 								productToShow ? productToShow.category : 'Loading...'
 							}
@@ -43,7 +42,7 @@ const ProductDetailed = (props) => {
 								<CardMedia
 									component="img"
 									height="300"
-									src={productToShow.image}
+									src={`../../${productToShow.image}`}
 									alt="not found"
 									title="Contemplative Reptile"/>
 							</Grid>

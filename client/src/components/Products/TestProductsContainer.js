@@ -16,12 +16,10 @@ const Products = (props) => {
 	// eslint-disable-next-line no-restricted-globals
 	const q = window.location.search.split('q=')[1] ? location.search.split('q=')[1] : ''
 
-	const categoryName = props.location.pathname.slice(7)
-
 	useEffect(() => {
 		props.location.pathname === '/search'
 			? props.getSearchProducts(`${props.location.pathname}?q=${q}`)
-			: props.getProductCategories(`${categoryName}`)
+			: props.getProductCategories(props.location.pathname)
 		// eslint-disable-next-line
 	}, [])
 
@@ -31,7 +29,7 @@ const Products = (props) => {
 			<div className={s.container}>
 				<h1 className={s.text}> {
 					props.productsList
-						? categoryName
+						? props.location.pathname.slice(1)
 						: 'Loading...'
 				}
 				</h1>
@@ -45,12 +43,12 @@ const Products = (props) => {
 						return (
 							<Grid item component="div" sm={3} key={item._id}>
 								<Card className="div">
-									<CardActionArea onClick={() => { props.history.push(`/yummy/detailed/${detailedPath}`) }}>
+									<CardActionArea onClick={() => { props.history.push(`${detailedPath}`) }}>
 										<CardMedia
 											component="img"
 											alt="Product image not found"
 											height="140"
-											image={`../${item.image}`}
+											image={item.image}
 											title="Contemplative Reptile"
 										/>
 										<CardContent>
@@ -69,7 +67,7 @@ const Products = (props) => {
 										<Button size="small" variant="contained" color="primary">
 											Buy
 										</Button>
-										<Button onClick={() => { props.history.push(`/yummy/detailed/${detailedPath}`) }} size="small" color="primary">
+										<Button onClick={() => { props.history.push(`${detailedPath}`) }} size="small" color="primary">
 											Details
 										</Button>
 									</CardActions>

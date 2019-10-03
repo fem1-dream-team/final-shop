@@ -37,23 +37,16 @@ const App = (props) => {
 					<Route exact path='/' component={Home}/>
 					<Route path='/home' render={() => <Home/>}/>
 
-					<Route path='/search' component={Products}/>
-					<Route path='/cakes' component={Products}/>
-					<Route path='/tarts' component={Products}/>
-					<Route path='/cupcakes' component={Products}/>
-					<Route path='/cookies' component={Products}/>
-					<Route path='/desserts' component={Products}/>
-					<Route path='/macaroons' component={Products}/>
-
-					<Route path='/:detailedPath' component={ProductDetailed}/>
+					<Route exact path='/yummy/:categoryName' component={Products}/>
+					<Route exact path='/yummy/detailed/:detailedPath' component={ProductDetailed}/>
 
 					<Route path='/cart' render={() => <Cart/>}/>
-					<Route exect path='/customer' component={LoginPage}/>
+					<Route exact path='/customer' component={LoginPage}/>
 
-					<Route exect path='/profile' component={Profile}/>
-					<Route exect path='/profile/personal-information/' component={PersonalInfo}/>
+					<Route exact path='/profile' component={Profile}/>
+					<Route exact path='/profile/personal-information/' component={PersonalInfo}/>
 
-					<Route exect path='/profile/basket' component={Profile}/>
+					<Route exact path='/profile/basket' component={Profile}/>
 
 					<Route path='*' component={Page404}/>
 				</Switch>
