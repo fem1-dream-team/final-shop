@@ -44,12 +44,12 @@ const App = (props) => {
 					<Route path='/desserts' component={Products}/>
 					<Route path='/macaroons' component={Products}/>
 
-					<Route path='/:detailedPath' component={ProductDetailed}/>
+					<Route exact path='/:detailedPath' component={ProductDetailed}/>
 
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
-					<Route exect path='/profile' component={Profile}/>
-            
+					<Route exact path='/user/profile' component={Profile}/>
+
 					<Route path='*' component={Page404}/>
 				</Switch>
 

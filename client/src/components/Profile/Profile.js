@@ -10,10 +10,14 @@ export const Profile = () => {
 		<BrowserRouter>
 			<div className={classes.profileWrapper}>
 				<Navigation/>
-				<Switch>
-					<Route path='/profile/personal-information/' component={PersonalInfo}/>
-					<Route path='/profile/my-orders' component={OrderHistory}/>
-				</Switch>
+
+				<div className={classes.profileWrapper}>
+					<Switch>
+						<Route path='/user/profile/personal-information/' component={PersonalInfo}/>
+						<Route path='/user/profile/my-orders' component={OrderHistory}/>
+					</Switch>
+				</div>
+
 			</div>
 		</BrowserRouter>
 	)

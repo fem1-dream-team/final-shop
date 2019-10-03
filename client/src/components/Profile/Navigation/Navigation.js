@@ -7,7 +7,7 @@ const Navigation = () => {
 		<nav className={classes.navWrap}>
 			<div className={classes.item}>
 				<NavLink
-					to='/profile/personal-information/'
+					to='/user/profile/personal-information/'
 					className={classes.itemLink}
 					activeClassName={classes.active}>
 					Personal information
@@ -15,7 +15,7 @@ const Navigation = () => {
 			</div>
 			<div className={classes.item}>
 				<NavLink
-					to='/profile/basket'
+					to='/user/profile/basket'
 					className={classes.itemLink}
 					activeClassName={classes.active}>
 					Basket
@@ -24,7 +24,7 @@ const Navigation = () => {
 
 			<div className={classes.item}>
 				<NavLink
-					to='/profile/my-orders'
+					to='/user/profile/my-orders'
 					className={classes.itemLink}
 					activeClassName={classes.active}>
 					Order History
