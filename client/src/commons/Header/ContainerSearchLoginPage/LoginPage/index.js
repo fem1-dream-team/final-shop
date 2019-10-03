@@ -9,7 +9,6 @@ import Login from './Login'
 import { showAuthForm, showRegister } from '../../../../actions/authFormActions'
 import { withRouter } from 'react-router-dom'
 import { checkIfIsLoggedIn, logoutCurrentUser } from '../../../../actions/authActions'
-// import {Profile} from "../../../../components";
 
 const useStyles = makeStyles(theme => ({
 	button: {
@@ -56,7 +55,8 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const LoginPage = (props) => {
-	const classes = useStyles()
+	console.log(props);
+	const classes = useStyles();
 
 	const onIconClick = () => {
 		if (props.isAuth) {
@@ -109,7 +109,8 @@ const mapStateToProps = state => {
 		open: state.auth.open,
 		needsRegistration: state.auth.needsRegistration,
 		isAuth: state.auth.isAuth,
-		first_name: state.auth.customer.first_name
+		first_name: state.auth.customer.first_name,
+		email: state.auth.customer.email,
 	}
 }
 

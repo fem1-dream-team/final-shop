@@ -23,7 +23,8 @@
 }
 
 .price {
-    color: red;
+    color: black;
+    font-weight: bold;
     padding: 0 0 5px 15px;
 }
 
