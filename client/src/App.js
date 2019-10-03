@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, {useEffect} from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -49,7 +49,7 @@ const App = (props) => {
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
 					<Route exect path='/profile' component={Profile}/>
-
+            
 					<Route path='*' component={Page404}/>
 				</Switch>
 
