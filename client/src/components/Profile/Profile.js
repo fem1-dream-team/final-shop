@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import classes from './Profile.module.css';
 import Navigation from './Navigation/Navigation';
 import {withRouter} from 'react-router-dom';
