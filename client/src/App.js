@@ -35,7 +35,6 @@ const App = (props) => {
 				<Switch>
 					<Route exact path='/' component={Home}/>
 					<Route path='/home' render={() => <Home/>}/>
-
 					<Route path='/search' component={Products}/>
 					<Route path='/cakes' component={Products}/>
 					<Route path='/tarts' component={Products}/>
@@ -43,15 +42,12 @@ const App = (props) => {
 					<Route path='/cookies' component={Products}/>
 					<Route path='/desserts' component={Products}/>
 					<Route path='/macaroons' component={Products}/>
-
 					<Route exact path='/:detailedPath' component={ProductDetailed}/>
-
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
 					<Route exact path='/user/profile' component={Profile}/>
 					<Route path='*' component={Page404}/>
 				</Switch>
-
 				<Footer/>
 			</div>
 		</BrowserRouter>
