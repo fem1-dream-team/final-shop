@@ -49,6 +49,7 @@ const App = (props) => {
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
 					<Route exact path='/user/profile' component={Profile}/>
+
 					<Route path='*' component={Page404}/>
 				</Switch>
 
