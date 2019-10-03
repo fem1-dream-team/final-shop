@@ -55,12 +55,11 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const LoginPage = (props) => {
-	console.log(props);
 	const classes = useStyles();
 
 	const onIconClick = () => {
 		if (props.isAuth) {
-			props.history.push('/user/profile')
+			props.history.push('/profile/personal-info')
 		} else {
 			props.checkIfIsLoggedIn()
 			props.showAuthForm(true)

@@ -10,7 +10,8 @@ import 'typeface-roboto'
 import Navbar from './components/navbar/Navbar'
 import GlobalStyle from './styles/Global'
 
-import { Home, Page404, Profile } from './components'
+import { Home, Page404, } from './components'
+import Profile from './components/Profile/Profile'
 // import {SimpleSlider} from './components'
 import { Header } from './commons'
 import { Cart } from './components/ComponentsForNavigation/Cart'
@@ -45,7 +46,8 @@ const App = (props) => {
 					<Route exact path='/:detailedPath' component={ProductDetailed}/>
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
-					<Route exact path='/user/profile' component={Profile}/>
+					<Route exact path='/profile/:profileInfo' component={Profile}/>
+
 					<Route path='*' component={Page404}/>
 				</Switch>
 				<Footer/>

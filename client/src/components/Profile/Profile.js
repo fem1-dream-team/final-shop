@@ -1,24 +1,32 @@
 import React from 'react';
 import classes from './Profile.module.css';
 import Navigation from './Navigation/Navigation';
-import PersonalInfo from './PersonalInfo/PersonalInfo';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import OrderHistory from './OrderHistory/OrderHistory';
+import PersonalInfo from './PersonalInfo/PersonalInfo';
+import {connect} from 'react-redux';
 
-export const Profile = () => {
+const mapStateToProps = (state) => {
+	return {}
+};
+
+const Profile = (props) => {
+	console.log(props.location.pathname);
 	return (
-		<BrowserRouter>
+		<div className={classes.profileWrapper}>
+			<Navigation/>
 			<div className={classes.profileWrapper}>
-				<Navigation/>
-
-				<div className={classes.profileWrapper}>
-					<Switch>
-						<Route path='/user/profile/personal-information/' component={PersonalInfo}/>
-						<Route path='/user/profile/my-orders' component={OrderHistory}/>
-					</Switch>
-				</div>
-
+				{props.location.pathname === '/profile/personal-info'
+					? <PersonalInfo/>
+					:					null
+				}
+				{props.location.pathname === '/profile/my-orders'
+					? <OrderHistory/>
+					:					null
+				}
 			</div>
-		</BrowserRouter>
+		</div>
 	)
 };
+
+export default connect(mapStateToProps, {})(withRouter(Profile))
