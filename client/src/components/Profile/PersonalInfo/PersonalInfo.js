@@ -3,9 +3,6 @@ import classes from './PersonalInfo.module.css';
 import {connect} from 'react-redux';
 
 const PersonalInfo = (props) => {
-	// debugger
-	console.log(props);
-
 	if (props.isAuth) {
 		return (
 			<div className={classes.personalWrap}>

@@ -1,24 +1,39 @@
 import React from 'react';
 import classes from './Profile.module.css';
 import Navigation from './Navigation/Navigation';
-import PersonalInfo from './PersonalInfo/PersonalInfo';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import OrderHistory from './OrderHistory/OrderHistory';
+import PersonalInfo from './PersonalInfo/PersonalInfo';
+import {connect} from 'react-redux';
+import {showAuthForm} from '../../actions/authFormActions';
 
-export const Profile = () => {
+const mapStateToProps = (state) => {
+	return {
+		isAuth: state.auth.isAuth,
+	}
+};
+
+const Profile = (props) => {
+	if (!props.isAuth) {
+		props.history.push('/');
+		props.showAuthForm(true)
+	}
+
 	return (
-		<BrowserRouter>
+		<div className={classes.profileWrapper} open={props.isAuth}>
+			<Navigation/>
 			<div className={classes.profileWrapper}>
-				<Navigation/>
-
-				<div className={classes.profileWrapper}>
-					<Switch>
-						<Route path='/user/profile/personal-information/' component={PersonalInfo}/>
-						<Route path='/user/profile/my-orders' component={OrderHistory}/>
-					</Switch>
-				</div>
-
+				{props.location.pathname === '/profile/personal-info'
+					? <PersonalInfo/>
+					: null
+				}
+				{props.location.pathname === '/profile/my-orders'
+					? <OrderHistory/>
+					: null
+				}
 			</div>
-		</BrowserRouter>
+		</div>
 	)
 };
+
+export default connect(mapStateToProps, {showAuthForm})(withRouter(Profile))
