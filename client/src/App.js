@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import {BrowserRouter, Redirect, Route, Switch, withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { checkIfIsLoggedIn } from './actions/authActions'
@@ -21,6 +21,9 @@ import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 import Products from './components/Products/Products'
 import ProductDetailed from './components/Products/ProductDetailed'
 import Footer from './commons/Footer/Footer'
+import {showAuthForm} from "./actions/authFormActions";
+
+
 
 const App = (props) => {
 	useEffect(() => {
@@ -46,8 +49,7 @@ const App = (props) => {
 					<Route exact path='/:detailedPath' component={ProductDetailed}/>
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
-					<Route exact path='/profile/:profileInfo' component={Profile}/>
-
+					<Route exact path='/profile/:profileInfo' render={() => <Profile/>}/>
 					<Route path='*' component={Page404}/>
 				</Switch>
 				<Footer/>
@@ -56,8 +58,9 @@ const App = (props) => {
 	)
 }
 
-const mapStateToProps = () => {
+const mapStateToProps = (state) => {
 	return {}
 }
 
-export default connect(mapStateToProps, { checkIfIsLoggedIn, handleNavbar })(App)
+
+export default connect(mapStateToProps, { showAuthForm, checkIfIsLoggedIn, handleNavbar })(App);

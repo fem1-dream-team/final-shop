@@ -1,32 +1,44 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import classes from './Profile.module.css';
 import Navigation from './Navigation/Navigation';
 import {withRouter} from 'react-router-dom';
 import OrderHistory from './OrderHistory/OrderHistory';
 import PersonalInfo from './PersonalInfo/PersonalInfo';
 import {connect} from 'react-redux';
+import {showAuthForm} from "../../actions/authFormActions";
+//import {showAuthForm} from "../../actions/authFormActions";
 
 const mapStateToProps = (state) => {
-	return {}
+	return {
+		isAuth: state.auth.isAuth,
+	}
 };
 
 const Profile = (props) => {
-	console.log(props.location.pathname);
-	return (
-		<div className={classes.profileWrapper}>
-			<Navigation/>
+	useEffect(() => {
+		if(!props.isAuth) {
+			props.history.push("/")
+			props.showAuthForm(true)
+
+			// eslint-disable-next-line
+		}}, [])
+	console.log(props);
+		return (
 			<div className={classes.profileWrapper}>
-				{props.location.pathname === '/profile/personal-info'
-					? <PersonalInfo/>
-					:					null
-				}
-				{props.location.pathname === '/profile/my-orders'
-					? <OrderHistory/>
-					:					null
-				}
+				<Navigation/>
+				<div className={classes.profileWrapper}>
+					{props.location.pathname === '/profile/personal-info'
+						? <PersonalInfo/>
+						:					null
+					}
+					{props.location.pathname === '/profile/my-orders'
+						? <OrderHistory/>
+						:					null
+					}
+				</div>
 			</div>
-		</div>
-	)
+		)
+
 };
 
-export default connect(mapStateToProps, {})(withRouter(Profile))
+export default connect(mapStateToProps, {showAuthForm})(withRouter(Profile))
