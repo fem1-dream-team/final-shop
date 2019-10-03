@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
@@ -12,16 +12,19 @@ const ProductDetailed = (props) => {
 	const pathname = props.history.location.pathname
 	const productId = pathname.slice(16)
 
-	if (!props.productsList) {
-		props.getDetailedProduct(productId)
-	}
-
 	const productToShow = props.productsList ? props.productsList.find((el) => { return el._id === productId })
 		: props.detailedProduct
 
 	function onBtnCl () {
 		props.getDetailedProduct(productId)
 	}
+
+	useEffect(() => {
+		if (!props.productsList) {
+			props.getDetailedProduct(productId)
+		}
+		// eslint-disable-next-line
+	}, [])
 
 	return (
 		<div>

@@ -1,17 +1,17 @@
-import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { connect } from 'react-redux'
+import React, {useEffect} from 'react'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-import { checkIfIsLoggedIn } from './actions/authActions'
+import {checkIfIsLoggedIn} from './actions/authActions'
 
 import 'typeface-roboto'
 
 import Navbar from './components/navbar/Navbar'
 import GlobalStyle from './styles/Global'
 
-import { Home, Page404, Profile } from './components'
-import { Header } from './commons'
-import { Cart } from './components/ComponentsForNavigation/Cart'
+import {Home, Page404, Profile} from './components'
+import {Header} from './commons'
+import {Cart} from './components/ComponentsForNavigation/Cart'
 
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 import Products from './components/Products/Products'
@@ -19,7 +19,10 @@ import ProductDetailed from './components/Products/ProductDetailed'
 import Footer from './commons/Footer/Footer'
 
 const App = (props) => {
-	props.checkIfIsLoggedIn();
+	useEffect(() => {
+		props.checkIfIsLoggedIn();
+		// eslint-disable-next-line
+	}, [])
 
 	return (
 		<BrowserRouter>
@@ -52,4 +55,4 @@ const mapStateToProps = () => {
 	return {}
 }
 
-export default connect(mapStateToProps, { checkIfIsLoggedIn})(App)
+export default connect(mapStateToProps, {checkIfIsLoggedIn})(App)
