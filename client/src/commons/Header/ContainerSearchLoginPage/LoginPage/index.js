@@ -55,6 +55,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const LoginPage = (props) => {
+	console.log(props);
 	const classes = useStyles();
 
 	const onIconClick = () => {

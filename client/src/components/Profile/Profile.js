@@ -6,7 +6,6 @@ import OrderHistory from './OrderHistory/OrderHistory';
 import PersonalInfo from './PersonalInfo/PersonalInfo';
 import {connect} from 'react-redux';
 import {showAuthForm} from "../../actions/authFormActions";
-//import {showAuthForm} from "../../actions/authFormActions";
 
 const mapStateToProps = (state) => {
 	return {
@@ -22,7 +21,7 @@ const Profile = (props) => {
 
 			// eslint-disable-next-line
 		}}, [])
-	console.log(props);
+
 		return (
 			<div className={classes.profileWrapper}>
 				<Navigation/>
