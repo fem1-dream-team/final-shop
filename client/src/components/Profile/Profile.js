@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import classes from './Profile.module.css';
 import Navigation from './Navigation/Navigation';
 import {withRouter} from 'react-router-dom';
@@ -14,25 +14,22 @@ const mapStateToProps = (state) => {
 };
 
 const Profile = (props) => {
-	useEffect(() => {
-		if (!props.isAuth) {
-			props.history.push('/')
-			props.showAuthForm(true)
-
-			// eslint-disable-next-line
-		}}, [])
+	if (!props.isAuth) {
+		props.history.push('/');
+		props.showAuthForm(true)
+	}
 
 	return (
-		<div className={classes.profileWrapper}>
+		<div className={classes.profileWrapper} open={props.isAuth}>
 			<Navigation/>
 			<div className={classes.profileWrapper}>
 				{props.location.pathname === '/profile/personal-info'
 					? <PersonalInfo/>
-					:					null
+					: null
 				}
 				{props.location.pathname === '/profile/my-orders'
 					? <OrderHistory/>
-					:					null
+					: null
 				}
 			</div>
 		</div>
