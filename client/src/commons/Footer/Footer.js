@@ -26,24 +26,24 @@ const Footer = (props) => {
 				<Grid container component="nav" justify="space-between" spacing={3}>
 					<Grid item component="ul">
 						<StdLi>
-							<StdNavLink to="/cakes" onClick={() => { props.getProductCategories('/cakes') }}> Cakes </StdNavLink>
+							<StdNavLink to="/yummy/cakes" onClick={() => { props.getProductCategories('cakes') }}> Cakes </StdNavLink>
 						</StdLi>
 						<StdLi>
-							<StdNavLink to="/tarts" onClick={() => { props.getProductCategories('/tarts') }}> Tarts </StdNavLink>
+							<StdNavLink to="/yummy/tarts" onClick={() => { props.getProductCategories('tarts') }}> Tarts </StdNavLink>
 						</StdLi>
 						<StdLi>
-							<StdNavLink to="/cupcakes" onClick={() => { props.getProductCategories('/cupcakes') }}> Cupcakes </StdNavLink>
+							<StdNavLink to="/yummy/cupcakes" onClick={() => { props.getProductCategories('cupcakes') }}> Cupcakes </StdNavLink>
 						</StdLi>
 					</Grid>
 					<Grid item component="ul">
 						<StdLi>
-							<StdNavLink to="/cookies" onClick={() => { props.getProductCategories('/cookies') }}> Cookies </StdNavLink>
+							<StdNavLink to="/yummy/cookies" onClick={() => { props.getProductCategories('cookies') }}> Cookies </StdNavLink>
 						</StdLi>
 						<StdLi>
-							<StdNavLink to="/desserts" onClick={() => { props.getProductCategories('/desserts') }}> Desserts </StdNavLink>
+							<StdNavLink to="/yummy/desserts" onClick={() => { props.getProductCategories('desserts') }}> Desserts </StdNavLink>
 						</StdLi>
 						<StdLi>
-							<StdNavLink to="/macaroons" onClick={() => { props.getProductCategories('/macaroons') }}> Macaroons </StdNavLink>
+							<StdNavLink to="/yummy/macaroons" onClick={() => { props.getProductCategories('macaroons') }}> Macaroons </StdNavLink>
 						</StdLi>
 					</Grid>
 				</Grid>
