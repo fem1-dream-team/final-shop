@@ -1,4 +1,5 @@
 .personalWrap {
+    grid-area: profile;
     padding: 25px;
 }
 

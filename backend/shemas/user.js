@@ -22,7 +22,24 @@ const UserSchema = new Schema({
 			type: String,
 			required: true
 		},
+		tel: {
+			type: String,
+			required: true
+		},
+		birth: {
+			type: String,
+			required: true
+		},
+		sex: {
+			type: String,
+			required: true
+		},
+		adress: {
+			type: String,
+			required: true
+		},
 	},
+
 	{collection: 'customers'}
 );
 
