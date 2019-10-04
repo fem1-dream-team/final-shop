@@ -31,7 +31,7 @@ const Navbar = (props) => {
 					<Brand/>
 					<NavLinks style={linkAnimation}>
 						<NavLink to="/yummy/cakes" onClick={() => { props.getProductCategories('cakes') }}>CAKES</NavLink>
-						<NavLink to="/yummy/tarts" onClick={() => { props.getProductCategories('tarts') }}>TARTS</NavLink>
+						<NavLink to="/yummy/candies" onClick={() => { props.getProductCategories('candies') }}>CANDIES</NavLink>
 						<NavLink to="/yummy/cupcakes" onClick={() => { props.getProductCategories('cupcakes') }}>CUPCAKES</NavLink>
 						<NavLink to="/yummy/cookies" onClick={() => { props.getProductCategories('cookies') }}>COOKIES</NavLink>
 						<NavLink to="/yummy/desserts" onClick={() => { props.getProductCategories('desserts') }}>DESSERTS</NavLink>
