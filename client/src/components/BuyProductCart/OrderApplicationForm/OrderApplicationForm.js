@@ -1,11 +1,39 @@
 import React from 'react'
 import s from './OrderApplicationForm.module.css'
-import { buyBtnHandler } from '../../../actions/basketActions'
 import connect from 'react-redux/es/connect/connect'
+import { buyOrderCart } from '../../../actions/basketActions'
 
 const OrderApplicationForm = (props) => {
-	console.log(props.productsBasket)
-	let priceArr, totalPrice, reducer;
+	let priceArr, totalPrice, reducer, amount;
+
+	const onClickMinus = (totalPrice, totalAmount, id, amount, price, image, name) => {
+		props.buyOrderCart(totalPrice, totalAmount, id, amount, price, image, name)
+	}
+	const onClickPlus = () => {
+
+	}
+
+	// function unique(arr) {
+	// 	let result = [];
+	//
+	// 	for (let str of arr) {
+	// 		if (!result.includes(str)) {
+	// 			result.push(str);
+	// 		}
+	// 	}
+	//
+	// 	return result;
+	// }
+
+
+	//const productsCart = [...new Set(props.productsBasket.map( object => object.id))];
+
+
+	let uniqIds = {};
+	let productsCart = props.productsBasket.filter(obj => !uniqIds[obj.id] && (uniqIds[obj.id] = true));
+	console.log(productsCart);
+
+
 	return (
 		<div className={s.header}>
 			<h1 className={s.name}>Your order</h1>
@@ -13,30 +41,30 @@ const OrderApplicationForm = (props) => {
 
 			{!props.productsBasket
 				? null
-				: props.productsBasket.map((item) => {
+				: productsCart.map((item) => {
 					priceArr = props.productsBasket.map((item) => { return (item.price) })
 					reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
 					totalPrice = Number(priceArr.reduce(reducer, 0))
-
-					return (
-						<div className={s.descriptionOrder}>
-							<div className={s.imgSize}><img src={item.image} alt="Product img"/></div>
-							<div className={s.nameProduct}>
-								<p>{item.name}</p>
-							</div>
-							<div className={s.plusMinusCount}>
-								<p className={s.plusMinus}>-</p>
-								<p></p>
-								<p className={s.plusMinus}>+</p>
-							</div>
-							<div className={s.priceContainer}>
-								{item.price} UAH
-							</div>
-							<props className="price log"></props>
-							<div className={s.delete} onClick={() => { props.productsBasket.filter(item => (item === item.id)) }}>+</div>
+				return (
+					<div className={s.descriptionOrder} key={item.id}>
+						<div className={s.imgSize}><img src={item.image} alt="Product img"/></div>
+						<div className={s.nameProduct}>
+							<p>{item.name}</p>
 						</div>
-					)
+						<div className={s.plusMinusCount}>
+							<p className={s.plusMinus} onClick={onClickMinus}>-</p>
+							<p>{amount}</p>
+							<p className={s.plusMinus} onClick={onClickPlus}>+</p>
+						</div>
+						<div className={s.priceContainer}>{item.price}UAH</div>
+
+						<div className={s.delete}
+						     onClick={() => { props.productsBasket.filter(item => (item === item.id)) }}>+
+						</div>
+					</div>
+				)
 				})
+
 			}
 			<div className={s.line}></div>
 
@@ -78,17 +106,15 @@ const OrderApplicationForm = (props) => {
 const mapStateToProps = (state) => {
 	return {
 		productsBasket: state.basket.productsBasket,
-		// totalAmount: state.basket.totalAmount,
-		// totalPrice: state.basket.productsBasket.totalPrice,
+		productsCart: state.basket.productsCart,
+		id: state.basket.productsBasket.id,
+		amount: state.basket.productsBasket.amount,
+		price: state.basket.productsBasket.price,
+		image: state.basket.productsBasket.image,
+		name: state.basket.productsBasket.name,
+		totalPrice: state.basket.totalPrice,
+		totalAmount: state.basket.totalAmount,
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		buyBtnHandler: (productID) => { dispatch(buyBtnHandler(productID)) },
-		// btnBasketHandler: (id, image, price, name) => { dispatch(btnBasketHandler(id, image, price, name)) },
-		// addToCart: (id, quantity) => { dispatch(addToCart(id, quantity)) },
-		// removeCart: (id) => { dispatch(removeCart(id)) },
-	}
-}
-export default connect(mapStateToProps, mapDispatchToProps)(OrderApplicationForm)
+export default connect(mapStateToProps, {buyOrderCart})(OrderApplicationForm)

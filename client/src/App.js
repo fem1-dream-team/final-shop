@@ -1,26 +1,20 @@
 import React, {useEffect} from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
-
 import { checkIfIsLoggedIn } from './actions/authActions'
 import { handleNavbar } from './actions/generalActions'
-
 import 'typeface-roboto'
-
 import Navbar from './components/navbar/Navbar'
 import GlobalStyle from './styles/Global'
-
 import { Home, Page404, Profile } from './components'
-// import {SimpleSlider} from './components'
 import { Header } from './commons'
 import { Cart } from './components/ComponentsForNavigation/Cart'
-
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
-// import Button from '@material-ui/core/Button';
 import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo'
 import Products from './components/Products/Products'
 import ProductDetailed from './components/Products/ProductDetailed'
 import Footer from './commons/Footer/Footer'
+import BasketProducts from './components/BuyProductCart/BasketProducts/BasketProducts'
 
 const App = (props) => {
 	useEffect(() => {
@@ -33,6 +27,7 @@ const App = (props) => {
 				<Header/>
 				<Navbar/>
 				<GlobalStyle/>
+				<BasketProducts/>
 				<Switch>
 					<Route exact path='/' component={Home}/>
 					<Route path='/home' render={() => <Home/>}/>

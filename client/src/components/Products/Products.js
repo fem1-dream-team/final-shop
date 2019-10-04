@@ -12,9 +12,7 @@ import { connect } from 'react-redux'
 import { getProductCategories, getSearchProducts } from '../../actions/productsActions'
 import { withRouter } from 'react-router-dom'
 import { buyBtnHandler } from '../../actions/basketActions'
-import BasketProducts from '../BuyProductCart/BasketProducts/BasketProducts'
 
-// debugger
 const Products = (props) => {
 	// eslint-disable-next-line no-restricted-globals
 	const q = window.location.search.split('q=')[1] ? location.search.split('q=')[1] : ''
@@ -41,17 +39,8 @@ const Products = (props) => {
 				{!props.productsList
 					? null
 					: props.productsList.map((item) => {
+
 						const detailedPath = item._id
-
-						// const priceArr = props.productsBasket.map((item) => { return (item.price) })
-						// const reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
-						// const totalPrice = priceArr.reduce(reducer, item.price)
-						// const totalAmount = priceArr.length
-
-						const onBuyClick = (itemId, price, image, name) => {
-							// alert(totalPrice)
-							props.buyBtnHandler(itemId, price, image, name)
-						}
 						return (
 							<Grid item component="div" sm={3} key={item._id}>
 								<Card className="div">
@@ -76,11 +65,10 @@ const Products = (props) => {
 										{item.price} UAH
 									</Typography>
 									<CardActions>
-
-										<Button size="small" color="primary" onClick={() => { onBuyClick(item._id, item.price, item.image, item.name) }}>
+										<Button size="small" color="primary" onClick={() => {props.buyBtnHandler(item._id, item.amount, item.price, item.image, item.name)}}>
 											<p>Buy</p>
 										</Button>
-										<BasketProducts/>
+										{/*<BasketProducts/>*/}
 										<Button onClick={() => { props.history.push(`${detailedPath}`) }} size="small" color="primary">
 											Details
 										</Button>
@@ -98,7 +86,12 @@ const mapStateToProps = state => {
 	return {
 		productsList: state.products.productsList,
 		category: state.products.categoryName,
-		productsBasket: state.basket.productsBasket
+		productsBasket: state.basket.productsBasket,
+		id: state.basket.productsBasket.id,
+		amount: state.basket.amount,
+		price: state.basket.price,
+		image: state.basket.image,
+		name: state.basket.name,
 	}
 }
 
