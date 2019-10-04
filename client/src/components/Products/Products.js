@@ -30,12 +30,12 @@ const Products = (props) => {
 	return (
 		<Container>
 			<div className={s.container}>
-				<h1 className={s.text}> {
+				<div className={s.text}> {
 					props.productsList
 						? categoryName
 						: 'Loading...'
 				}
-				</h1>
+				</div>
 			</div>
 			<Grid container component="div" direction="row" justify='flex-start' spacing={4}>
 

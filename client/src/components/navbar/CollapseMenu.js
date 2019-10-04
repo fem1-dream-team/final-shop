@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import {useSpring, animated} from 'react-spring'
-import {NavLink} from 'react-router-dom'
-import {goFromCollapseMenu, handleNavbar} from '../../actions/generalActions'
-import {connect} from 'react-redux'
+import { useSpring, animated } from 'react-spring'
+import { NavLink } from 'react-router-dom'
+import { goFromCollapseMenu, handleNavbar } from '../../actions/generalActions'
+import { connect } from 'react-redux'
 // debugger
 
 const CollapseMenu = (props) => {
-	const {open} = useSpring({open: props.navbarState ? 0 : 1})
+	const { open } = useSpring({ open: props.navbarState ? 0 : 1 })
 
 	const onLinkClick = (where) => {
 		props.goFromCollapseMenu(where)
@@ -25,27 +25,13 @@ const CollapseMenu = (props) => {
 			}}
 			>
 				<NavLinks>
-					<li><NavLink to="/yummy/cakes" onClick={() => {
-						onLinkClick('cakes')
-					}}>CAKES</NavLink></li>
-					<li><NavLink to="/yummy/tarts" onClick={() => {
-						onLinkClick('tarts')
-					}}>TARTS</NavLink></li>
-					<li><NavLink to="/yummy/cupcakes" onClick={() => {
-						onLinkClick('cupcakes')
-					}}>CUPCAKES</NavLink></li>
-					<li><NavLink to="/yummy/cookies" onClick={() => {
-						onLinkClick('cookies')
-					}}>COOKIES</NavLink></li>
-					<li><NavLink to="/yummy/desserts" onClick={() => {
-						onLinkClick('desserts')
-					}}>DESSERTS</NavLink></li>
-					<li><NavLink to="/yummy/macaroons" onClick={() => {
-						onLinkClick('macaroons')
-					}}>MACAROONS</NavLink></li>
-					<li><NavLink to="/cart" onClick={() => {
-						props.handleNavbar(false)
-					}}>CART</NavLink></li>
+					<li><NavLink to="/yummy/cakes" onClick={() => { onLinkClick('cakes') }}>CAKES</NavLink></li>
+					<li><NavLink to="/yummy/candies" onClick={() => { onLinkClick('candies') }}>CANDIES</NavLink></li>
+					<li><NavLink to="/yummy/cupcakes" onClick={() => { onLinkClick('cupcakes') }}>CUPCAKES</NavLink></li>
+					<li><NavLink to="/yummy/cookies" onClick={() => { onLinkClick('cookies') }}>COOKIES</NavLink></li>
+					<li><NavLink to="/yummy/desserts" onClick={() => { onLinkClick('desserts') }}>DESSERTS</NavLink></li>
+					<li><NavLink to="/yummy/macaroons" onClick={() => { onLinkClick('macaroons') }}>MACAROONS</NavLink></li>
+					<li><NavLink to="/cart" onClick={() => { props.handleNavbar(false) }}>CART</NavLink></li>
 				</NavLinks>
 			</CollapseWrapper>
 		)
@@ -58,7 +44,7 @@ const mapStateToProps = state => {
 		navbarState: state.general.navbar
 	}
 }
-export default connect(mapStateToProps, {goFromCollapseMenu, handleNavbar})(CollapseMenu)
+export default connect(mapStateToProps, { goFromCollapseMenu, handleNavbar })(CollapseMenu)
 
 const CollapseWrapper = styled(animated.div)`
 margin-top: 0
