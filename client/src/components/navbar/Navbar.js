@@ -53,6 +53,7 @@ export default connect(mapStateToProps, {getProductCategories })(Navbar)
 
 const NavBar = styled(animated.nav)`
 	position: relative;
+	height: 10vh;
 	top: 0;
 	left: 0;
 	z-index: 1;
@@ -65,7 +66,7 @@ const FlexContainer = styled.div`
 	display: flex;;
 	justify-content: space-between;
 	max-width: 120rem;
-	height: 4rem;
+	height: 10vh;
 	margin: auto;
 	padding: 0 2rem;
 `

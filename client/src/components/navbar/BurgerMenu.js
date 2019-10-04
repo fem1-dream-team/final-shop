@@ -12,7 +12,7 @@ const Burgermenu = (props) => {
 		<Wrapper onClick={showMenu}>
 			<div className={ props.navbarState ? 'open' : '' }>
 				<span>&nbsp;</span>
-				<span>&nbsp;</span>
+				<CentralSpan>&nbsp;</CentralSpan>
 				<span>&nbsp;</span>
 			</div>
 		</Wrapper>
@@ -26,13 +26,15 @@ const mapStateToProps = state => {
 }
 export default connect(mapStateToProps, {handleNavbar})(Burgermenu);
 
+const CentralSpan = styled.span`
+		margin: 10px 0;
+`
 const Wrapper = styled.div`
-	position: absolute;
-	top: 5px;
-	right: 10px;
-	display: block;
-	padding-top: .5rem;
-	// font-size: 62.5%;
+	// position: absolute;
+	// top: 5px;
+	// right: 10px;
+	display: flex;
+	align-items: center;
 	cursor: pointer;
 	@media (min-width: 769px) {
 		display: none;
@@ -41,24 +43,23 @@ const Wrapper = styled.div`
 	& span {
 		position: relative;
 		display: block;
-		width: 3.5rem;
-		height: .4rem;
-		margin-bottom: .7rem;
+		width: 50px;
+		height: 5px;
 		background: #fdcb6e;
 		transition: all ease-in-out .2s;
 	}
-
+	
 	.open span:nth-child(2) {
 		opacity: 0;
 	}
 
 	.open span:nth-child(3) {
-		top: -17px;
+		top: -15px;
 		transform: rotate(45deg);
 	}
 
 	.open span:nth-child(1) {
-		top: 17px;
+		top: 15px;
 		transform: rotate(-45deg);
 	}
 

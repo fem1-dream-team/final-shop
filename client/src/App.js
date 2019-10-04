@@ -12,22 +12,23 @@ import GlobalStyle from './styles/Global'
 
 import {Home, Page404} from './components'
 import Profile from './components/Profile/Profile'
-import {Header} from './commons'
 import {Cart} from './components/ComponentsForNavigation/Cart'
 
-import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
+import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage/UserIcon'
 import Products from './components/Products/Products'
 import ProductDetailed from './components/Products/ProductDetailed'
 import Footer from './commons/Footer/Footer'
 import BasketProducts from './components/BuyProductCart/BasketProducts/BasketProducts';
+import {Header} from './commons/Header/Header';
+import AuthFormModal from "./commons/Header/ContainerSearchLoginPage/LoginPage/AuthFormModal";
 
 const Container = styled.div`
-min-height: 60vh;
+min-height: 65vh;
 display: flex;
 flex-direction: column;
 justify-content: center;
-
 `
+
 const App = (props) => {
 	useEffect(() => {
 		props.checkIfIsLoggedIn();
@@ -37,9 +38,10 @@ const App = (props) => {
 	return (
 		<BrowserRouter>
 			<div>
-				<Header/>
-				<Navbar/>
-				<BasketProducts/>
+				<Header />
+				{/*<Navbar />*/}
+				<BasketProducts />
+				<AuthFormModal />
 				<Container>
 					<Switch>
 						<Route exact path='/' component={Home}/>
