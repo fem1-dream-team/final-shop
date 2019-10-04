@@ -1,24 +1,32 @@
-import React from 'react';
+import React, {Fragment, useState} from 'react';
 import classes from './PersonalInfo.module.css';
 import {connect} from 'react-redux';
+import {EditPersonalInfo} from './EditPersinalInfo/EditPersinalInfo';
 
 const PersonalInfo = (props) => {
-	if (props.isAuth) {
-		return (
-			<div className={classes.personalWrap}>
-				<p className={classes.item}>First Name: {props.first_name}</p>
-				<p className={classes.item}>Last Name: {props.last_name} </p>
-				<p className={classes.item}>Email: {props.email}</p>
-				<button className={classes.button} onClick={() => { alert('Edit data') }}> Edit profile</button>
-			</div>
-		)
-	} else {
-		return (
-			<div>
-				<p>No data</p>
-			</div>
-		)
-	}
+	const [editProfile, setEditProfile] = useState(false);
+	console.log(props);
+
+	return (
+		<div className={classes.personalWrap}>
+			{editProfile
+				? <EditPersonalInfo/>
+				:				<Fragment>
+					<h3>Personal Data</h3>
+					<p className={classes.item}>First Name: {props.first_name}</p>
+					<p className={classes.item}>Last Name: {props.last_name} </p>
+					<p className={classes.item}>Email: {props.email}</p>
+					<p className={classes.item}>Tel.: </p>
+					<p className={classes.item}>Date of birth: </p>
+					<p className={classes.item}>Sex: </p>
+					<p className={classes.item}>Delivery Adress: </p>
+					<button className={classes.button} onClick={() => setEditProfile(true) }> Edit profile</button>
+				</Fragment>
+			}
+
+		</div>
+
+	)
 }
 
 const mapStateToProps = state => {
@@ -27,7 +35,7 @@ const mapStateToProps = state => {
 		first_name: state.auth.customer.first_name,
 		last_name: state.auth.customer.last_name,
 		email: state.auth.customer.email,
-		id: state.auth.customer.id
+		id: state.auth.customer.id,
 	}
 }
 
