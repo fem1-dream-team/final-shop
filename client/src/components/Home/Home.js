@@ -1,5 +1,5 @@
 import React from 'react';
-import {SimpleSlider} from '../SimpleSlider';
+import SimpleSlider from '../SimpleSlider';
 import {Categories} from '../Categories';
 import s from '../Products/category.module.css'
 

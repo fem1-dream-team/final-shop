@@ -31,10 +31,12 @@ const Wrapper = styled.div`
 	top: 5px;
 	right: 10px;
 	display: block;
-	padding-top: .7rem;
-	font-size: 62.5%;
+	padding-top: .5rem;
+	// font-size: 62.5%;
 	cursor: pointer;
-
+	@media (min-width: 769px) {
+		display: none;
+	}
 
 	& span {
 		position: relative;
@@ -51,12 +53,12 @@ const Wrapper = styled.div`
 	}
 
 	.open span:nth-child(3) {
-		top: -11px;
+		top: -17px;
 		transform: rotate(45deg);
 	}
 
 	.open span:nth-child(1) {
-		top: 11px;
+		top: 17px;
 		transform: rotate(-45deg);
 	}
 

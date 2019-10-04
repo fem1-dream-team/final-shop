@@ -9,13 +9,13 @@
 
 .text {
     width: 75%;
-    /*margin: 0 auto;*/
+    margin: 0 auto;
     color: antiquewhite;
     text-transform: uppercase;
     position: absolute;
-    top: 35%;
+    top: 50%;
     left: 50%;
-    margin-right: -50%;
+    /*margin-right: -50%;*/
     transform: translate(-50%, -50%);
     letter-spacing: 5px;
     font-size: 20px;
@@ -23,6 +23,17 @@
 }
 
 .price {
+    color: black;
+    font-weight: bold;
+    padding: 0 0 5px 15px;
+}
+
+.sale {
+    color: red;
+    padding: 0 0 5px 15px;
+}
+.sale::after {
+    content: "Sale";
     color: black;
     font-weight: bold;
     padding: 0 0 5px 15px;

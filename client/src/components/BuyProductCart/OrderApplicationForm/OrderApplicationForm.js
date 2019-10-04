@@ -20,7 +20,7 @@ const OrderApplicationForm = (props) => {
 
 					return (
 						<div className={s.descriptionOrder}>
-							<div className={s.imgSize}><img src={item.image} alt="Product img"/></div>
+							<div className={s.imgSize}><img src={`../${item.image}`} alt="Product img"/></div>
 							<div className={s.nameProduct}>
 								<p>{item.name}</p>
 							</div>

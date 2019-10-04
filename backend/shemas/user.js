@@ -22,6 +22,10 @@ const UserSchema = new Schema({
 			type: String,
 			required: true
 		},
+		location: {
+			type: String,
+			required: false
+		},
 	},
 	{collection: 'customers'}
 );

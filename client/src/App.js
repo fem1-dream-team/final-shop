@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux'
+import styled from 'styled-components'
 
 import {checkIfIsLoggedIn} from './actions/authActions'
 
@@ -18,7 +19,15 @@ import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 import Products from './components/Products/Products'
 import ProductDetailed from './components/Products/ProductDetailed'
 import Footer from './commons/Footer/Footer'
+import BasketProducts from './components/BuyProductCart/BasketProducts/BasketProducts';
 
+const Container = styled.div`
+min-height: 60vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+
+`
 const App = (props) => {
 	useEffect(() => {
 		props.checkIfIsLoggedIn();
@@ -30,21 +39,22 @@ const App = (props) => {
 			<div>
 				<Header/>
 				<Navbar/>
-				<GlobalStyle/>
-				<Switch>
-					<Route exact path='/' component={Home}/>
-					<Route path='/home' render={() => <Home/>}/>
+				<BasketProducts/>
+				<Container>
+					<Switch>
+						<Route exact path='/' component={Home}/>
+						<Route path='/home' render={() => <Home/>}/>
 
-					<Route path='/search' component={Products}/>
-					<Route exact path='/yummy/:categoryName' component={Products}/>
-					<Route exact path='/yummy/detailed/:detailedPath' component={ProductDetailed}/>
+						<Route path='/search' component={Products}/>
+						<Route exact path='/yummy/:categoryName' component={Products}/>
+						<Route exact path='/yummy/detailed/:detailedPath' component={ProductDetailed}/>
 
-					<Route path='/cart' render={() => <Cart/>}/>
-					<Route exect path='/customer' component={LoginPage}/>
-					<Route exact path='/profile/:profileInfo' component={Profile}/>
-					<Route path='*' component={Page404}/>
-				</Switch>
-
+						<Route path='/cart' render={() => <Cart/>}/>
+						<Route exect path='/customer' component={LoginPage}/>
+						<Route exact path='/profile/:profileInfo' component={Profile}/>
+						<Route path='*' component={Page404}/>
+					</Switch>
+				</Container>
 				<Footer/>
 			</div>
 		</BrowserRouter>

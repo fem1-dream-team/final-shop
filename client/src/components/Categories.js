@@ -45,6 +45,9 @@ const images = [
 ];
 
 const useStyles = makeStyles(theme => ({
+	container: {
+		marginBottom: 30
+	},
 	root: {
 		display: 'flex',
 		flexWrap: 'wrap',
@@ -122,7 +125,7 @@ const useStyles = makeStyles(theme => ({
 export const Categories = () => {
 	const classes = useStyles();
 	return (
-		<div>
+		<div className={classes.container}>
 
 			<div className={classes.root}>
 				{images.map(image => (

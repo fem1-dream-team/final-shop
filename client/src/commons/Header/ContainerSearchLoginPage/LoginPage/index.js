@@ -34,7 +34,6 @@ const useStyles = makeStyles(theme => ({
 	swgWrapper: {
 		position: 'relative',
 		left: 50,
-		bottom: 1
 	},
 	flex: {
 		display: 'flex',
@@ -42,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	welcome: {
 		position: 'relative',
-		paddingTop: 5,
+		// paddingTop: 5,
 		color: '#fff',
 		left: 20,
 		margin: 0,
@@ -50,6 +49,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	welcomeText: {
 		marginLeft: 25,
+		padding: '8px',
 		color: '#fff',
 	}
 }))
