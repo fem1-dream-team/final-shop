@@ -3,7 +3,6 @@ import authReducer from './authReducer'
 import productsReducer from './productsReducer'
 import generalReducer from './generalReducer'
 import basketReducer from './basketReducer'
-// import {formRed} from './formReducer'
 import {reducer as formReducer} from 'redux-form';
 
 const rootReducer = combineReducers({

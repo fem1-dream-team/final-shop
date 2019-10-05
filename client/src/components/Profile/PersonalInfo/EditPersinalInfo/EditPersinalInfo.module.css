@@ -1,3 +1,19 @@
 .editH {
     color: red;
 }
+
+.item{
+    padding-bottom: 10px;
+}
+
+.itemRadio{
+    padding-bottom: 3px;
+}
+
+.button {
+    padding: 10px 20px;
+    width: 130px;
+    display: inline-block;
+    margin: 10px 5px;
+    font-size: 1.1em;
+}

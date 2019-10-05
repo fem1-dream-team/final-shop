@@ -24,19 +24,19 @@ const UserSchema = new Schema({
 		},
 		tel: {
 			type: String,
-			required: true
+			required: false
 		},
 		birth: {
 			type: String,
-			required: true
+			required: false
 		},
 		sex: {
 			type: String,
-			required: true
+			required: false
 		},
 		adress: {
 			type: String,
-			required: true
+			required: false
 		},
 	},
 

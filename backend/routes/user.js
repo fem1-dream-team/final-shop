@@ -50,7 +50,7 @@ router.post('/login', (req, res) => {
 
 	//is form valid?
 	const { errors, isValid } = validateLoginInput(req.body);
-
+	console.log(req.body);
 	if (!isValid) { return res.status(400).json(errors) }
 
 //	let's find user by email and check if password matches
@@ -87,5 +87,48 @@ router.post('/login', (req, res) => {
 				})
 		})
 })
+
+
+router.put('/edit', (req, res) => {
+
+	//is form valid?
+	const { errors, isValid } = validateLoginInput(req.body);
+	console.log(req.body);
+	if (!isValid) { return res.status(400).json(errors) }
+
+//	let's find user by email and check if password matches
+	const email = req.body.email
+	const password = req.body.password
+
+	User.findOne({ email })
+		.then (user => {
+			if (!user) {
+				return res.status(400).json({ email: 'Email not found'})
+			}
+
+			bcrypt.compare(password, user.password)
+				.then (isMatch => {
+					if (isMatch) {
+						const payload = {
+							id: user._id,
+							first_name: user.first_name,
+							last_name: user.last_name,
+							email: user.email
+						}
+
+						jwt.sign(
+							payload,
+							keys.secretOrKey,
+							{expiresIn: 900},
+							(err, token) => {
+								res.json({ success: true, token: 'Bearer' + token })
+							}
+						)
+					} else {
+						return res.status(400).json({ password: "Wrong password. Try again" })
+					}
+				})
+		})
+});
 
 module.exports = router;

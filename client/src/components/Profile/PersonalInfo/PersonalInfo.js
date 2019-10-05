@@ -6,11 +6,16 @@ import EditPersonalInfo from './EditPersinalInfo/EditPersinalInfo';
 const PersonalInfo = (props) => {
 	const [editProfile, setEditProfile] = useState(false);
 	console.log(props);
+	const onSubmit = (formData) => {
+		console.log(formData);
+	}
 
 	return (
 		<div className={classes.personalWrap}>
 			{editProfile
-				? <EditPersonalInfo state={props}/>
+				?					<div style={{ padding: 15 }}>
+					<EditPersonalInfo state={props} onSubmit={onSubmit}/>
+				</div>
 				:				<Fragment>
 					<h3>Personal Data</h3>
 					<p className={classes.item}>First Name: {props.first_name}</p>

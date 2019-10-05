@@ -8,6 +8,10 @@
 }
 
 .button {
-    margin: 5px;
+    padding: 10px 20px;
+    width: 140px;
+    display: block;
+    margin: 20px auto;
+    font-size: 1.1em;
 }
 
