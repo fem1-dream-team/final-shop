@@ -6,27 +6,12 @@ import { buyOrderCart } from '../../../actions/basketActions'
 const OrderApplicationForm = (props) => {
 	let priceArr, totalPrice, reducer;
 
-	const onClickMinus = (totalPrice, totalAmount, id, amount, price, image, name) => {
-		props.buyOrderCart(totalPrice, totalAmount, id, amount, price, image, name)
-	}
+	//const onClickMinus = (totalPrice, totalAmount, id, amount, price, image, name)  {
+	// 	props.buyOrderCart(totalPrice, totalAmount, id, amount, price, image, name)
+	// }
 	const onClickPlus = () => {
 
 	}
-
-	// function unique(arr) {
-	// 	let result = [];
-	//
-	// 	for (let str of arr) {
-	// 		if (!result.includes(str)) {
-	// 			result.push(str);
-	// 		}
-	// 	}
-	//
-	// 	return result;
-	// }
-
-	// const productsCart = [...new Set(props.productsBasket.map( object => object.id))];
-
 	const uniqIds = {};
 	const productsCart = props.productsBasket.filter(obj => !uniqIds[obj.id] && (uniqIds[obj.id] = true));
 	console.log(productsCart);
@@ -131,4 +116,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps, {buyOrderCart})(OrderApplicationForm)
+export default connect(mapStateToProps)(OrderApplicationForm)
