@@ -15,6 +15,7 @@ import Products from './components/Products/Products'
 import ProductDetailed from './components/Products/ProductDetailed'
 import Footer from './commons/Footer/Footer'
 import BasketProducts from './components/BuyProductCart/BasketProducts/BasketProducts'
+import Profile from './components/Profile/Profile'
 
 const App = (props) => {
 	useEffect(() => {
