@@ -11,6 +11,7 @@ const OrderApplicationForm = (props) => {
 
 	// поиск количества повтор. обьктов
 	const counter = props.productsBasket.reduce(function (object, index) {
+		// eslint-disable-next-line no-restricted-globals
 		if (!object.hasOwnProperty(index.id)) {
 			object[index.id] = 0;
 		}
