@@ -10,7 +10,7 @@ const initialState = {
 	isOpen: false,
 }
 
-//debugger
+// debugger
 const basketReducer = (state = initialState, action) => {
 	// let priceArr = state.productsBasket.map((item) => { return (item.price) })
 	// let reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
@@ -19,16 +19,16 @@ const basketReducer = (state = initialState, action) => {
 
 	switch (action.type) {
 	case BTN_HANDLER_BASKET: {
-			return {
-				...state,
-				productsBasket: [...state.productsBasket, {
-					id: action.payload.id,
-					amount: action.payload.amount,
-					price: action.payload.price,
-					image: action.payload.image,
-					name: action.payload.name,
-				}],
-			}
+		return {
+			...state,
+			productsBasket: [...state.productsBasket, {
+				id: action.payload.id,
+				amount: action.payload.amount,
+				price: action.payload.price,
+				image: action.payload.image,
+				name: action.payload.name,
+			}],
+		}
 	}
 
 	case BTN_HANDLER_CART: {
@@ -47,6 +47,7 @@ const basketReducer = (state = initialState, action) => {
 	}
 	default:
 		return state
-	}}
+	}
+}
 
 export default basketReducer

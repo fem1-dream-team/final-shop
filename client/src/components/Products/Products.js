@@ -39,7 +39,6 @@ const Products = (props) => {
 				{!props.productsList
 					? null
 					: props.productsList.map((item) => {
-
 						const detailedPath = item._id
 						return (
 							<Grid item component="div" sm={3} key={item._id}>
@@ -65,10 +64,10 @@ const Products = (props) => {
 										{item.price} UAH
 									</Typography>
 									<CardActions>
-										<Button size="small" color="primary" onClick={() => {props.buyBtnHandler(item._id, item.amount, item.price, item.image, item.name)}}>
+										<Button size="small" color="primary" onClick={() => { props.buyBtnHandler(item._id, item.amount, item.price, item.image, item.name) }}>
 											<p>Buy</p>
 										</Button>
-										{/*<BasketProducts/>*/}
+										{/* <BasketProducts/> */}
 										<Button onClick={() => { props.history.push(`${detailedPath}`) }} size="small" color="primary">
 											Details
 										</Button>

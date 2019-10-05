@@ -4,7 +4,7 @@ import connect from 'react-redux/es/connect/connect'
 import { buyOrderCart } from '../../../actions/basketActions'
 
 const OrderApplicationForm = (props) => {
-	let priceArr, totalPrice, reducer, amount;
+	let priceArr, totalPrice, reducer;
 
 	const onClickMinus = (totalPrice, totalAmount, id, amount, price, image, name) => {
 		props.buyOrderCart(totalPrice, totalAmount, id, amount, price, image, name)
@@ -25,15 +25,26 @@ const OrderApplicationForm = (props) => {
 	// 	return result;
 	// }
 
+	// const productsCart = [...new Set(props.productsBasket.map( object => object.id))];
 
-	//const productsCart = [...new Set(props.productsBasket.map( object => object.id))];
-
-
-	let uniqIds = {};
-	let productsCart = props.productsBasket.filter(obj => !uniqIds[obj.id] && (uniqIds[obj.id] = true));
+	const uniqIds = {};
+	const productsCart = props.productsBasket.filter(obj => !uniqIds[obj.id] && (uniqIds[obj.id] = true));
 	console.log(productsCart);
 
+	// поиск количества повтор. обьктов
+	const counter = props.productsBasket.reduce(function (o, i) {
+		if (!o.hasOwnProperty(i.id)) {
+			o[i.id] = 0;
+		}
+		o[i.id]++;
+		return o;
+	}, {});
 
+	const result = Object.keys(counter).map(function (id) {
+		return counter[id]
+	});
+
+	console.log('result' + result)
 	return (
 		<div className={s.header}>
 			<h1 className={s.name}>Your order</h1>
@@ -45,24 +56,27 @@ const OrderApplicationForm = (props) => {
 					priceArr = props.productsBasket.map((item) => { return (item.price) })
 					reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
 					totalPrice = Number(priceArr.reduce(reducer, 0))
-				return (
-					<div className={s.descriptionOrder} key={item.id}>
-						<div className={s.imgSize}><img src={item.image} alt="Product img"/></div>
-						<div className={s.nameProduct}>
-							<p>{item.name}</p>
-						</div>
-						<div className={s.plusMinusCount}>
-							<p className={s.plusMinus} onClick={onClickMinus}>-</p>
-							<p>{amount}</p>
-							<p className={s.plusMinus} onClick={onClickPlus}>+</p>
-						</div>
-						<div className={s.priceContainer}>{item.price}UAH</div>
+					return (
+						<div className={s.descriptionOrder} key={item.id}>
+							<div className={s.imgSize}><img src={item.image} alt="Product img"/></div>
+							<div className={s.nameProduct}>
+								<p>{item.name}</p>
+							</div>
+							<div className={s.plusMinusCount}>
+								<p className={s.plusMinus}>-</p>
+								{!props.id === item.id
+									? null
+									: <p>{counter[item.id]}</p>
+								}
+								<p className={s.plusMinus} onClick={onClickPlus}>+</p>
+							</div>
+							<div className={s.priceContainer}>{!counter[item.id] ? null : item.price * counter[item.id]}UAH</div>
 
-						<div className={s.delete}
+							<div className={s.delete}
 						     onClick={() => { props.productsBasket.filter(item => (item === item.id)) }}>+
+							</div>
 						</div>
-					</div>
-				)
+					)
 				})
 
 			}

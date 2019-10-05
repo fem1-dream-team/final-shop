@@ -1,7 +1,6 @@
 import { BTN_HANDLER_BASKET, BTN_HANDLER_CART } from './types'
 
 export const buyBtnHandler = (id, amount, price, image, name) => {
-
 	return {
 		type: BTN_HANDLER_BASKET,
 		payload: {

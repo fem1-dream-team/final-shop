@@ -13,8 +13,8 @@
 // 			price: action.payload.price,
 // 			image: action.payload.image,
 // 			name: action.payload.name,
-			// totalPrice: action.payload.totalPrice,
-			// totalAmount: action.payload.totalAmount
+// totalPrice: action.payload.totalPrice,
+// totalAmount: action.payload.totalAmount
 // 		}
 // 	})
 // }
