@@ -5,9 +5,6 @@ import connect from 'react-redux/es/connect/connect'
 const OrderApplicationForm = (props) => {
 	let priceArr, totalPrice, reducer;
 
-	const onClickPlus = () => {
-
-	}
 	const uniqIds = {};
 	const productsCart = props.productsBasket.filter(obj => !uniqIds[obj.id] && (uniqIds[obj.id] = true));
 	console.log(productsCart);
@@ -49,22 +46,18 @@ const OrderApplicationForm = (props) => {
 									? null
 									: <p>{counter[item.id]}</p>
 								}
-								<p className={s.plusMinus} onClick={onClickPlus}>+</p>
+								<p className={s.plusMinus}>+</p>
 							</div>
 							<div className={s.priceContainer}>{!counter[item.id] ? null : item.price * counter[item.id]}UAH</div>
-
 							<div className={s.delete}
 						     onClick={() => { props.productsBasket.filter(item => (item === item.id)) }}>+
 							</div>
 						</div>
 					)
 				})
-
 			}
 			<div className={s.line}></div>
-
 			<div className={s.right}><span className={s.priceText}>Price:</span> {totalPrice} UAH</div>
-
 			<div className={s.inputContainer}>
 				<span className={s.headerInput}>Name</span>
 				<input className={s.inputStyle} type="text" name='name' placeholder='Your name'/>
@@ -92,9 +85,7 @@ const OrderApplicationForm = (props) => {
 				<textarea className={s.inputStyle} name='comment' rows='3'></textarea>
 				<div className={s.right}><span className={s.priceText}>Price:</span> {totalPrice} UAH</div>
 				<input className={s.inputStyle} type="submit" name='checkout' value='Checkout'/>
-
 			</div>
-
 		</div>
 	)
 }
