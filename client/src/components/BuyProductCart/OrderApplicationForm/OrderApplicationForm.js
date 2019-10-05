@@ -1,14 +1,13 @@
 import React from 'react'
 import s from './OrderApplicationForm.module.css'
 import connect from 'react-redux/es/connect/connect'
-import { buyOrderCart } from '../../../actions/basketActions'
 
 const OrderApplicationForm = (props) => {
 	let priceArr, totalPrice, reducer;
 
 	//const onClickMinus = (totalPrice, totalAmount, id, amount, price, image, name)  {
-	// 	props.buyOrderCart(totalPrice, totalAmount, id, amount, price, image, name)
-	// }
+	//props.buyOrderCart(totalPrice, totalAmount, id, amount, price, image, name)
+	//}
 	const onClickPlus = () => {
 
 	}
