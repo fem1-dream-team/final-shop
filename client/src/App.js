@@ -45,12 +45,7 @@ const App = (props) => {
 
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
-
-					<Route exect path='/profile' component={Profile}/>
-
-					<Route exect path='/profile/personal-information/' component={PersonalInfo}/>
-
-					<Route exect path='/profile/basket' component={Profile}/>
+					<Route exact path='/profile/:profileInfo' component={Profile}/>
 
 					<Route path='*' component={Page404}/>
 				</Switch>
