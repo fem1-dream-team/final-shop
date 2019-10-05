@@ -5,9 +5,6 @@ import connect from 'react-redux/es/connect/connect'
 const OrderApplicationForm = (props) => {
 	let priceArr, totalPrice, reducer;
 
-	//const onClickMinus = (totalPrice, totalAmount, id, amount, price, image, name)  {
-	//props.buyOrderCart(totalPrice, totalAmount, id, amount, price, image, name)
-	//}
 	const onClickPlus = () => {
 
 	}
