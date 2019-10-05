@@ -30,12 +30,12 @@ const Navbar = (props) => {
 				<FlexContainer>
 					<Brand/>
 					<NavLinks style={linkAnimation}>
-						<NavLink to="/cakes" onClick={() => { props.getProductCategories('/cakes') }}>CAKES</NavLink>
-						<NavLink to="/tarts" onClick={() => { props.getProductCategories('/tarts') }}>TARTS</NavLink>
-						<NavLink to="/cupcakes" onClick={() => { props.getProductCategories('/cupcakes') }}>CUPCAKES</NavLink>
-						<NavLink to="/cookies" onClick={() => { props.getProductCategories('/cookies') }}>COOKIES</NavLink>
-						<NavLink to="/desserts" onClick={() => { props.getProductCategories('/desserts') }}>DESSERTS</NavLink>
-						<NavLink to="/macaroons" onClick={() => { props.getProductCategories('/macaroons') }}>MACAROONS</NavLink>
+						<NavLink to="/yummy/cakes" onClick={() => { props.getProductCategories('cakes') }}>CAKES</NavLink>
+						<NavLink to="/yummy/candies" onClick={() => { props.getProductCategories('candies') }}>CANDIES</NavLink>
+						<NavLink to="/yummy/cupcakes" onClick={() => { props.getProductCategories('cupcakes') }}>CUPCAKES</NavLink>
+						<NavLink to="/yummy/cookies" onClick={() => { props.getProductCategories('cookies') }}>COOKIES</NavLink>
+						<NavLink to="/yummy/desserts" onClick={() => { props.getProductCategories('desserts') }}>DESSERTS</NavLink>
+						<NavLink to="/yummy/macaroons" onClick={() => { props.getProductCategories('macaroons') }}>MACAROONS</NavLink>
 						<NavLink to="/cart" >CART</NavLink>
 					</NavLinks>
 					<BurgerWrapper>

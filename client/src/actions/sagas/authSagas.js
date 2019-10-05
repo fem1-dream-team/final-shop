@@ -52,6 +52,7 @@ function * checkLoginWorker (action) {
 		decoded.exp > currentTime ? yield put(setCurrentUser(decoded)) : yield put(logoutCurrentUser())
 		yield put(isLoading(false))
 	}
+	yield put(isLoading(false))
 }
 
 function * logoutUserWorker (action) {

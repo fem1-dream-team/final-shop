@@ -10,7 +10,7 @@ import { getDetailedProduct } from '../../actions/productsActions'
 // debugger
 const ProductDetailed = (props) => {
 	const pathname = props.history.location.pathname
-	const productId = pathname.slice(1)
+	const productId = pathname.slice(16)
 
 	const productToShow = props.productsList ? props.productsList.find((el) => { return el._id === productId })
 		: props.detailedProduct
@@ -31,7 +31,7 @@ const ProductDetailed = (props) => {
 			{props.isLoading ? <div> Wait, i'm working on it...</div>
 				: !productToShow ? <Button onClick={onBtnCl}> show me </Button>
 					: <Container>
-						<div className={s.container}>
+						<div className={s.container} style={{ cursor: 'pointer' }} onClick={() => { props.history.push(`../${productToShow.category}`) }}>
 							<h1 className={s.text}>{
 								productToShow ? productToShow.category : 'Loading...'
 							}
@@ -39,31 +39,30 @@ const ProductDetailed = (props) => {
 						</div>
 						< Grid container component="div" direction="row" justify="space-evenly" alignItems="flex-start" spacing={5}>
 
-							<Grid item>
+							<Grid item style={{ maxWidth: '30%' }}>
 								<CardMedia
 									component="img"
 									height="300"
-									className={s.productimg}
-									src={productToShow.image}
+									src={`../../${productToShow.image}`}
 									alt="not found"
 									title="Contemplative Reptile"/>
 							</Grid>
 
-							<Grid item>
+							<Grid item style={{ maxWidth: '50%' }}>
 								<Grid container direction='column' spacing={5}>
 									<Grid item>
-										<Typography gutterBottom variant="h5" component="h2">
+										<Typography gutterBottom variant="h5" component="h2" style={{ fontSize: 20 }}>
 											{productToShow.name}
 										</Typography>
-										<Typography variant="body2" color="textSecondary" component="p">
+										<Typography className={s.description} variant="body2" color="textSecondary" component="p" style={{ fontSize: 14 }}>
 											{productToShow.description}
 										</Typography>
 									</Grid>
 									<Grid item>
-										<Typography gutterBottom variant="h6" component="h2">
+										<Typography gutterBottom variant="h6" component="h2" style={{ fontSize: 14 }}>
 											{productToShow.price} UAH
 										</Typography>
-										<Button size="small" variant="contained" color="primary">
+										<Button size="medium" variant="contained" color="primary" style={{ fontSize: 16 }}>
 											Buy
 										</Button>
 									</Grid>
