@@ -10,12 +10,12 @@ const OrderApplicationForm = (props) => {
 	console.log(productsCart);
 
 	// поиск количества повтор. обьктов
-	const counter = props.productsBasket.reduce(function (o, i) {
-		if (!o.hasOwnProperty(i.id)) {
-			o[i.id] = 0;
+	const counter = props.productsBasket.reduce(function (object, index) {
+		if (!object.hasOwnProperty(index.id)) {
+			object[index.id] = 0;
 		}
-		o[i.id]++;
-		return o;
+		object[index.id]++;
+		return object;
 	}, {});
 
 	const result = Object.keys(counter).map(function (id) {
@@ -49,8 +49,7 @@ const OrderApplicationForm = (props) => {
 								<p className={s.plusMinus}>+</p>
 							</div>
 							<div className={s.priceContainer}>{!counter[item.id] ? null : item.price * counter[item.id]}UAH</div>
-							<div className={s.delete}
-						     onClick={() => { props.productsBasket.filter(item => (item === item.id)) }}>+
+							<div className={s.delete} onClick={() => { props.productsBasket.filter(item => (item === item.id)) }}>+
 							</div>
 						</div>
 					)
