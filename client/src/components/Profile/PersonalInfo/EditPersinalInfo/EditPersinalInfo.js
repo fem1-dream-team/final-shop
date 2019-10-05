@@ -41,7 +41,6 @@ const normalizePhone = value => {
 	if (!value) {
 		return value
 	}
-
 	const onlyNums = value.replace(/[^\d]/g, '')
 	if (onlyNums.length <= 3) {
 		return onlyNums
@@ -68,7 +67,6 @@ const normalizeDateOfBirth = value => {
 
 const renderTextField = ({label, input, meta: { touched, invalid, error }, ...custom}) => (
 	<TextField
-		/* label={label} */
 		placeholder={label}
 		error={touched && invalid}
 		helperText={touched && error}
@@ -96,40 +94,49 @@ const EditPersonalInfo = (props) => {
 			<h3 className={classes.item}>Edit your personal info</h3>
 			<form onSubmit={handleSubmit}>
 				<div className={classes.item}>
-					<Field
-						name='first_name'
-						component={renderTextField}
-						label="First name'"
-						placeholder='First Name'
-					/>
+					<label>
+						First name
+						<Field
+							name='first_name'
+							component={renderTextField}
+							label="First name"
+
+						/>
+					</label>
 				</div>
 				<div className={classes.item}>
-					<Field
-						name='last_name'
-						component={renderTextField}
-						label="Last name"
-						placeholder='Last Name'
-					/>
+					<label>
+						Last name
+						<Field
+							name='last_name'
+							component={renderTextField}
+							label="Last name"
+						/>
+					</label>
 				</div>
 				<div className={classes.item}>
-					<Field
-						name='email'
-						component={renderTextField}
-						label="Email"
-						placeholder='Email'
-					/>
+					<label>
+						Email
+						<Field
+							name='email'
+							component={renderTextField}
+							label="Email"
+							placeholder='Email'
+						/>
+					</label>
 				</div>
 				<div className={classes.item}>
-					<Field
-						name='tel'
-						component={renderTextField}
-						label="Tel."
-						placeholder='Telephone'
-						normalize={normalizePhone}
-					/>
+					<label>
+						Phone number
+						<Field
+							name='tel'
+							component={renderTextField}
+							label="Telephone"
+							normalize={normalizePhone}
+						/>
+					</label>
 				</div>
-				{/* //+=== */}
-				<divi className={classes.item}>
+				<div className={classes.item}>
 					<label>Sex</label>
 					<div className={classes.item}>
 						<div className={classes.itemRadio}>
@@ -144,36 +151,37 @@ const EditPersonalInfo = (props) => {
 								Female
 							</label>
 						</div>
+
 					</div>
-				</divi>
-				<div className={classes.item}>
-					<Field
-						name="dateOfBirth"
-						component={renderTextField}
-						placeholder="DD MM YYYY"
-						label="Date of birth"
-						normalize={normalizeDateOfBirth}
-					/>
 				</div>
 				<div className={classes.item}>
-					<Field
-						name='adress'
-						component={renderTextField}
-						label="Adress"
-						placeholder='Adress'
-					/>
+					<label>Date of birth
+						<Field
+							name="dateOfBirth"
+							component={renderTextField}
+							label="DD MM YYYY"
+							normalize={normalizeDateOfBirth}
+						/>
+					</label>
 				</div>
-				<div>
-					<button className={classes.button} type='submit ' disabled={submitting} >Save changes</button>
-					<button className={classes.button} type='cancel ' >Cancel</button>
+				<div className={classes.item}>
+					<label>Delivery adress
+						<Field
+							name='adress'
+							component={renderTextField}
+							label="Adress"
+							placeholder='Adress'
+						/>
+					</label>
 				</div>
+				<button className={classes.button} type='submit ' disabled={submitting} >Save changes</button>
 			</form>
 		</Fragment>
 	)
 }
 
 export default compose(connect(mapStateToProps, {}), reduxForm({
-	form: 'editProfoleForm',
+	form: 'editProfileForm',
 	onSubmit: values => console.log('sended', values),
 	validate,
 	/* //TODO asyncValidate */

@@ -13,9 +13,10 @@ const PersonalInfo = (props) => {
 	return (
 		<div className={classes.personalWrap}>
 			{editProfile
-				?					<div style={{ padding: 15 }}>
+				? <Fragment>
 					<EditPersonalInfo state={props} onSubmit={onSubmit}/>
-				</div>
+					<button className={classes.button} onClick={() => setEditProfile(false) }> Cancel</button>
+				</Fragment>
 				:				<Fragment>
 					<h3>Personal Data</h3>
 					<p className={classes.item}>First Name: {props.first_name}</p>
