@@ -2,19 +2,22 @@ import React, {Fragment, useState} from 'react';
 import classes from './PersonalInfo.module.css';
 import {connect} from 'react-redux';
 import EditPersonalInfo from './EditPersinalInfo/EditPersinalInfo';
+// import {initialize} from 'redux-form';
 
 const PersonalInfo = (props) => {
 	const [editProfile, setEditProfile] = useState(false);
 	console.log(props);
+
 	const onSubmit = (formData) => {
 		console.log(formData);
 	}
-
 	return (
 		<div className={classes.personalWrap}>
 			{editProfile
 				? <Fragment>
-					<EditPersonalInfo state={props} onSubmit={onSubmit}/>
+					<EditPersonalInfo
+						onSubmit={onSubmit}
+					/>
 					<button className={classes.button} onClick={() => setEditProfile(false) }> Cancel</button>
 				</Fragment>
 				:				<Fragment>
@@ -43,4 +46,4 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps)(PersonalInfo);
+export default connect(mapStateToProps, {})(PersonalInfo);

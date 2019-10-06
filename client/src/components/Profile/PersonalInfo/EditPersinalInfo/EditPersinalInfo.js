@@ -6,15 +6,7 @@ import {compose} from 'redux';
 import TextField from '@material-ui/core/TextField';
 // import asyncValidate from './asyncValidate'
 
-const mapStateToProps = (state) => {
-	return {
-		initialValues: {
-			first_name: state.auth.customer.first_name,
-			last_name: state.auth.customer.last_name,
-			email: state.auth.customer.email,
-		}
-	}
-}
+const mapStateToProps = (state) => (state)
 
 const validate = values => {
 	const errors = {};
@@ -51,20 +43,6 @@ const normalizePhone = value => {
 	return `${onlyNums.slice(0, 3)}-${onlyNums.slice(3, 5)}-${onlyNums.slice(5, 7)}-${onlyNums.slice(7, 10)}`
 }
 
-const normalizeDateOfBirth = value => {
-	if (!value) {
-		return value
-	}
-	const onlyNums = value.replace(/[^\d]/g, '')
-	if (onlyNums.length <= 2) {
-		return onlyNums
-	}
-	if (onlyNums.length <= 4) {
-		return `${onlyNums.slice(0, 2)}-${onlyNums.slice(2)}`
-	}
-	return `${onlyNums.slice(0, 2)}/${onlyNums.slice(2, 4)}/${onlyNums.slice(4, 8)}`
-}
-
 const renderTextField = ({label, input, meta: { touched, invalid, error }, ...custom}) => (
 	<TextField
 		placeholder={label}
@@ -89,6 +67,7 @@ const renderTextField = ({label, input, meta: { touched, invalid, error }, ...cu
 const EditPersonalInfo = (props) => {
 	const { handleSubmit, submitting } = props;
 	console.log(props);
+
 	return (
 		<Fragment>
 			<h3 className={classes.item}>Edit your personal info</h3>
@@ -100,7 +79,6 @@ const EditPersonalInfo = (props) => {
 							name='first_name'
 							component={renderTextField}
 							label="First name"
-
 						/>
 					</label>
 				</div>
@@ -160,7 +138,7 @@ const EditPersonalInfo = (props) => {
 							name="dateOfBirth"
 							component={renderTextField}
 							label="DD MM YYYY"
-							normalize={normalizeDateOfBirth}
+							type="date"
 						/>
 					</label>
 				</div>
@@ -180,10 +158,10 @@ const EditPersonalInfo = (props) => {
 	)
 }
 
-export default compose(connect(mapStateToProps, {}), reduxForm({
-	form: 'editProfileForm',
-	onSubmit: values => console.log('sended', values),
-	validate,
-	/* //TODO asyncValidate */
-}),
-)(EditPersonalInfo);
+export default compose(connect(mapStateToProps, {}),
+	reduxForm({
+		form: 'editProfileForm',
+		enableReinitialize: true,
+		validate,
+		/* asyncValidate */
+	}))(EditPersonalInfo);
