@@ -65,12 +65,15 @@ const NavBar = styled(animated.nav)`
 `
 
 const FlexContainer = styled.div`
-	display: flex;;
+	display: flex;
 	justify-content: space-between;
+	box-sizing: inherit;
 	max-width: 120rem;
 	height: 5rem;
-	margin: auto;
+	margin: 0 auto;
+	padding: 0px;
 	padding: 0 2rem;
+	font-size: 62.5%;
 `
 
 const NavLinks = styled(animated.ul)`
@@ -79,7 +82,7 @@ margin: auto 0;
 list-style-type: none;
 
 & a {
-	margin: 0 1.5rem;
+	margin: 0 1rem;
 	color: #dfe6e9;
 	font-weight: 600;
 	text-transform: uppercase;

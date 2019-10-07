@@ -8,6 +8,11 @@
     margin: 30px 0;
 }
 
+.title {
+    font-weight: bold !important;
+    color: #303739;
+}
+
 .text {
     align-items: center;
     width: 75%;
@@ -23,6 +28,7 @@
     font-size: 20px;
     font-weight: bold;
     vertical-align: center;
+
 }
 
 .price {
@@ -54,7 +60,7 @@
     content: "";
     position: absolute;
     right: 0; /* note: not using bottom */
-    width: 1rem;
-    height: 1rem;
+    width: 1.1rem;
+    height: 1.1rem;
     background: white;
 }

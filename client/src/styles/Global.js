@@ -13,16 +13,14 @@ const GlobalStyles = createGlobalStyle`
 	}
 
 	html {
-		font-size: 62.5%;
+		font-size: 62,5%;
 	}
-	
+
 
 	body {
 		box-sizing: border-box;
 		font-family: 'Montserrat', sans-serif;
 	}
-	
-	
 `;
 
 export default GlobalStyles;

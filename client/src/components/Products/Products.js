@@ -62,10 +62,10 @@ const Products = (props) => {
 											alt="Product image not found"
 											height="140"
 											image={`../${item.image}`}
-											title="Contemplative Reptile"
+											title="Product"
 										/>
 										<CardContent>
-											<Typography gutterBottom variant="h5" component="h2">
+											<Typography gutterBottom variant="h5" component="h2" className={s.title}>
 												{item.name}
 											</Typography>
 											<Typography className={s.description} variant="body2" color="textSecondary" component="div">
@@ -78,7 +78,7 @@ const Products = (props) => {
 									</Typography>
 									<CardActions>
 
-										<Button size="small" color="primary" onClick={() => { onBuyClick(item._id, item.price, item.image, item.name) }}>
+										<Button size="small" variant="contained" color="primary" onClick={() => { onBuyClick(item._id, item.price, item.image, item.name) }}>
 											Buy
 										</Button>
 										<BasketProducts/>

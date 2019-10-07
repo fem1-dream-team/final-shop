@@ -32,7 +32,6 @@ const Wrapper = styled.div`
 	right: 10px;
 	display: block;
 	padding-top: .7rem;
-	font-size: 62.5%;
 	cursor: pointer;
 
 
@@ -42,21 +41,24 @@ const Wrapper = styled.div`
 		width: 3.5rem;
 		height: .4rem;
 		margin-bottom: .7rem;
-		background: #fdcb6e;
+		background: antiquewhite;
 		transition: all ease-in-out .2s;
 	}
 
 	.open span:nth-child(2) {
+		margin-bottom: .35rem;
 		opacity: 0;
 	}
 
 	.open span:nth-child(3) {
 		top: -11px;
+		margin-bottom: .35rem;
 		transform: rotate(45deg);
 	}
 
 	.open span:nth-child(1) {
 		top: 11px;
+		margin-bottom: .35rem;
 		transform: rotate(-45deg);
 	}
 

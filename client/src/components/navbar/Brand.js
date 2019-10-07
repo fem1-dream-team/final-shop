@@ -19,16 +19,18 @@ export default Brand
 const Image = styled.img`
 	height: 85%;
 	margin: auto 0;
-	font-size: 62.5%;
 	cursor: pointer;
 `;
 const Container = styled.div`
 	display: flex;
 	width: 200px;
+
 `;
 const StyleLinkFirst = styled(NavLink)`
-	width: 110px
+	width: 110px;
+
 `
 const StyleLink = styled(NavLink)`
 	align-self: center;
+
 `

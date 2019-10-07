@@ -45,7 +45,7 @@ const ProductDetailed = (props) => {
 									height="300"
 									src={`../../${productToShow.image}`}
 									alt="not found"
-									title="Contemplative Reptile"/>
+									title="Product"/>
 							</Grid>
 
 							<Grid item style={{ maxWidth: '50%' }}>
