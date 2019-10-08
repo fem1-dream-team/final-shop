@@ -1,6 +1,5 @@
 .d6 {
     /*background: #95d6bf;*/
-    background: cornflowerblue;
     position: relative;
     display: flex;
     align-items: center;
@@ -13,7 +12,7 @@
 .d6 input {
     /*height: 8%;*/
     width: 0;
-    padding: 5px 40px 2px 15px;
+    padding: 5px 0 2px 15px;
     border: none;
     border-bottom: 2px solid transparent;
     outline: none;
@@ -23,7 +22,7 @@
     /*top: 0;*/
     /*right: 20px;*/
     z-index: 2;
-    color: antiquewhite;
+    /*color: antiquewhite;*/
     cursor: pointer;
 ;
 }

@@ -3,12 +3,14 @@ import './Search.css'
 import SearchIcon from '@material-ui/icons/Search';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
+import {getSearchProducts} from '../../../../actions/productsActions';
 
 const Search = (props) => {
 	const submitSearch = (e) => {
 		e.preventDefault()
 		const q = e.target.q.value
-		// alert(q)
+
+		props.getSearchProducts(`/search?q=${q}`)
 		props.history.push(`/search?q=${q}`)
 	};
 
@@ -20,7 +22,6 @@ const Search = (props) => {
 
 	return (
 		<div className="d6">
-			{/* <form method="GET" action="/search"> */}
 			<form onSubmit={submitSearch}>
 				<input type="text" name= "q" ref={searchInput} placeholder="Search..."/>
 				<SearchIcon onClick={onIconClick}/>
@@ -29,4 +30,4 @@ const Search = (props) => {
 	)
 }
 
-export default connect(() => { {} }, {})(withRouter(Search))
+export default connect(() => { {} }, {getSearchProducts})(withRouter(Search))
