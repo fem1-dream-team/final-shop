@@ -53,7 +53,7 @@ margin-top: 0
 	left: 0;
 	min-width: 320px;
 	background: #2d3436;
-		@media (min-width: 769px) {
+		@media (min-width: 990px) {
 		display: none;
 	}
 `

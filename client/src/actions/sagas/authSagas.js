@@ -8,7 +8,7 @@ import { POST_NEW_USER, LOGIN_USER, CHECK_LOGIN_SAGA, LOGOUT_CURRENT_USER_SAGA }
 import { checkIfIsLoggedIn, logoutCurrentUser, setCurrentUser } from '../authActions'
 import setAuthToken from '../../utils/setAuthToken'
 
-export function * watchNewUserSaga () {
+export function * watchUserSaga () {
 	yield takeEvery(POST_NEW_USER, createNewUserWorker)
 	yield takeEvery(LOGIN_USER, loginUserWorker)
 	yield takeEvery(CHECK_LOGIN_SAGA, checkLoginWorker)

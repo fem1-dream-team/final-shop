@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import LoginPage from './ContainerSearchLoginPage/LoginPage/UserIcon';
-import {Search} from './ContainerSearchLoginPage/Search/Search'
+import Search from './ContainerSearchLoginPage/Search/Search'
 
 export const Header = (props) => {
 	return (
@@ -17,6 +17,7 @@ export const Header = (props) => {
 
 const Container = styled.div`
 	display: flex;
+	height: 5vh;
 	justify-content: space-between;
 	align-items: center;
 	flexWrap: nowrap;

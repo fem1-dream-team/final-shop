@@ -10,10 +10,10 @@ const Footer = (props) => {
 	return (
 		<StdFooter container component="footer" justify="space-evenly" alignItems="center">
 			<Grid item>
-				<StdP> Вт-Сб з 10:00 до 20:00 </StdP>
+				<StdP>  Monday to Friday, 10am - 8pm </StdP>
 				<StdP> +38 (073) 123 45 67</StdP>
-				<StdP> вул. Богдана Хмельницького, 16-22 </StdP>
-				<StdP> Київ </StdP>
+				<StdP> 16-22 Bohdana Khmelnytskoho str. </StdP>
+				<StdP> Kyiv </StdP>
 			</Grid>
 			<Grid item>
 				<StdNavLink exact to="/">

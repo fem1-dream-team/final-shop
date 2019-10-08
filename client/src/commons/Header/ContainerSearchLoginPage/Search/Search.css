@@ -1,18 +1,19 @@
 .d6 {
     /*background: #95d6bf;*/
     background: cornflowerblue;
+    position: relative;
     display: flex;
+    align-items: center;
     flex-direction: row;
     margin-right: 20px;
 }
-.d6 form {
-    height: 42px;
-}
+/*.d6 form {*/
+/*    height: 42px;*/
+/*}*/
 .d6 input {
     /*height: 8%;*/
     width: 0;
     padding: 5px 40px 2px 15px;
-    position: relative;
     border: none;
     border-bottom: 2px solid transparent;
     outline: none;
@@ -29,7 +30,7 @@
 .d6 input:focus {
     width: 150px;
     z-index: 1;
-    border-bottom: 2px solid antiquewhite;
+    border-bottom: 2px solid black;
 }
 /*.d6 div {*/
 /*    !*background: #95d6bf;*!*/
@@ -60,7 +61,9 @@ svg {
     position: absolute;
     top: 0;
     right: 0;
-    margin-right: 20px;
+    z-index: 0;
+
+    /*margin-right: 20px;*/
 }
 .d6 svg:before {
     /*content: "\f002";*/

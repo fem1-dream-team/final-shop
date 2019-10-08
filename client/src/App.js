@@ -20,10 +20,11 @@ import ProductDetailed from './components/Products/ProductDetailed'
 import Footer from './commons/Footer/Footer'
 import BasketProducts from './components/BuyProductCart/BasketProducts/BasketProducts';
 import {Header} from './commons/Header/Header';
-import AuthFormModal from "./commons/Header/ContainerSearchLoginPage/LoginPage/AuthFormModal";
+import AuthFormModal from './commons/Header/ContainerSearchLoginPage/LoginPage/AuthFormModal';
 
 const Container = styled.div`
-min-height: 65vh;
+min-height: calc(65vh - 30px);
+padding-bottom: 30px;
 display: flex;
 flex-direction: column;
 justify-content: center;
