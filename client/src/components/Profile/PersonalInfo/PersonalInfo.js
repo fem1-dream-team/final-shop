@@ -2,14 +2,12 @@ import React, {Fragment, useState} from 'react';
 import classes from './PersonalInfo.module.css';
 import {connect} from 'react-redux';
 import EditPersonalInfo from './EditPersinalInfo/EditPersinalInfo';
-// import {initialize} from 'redux-form';
+import { saveEditedUser } from '../../../actions/profileActions'
 
 const PersonalInfo = (props) => {
 	const [editProfile, setEditProfile] = useState(false);
-	console.log(props);
-
 	const onSubmit = (formData) => {
-		console.log(formData);
+		props.saveEditedUser(formData);
 	}
 	return (
 		<div className={classes.personalWrap}>
@@ -46,4 +44,4 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, {})(PersonalInfo);
+export default connect(mapStateToProps, { saveEditedUser })(PersonalInfo);

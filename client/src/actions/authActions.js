@@ -1,4 +1,10 @@
-import { CHECK_LOGIN_SAGA, LOGIN_USER, LOGOUT_CURRENT_USER_SAGA, POST_NEW_USER, SET_CURRENT_USER } from './types'
+import {
+	CHECK_LOGIN_SAGA,
+	LOGIN_USER,
+	LOGOUT_CURRENT_USER_SAGA,
+	POST_NEW_USER,
+	SET_CURRENT_USER
+} from './types'
 
 export const registerUserAction = (userData) => {
 	return {

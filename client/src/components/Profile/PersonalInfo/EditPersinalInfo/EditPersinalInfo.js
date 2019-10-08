@@ -2,11 +2,13 @@ import React, {Fragment} from 'react';
 import classes from './EditPersinalInfo.module.css';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import {compose} from 'redux';
+// import {compose} from 'redux';
 import TextField from '@material-ui/core/TextField';
 // import asyncValidate from './asyncValidate'
 
-const mapStateToProps = (state) => (state)
+const mapStateToProps = state => ({
+	initialValues: state.auth.customer
+})
 
 const validate = values => {
 	const errors = {};
@@ -64,10 +66,8 @@ const renderTextField = ({label, input, meta: { touched, invalid, error }, ...cu
 	</FormControl>
 ) */
 
-const EditPersonalInfo = (props) => {
+let EditPersonalInfo = (props) => {
 	const { handleSubmit, submitting } = props;
-	console.log(props);
-
 	return (
 		<Fragment>
 			<h3 className={classes.item}>Edit your personal info</h3>
@@ -152,16 +152,18 @@ const EditPersonalInfo = (props) => {
 						/>
 					</label>
 				</div>
-				<button className={classes.button} type='submit ' disabled={submitting} >Save changes</button>
+				<button className={classes.button} onClick={() => { alert('HI') }} type='submit' disabled={submitting} >Save changes</button>
 			</form>
 		</Fragment>
 	)
-}
+};
 
-export default compose(connect(mapStateToProps, {}),
-	reduxForm({
-		form: 'editProfileForm',
-		enableReinitialize: true,
-		validate,
-		/* asyncValidate */
-	}))(EditPersonalInfo);
+EditPersonalInfo = reduxForm({
+	form: 'editForm',
+	enableReinitialize: true,
+	validate,
+})(EditPersonalInfo)
+
+EditPersonalInfo = connect(mapStateToProps, {})(EditPersonalInfo)
+
+export default EditPersonalInfo;
