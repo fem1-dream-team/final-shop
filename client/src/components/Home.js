@@ -15,3 +15,5 @@ export const Home = () => {
 //     width: 180px;
 //     margin: 0 auto;
 // `
+
+export default Home
