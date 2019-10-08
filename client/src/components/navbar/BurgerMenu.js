@@ -36,7 +36,7 @@ const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	cursor: pointer;
-	@media (min-width: 769px) {
+	@media (min-width: 990px) {
 		display: none;
 	}
 

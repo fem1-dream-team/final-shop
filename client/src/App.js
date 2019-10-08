@@ -39,7 +39,7 @@ const App = (props) => {
 		<BrowserRouter>
 			<div>
 				<Header />
-				{/*<Navbar />*/}
+				<Navbar />
 				<BasketProducts />
 				<AuthFormModal />
 				<Container>

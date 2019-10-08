@@ -25,7 +25,6 @@ const Navbar = (props) => {
 	return (
 		<div>
 			<NavBar style={barAnimation}>
-
 				<FlexContainer>
 					<Brand/>
 					<NavLinks style={linkAnimation}>
@@ -91,7 +90,7 @@ list-style-type: none;
 		border-bottom: 1px solid #fdcb6e;
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 990px) {
 		display: none;
 	}
 }

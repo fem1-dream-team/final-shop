@@ -7,7 +7,6 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import {showAuthForm, showRegister} from '../../../../actions/authFormActions'
 import {withRouter} from 'react-router-dom'
 import {checkIfIsLoggedIn, logoutCurrentUser} from '../../../../actions/authActions'
-import Grid from '@material-ui/core/Grid';
 
 const LoginPage = (props) => {
 	const classes = useStyles();
@@ -28,7 +27,7 @@ const LoginPage = (props) => {
 			{/* </div> */}
 			{props.isAuth
 				? <div>
-					<Button onClick={() => { props.history.push('/profile/personal-info') }}> Welcome, Kukusiikki{props.first_name} </Button>
+					<Button className={classes.welcomeBtn} onClick={() => { props.history.push('/profile/personal-info') }}> Welcome, {props.first_name} </Button>
 					<Button onClick={props.logoutCurrentUser}> Logout </Button>
 				</div>
 				: null}
@@ -39,7 +38,7 @@ const LoginPage = (props) => {
 
 const mapStateToProps = state => {
 	return {
-		isAuth: true,
+		isAuth: state.auth.isAuth,
 		first_name: state.auth.customer.first_name,
 		email: state.auth.customer.email,
 	}
@@ -55,22 +54,17 @@ export default connect(mapStateToProps, {
 const useStyles = makeStyles(theme => ({
 	container: {
 		display: 'flex',
-		// justify='space-between',
 		alignItems: 'center',
-		// flexWrap='nowrap'
-		backgroundColor: 'red'
-	},
-	iconContainer: {
-		position: 'relative',
+		// backgroundColor: 'red'
 	},
 	userIcon: {
 		position: 'static',
 		margin: '0 20px',
-		// left: 0,
-		// top: '1vh',
 		height: 25
 	},
-	welcomeWrapper: {
-		display: 'flex'
+	welcomeBtn: {
+		[theme.breakpoints.down('xs')]: {
+			display: 'none'
+		}
 	}
-}))
+}));
