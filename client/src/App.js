@@ -64,7 +64,7 @@ const App = (props) => {
 	)
 }
 
-const mapStateToProps = () => {
+const mapStateToProps = (state) => {
 	return {}
 }
 
