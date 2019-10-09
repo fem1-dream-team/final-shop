@@ -88,7 +88,7 @@ const Register = (props) => {
 		},
 		{
 			id: 'password',
-			placeholder: 'Password. Minimum 8 characters',
+			placeholder: 'Password',
 			type: 'password',
 			value: state.password,
 			errors: errors.password

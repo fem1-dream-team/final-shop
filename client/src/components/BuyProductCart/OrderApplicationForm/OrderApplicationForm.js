@@ -6,6 +6,7 @@ import connect from 'react-redux/es/connect/connect'
 const OrderApplicationForm = (props) => {
 	console.log(props.productsBasket)
 	let priceArr, totalPrice, reducer;
+	const basePath = 'http://localhost:3000/'
 	return (
 		<div className={s.header}>
 			<h1 className={s.name}>Your order</h1>
@@ -20,7 +21,7 @@ const OrderApplicationForm = (props) => {
 
 					return (
 						<div className={s.descriptionOrder}>
-							<div className={s.imgSize}><img src={item.image} alt="Product img"/></div>
+							<div className={s.imgSize}><img src={`${basePath}${item.image}`} alt="Product img"/></div>
 							<div className={s.nameProduct}>
 								<p>{item.name}</p>
 							</div>

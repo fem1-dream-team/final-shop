@@ -50,7 +50,7 @@ router.post('/login', (req, res) => {
 
 	//is form valid?
 	const { errors, isValid } = validateLoginInput(req.body);
-
+	console.log(req.body);
 	if (!isValid) { return res.status(400).json(errors) }
 
 //	let's find user by email and check if password matches
@@ -87,5 +87,28 @@ router.post('/login', (req, res) => {
 				})
 		})
 })
+
+
+router.put('/edit', (req, res) => {
+	//	let's find user by email and check if password matches
+	const id = req.body.id
+	const email = req.body.email
+
+	//is form valid?
+	/*const { errors, isValid } = validateLoginInput(req.body);
+	console.log(req.body);
+	if (!isValid) { return res.status(400).json(errors) }*/
+
+	User.findOne({ _id: id })
+		.then ((user)=>{
+			const  editUser = req.body;
+			 console.log("editUser >>", editUser)
+				/*.save()
+				.then (user => res.json(user))
+				.catch (err => console.log(err))*/
+			}
+
+		)
+});
 
 module.exports = router;

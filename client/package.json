@@ -24,6 +24,7 @@
     "react-slick": "^0.25.2",
     "react-spring": "^8.0.27",
     "redux": "^4.0.4",
+    "redux-form": "^8.2.6",
     "redux-saga": "^1.1.1",
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
@@ -82,7 +83,7 @@
   "devDependencies": {
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
-    "enzyme-to-json": "^3.4.0",
+    "enzyme-to-json": "^3.4.2",
     "eslint": "^6.3.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-react": "^7.14.3",
