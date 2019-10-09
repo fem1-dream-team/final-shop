@@ -5,10 +5,6 @@ import { shallow, configure } from 'enzyme';
 
 configure({ adapter: new Adapter() });
 
-global.shallow = shallow
-global.render = render
-global.mount = mount
-
 describe('store component', () => {
 	it('store component render', () => {
 		const wrapper = shallow(<store />);
