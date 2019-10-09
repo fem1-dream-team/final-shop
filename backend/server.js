@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const passport = require('passport')
+const path = require('path')
 
 const userRouter = require('./routes/user');
 const productsRouter = require('./routes/products');
@@ -11,7 +12,7 @@ const productsRouter = require('./routes/products');
 const dbRoute = require('./config/keys').mongoURI
 require('./config/passport')(passport)
 
-const API_PORT = 3001;
+const API_PORT = process.env.PORT || 3001;
 const app = express();
 app.use(cors());
 app.use(passport.initialize())
@@ -35,9 +36,18 @@ app.use(bodyParser.json());
 app.use(logger('dev'));
 
 // append /api for our http requests
-app.use('/api', router);
+// app.use('/api', router);
 app.use('/api', productsRouter);
 app.use('/api', userRouter);
+
+//Serve static assets if in production
+if (process.env.NODE_ENV==='production'){
+//  set static folder
+  app.use(express.static('../client/build'))
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../', 'client', 'build', 'index.html'))
+  })
+}
 
 // launch our backend into a port
 app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
