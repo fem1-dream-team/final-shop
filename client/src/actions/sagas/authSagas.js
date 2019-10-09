@@ -66,10 +66,10 @@ function * logoutUserWorker (action) {
 
 function * editUserWorker (action) {
 	try {
-		console.log(action.payload)
 		yield put(isLoading(true))
+		const response = yield call(() => axios.put('http://localhost:3001/api/edit', action.payload));
 
-		const response = yield call(() => axios.post('http://localhost:3001/api/edit', action.payload));
+		console.log(response)
 		yield put(isLoading(false))
 	} catch (err) {
 		console.log(err);

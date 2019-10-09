@@ -135,7 +135,7 @@ let EditPersonalInfo = (props) => {
 				<div className={classes.item}>
 					<label>Date of birth
 						<Field
-							name="dateOfBirth"
+							name="birth"
 							component={renderTextField}
 							label="DD MM YYYY"
 							type="date"
