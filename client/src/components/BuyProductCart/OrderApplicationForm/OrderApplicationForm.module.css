@@ -34,7 +34,7 @@ width: 100%;
 }
 
 .nameProduct {
-    align-self: baseline;
+    align-self: center;
     font-size: 10px;
     width: 70px;
 }
