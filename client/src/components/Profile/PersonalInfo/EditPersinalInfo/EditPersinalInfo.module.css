@@ -1,10 +1,13 @@
-.personalWrap {
-    grid-area: profile;
-    padding: 25px;
+.editH {
+    color: red;
 }
 
-.item {
-    padding-bottom: 5px;
+.item{
+    padding-bottom: 10px;
+}
+
+.itemRadio{
+    padding-bottom: 3px;
 }
 
 .button {
@@ -14,4 +17,3 @@
     margin: 20px auto;
     font-size: 1.1em;
 }
-

@@ -1,7 +1,7 @@
 .profileWrapper {
     display: grid;
     grid-template-areas:
-            "nav profile profile";
+            "nav profile";
     grid-template-columns: 2fr 10fr;
     grid-gap: 0;
 }

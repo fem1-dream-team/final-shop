@@ -22,7 +22,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-right: -50%;
+    /*margin-right: -50%;*/
     transform: translate(-50%, -50%);
     letter-spacing: 5px;
     font-size: 20px;
@@ -31,6 +31,17 @@
 }
 
 .price {
+    color: black;
+    font-weight: bold;
+    padding: 0 0 5px 15px;
+}
+
+.sale {
+    color: red;
+    padding: 0 0 5px 15px;
+}
+.sale::after {
+    content: "Sale";
     color: black;
     font-weight: bold;
     padding: 0 0 5px 15px;
@@ -53,8 +64,8 @@
 .truncate::before {
     content: "...";
     position: absolute;
-    bottom: 16px;
-    right: 10px;
+    bottom: 34px;
+    right: 17px;
 
 }
 
@@ -62,7 +73,7 @@
     content: "";
     position: absolute;
     right: 0; /* note: not using bottom */
-    width: 1.5rem;
+    width: 2.5rem;
     height: 1.5rem;
     background: white;
 }

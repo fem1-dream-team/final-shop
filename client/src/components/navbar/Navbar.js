@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import Brand from './Brand'
 import BurgerMenu from './BurgerMenu'
 import CollapseMenu from './CollapseMenu'
-import { getProductCategories } from '../../actions/productsActions'
+import {getProductCategories} from '../../actions/productsActions'
 
 const Navbar = (props) => {
 	const barAnimation = useSpring({
@@ -24,9 +24,7 @@ const Navbar = (props) => {
 
 	return (
 		<div>
-
 			<NavBar style={barAnimation}>
-
 				<FlexContainer>
 					<Brand/>
 					<NavLinks style={linkAnimation}>
@@ -38,9 +36,7 @@ const Navbar = (props) => {
 						<NavLink to="/yummy/macaroons" onClick={() => { props.getProductCategories('macaroons') }}>MACAROONS</NavLink>
 						<NavLink to="/cart" >CART</NavLink>
 					</NavLinks>
-					<BurgerWrapper>
-						<BurgerMenu/>
-					</BurgerWrapper>
+					<BurgerMenu/>
 				</FlexContainer>
 			</NavBar>
 			<CollapseMenu/>
@@ -60,8 +56,8 @@ const NavBar = styled(animated.nav)`
 	left: 0;
 	z-index: 1;
 	width: 100%;
-	font-size: 1.4rem;
-	background: #2d3436;
+	height: 10vh;
+	background-color: #2d3436;
 `
 
 const FlexContainer = styled.div`
@@ -69,19 +65,18 @@ const FlexContainer = styled.div`
 	justify-content: space-between;
 	box-sizing: inherit;
 	max-width: 120rem;
-	height: 5rem;
-	margin: 0 auto;
-	padding: 0 1rem;
-	font-size: 62.5%;
+	height: 10vh;
+	margin: auto;
+	padding: 0 2rem;
 `
 
 const NavLinks = styled(animated.ul)`
-justify-self: end;
-margin: auto 0;
-list-style-type: none;
+	justify-self: end;
+	margin: auto 0;
+	list-style-type: none;
 
 & a {
-	margin: 0 0.5rem;
+	margin: 0 1.5rem;
 	color: #dfe6e9;
 	font-weight: 600;
 	text-transform: uppercase;
@@ -95,16 +90,8 @@ list-style-type: none;
 		border-bottom: 1px solid #fdcb6e;
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 990px) {
 		display: none;
 	}
 }
-`
-
-const BurgerWrapper = styled.div`
-	margin: auto 0;  
-
-	@media (min-width: 769px) {
-		display: none;
-	}
 `

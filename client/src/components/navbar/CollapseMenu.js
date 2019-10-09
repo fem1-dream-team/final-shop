@@ -47,17 +47,22 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, { goFromCollapseMenu, handleNavbar })(CollapseMenu)
 
 const CollapseWrapper = styled(animated.div)`
-	top: 5.5rem;
-	right: 0;
-	left: 0;
-	min-width: 320px;
-	background: #2d3436;
+top: 5.5rem;
+right: 0;
+left: 0;
+min-width: 320px;
+margin-top: 0;
+background: #2d3436;
+@media (min-width: 990px) {
+	display: none;
+}
 `
 
 const NavLinks = styled.ul`
+	margin-top: 0;
 	padding: 2rem 1rem 2rem 2rem;
 	list-style-type: none;
-
+	
 	& li {
 		transition: all 300ms linear 0s;
 	}

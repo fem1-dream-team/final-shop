@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import Fade from '@material-ui/core/Fade'
 import OrderApplicationForm from '../OrderApplicationForm/OrderApplicationForm'
 import s from './basketProducts.module.css'
+
 import { Dialog } from '@material-ui/core'
 import Backdrop from '@material-ui/core/Backdrop/Backdrop'
 import { buyBtnHandler } from '../../../actions/basketActions'
@@ -72,7 +73,7 @@ export const BasketProducts = (props) => {
 	// const reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
 	// const totalPrice = priceArr.reduce(reducer, props.price)
 	const totalAmount = priceArr.length
-
+	const basePath = 'http://localhost:3000/'
 	return (
 		<div>
 			{/* <Button size="small" color="primary" onClick={()=>{props.buyBtnHandler()}}> */}
@@ -81,7 +82,7 @@ export const BasketProducts = (props) => {
 			<Fade in={!isEmpty(props.productsBasket)}>
 				<div onScroll='paper'>
 					<Button variant="contained" className={classes.button} onClick={handleOpenCart}>
-						<img className={s.imgBasket} src='../img/basket/shopping-cart-728408_1280.png' alt='basket'/>
+						<img className={s.imgBasket} src={`${basePath}img/basket/shopping-cart-728408_1280.png`} alt='basket'/>
 					</Button>
 					<div className={classes.div}>{totalAmount}</div>
 
