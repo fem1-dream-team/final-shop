@@ -4,15 +4,16 @@ import { call, put, takeEvery} from 'redux-saga/effects'
 
 import { getErrors, isLoading } from '../generalActions'
 import { showAuthForm, showRegister } from '../authFormActions'
-import { POST_NEW_USER, LOGIN_USER, CHECK_LOGIN_SAGA, LOGOUT_CURRENT_USER_SAGA } from '../types'
+import {POST_NEW_USER, LOGIN_USER, CHECK_LOGIN_SAGA, LOGOUT_CURRENT_USER_SAGA, RUN_SAGA_EDIT} from '../types'
 import { checkIfIsLoggedIn, logoutCurrentUser, setCurrentUser } from '../authActions'
 import setAuthToken from '../../utils/setAuthToken'
 
-export function * watchNewUserSaga () {
+export function * watchUserSaga () {
 	yield takeEvery(POST_NEW_USER, createNewUserWorker)
 	yield takeEvery(LOGIN_USER, loginUserWorker)
 	yield takeEvery(CHECK_LOGIN_SAGA, checkLoginWorker)
 	yield takeEvery(LOGOUT_CURRENT_USER_SAGA, logoutUserWorker)
+	yield takeEvery(RUN_SAGA_EDIT, editUserWorker)
 }
 
 function * createNewUserWorker (action) {
@@ -61,4 +62,17 @@ function * logoutUserWorker (action) {
 	setAuthToken(false)
 	yield put(setCurrentUser({}))
 	yield put(isLoading(false))
+}
+
+function * editUserWorker (action) {
+	try {
+		yield put(isLoading(true))
+		const response = yield call(() => axios.put('http://localhost:3001/api/edit', action.payload));
+
+		console.log(response)
+		yield put(isLoading(false))
+	} catch (err) {
+		console.log(err);
+		yield put(isLoading(false))
+	}
 }

@@ -13,7 +13,7 @@ module.exports = function validateRegisterInput(data) {
 
 	// First name check
 	if (Validator.isEmpty(data.first_name)) {
-		errors.first_name = "Please enter your firs name"
+		errors.first_name = "Please enter your first name"
 	}
 
 	// Last name check
