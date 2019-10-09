@@ -35,13 +35,17 @@ right: 10px
 // 	// font-size: 62.5%;
 // 	cursor: pointer;
 // `;
+
 const Container = styled.div`
 	display: flex;
 	width: 200px;
+
 `;
 const StyleLinkFirst = styled(NavLink)`
-	width: 110px
+	width: 110px;
+
 `
 const StyleLink = styled(NavLink)`
 	align-self: center;
+	
 `
