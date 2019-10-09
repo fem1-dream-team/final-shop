@@ -71,9 +71,9 @@ const FlexContainer = styled.div`
 `
 
 const NavLinks = styled(animated.ul)`
-	justify-self: end;
-	margin: auto 0;
-	list-style-type: none;
+justify-self: end;
+margin: auto 0;
+list-style-type: none;
 
 & a {
 	margin: 0 1.5rem;
