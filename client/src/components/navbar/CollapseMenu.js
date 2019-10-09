@@ -26,7 +26,7 @@ const CollapseMenu = (props) => {
 			>
 				<NavLinks>
 					<li><NavLink to="/yummy/cakes" onClick={() => { onLinkClick('cakes') }}>CAKES</NavLink></li>
-					<li><NavLink to="/yummy/tarts" onClick={() => { onLinkClick('tarts') }}>TARTS</NavLink></li>
+					<li><NavLink to="/yummy/candies" onClick={() => { onLinkClick('candies') }}>CANDIES</NavLink></li>
 					<li><NavLink to="/yummy/cupcakes" onClick={() => { onLinkClick('cupcakes') }}>CUPCAKES</NavLink></li>
 					<li><NavLink to="/yummy/cookies" onClick={() => { onLinkClick('cookies') }}>COOKIES</NavLink></li>
 					<li><NavLink to="/yummy/desserts" onClick={() => { onLinkClick('desserts') }}>DESSERTS</NavLink></li>

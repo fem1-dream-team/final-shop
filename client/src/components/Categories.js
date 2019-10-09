@@ -10,37 +10,37 @@ const images = [
 		url: '../img/products/cakes/1.jpg',
 		title: 'CAKES',
 		width: '30%',
-		path: '/cakes',
+		path: 'yummy/cakes',
 	},
 	{
-		url: '../img/products/tarts/apricot-tart.jpg',
-		title: 'TARTS',
+		url: '../img/products/candies/12.jpg',
+		title: 'CANDIES',
 		width: '30%',
-		path: '/tarts',
+		path: 'yummy/candies',
 	},
 	{
 		url: '../img/products/cupcakes/muffin-3607780_1280.jpg',
 		title: 'CUPCAKES',
 		width: '30%',
-		path: '/cupcakes',
+		path: 'yummy/cupcakes',
 	},
 	{
 		url: '../img/products/cookies/13.jpg',
 		title: 'COOKIES',
 		width: '30%',
-		path: '/cookies',
+		path: 'yummy/cookies',
 	},
 	{
 		url: '../img/products/desserts/blueberries-dessert.jpg',
 		title: 'DESSERTS',
 		width: '30%',
-		path: '/desserts',
+		path: 'yummy/desserts',
 	},
 	{
-		url: '../img/products/macaroons/21.jpg',
+		url: '../img/products/macaroons/3.jpg',
 		title: 'MACAROONS',
 		width: '30%',
-		path: '/macaroons',
+		path: 'yummy/macaroons',
 	}
 ];
 

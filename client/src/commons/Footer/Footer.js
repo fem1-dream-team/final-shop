@@ -29,7 +29,7 @@ const Footer = (props) => {
 							<StdNavLink to="/yummy/cakes" onClick={() => { props.getProductCategories('cakes') }}> Cakes </StdNavLink>
 						</StdLi>
 						<StdLi>
-							<StdNavLink to="/yummy/tarts" onClick={() => { props.getProductCategories('tarts') }}> Tarts </StdNavLink>
+							<StdNavLink to="/yummy/candies" onClick={() => { props.getProductCategories('candies') }}> Candies </StdNavLink>
 						</StdLi>
 						<StdLi>
 							<StdNavLink to="/yummy/cupcakes" onClick={() => { props.getProductCategories('cupcakes') }}> Cupcakes </StdNavLink>
