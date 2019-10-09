@@ -36,6 +36,8 @@ const OrderApplicationForm = (props) => {
 	const removeProduct = (id) => {
 		props.removeBtnHandler(id)
 	}
+	
+	const basePath = 'http://localhost:3000/'
 	return (
 		<form className={s.header}>
 			<h1 className={s.name}>Your order</h1>
@@ -54,7 +56,7 @@ const OrderApplicationForm = (props) => {
 
 					return (
 						<div className={s.descriptionOrder} key={item.id}>
-							<div className={s.imgSize}><img src={`../${item.image}`} alt="Product img"/></div>
+							<div className={s.imgSize}><img src={`${basePath}${item.image}`} alt="Product img"/></div>
 							<div className={s.nameProduct}>
 								<p>{item.name}</p>
 							</div>
