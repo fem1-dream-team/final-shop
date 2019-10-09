@@ -20,11 +20,11 @@ const OrderApplicationForm = (props) => {
 	}, {});
 
 	let countProduct = counter
-	// let priceProduct
+	//let priceProduct
 	let priceId
 
 	const [count, setCount] = useState(counter);
-	const [priceProduct, setPrice] = useState();
+	let [price, setPrice] = useState();
 
 	// const clickMinus = () => {
 	// 	setCount(count - 1)
@@ -51,7 +51,7 @@ const OrderApplicationForm = (props) => {
 
 					countProduct = Number(counter[item.id])
 					priceId = Number(item.price)
-					const price = (priceId * countProduct)
+					price = (priceId * countProduct)
 
 					return (
 						<div className={s.descriptionOrder} key={item.id}>
@@ -65,7 +65,7 @@ const OrderApplicationForm = (props) => {
 								<p>{Number(count[item.id])}</p>
 								<p className={s.plusMinus}>+</p>
 							</div>
-							<div className={s.priceContainer}>{price}UAH</div>
+							<div className={s.priceContainer}>{(priceId * countProduct)}UAH</div>
 							<div className={s.delete} onClick={() => removeProduct(item.id)}>+</div>
 						</div>
 					)
