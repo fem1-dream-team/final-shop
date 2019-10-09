@@ -20,7 +20,6 @@ const OrderApplicationForm = (props) => {
 	}, {});
 
 	let countProduct = counter
-	//let priceProduct
 	let priceId
 
 	const [count, setCount] = useState(counter);
