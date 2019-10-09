@@ -40,7 +40,11 @@ const mapStateToProps = state => {
 		first_name: state.auth.customer.first_name,
 		last_name: state.auth.customer.last_name,
 		email: state.auth.customer.email,
-		id: state.auth.customer.id,
+		tel: state.auth.customer.tel,
+		birth: state.auth.customer.birth,
+		sex: state.auth.customer.sex,
+		adress: state.auth.customer.adress,
+
 	}
 }
 

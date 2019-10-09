@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../config/keys')
 // const passport = require('passport');
+const jsonParser = express.json();
 
 const validateRegisterInput = require('../validation/register');
 const validateLoginInput = require('../validation/login')
@@ -70,7 +71,11 @@ router.post('/login', (req, res) => {
 							id: user._id,
 							first_name: user.first_name,
 							last_name: user.last_name,
-							email: user.email
+							email: user.email,
+							tel: user.tel,
+							birth: user.birth,
+							sex: user.sex,
+							adress: user.adress,
 							}
 
 						jwt.sign(
@@ -85,30 +90,47 @@ router.post('/login', (req, res) => {
 						return res.status(400).json({ password: "Wrong password. Try again" })
 					}
 				})
+				.catch (err => console.log(err))
 		})
 })
 
 
-router.put('/edit', (req, res) => {
-	//	let's find user by email and check if password matches
+router.put('/edit',jsonParser, (req, res) => {
+
+	if(!req.body) return res.sendStatus(400);
 	const id = req.body.id
-	const email = req.body.email
+	const newUser = {
+		first_name: req.body.first_name,
+		last_name: req.body.last_name,
+		tel: req.body.tel,
+		birth: req.body.birth,
+		sex: req.body.sex,
+		adress: req.body.adress,
+	};
 
-	//is form valid?
-	/*const { errors, isValid } = validateLoginInput(req.body);
-	console.log(req.body);
-	if (!isValid) { return res.status(400).json(errors) }*/
+	User.findOneAndUpdate({_id: id}, newUser, {new: true}, function(err, user){
+		if(err) return console.log(err);
+		const payload = {
+			id: user._id,
+			first_name: user.first_name,
+			last_name: user.last_name,
+			email: user.email,
+			tel: user.tel,
+			birth: user.birth,
+			sex: user.sex,
+			adress: user.adress,
+		}
 
-	User.findOne({ _id: id })
-		.then ((user)=>{
-			const  editUser = req.body;
-			 console.log("editUser >>", editUser)
-				/*.save()
-				.then (user => res.json(user))
-				.catch (err => console.log(err))*/
+		jwt.sign(
+			payload,
+			keys.secretOrKey,
+			{expiresIn: 900},
+			(err, token) => {
+				res.json({ success: true, token: 'Bearer' + token })
 			}
-
 		)
+		//res.send(user);
+	})
 });
 
 module.exports = router;
