@@ -69,7 +69,7 @@ export const BasketProducts = (props) => {
 	const totalAmount = priceArr.length
 	return (
 		<div>
-			<Fade in={!isEmpty(props.productsBasket)}>
+			<Fade in={!isEmpty(props.productsBasket || localStorage.length > 0)}>
 				<div onScroll='paper'>
 					<Button variant="contained" className={classes.button} onClick={handleOpenCart}>
 						<img className={s.imgBasket} src='../img/basket/shopping-cart-728408_1280.png' alt='basket'/>
