@@ -6,6 +6,8 @@ import {Container, Grid, Button, Typography, CardMedia} from '@material-ui/core'
 import s from './category.module.css'
 
 import {getDetailedProduct} from '../../actions/productsActions'
+import CardActions from "@material-ui/core/CardActions";
+import {buyBtnHandler} from "../../actions/basketActions";
 
 // debugger
 const ProductDetailed = (props) => {
@@ -27,6 +29,11 @@ const ProductDetailed = (props) => {
 		}
 		// eslint-disable-next-line
 	}, [])
+
+	const onBuyClick = (itemId, price, image, name) => {
+		// alert(totalPrice)
+		props.buyBtnHandler(itemId, price, image, name)
+	}
 
 	return (
 		!productToShow ? <Button onClick={onBtnCl}> show me </Button>
@@ -64,9 +71,9 @@ const ProductDetailed = (props) => {
 								<Typography gutterBottom variant="h6" component="h2">
 									{productToShow.price} UAH
 								</Typography>
-								<Button size="medium" variant="contained" color="primary">
-									Buy
-								</Button>
+								<Button size="small" variant="contained" color="primary" onClick={() => {
+									onBuyClick(productToShow._id, productToShow.price, productToShow.image, productToShow.name)
+								}}> Buy </Button>
 							</Grid>
 						</Grid>
 					</Grid>
@@ -83,4 +90,4 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, {getDetailedProduct})(withRouter(ProductDetailed))
+export default connect(mapStateToProps, {getDetailedProduct, buyBtnHandler})(withRouter(ProductDetailed))

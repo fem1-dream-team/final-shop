@@ -70,15 +70,13 @@ const Products = (props) => {
 											<Typography gutterBottom variant="h5" component="h2">
 												{item.name}
 											</Typography>
-											<Typography className={s.description} variant="body2" color="textSecondary"
-											            component="div">
+											<Typography className={s.description} variant="body2" color="textSecondary" component="div">
 												<p>{item.description}</p>
 											</Typography>
 										</CardContent>
 									</CardActionArea>
 
-									<Typography className={(item.status === 'sale') ? s.sale : s.price} variant="h6"
-									            component="h2">
+									<Typography className={(item.status === 'sale') ? s.sale : s.price} variant="h6" component="h2">
 										{item.price} UAH
 									</Typography>
 									<CardActions>
