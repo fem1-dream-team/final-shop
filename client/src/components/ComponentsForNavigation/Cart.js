@@ -11,12 +11,15 @@ export const Cart = () => {
 		</Container>
 	)
 }
+
 const Container = styled.div`
-	margin: 0 auto;
-	color: black; 
-	font-size: 16px;
-	text-align: center;
-	vertical-align: center;
+display: flex;
+flex-direction: column;
+margin: 0 auto;
+color: black; 
+font-size: 16px;
+text-align: center;
+vertical-align: center;
 `
 const DivButton = styled.div`
 	width: 250px;

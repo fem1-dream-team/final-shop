@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, {useEffect} from 'react'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
@@ -6,12 +6,12 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import { Container, Grid } from '@material-ui/core'
+import {Container, Grid} from '@material-ui/core'
 import s from './category.module.css'
-import { connect } from 'react-redux'
-import { getProductCategories, getSearchProducts } from '../../actions/productsActions'
-import { withRouter } from 'react-router-dom'
-import { buyBtnHandler } from '../../actions/basketActions'
+import {connect} from 'react-redux'
+import {getProductCategories, getSearchProducts} from '../../actions/productsActions'
+import {withRouter} from 'react-router-dom'
+import {buyBtnHandler} from '../../actions/basketActions'
 import BasketProducts from '../BuyProductCart/BasketProducts/BasketProducts'
 
 const Products = (props) => {
@@ -37,7 +37,7 @@ const Products = (props) => {
 				}
 				</div>
 			</div>
-			<Grid container component="div" direction="row" justify='flex-start' spacing={4}>
+			<Grid container compodnent="div" direction="row" justify='flex-start' spacing={4}>
 
 				{!props.productsList
 					? null
@@ -56,7 +56,9 @@ const Products = (props) => {
 						return (
 							<Grid item component="div" sm={3} key={item._id}>
 								<Card className="div">
-									<CardActionArea onClick={() => { props.history.push(`/yummy/detailed/${detailedPath}`) }}>
+									<CardActionArea onClick={() => {
+										props.history.push(`/yummy/detailed/${detailedPath}`)
+									}}>
 										<CardMedia
 											component="img"
 											alt="Product image not found"
@@ -73,16 +75,18 @@ const Products = (props) => {
 											</Typography>
 										</CardContent>
 									</CardActionArea>
-									<Typography className={s.price} variant="h6" component="h2">
+
+									<Typography className={(item.status === 'sale') ? s.sale : s.price} variant="h6" component="h2">
 										{item.price} UAH
 									</Typography>
 									<CardActions>
-
-										<Button size="small" color="primary" onClick={() => { onBuyClick(item._id, item.price, item.image, item.name) }}>
-											Buy
-										</Button>
+										<Button size="small" variant="contained" color="primary" onClick={() => {
+											onBuyClick(item._id, item.price, item.image, item.name)
+										}}> Buy </Button>
 										<BasketProducts/>
-										<Button onClick={() => { props.history.push(`/yummy/detailed/${detailedPath}`) }} size="small" color="primary">
+										<Button onClick={() => {
+											props.history.push(`/yummy/detailed/${detailedPath}`)
+										}} size="small" color="primary">
 											Details
 										</Button>
 									</CardActions>
@@ -103,4 +107,4 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, { getProductCategories, buyBtnHandler, getSearchProducts })(withRouter(Products))
+export default connect(mapStateToProps, {getProductCategories, buyBtnHandler, getSearchProducts})(withRouter(Products))

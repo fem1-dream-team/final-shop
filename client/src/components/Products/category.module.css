@@ -17,7 +17,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-right: -50%;
+    /*margin-right: -50%;*/
     transform: translate(-50%, -50%);
     letter-spacing: 5px;
     font-size: 20px;
@@ -26,6 +26,17 @@
 }
 
 .price {
+    color: black;
+    font-weight: bold;
+    padding: 0 0 5px 15px;
+}
+
+.sale {
+    color: red;
+    padding: 0 0 5px 15px;
+}
+.sale::after {
+    content: "Sale";
     color: black;
     font-weight: bold;
     padding: 0 0 5px 15px;
