@@ -20,7 +20,7 @@ export function * watchProductsSaga () {
 function * getProdCategorySaga (action) {
 	try {
 		const categoryName = action.payload
-		const response = yield call(() => axios.get(`http://localhost:3001/api/getData/yummy/${categoryName}`))
+		const response = yield call(() => axios.get(`/api/getData/yummy/${categoryName}`))
 		const data = response.data.data
 		yield put({
 			type: SET_PRODUCTS_LIST,
@@ -35,7 +35,7 @@ function * getProdCategorySaga (action) {
 
 function * getProdSearchSaga (action) {
 	try {
-		const response = yield call(() => axios.get(`http://localhost:3001/api${action.payload}`))
+		const response = yield call(() => axios.get(`/api${action.payload}`))
 		const data = response.data.data
 		yield put({
 			type: SET_PRODUCTS_LIST,
@@ -51,7 +51,7 @@ function * getProdSearchSaga (action) {
 
 function * getDetailedProductSaga (action) {
 	try {
-		const response = yield call(() => axios.get(`http://localhost:3001/api/getData/yummy/detailed/${action.payload}`))
+		const response = yield call(() => axios.get(`/api/getData/yummy/detailed/${action.payload}`))
 		const data = response.data.data
 		yield put(setDetailedProduct(data))
 	} catch (err) {

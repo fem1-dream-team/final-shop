@@ -19,7 +19,7 @@ export function * watchUserSaga () {
 function * createNewUserWorker (action) {
 	try {
 		yield put(isLoading(true))
-		yield call(() => axios.post('http://localhost:3001/api/register', action.payload));
+		yield call(() => axios.post('/api/register', action.payload));
 		yield put(showRegister(false))
 		// yield put(isLoading(false))
 	} catch (err) {
@@ -31,7 +31,7 @@ function * createNewUserWorker (action) {
 function * loginUserWorker (action) {
 	try {
 		yield put(isLoading(true))
-		const response = yield call(() => axios.post('http://localhost:3001/api/login', action.payload));
+		const response = yield call(() => axios.post('/api/login', action.payload));
 		yield localStorage.setItem('jwtToken', response.data.token)
 		yield put(checkIfIsLoggedIn())
 		yield put(showAuthForm(false))
@@ -67,7 +67,7 @@ function * logoutUserWorker (action) {
 function * editUserWorker (action) {
 	try {
 		yield put(isLoading(true))
-		yield call(() => axios.put('http://localhost:3001/api/edit', action.payload));
+		yield call(() => axios.put('/api/edit', action.payload));
 
 		// console.log(response)
 		yield put(isLoading(false))
