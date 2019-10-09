@@ -71,8 +71,7 @@ const FlexContainer = styled.div`
 	max-width: 120rem;
 	height: 5rem;
 	margin: 0 auto;
-	padding: 0px;
-	padding: 0 2rem;
+	padding: 0 1rem;
 	font-size: 62.5%;
 `
 
@@ -82,7 +81,7 @@ margin: auto 0;
 list-style-type: none;
 
 & a {
-	margin: 0 1rem;
+	margin: 0 0.5rem;
 	color: #dfe6e9;
 	font-weight: 600;
 	text-transform: uppercase;

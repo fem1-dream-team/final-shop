@@ -69,7 +69,7 @@ const Products = (props) => {
 												{item.name}
 											</Typography>
 											<Typography className={s.description} variant="body2" color="textSecondary" component="div">
-												<p>{item.description}</p>
+												<p className={s.truncate}>{item.description}</p>
 											</Typography>
 										</CardContent>
 									</CardActionArea>

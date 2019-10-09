@@ -9,7 +9,7 @@
 }
 
 .title {
-    font-weight: bold !important;
+    font-weight: bold;
     color: #303739;
 }
 
@@ -28,7 +28,6 @@
     font-size: 20px;
     font-weight: bold;
     vertical-align: center;
-
 }
 
 .price {
@@ -39,28 +38,31 @@
 
 .description {
     --lh: 1.5rem;
-    line-height: var(--lh);
+    margin: 2rem auto;
 }
 
-.description p {
+.truncate {
     font-size: 1.1rem;
     --max-lines: 3;
+    line-height: var(--lh);
     max-height: calc(var(--lh) * var(--max-lines));
     overflow: hidden;
+    padding-right: 1rem; /* space for ellipsis */
 }
 
-.description p::before {
+.truncate::before {
     content: "...";
     position: absolute;
-    bottom: 15px;
-    right: 15px;
+    bottom: 16px;
+    right: 10px;
+
 }
 
-.description p::after {
+.truncate::after {
     content: "";
     position: absolute;
     right: 0; /* note: not using bottom */
-    width: 1.1rem;
-    height: 1.1rem;
+    width: 1.5rem;
+    height: 1.5rem;
     background: white;
 }
