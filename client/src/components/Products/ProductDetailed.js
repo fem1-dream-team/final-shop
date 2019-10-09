@@ -6,10 +6,8 @@ import {Container, Grid, Button, Typography, CardMedia} from '@material-ui/core'
 import s from './category.module.css'
 
 import {getDetailedProduct} from '../../actions/productsActions'
-import CardActions from "@material-ui/core/CardActions";
-import {buyBtnHandler} from "../../actions/basketActions";
+import {buyBtnHandler} from '../../actions/basketActions';
 
-// debugger
 const ProductDetailed = (props) => {
 	const pathname = props.history.location.pathname
 	const productId = pathname.slice(16)

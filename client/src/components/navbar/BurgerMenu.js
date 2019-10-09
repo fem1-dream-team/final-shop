@@ -27,12 +27,9 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {handleNavbar})(Burgermenu);
 
 const CentralSpan = styled.span`
-		margin: 10px 0;
+	margin: 10px 0;
 `
 const Wrapper = styled.div`
-	// position: absolute;
-	// top: 5px;
-	// right: 10px;
 	display: flex;
 	align-items: center;
 	cursor: pointer;

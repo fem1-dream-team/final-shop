@@ -17,7 +17,6 @@ text-decoration: none;
 export const StdLogoWrapper = styled.div`
 display: flex;
 align-items: center;
-// max-height: 20vh;
 `;
 
 export const StdLogo = styled.img`

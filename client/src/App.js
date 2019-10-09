@@ -8,8 +8,6 @@ import {checkIfIsLoggedIn} from './actions/authActions'
 import 'typeface-roboto'
 
 import Navbar from './components/navbar/Navbar'
-import GlobalStyle from './styles/Global'
-
 import {Home, Page404} from './components'
 import Profile from './components/Profile/Profile'
 import {Cart} from './components/ComponentsForNavigation/Cart'
@@ -23,11 +21,11 @@ import {Header} from './commons/Header/Header';
 import AuthFormModal from './commons/Header/ContainerSearchLoginPage/LoginPage/AuthFormModal';
 
 const Container = styled.div`
-min-height: calc(65vh - 30px);
-padding-bottom: 30px;
 display: flex;
 flex-direction: column;
 justify-content: center;
+min-height: calc(65vh - 30px);
+padding-bottom: 30px;
 `
 
 const App = (props) => {

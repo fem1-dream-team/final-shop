@@ -1,6 +1,6 @@
-import React from 'react';
+// import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Enzyme, { configure, shallow, render, mount } from 'enzyme';
+import { configure, shallow, render, mount } from 'enzyme';
 import {createSerializer} from 'enzyme-to-json';
 
 configure({adapter: new Adapter()});

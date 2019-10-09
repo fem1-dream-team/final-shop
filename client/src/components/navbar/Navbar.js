@@ -52,13 +52,12 @@ export default connect(mapStateToProps, {getProductCategories })(Navbar)
 
 const NavBar = styled(animated.nav)`
 	position: relative;
-	height: 10vh;
 	top: 0;
 	left: 0;
 	z-index: 1;
 	width: 100%;
-	// font-size: 1.4rem;
-	background: #2d3436;
+	height: 10vh;
+	background-color: #2d3436;
 `
 
 const FlexContainer = styled.div`

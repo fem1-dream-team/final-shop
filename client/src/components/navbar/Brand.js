@@ -17,16 +17,16 @@ const Brand = () => {
 export default Brand
 
 const LogoImg = styled.img`
-position: relative
-top: 3px
-height: 90%
+position: relative;
+top: 3px;
 width: 90%
-// width: 100%
+	//; width: 100%;
+height: 90%
 `
 const LogoTxt = styled.img`
-position: relative
+position: relative;
+top: 5px;
 right: 10px
-top: 5px
 `
 // const Image = styled.img`
 // 	// height: 85%;

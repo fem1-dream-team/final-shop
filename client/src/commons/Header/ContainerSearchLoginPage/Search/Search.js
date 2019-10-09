@@ -28,6 +28,10 @@ const Search = (props) => {
 			</form>
 		</div>
 	)
-}
+};
 
-export default connect(() => { {} }, {getSearchProducts})(withRouter(Search))
+const mapStateToProps = state => {
+	return {}
+};
+
+export default connect(mapStateToProps, {getSearchProducts})(withRouter(Search))

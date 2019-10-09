@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 
 class SimpleSlider extends Component {
-	render() {
+	render () {
 		const settings = {
 			autoplay: true,
 			autoplaySpeed: 2000,
@@ -81,7 +81,6 @@ color: antiquewhite;
 font-size: 10px;
 text-align: center;
 text-transform: uppercase;
-// vertical-align: center;
 `;
 
 const SliderImg1 = styled.div`

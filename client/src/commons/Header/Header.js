@@ -17,10 +17,9 @@ export const Header = (props) => {
 
 const Container = styled.div`
 	display: flex;
-	height: 5vh;
-	justify-content: space-between;
+	flex-wrap: nowrap;
 	align-items: center;
-	flexWrap: nowrap;
+	justify-content: space-between;
+	height: 5vh;
 	background-color: #95d6bf;
-
 `;
