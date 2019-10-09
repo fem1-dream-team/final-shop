@@ -20,8 +20,8 @@ align-items: center;
 `;
 
 export const StdLogo = styled.img`
-max-height: 20vh;
 width: inherit;
+max-height: 20vh;
 `;
 
 export const StdLi = styled.li`
