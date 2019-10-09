@@ -71,7 +71,7 @@ const ProductDetailed = (props) => {
 									{productToShow.price} UAH
 								</Typography>
 								<Button size="small" variant="contained" color="primary" onClick={() => {
-									onBuyClick(productToShow._id, productToShow.price, productToShow.image, productToShow.name)
+									onBuyClick(productToShow._id, productToShow.image, productToShow.name, productToShow.price)
 								}}> Buy </Button>
 							</Grid>
 						</Grid>
