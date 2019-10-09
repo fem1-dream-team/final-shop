@@ -1,13 +1,9 @@
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Enzyme, { shallow, render, mount } from 'enzyme';
+import { shallow, configure } from 'enzyme';
 import { Home } from '../components/Home';
 
-Enzyme.configure({ adapter: new Adapter() });
-
-global.shallow = shallow
-global.render = render
-global.mount = mount
+configure({ adapter: new Adapter() });
 
 describe('Home component', () => {
 	it('Home component render', () => {
