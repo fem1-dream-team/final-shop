@@ -60,7 +60,7 @@ export const BasketProducts = (props) => {
 	const handleCloseCart = () => {
 		setOpen(false)
 	}
-	localStorage.setItem("productBasket", JSON.stringify(props.productsBasket))
+	localStorage.setItem('productBasket', JSON.stringify(props.productsBasket))
 	localStorage.getItem('productBasket')
 
 	const priceArr = props.productsBasket.map((item) => { return (item.id) })

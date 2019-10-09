@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import s from './OrderApplicationForm.module.css'
 import connect from 'react-redux/es/connect/connect'
 import { removeBtnHandler } from '../../../actions/basketActions'
-//import { Field, reduxForm } from 'redux-form'
-
+// import { Field, reduxForm } from 'redux-form'
 
 const OrderApplicationForm = (props) => {
 	let priceArr, totalPrice, reducer;
@@ -21,7 +20,7 @@ const OrderApplicationForm = (props) => {
 	}, {});
 
 	let countProduct = counter
-	//let priceProduct
+	// let priceProduct
 	let priceId
 
 	const [count, setCount] = useState(counter);
@@ -52,24 +51,24 @@ const OrderApplicationForm = (props) => {
 
 					countProduct = Number(counter[item.id])
 					priceId = Number(item.price)
-					let price = (priceId * countProduct)
+					const price = (priceId * countProduct)
 
-						return (
-							<div className={s.descriptionOrder} key={item.id}>
-								<div className={s.imgSize}><img src={`../${item.image}`} alt="Product img"/></div>
-								<div className={s.nameProduct}>
-									<p>{item.name}</p>
-								</div>
-
-								<div className={s.plusMinusCount}>
-									<p className={s.plusMinus} onClick={() => {setCount(Number(count[item.id]) - 1); setPrice(price - priceId)}}>-</p>
-									<p>{Number(count[item.id])}</p>
-									<p className={s.plusMinus}>+</p>
-								</div>
-								<div className={s.priceContainer}>{price}UAH</div>
-								<div className={s.delete} onClick={() => removeProduct(item.id)}>+</div>
+					return (
+						<div className={s.descriptionOrder} key={item.id}>
+							<div className={s.imgSize}><img src={`../${item.image}`} alt="Product img"/></div>
+							<div className={s.nameProduct}>
+								<p>{item.name}</p>
 							</div>
-						)
+
+							<div className={s.plusMinusCount}>
+								<p className={s.plusMinus} onClick={() => { setCount(Number(count[item.id]) - 1); setPrice(price - priceId) }}>-</p>
+								<p>{Number(count[item.id])}</p>
+								<p className={s.plusMinus}>+</p>
+							</div>
+							<div className={s.priceContainer}>{price}UAH</div>
+							<div className={s.delete} onClick={() => removeProduct(item.id)}>+</div>
+						</div>
+					)
 				})
 			}
 			<div className={s.line}></div>

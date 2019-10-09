@@ -18,14 +18,14 @@ const basketReducer = (state = initialState, action) => {
 			}],
 		}
 	}
-		case BTN_REMOVE_PRODUCT: {
-			let filteredOrder = state.productsBasket.filter((product)=>product.id!==action.payload.id);
-//filteredOrder  will hold record not having action.payload
+	case BTN_REMOVE_PRODUCT: {
+		const filteredOrder = state.productsBasket.filter((product) => product.id !== action.payload.id);
+		// filteredOrder  will hold record not having action.payload
 
-			return Object.assign({}, state, {
-				productsBasket: [...filteredOrder]
-			})
-		}
+		return Object.assign({}, state, {
+			productsBasket: [...filteredOrder]
+		})
+	}
 
 	default:
 		return state

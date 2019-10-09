@@ -2,8 +2,15 @@ const express = require('express');
 const router = express.Router();
 const Product = require('../shemas/product');
 
-router.get('/getData/:categoryName', (req, res) => {
+router.get('/getData/yummy/:categoryName', (req, res) => {
 	console.log("categoryName back: " + req.params.categoryName)
+	const whatToFind = req.params.categoryName
+	whatToFind === "sale" ?
+		Product.find({ status: whatToFind}, function (err, data) {
+			if (err) return res.json({ success: false, error: err });
+			return res.json({ success: true, data: data });
+		})
+	:
 	Product.find({ category: req.params.categoryName}, function (err, data) {
 		if (err) return res.json({ success: false, error: err });
 		return res.json({ success: true, data: data });

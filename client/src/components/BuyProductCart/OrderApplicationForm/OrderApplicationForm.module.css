@@ -26,10 +26,13 @@
 .imgSize {
     width: 60px;
     padding: 5px;
+    /*width: 100%;*/
 }
+
 img {
-    width: 100%;
+width: 100%;
 }
+
 .nameProduct {
     align-self: center;
     font-size: 10px;
