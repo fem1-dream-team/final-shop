@@ -4,12 +4,14 @@ import {NavLink} from 'react-router-dom';
 
 import logo from '../../images/logo/logoCakeWhite.png';
 import logo2 from '../../images/logo/textLogoWhite.png';
+import CollapseMenu from './CollapseMenu';
 
 const Brand = () => {
 	return (
 		<Container>
 			<StyleLinkFirst to="/"><Image src={logo} alt="Company Logo" /></StyleLinkFirst>
 			<StyleLink to="/"><Image src={logo2} alt="Company Logo" /></StyleLink>
+			<CollapseMenu/>
 		</Container>
 	)
 };

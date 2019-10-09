@@ -38,7 +38,6 @@ const ProductDetailed = (props) => {
 							</h1>
 						</div>
 						< Grid container component="div" direction="row" justify="space-evenly" alignItems="flex-start" spacing={5}>
-
 							<Grid item style={{ maxWidth: '30%' }}>
 								<CardMedia
 									component="img"
@@ -47,7 +46,6 @@ const ProductDetailed = (props) => {
 									alt="not found"
 									title="Contemplative Reptile"/>
 							</Grid>
-
 							<Grid item style={{ maxWidth: '50%' }}>
 								<Grid container direction='column' spacing={5}>
 									<Grid item>
@@ -74,7 +72,6 @@ const ProductDetailed = (props) => {
 		</div>
 	)
 }
-
 const mapStateToProps = state => {
 	return {
 		productsList: state.products.productsList,
@@ -82,5 +79,4 @@ const mapStateToProps = state => {
 		isLoading: state.general.isLoading
 	}
 }
-
 export default connect(mapStateToProps, { getDetailedProduct })(withRouter(ProductDetailed))

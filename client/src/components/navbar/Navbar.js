@@ -9,7 +9,7 @@ import BurgerMenu from './BurgerMenu'
 import CollapseMenu from './CollapseMenu'
 import { getProductCategories } from '../../actions/productsActions'
 
-const Navbar = (props) => {
+export const Navbar = (props) => {
 	const barAnimation = useSpring({
 		from: { transform: 'translate3d(0, -10rem, 0)' },
 		transform: 'translate3d(0, 0, 0)',
@@ -77,7 +77,6 @@ const NavLinks = styled(animated.ul)`
 justify-self: end;
 margin: auto 0;
 list-style-type: none;
-
 & a {
 	margin: 0 1.5rem;
 	color: #dfe6e9;
@@ -87,12 +86,10 @@ list-style-type: none;
 	border-bottom: 1px solid transparent;
 	cursor: pointer;
 	transition: all 300ms linear 0s;
-
 	&:hover {
 		color: #fdcb6e;
 		border-bottom: 1px solid #fdcb6e;
 	}
-
 	@media (max-width: 768px) {
 		display: none;
 	}
@@ -101,7 +98,6 @@ list-style-type: none;
 
 const BurgerWrapper = styled.div`
 	margin: auto 0;  
-
 	@media (min-width: 769px) {
 		display: none;
 	}

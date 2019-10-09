@@ -60,6 +60,8 @@ export const BasketProducts = (props) => {
 	const handleCloseCart = () => {
 		setOpen(false)
 	}
+	localStorage.setItem("productBasket", JSON.stringify(props.productsBasket))
+	localStorage.getItem('productBasket')
 
 	const priceArr = props.productsBasket.map((item) => { return (item.id) })
 	// const reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
@@ -70,7 +72,7 @@ export const BasketProducts = (props) => {
 			<Fade in={!isEmpty(props.productsBasket)}>
 				<div onScroll='paper'>
 					<Button variant="contained" className={classes.button} onClick={handleOpenCart}>
-						<img className={s.imgBasket} src='img/basket/shopping-cart-728408_1280.png' alt='basket'/>
+						<img className={s.imgBasket} src='../img/basket/shopping-cart-728408_1280.png' alt='basket'/>
 					</Button>
 					<div className={classes.div}>{totalAmount}</div>
 
@@ -103,7 +105,10 @@ export const BasketProducts = (props) => {
 const mapStateToProps = (state) => {
 	return {
 		productsBasket: state.basket.productsBasket,
-		productsCart: state.basket.productsCart,
+		id: state.basket.productsBasket.id,
+		image: state.basket.productsBasket.image,
+		name: state.basket.productsBasket.name,
+		price: state.basket.productsBasket.price,
 	}
 }
 export default connect(mapStateToProps)(BasketProducts)

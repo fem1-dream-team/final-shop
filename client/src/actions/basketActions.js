@@ -1,31 +1,21 @@
-import { BTN_HANDLER_BASKET, BTN_HANDLER_CART } from './types'
+import { BTN_HANDLER_BASKET, BTN_REMOVE_PRODUCT } from './types'
 
-export const buyBtnHandler = (id, amount, price, image, name) => {
+export const buyBtnHandler = (id, image, name, price) => {
 	return {
 		type: BTN_HANDLER_BASKET,
 		payload: {
 			id: id,
-			amount: amount,
-			price: price,
 			image: image,
 			name: name,
+			price: price,
 		}
 	}
 }
-
-export const buyOrderCart = (totalPrice, totalAmount, id, amount, price, image, name) => {
+export const removeBtnHandler = (id) => {
 	return {
-		type: BTN_HANDLER_CART,
+		type: BTN_REMOVE_PRODUCT,
 		payload: {
-			totalPrice: totalPrice,
-			totalAmount: totalAmount,
-			productsCart: {
-				id: id,
-				amount: amount,
-				price: price,
-				image: image,
-				name: name,
-			}
+			id: id,
 		}
 	}
 }

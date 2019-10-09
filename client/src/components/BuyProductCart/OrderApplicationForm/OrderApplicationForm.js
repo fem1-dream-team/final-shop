@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from './OrderApplicationForm.module.css'
 import connect from 'react-redux/es/connect/connect'
+import { removeBtnHandler } from '../../../actions/basketActions'
+//import { Field, reduxForm } from 'redux-form'
+
 
 const OrderApplicationForm = (props) => {
 	let priceArr, totalPrice, reducer;
 
 	const uniqIds = {};
 	const productsCart = props.productsBasket.filter(obj => !uniqIds[obj.id] && (uniqIds[obj.id] = true));
-	console.log(productsCart);
-
 	// поиск количества повтор. обьктов
 	const counter = props.productsBasket.reduce(function (object, index) {
 		// eslint-disable-next-line
@@ -19,13 +20,26 @@ const OrderApplicationForm = (props) => {
 		return object;
 	}, {});
 
-	const result = Object.keys(counter).map(function (id) {
-		return counter[id]
-	});
+	let countProduct = counter
+	//let priceProduct
+	let priceId
 
-	console.log('result' + result)
+	const [count, setCount] = useState(counter);
+	const [priceProduct, setPrice] = useState();
+
+	// const clickMinus = () => {
+	// 	setCount(count - 1)
+	// 	// setPrice(price - priceId)
+	// }
+	// const clickPlus = () => {
+	// 	setCount(count + 1)
+	// 	// setPrice(price + priceId)
+	// }
+	const removeProduct = (id) => {
+		props.removeBtnHandler(id)
+	}
 	return (
-		<div className={s.header}>
+		<form className={s.header}>
 			<h1 className={s.name}>Your order</h1>
 			<div className={s.line}></div>
 
@@ -35,25 +49,27 @@ const OrderApplicationForm = (props) => {
 					priceArr = props.productsBasket.map((item) => { return (item.price) })
 					reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
 					totalPrice = Number(priceArr.reduce(reducer, 0))
-					return (
-						<div className={s.descriptionOrder} key={item.id}>
-							<div className={s.imgSize}><img src={item.image} alt="Product img"/></div>
-							<div className={s.nameProduct}>
-								<p>{item.name}</p>
+
+					countProduct = Number(counter[item.id])
+					priceId = Number(item.price)
+					let price = (priceId * countProduct)
+
+						return (
+							<div className={s.descriptionOrder} key={item.id}>
+								<div className={s.imgSize}><img src={`../${item.image}`} alt="Product img"/></div>
+								<div className={s.nameProduct}>
+									<p>{item.name}</p>
+								</div>
+
+								<div className={s.plusMinusCount}>
+									<p className={s.plusMinus} onClick={() => {setCount(Number(count[item.id]) - 1); setPrice(price - priceId)}}>-</p>
+									<p>{Number(count[item.id])}</p>
+									<p className={s.plusMinus}>+</p>
+								</div>
+								<div className={s.priceContainer}>{price}UAH</div>
+								<div className={s.delete} onClick={() => removeProduct(item.id)}>+</div>
 							</div>
-							<div className={s.plusMinusCount}>
-								<p className={s.plusMinus}>-</p>
-								{!props.id === item.id
-									? null
-									: <p>{counter[item.id]}</p>
-								}
-								<p className={s.plusMinus}>+</p>
-							</div>
-							<div className={s.priceContainer}>{!counter[item.id] ? null : item.price * counter[item.id]}UAH</div>
-							<div className={s.delete} onClick={() => { props.productsBasket.filter(item => (item === item.id)) }}>+
-							</div>
-						</div>
-					)
+						)
 				})
 			}
 			<div className={s.line}></div>
@@ -86,21 +102,18 @@ const OrderApplicationForm = (props) => {
 				<div className={s.right}><span className={s.priceText}>Price:</span> {totalPrice} UAH</div>
 				<input className={s.inputStyle} type="submit" name='checkout' value='Checkout'/>
 			</div>
-		</div>
+		</form>
 	)
 }
+
 const mapStateToProps = (state) => {
 	return {
 		productsBasket: state.basket.productsBasket,
-		productsCart: state.basket.productsCart,
 		id: state.basket.productsBasket.id,
-		amount: state.basket.productsBasket.amount,
-		price: state.basket.productsBasket.price,
 		image: state.basket.productsBasket.image,
 		name: state.basket.productsBasket.name,
-		totalPrice: state.basket.totalPrice,
-		totalAmount: state.basket.totalAmount,
+		price: state.basket.productsBasket.price,
 	}
 }
 
-export default connect(mapStateToProps)(OrderApplicationForm)
+export default connect(mapStateToProps, {removeBtnHandler})(OrderApplicationForm)
