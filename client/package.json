@@ -93,6 +93,5 @@
     "stylelint": "^10.1.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-order": "^3.1.0"
-  },
-  "proxy": "http://localhost:3001"
+  }
 }
