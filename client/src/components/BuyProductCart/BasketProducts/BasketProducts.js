@@ -4,10 +4,8 @@ import Button from '@material-ui/core/Button';
 import Fade from '@material-ui/core/Fade'
 import OrderApplicationForm from '../OrderApplicationForm/OrderApplicationForm'
 import s from './basketProducts.module.css'
-
 import { Dialog } from '@material-ui/core'
 import Backdrop from '@material-ui/core/Backdrop/Backdrop'
-import { buyBtnHandler } from '../../../actions/basketActions'
 import connect from 'react-redux/es/connect/connect'
 import isEmpty from 'is-empty'
 
@@ -39,7 +37,6 @@ const useStyles = makeStyles(theme => ({
 	},
 	div: {
 		margin: theme.spacing(1),
-		// display: 'block',
 		position: 'fixed',
 		top: '15%',
 		right: '0',
@@ -59,26 +56,21 @@ export const BasketProducts = (props) => {
 	const [open, setOpen] = React.useState(false);
 	const handleOpenCart = () => {
 		setOpen(true)
-		// props.btnBasketHandler(id, image, price, name)
 	};
 	const handleCloseCart = () => {
 		setOpen(false)
 	}
+	localStorage.setItem('productBasket', JSON.stringify(props.productsBasket))
+	localStorage.getItem('productBasket')
 
-	// alert(`Is arr empty? ${isEmpty([])}`)
-	// console.log(`Is props.productsBasket empty?  ${isEmpty(props.productsBasket)}`)
-	// console.log('props.productsBasket: ' + props.productsBasket)
-	// debugger
-	const priceArr = props.productsBasket.map((item) => { return (item.price) })
+	const priceArr = props.productsBasket.map((item) => { return (item.id) })
 	// const reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
 	// const totalPrice = priceArr.reduce(reducer, props.price)
 	const totalAmount = priceArr.length
+	
 	const basePath = 'http://localhost:3000/'
 	return (
 		<div>
-			{/* <Button size="small" color="primary" onClick={()=>{props.buyBtnHandler()}}> */}
-			{/*	<p>Buy</p> */}
-			{/* </Button> */}
 			<Fade in={!isEmpty(props.productsBasket)}>
 				<div onScroll='paper'>
 					<Button variant="contained" className={classes.button} onClick={handleOpenCart}>
@@ -102,14 +94,7 @@ export const BasketProducts = (props) => {
 						<div style={{overflowY: 'scroll'}}>
 							<Fade in={open}>
 								<div className={classes.paper} >
-									<OrderApplicationForm
-										// id={props.id}
-										// image={props.image}
-										// name={props.name}
-										// description={props.description}
-										// price={totalPrice}
-										// total={totalAmount}
-									/>
+									<OrderApplicationForm/>
 								</div>
 							</Fade>
 						</div>
@@ -119,20 +104,13 @@ export const BasketProducts = (props) => {
 		</div>
 	)
 }
-
 const mapStateToProps = (state) => {
 	return {
 		productsBasket: state.basket.productsBasket,
-		// totalAmount: state.basket.totalAmount,
+		id: state.basket.productsBasket.id,
+		image: state.basket.productsBasket.image,
+		name: state.basket.productsBasket.name,
+		price: state.basket.productsBasket.price,
 	}
 }
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		buyBtnHandler: (productID) => { dispatch(buyBtnHandler(productID)) },
-		// btnBasketHandler: (id, image, price, name) => { dispatch(btnBasketHandler(id, image, price, name)) },
-		// addToCart: (id, quantity) => { dispatch(addToCart(id, quantity)) },
-		// removeCart: (id) => { dispatch(removeCart(id)) },
-	}
-}
-export default connect(mapStateToProps, mapDispatchToProps)(BasketProducts)
+export default connect(mapStateToProps)(BasketProducts)
