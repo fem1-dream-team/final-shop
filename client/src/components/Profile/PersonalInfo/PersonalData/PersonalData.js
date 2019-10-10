@@ -18,14 +18,22 @@ const mapStateToProps = state => {
 const PersonalData = (props) => {
 	return (
 		<Fragment>
-			<h3 className={classes.item}>Personal Data</h3>
-			<p className={classes.item}>First Name: {props.first_name}</p>
-			<p className={classes.item}>Last Name: {props.last_name} </p>
-			<p className={classes.item}>Email: {props.email}</p>
-			<p className={classes.item}>Tel.: {props.tel}</p>
-			<p className={classes.item}>Date of birth: {props.birth}</p>
-			<p className={classes.item}>Sex: {props.sex}</p>
-			<p className={classes.item}>Delivery Adress: {props.adress}</p>
+			<h3 className={classes.title}>Personal Data</h3>
+			<div></div>
+			<div className={classes.itemNameTitle}> <span className={classes.itemName}>First Name: </span>{props.first_name}</div>
+
+			<div className={classes.itemNameTitle}> <span className={classes.itemName}>Last Name: </span>{props.last_name}</div>
+
+			<div className={classes.itemNameTitle}> <span className={classes.itemName}>Email: </span> {props.email}</div>
+
+			<div className={classes.itemNameTitle}> <span className={classes.itemName}>Tel.: </span>{props.tel}</div>
+
+			<div className={classes.itemNameTitle}> <span className={classes.itemName}>Date of birth: </span>{props.birth}</div>
+
+			<div className={classes.itemNameTitle}> <span className={classes.itemName}>Sex: </span>{props.sex}</div>
+
+			<div className={classes.itemNameTitle}> <span className={classes.itemName}>Delivery Adress:  </span>{props.adress}</div>
+
 		</Fragment>
 	)
 };

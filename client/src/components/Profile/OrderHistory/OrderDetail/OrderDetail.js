@@ -16,22 +16,20 @@ const OrderDetail = (props) => {
 	const productItem = productList.map((item) => {
 		if (item.ordNo === idOrder) {
 			return (
-				<div className={classes.item} key={idOrder}>
-					<div>Order No: {item.ordNo}</div>
-					<div>Date: {item.creationDate}</div>
-					<div>Delivery status: {item.deliveryStatus}</div>
-					<div>Total Amount: {item.amount}</div>
+				<div className={classes.itemStatus} key={idOrder}>
+					<div className={classes.itemNameTitle}> <span className={classes.itemName}>Order No: </span>{item.ordNo}</div>
+					<div className={classes.itemNameTitle}> <span className={classes.itemName}>Date: </span>{item.creationDate}</div>
+					<div className={classes.itemNameTitle}> <span className={classes.itemName}>Delivery status:</span> {item.deliveryStatus}</div>
+					<div className={classes.itemNameTitle}> <span className={classes.itemName}>Total Amount: </span>{item.amount}</div>
 					{item.products.map(product => {
 						return (
-							<div key={Math.round(100 - 0.5 + Math.random() * (1000 - 100 + 1))}>
-								<div>
-									<img src={`${basePath}${product.image}`} alt="альтернативный текст"/>
+							<div className={classes.itemList} key={Math.round(100 - 0.5 + Math.random() * (1000 - 100 + 1))}>
+								<div className={classes.item}>
+									<img className={classes.itemImg} src={`${basePath}${product.image}`} alt="альтернативный текст"/>
 								</div>
-								<div>Price: {product.price}</div>
-
-								<div>Name: {product.name}</div>
-								<div>Q-ty: {product.qty}
-								</div>
+								<div className={classes.item}> <span className={classes.itemName}>Name:</span> {product.name}</div>
+								<div className={classes.item}><span className={classes.itemName}>Price:</span> {product.price} UAH</div>
+								<div className={classes.item}> <span className={classes.itemName}>Q-ty:</span> {product.qty}</div>
 							</div>
 
 						)
@@ -43,9 +41,10 @@ const OrderDetail = (props) => {
 	})
 
 	return (
-		<div className={classes.item}>
+		<div className={classes.wrapDetailed}>
+			<h3 className={classes.title}>Order Detailed</h3>
 			{productItem}
-			<p onClick={props.history.goBack}>Go back...</p>
+			<p className={classes.goBack} onClick={props.history.goBack}>Go back...</p>
 		</div>
 	)
 }
