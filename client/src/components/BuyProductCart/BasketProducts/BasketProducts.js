@@ -8,6 +8,7 @@ import { Dialog } from '@material-ui/core'
 import Backdrop from '@material-ui/core/Backdrop/Backdrop'
 import connect from 'react-redux/es/connect/connect'
 import isEmpty from 'is-empty'
+import {basePath} from '../../../actions/types';
 
 const useStyles = makeStyles(theme => ({
 	modal: {
@@ -68,7 +69,6 @@ export const BasketProducts = (props) => {
 	// const totalPrice = priceArr.reduce(reducer, props.price)
 	const totalAmount = priceArr.length
 
-	const basePath = 'https://fem1-candy-factory.herokuapp.com/' || 'http://localhost:3000/'
 	return (
 		<div>
 			<Fade in={!isEmpty(props.productsBasket)}>
