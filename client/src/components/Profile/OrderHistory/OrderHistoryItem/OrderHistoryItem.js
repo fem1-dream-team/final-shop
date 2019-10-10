@@ -14,7 +14,8 @@ const OrderHistoryItem = (props) => {
 			<div>Order No: {props.ordNo}</div>
 			<div>Date: {props.creationDate}</div>
 			<div>Delivery status: {props.deliveryStatus}</div>
-			<Link to={`/profile/my-orders/${id}`} ordNo={ props.ordNo }>See more ...</Link>
+			<div>Total Amount: {props.amount}</div>
+			<Link to={`/profile/my-orders/${id}`}>See more ...</Link>
 		</div>
 	)
 }
