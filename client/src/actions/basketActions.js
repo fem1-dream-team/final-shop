@@ -1,4 +1,4 @@
-import { BTN_HANDLER_BASKET, BTN_REMOVE_PRODUCT } from './types'
+import { BTN_HANDLER_BASKET, BTN_REMOVE_PRODUCT, PLUS_ITEM_PRICE } from './types'
 
 export const buyBtnHandler = (id, image, name, price) => {
 	return {
@@ -16,6 +16,16 @@ export const removeBtnHandler = (id) => {
 		type: BTN_REMOVE_PRODUCT,
 		payload: {
 			id: id,
+		}
+	}
+}
+
+export const plusItemPrice = (id, price) => {
+	return {
+		type: PLUS_ITEM_PRICE,
+		payload: {
+			id: id,
+			price: price
 		}
 	}
 }

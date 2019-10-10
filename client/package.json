@@ -25,6 +25,7 @@
     "react-spring": "^8.0.27",
     "redux": "^4.0.4",
     "redux-form": "^8.2.6",
+    "redux-immutablejs": "0.0.8",
     "redux-saga": "^1.1.1",
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",

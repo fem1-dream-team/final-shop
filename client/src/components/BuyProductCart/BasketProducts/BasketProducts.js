@@ -65,8 +65,7 @@ export const BasketProducts = (props) => {
 	localStorage.getItem('productBasket')
 
 	const priceArr = props.productsBasket.map((item) => { return (item.id) })
-	// const reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
-	// const totalPrice = priceArr.reduce(reducer, props.price)
+  
 	const totalAmount = priceArr.length
 
 	return (
@@ -113,4 +112,5 @@ const mapStateToProps = (state) => {
 		price: state.basket.productsBasket.price,
 	}
 }
+
 export default connect(mapStateToProps)(BasketProducts)

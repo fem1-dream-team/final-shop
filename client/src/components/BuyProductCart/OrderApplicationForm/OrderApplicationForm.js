@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 import s from './OrderApplicationForm.module.css'
+import styled from 'styled-components'
 import connect from 'react-redux/es/connect/connect'
-import { removeBtnHandler } from '../../../actions/basketActions'
+import { plusItemPrice, removeBtnHandler } from '../../../actions/basketActions'
+import { Field, reduxForm } from 'redux-form'
+import normalizePhone from './normalizePhone'
 import {basePath} from '../../../actions/types';
-// import { Field, reduxForm } from 'redux-form'
+// import validate from './validate'
+// import submit from './submit'
 
 const OrderApplicationForm = (props) => {
 	let priceArr, totalPrice, reducer;
@@ -20,26 +24,32 @@ const OrderApplicationForm = (props) => {
 		return object;
 	}, {});
 
-	let countProduct = counter
-	let priceId
-
-	const [count, setCount] = useState(counter);
-	let [price, setPrice] = useState();
-
-	// const clickMinus = () => {
-	// 	setCount(count - 1)
-	// 	// setPrice(price - priceId)
-	// }
-	// const clickPlus = () => {
-	// 	setCount(count + 1)
-	// 	// setPrice(price + priceId)
-	// }
 	const removeProduct = (id) => {
 		props.removeBtnHandler(id)
 	}
+	// validation form
+	const renderField = ({ input, label, type, placeholder, meta: { touched, error } }) => (
+		<div>
+			<label className={s.headerInput}>{label}</label>
+			<div>
+				<input className={s.inputStyle} {...input} placeholder={placeholder} type={type}/>
+				{touched && error && <span>{error}</span>}
+			</div>
+		</div>
+	)
+	// const upper = value => value && value.toUpperCase()
+	const lower = value => value && value.toLowerCase()
+
+	const { handleSubmit, pristine, reset, submitting } = props
+
+	// submit form
+	const onclick = (formData) => {
+		console.log(formData)
+	}
 
 	return (
-		<form className={s.header}>
+		<form className={s.header} onSubmit={handleSubmit}>
+
 			<h1 className={s.name}>Your order</h1>
 			<div className={s.line}></div>
 
@@ -49,63 +59,123 @@ const OrderApplicationForm = (props) => {
 					priceArr = props.productsBasket.map((item) => { return (item.price) })
 					reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
 					totalPrice = Number(priceArr.reduce(reducer, 0))
+    
+					const CountFunction = () => {
+						const priceId = Number(item.price)
+						const [count, setCount] = useState((Number(counter[item.id])));
+						const [price, setPrice] = useState(((priceId * count)));
+						// const [totalPrice, setTotalPrice] = useState(Number(priceArr.reduce(reducer, 0)));
 
-					countProduct = Number(counter[item.id])
-					priceId = Number(item.price)
-					price = (priceId * countProduct)
+						const onClickMinus = () => {
+							if (count !== 0) {
+								setCount(count - 1)
+								setPrice(price - priceId)
+								// props.productsBasket
+							}
+						};
+						const onClickPlus = () => {
+							setCount(count + 1)
+							setPrice(price + priceId)
+							props.plusItemPrice(item.id, item.price)
+							// setTotalPrice(totalPrice + priceId)
+						};
+						return (
+							<div>
+								<div className={s.descriptionOrder} key={item.id}>
+									<div className={s.imgSize}><img src={`${basePath}${item.image}`} alt="Product img"/></div>
+									<div className={s.nameProduct}>
+										<p>{item.name}</p>
+									</div>
+
+									<div className={s.plusMinusCount}>
+										<p className={s.plusMinus} onClick={onClickMinus}>-</p>
+										<p>{count}</p>
+										<p className={s.plusMinus} onClick={onClickPlus}>+</p>
+									</div>
+									<div className={s.priceContainer}>{price}UAH</div>
+									<div className={s.delete} onClick={() => removeProduct(item.id)}>+</div>
+								</div>
+							</div>
+						)
+					}
 
 					return (
-						<div className={s.descriptionOrder} key={item.id}>
-							<div className={s.imgSize}><img src={`${basePath}${item.image}`} alt="Product img"/></div>
-							<div className={s.nameProduct}>
-								<p>{item.name}</p>
-							</div>
-
-							<div className={s.plusMinusCount}>
-								<p className={s.plusMinus} onClick={() => { setCount(Number(count[item.id]) - 1); setPrice(price - priceId) }}>-</p>
-								<p>{Number(count[item.id])}</p>
-								<p className={s.plusMinus}>+</p>
-							</div>
-							<div className={s.priceContainer}>{(priceId * countProduct)}UAH</div>
-							<div className={s.delete} onClick={() => removeProduct(item.id)}>+</div>
-						</div>
+						<CountFunction/>
 					)
 				})
 			}
 			<div className={s.line}></div>
 			<div className={s.right}><span className={s.priceText}>Price:</span> {totalPrice} UAH</div>
 			<div className={s.inputContainer}>
-				<span className={s.headerInput}>Name</span>
-				<input className={s.inputStyle} type="text" name='name' placeholder='Your name'/>
-				<span className={s.headerInput}>Phone</span><br/>
-				<input className={s.inputStyle} type="text" name='phone' placeholder='Your phone'/>
-				<span className={s.headerInput}>E-mail</span>
-				<input className={s.inputStyle} type="text" name='email' placeholder='Email address for communication'/>
-				<p>
-					<span className={s.headerInput}>Shipping method</span><br/>
-					<input className={s.radioBtnStyle} type="radio" name="shippingMethod" value="courier"/>Delivery
-			by courier<br/>
-					<input className={s.radioBtnStyle} type="radio" name="shippingMethod" value="taxi"/>Departure by
-			taxi<br/>
-					<input className={s.radioBtnStyle} type="radio" name="shippingMethod" value="pickup"/>Pickup<br/>
-				</p>
-				<span className={s.headerInput}>Delivery address</span>
-				<input className={s.inputStyle} type="text" name='address'/>
 
-				<span className={s.headerInput}>Date of delivery</span>
-				<input className={s.inputStyle} type="date" name='date' style={{ width: '180px' }}/>
+				<Field name="username" type="text" component={renderField} label="Name" placeholder='Your name' normalize={lower}/>
+				<Field name="phone" type="text" component={renderField} label="Phone" placeholder='Your phone' normalize={normalizePhone}/>
+				<Field name="email" type="email" component={renderField} label="E-mail" placeholder='Email address for communication'/>
+				<div>
+					<label>Shipping method</label>
+					<div>
+						<div className={s.radioBtnStyle}>
+							<label>
+								<Field name="shippingMethod" component="input" type="radio" value="courier"/>Delivery
+									by courier
+							</label>
+						</div>
+						<div className={s.radioBtnStyle}>
+							<label>
+								<Field name="shippingMethod" component="input" type="radio" value="taxi"/>Departure by
+									taxi
+							</label>
+						</div>
+						<div className={s.radioBtnStyle}>
+							<label>
+								<Field name="shippingMethod" component="input" type="radio" value="pickup"/>Pickup
+							</label>
+						</div>
+					</div>
+				</div>
 
-				<span className={s.headerInput}>Time of delivery</span>
-				<input className={s.inputStyle} type="text" name='time' placeholder='Estimated delivery time' style={{ width: '180px' }}/>
-				<span className={s.headerInput}>Order comment</span>
-				<textarea className={s.inputStyle} name='comment' rows='3'></textarea>
+				<Field name="address" type="text" component={renderField} label="Delivery address" />
+				<div style={{ width: '180px' }}>
+					<Field name="date" type="date" component={renderField} label="Date of delivery"/>
+				</div>
+				<div style={{ width: '180px' }}>
+					<Field name="time" type="text" component={renderField} label="Time of delivery"/>
+				</div>
+
+				<div>
+					<label>Payment method</label>
+					<div>
+						<div className={s.radioBtnStyle}>
+							<label>
+								<Field name="paymentMethod" component="input" type="radio" value="cash"/>Cash payment
+							</label>
+						</div>
+						<div className={s.radioBtnStyle}>
+							<label>
+								<Field name="paymentMethod" component="input" type="radio" value="card"/>Payment by card
+							</label>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<label>Order comment</label>
+					<Field name="comment" component={Textarea} rows='3'/>
+				</div>
 				<div className={s.right}><span className={s.priceText}>Price:</span> {totalPrice} UAH</div>
-				<input className={s.inputStyle} type="submit" name='checkout' value='Checkout'/>
+
+				<button className={s.inputStyle} type="submit" disabled={pristine || submitting} onClick={reset} onSubmit={onclick}>Checkout</button>
 			</div>
 		</form>
 	)
 }
 
+const Textarea = styled.textarea`
+	width: 100%;
+	padding: 7px 5px;
+	border: 1px solid #95d6bf;
+	border-radius: 10px;
+`
 const mapStateToProps = (state) => {
 	return {
 		productsBasket: state.basket.productsBasket,
@@ -116,4 +186,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps, {removeBtnHandler})(OrderApplicationForm)
+export default connect(mapStateToProps, {removeBtnHandler, plusItemPrice})(reduxForm({ form: 'submitValidation' })(OrderApplicationForm))
