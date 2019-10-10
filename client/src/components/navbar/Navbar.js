@@ -9,7 +9,7 @@ import BurgerMenu from './BurgerMenu'
 import CollapseMenu from './CollapseMenu'
 import {getProductCategories} from '../../actions/productsActions'
 
-const Navbar = (props) => {
+export const Navbar = (props) => {
 	const barAnimation = useSpring({
 		from: { transform: 'translate3d(0, -10rem, 0)' },
 		transform: 'translate3d(0, 0, 0)',
@@ -34,7 +34,6 @@ const Navbar = (props) => {
 						<NavLink to="/yummy/cookies" onClick={() => { props.getProductCategories('cookies') }}>COOKIES</NavLink>
 						<NavLink to="/yummy/desserts" onClick={() => { props.getProductCategories('desserts') }}>DESSERTS</NavLink>
 						<NavLink to="/yummy/macaroons" onClick={() => { props.getProductCategories('macaroons') }}>MACAROONS</NavLink>
-						<NavLink to="/cart" >CART</NavLink>
 					</NavLinks>
 					<BurgerMenu/>
 				</FlexContainer>

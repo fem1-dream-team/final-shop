@@ -2,7 +2,6 @@ import React, {Fragment} from 'react';
 import classes from './EditPersinalInfo.module.css';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-// import {compose} from 'redux';
 import TextField from '@material-ui/core/TextField';
 // import asyncValidate from './asyncValidate'
 
@@ -59,6 +58,7 @@ const renderTextField = ({label, input, meta: { touched, invalid, error }, ...cu
 
 let EditPersonalInfo = (props) => {
 	const { handleSubmit, submitting } = props;
+	console.log(props);
 	return (
 		<Fragment>
 			<h3 className={classes.item}>Edit your personal info</h3>
@@ -143,7 +143,7 @@ let EditPersonalInfo = (props) => {
 						/>
 					</label>
 				</div>
-				<button className={classes.button} onClick={() => { alert('HI') }} type='submit' disabled={submitting} >Save changes</button>
+				<button className={classes.button} type='submit' disabled={submitting} >Save</button>
 			</form>
 		</Fragment>
 	)

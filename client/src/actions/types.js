@@ -26,4 +26,6 @@ export const BTN_HANDLER_BASKET = 'BTN_HANDLER_BASKET'
 export const BTN_REMOVE_PRODUCT = 'BTN_REMOVE_PRODUCT'
 export const PLUS_ITEM_PRICE = 'PLUS_ITEM_PRICE'
 
+export const BTN_HANDLER_BASKET_SAGA = 'BTN_HANDLER_BASKET_SAGA'
 export const RUN_SAGA_EDIT = 'RUN_SAGA_EDIT'
+export const basePath = 'https://fem1-candy-factory.herokuapp.com/' || 'http://localhost:3000/

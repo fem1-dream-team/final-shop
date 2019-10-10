@@ -2,7 +2,7 @@
     display: grid;
     grid-template-areas:
             "nav profile";
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 3fr 9fr;
     grid-gap: 0;
 }
 

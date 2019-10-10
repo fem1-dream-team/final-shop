@@ -19,6 +19,7 @@ const basketReducer = (state = initialState, action) => {
 		}
 	}
 	case PLUS_ITEM_PRICE: {
+
 		return {
 			...state,
 			productsBasket: [...state.productsBasket, {
@@ -30,7 +31,6 @@ const basketReducer = (state = initialState, action) => {
 	case BTN_REMOVE_PRODUCT: {
 		const filteredOrder = state.productsBasket.filter((product) => product.id !== action.payload.id);
 		// filteredOrder  will hold record not having action.payload
-
 		return Object.assign({}, state, {
 			productsBasket: [...filteredOrder]
 		})

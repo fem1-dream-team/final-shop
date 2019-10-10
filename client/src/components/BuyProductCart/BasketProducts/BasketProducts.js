@@ -8,6 +8,7 @@ import { Dialog } from '@material-ui/core'
 import Backdrop from '@material-ui/core/Backdrop/Backdrop'
 import connect from 'react-redux/es/connect/connect'
 import isEmpty from 'is-empty'
+import {basePath} from '../../../actions/types';
 
 const useStyles = makeStyles(theme => ({
 	modal: {
@@ -64,24 +65,13 @@ export const BasketProducts = (props) => {
 	localStorage.getItem('productBasket')
 
 	const priceArr = props.productsBasket.map((item) => { return (item.id) })
+  
 	const totalAmount = priceArr.length
-	const basePath = 'http://localhost:3000/'
-
-	// //close form
-	//
-	// const [openForm, setForm] = React.useState(false);
-	//
-	// const handleOpenForm = () => {
-	// 	setForm(true)
-	// };
-	// const handleCloseForm = () => {
-	// 	setForm(false)
-	// }
 
 	return (
 		<div>
 			<Fade in={!isEmpty(props.productsBasket)}>
-				<div onScroll='paper'>
+				<div>
 					<Button variant="contained" className={classes.button} onClick={handleOpenCart}>
 						<img className={s.imgBasket} src={`${basePath}img/basket/shopping-cart-728408_1280.png`} alt='basket'/>
 					</Button>
@@ -122,4 +112,5 @@ const mapStateToProps = (state) => {
 		price: state.basket.productsBasket.price,
 	}
 }
+
 export default connect(mapStateToProps)(BasketProducts)

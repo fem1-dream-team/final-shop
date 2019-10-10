@@ -5,6 +5,7 @@ import connect from 'react-redux/es/connect/connect'
 import { plusItemPrice, removeBtnHandler } from '../../../actions/basketActions'
 import { Field, reduxForm } from 'redux-form'
 import normalizePhone from './normalizePhone'
+import {basePath} from '../../../actions/types';
 // import validate from './validate'
 // import submit from './submit'
 
@@ -48,6 +49,7 @@ const OrderApplicationForm = (props) => {
 
 	return (
 		<form className={s.header} onSubmit={handleSubmit}>
+
 			<h1 className={s.name}>Your order</h1>
 			<div className={s.line}></div>
 
@@ -57,7 +59,7 @@ const OrderApplicationForm = (props) => {
 					priceArr = props.productsBasket.map((item) => { return (item.price) })
 					reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
 					totalPrice = Number(priceArr.reduce(reducer, 0))
-
+    
 					const CountFunction = () => {
 						const priceId = Number(item.price)
 						const [count, setCount] = useState((Number(counter[item.id])));
@@ -80,7 +82,7 @@ const OrderApplicationForm = (props) => {
 						return (
 							<div>
 								<div className={s.descriptionOrder} key={item.id}>
-									<div className={s.imgSize}><img src={`../${item.image}`} alt="Product img"/></div>
+									<div className={s.imgSize}><img src={`${basePath}${item.image}`} alt="Product img"/></div>
 									<div className={s.nameProduct}>
 										<p>{item.name}</p>
 									</div>
@@ -102,7 +104,6 @@ const OrderApplicationForm = (props) => {
 					)
 				})
 			}
-
 			<div className={s.line}></div>
 			<div className={s.right}><span className={s.priceText}>Price:</span> {totalPrice} UAH</div>
 			<div className={s.inputContainer}>
@@ -175,7 +176,6 @@ const Textarea = styled.textarea`
 	border: 1px solid #95d6bf;
 	border-radius: 10px;
 `
-
 const mapStateToProps = (state) => {
 	return {
 		productsBasket: state.basket.productsBasket,

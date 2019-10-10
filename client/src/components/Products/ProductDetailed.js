@@ -7,6 +7,7 @@ import s from './category.module.css'
 
 import {getDetailedProduct} from '../../actions/productsActions'
 import {buyBtnHandler} from '../../actions/basketActions';
+import {basePath} from '../../actions/types';
 
 // debugger
 const ProductDetailed = (props) => {
@@ -34,6 +35,10 @@ const ProductDetailed = (props) => {
 		props.buyBtnHandler(itemId, price, image, name)
 	}
 
+	const salePrice = startPrice => {
+		return (startPrice / 10 * 9)
+	}
+
 	return (
 		!productToShow ? <Button onClick={onBtnCl}> show me </Button>
 			: <Container>
@@ -51,7 +56,7 @@ const ProductDetailed = (props) => {
 						<CardMedia
 							component="img"
 							height="300"
-							src={`../../${productToShow.image}`}
+							src={`${basePath}${productToShow.image}`}
 							alt="not found"
 							title="Contemplative Reptile"/>
 					</Grid>
@@ -67,12 +72,31 @@ const ProductDetailed = (props) => {
 								</Typography>
 							</Grid>
 							<Grid item>
-								<Typography gutterBottom variant="h6" component="h2">
-									{productToShow.price} UAH
-								</Typography>
-								<Button size="small" variant="contained" color="primary" onClick={() => {
-									onBuyClick(productToShow._id, productToShow.price, productToShow.image, productToShow.name)
-								}}> Buy </Button>
+								{productToShow.status === 'sale'
+									? <div className={s.saleContainer}>
+										<Typography className={s.saleDetailed} variant="h6" component="h2">
+											{salePrice(productToShow.price)} UAH
+										</Typography>
+										<Typography className={s.priceCrossed} variant="subtitle2" component="h2">
+											{productToShow.price} UAH
+										</Typography>
+									</div>
+
+									: <Typography className={s.priceDetailed} variant="h6" component="h2">
+										{productToShow.price} UAH
+									</Typography>
+								}
+
+								{productToShow.status === 'sale'
+									? <Button size="small" variant="contained" color="primary" onClick={() => {
+										onBuyClick(productToShow._id, productToShow.image, productToShow.name, salePrice(productToShow.price))
+									}}> Buy </Button>
+
+									: <Button size="small" variant="contained" color="primary" onClick={() => {
+										onBuyClick(productToShow._id, productToShow.image, productToShow.name, productToShow.price)
+									}}> Buy </Button>
+								}
+
 							</Grid>
 						</Grid>
 					</Grid>
