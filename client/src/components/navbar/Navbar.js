@@ -9,7 +9,7 @@ import BurgerMenu from './BurgerMenu'
 import CollapseMenu from './CollapseMenu'
 import {getProductCategories} from '../../actions/productsActions'
 
-export const Navbar = (props) => {
+const Navbar = (props) => {
 	const barAnimation = useSpring({
 		from: { transform: 'translate3d(0, -10rem, 0)' },
 		transform: 'translate3d(0, 0, 0)',

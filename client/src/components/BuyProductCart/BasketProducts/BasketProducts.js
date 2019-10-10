@@ -64,15 +64,26 @@ export const BasketProducts = (props) => {
 	localStorage.getItem('productBasket')
 
 	const priceArr = props.productsBasket.map((item) => { return (item.id) })
-	// const reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
-	// const totalPrice = priceArr.reduce(reducer, props.price)
 	const totalAmount = priceArr.length
+	const basePath = 'http://localhost:3000/'
+
+	// //close form
+	//
+	// const [openForm, setForm] = React.useState(false);
+	//
+	// const handleOpenForm = () => {
+	// 	setForm(true)
+	// };
+	// const handleCloseForm = () => {
+	// 	setForm(false)
+	// }
+
 	return (
 		<div>
-			<Fade in={!isEmpty(props.productsBasket || localStorage.length > 0)}>
+			<Fade in={!isEmpty(props.productsBasket)}>
 				<div onScroll='paper'>
 					<Button variant="contained" className={classes.button} onClick={handleOpenCart}>
-						<img className={s.imgBasket} src='../img/basket/shopping-cart-728408_1280.png' alt='basket'/>
+						<img className={s.imgBasket} src={`${basePath}img/basket/shopping-cart-728408_1280.png`} alt='basket'/>
 					</Button>
 					<div className={classes.div}>{totalAmount}</div>
 

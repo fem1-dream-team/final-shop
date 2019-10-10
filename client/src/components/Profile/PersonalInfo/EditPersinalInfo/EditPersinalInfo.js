@@ -57,15 +57,6 @@ const renderTextField = ({label, input, meta: { touched, invalid, error }, ...cu
 	/>
 )
 
-/* const radioButton = ({ input, ...rest }) => (
-	<FormControl>
-		<RadioGroup {...input} {...rest}>
-			<FormControlLabel value="female" control={<Radio />} label="Female" />
-			<FormControlLabel value="male" control={<Radio />} label="Male" />
-		</RadioGroup>
-	</FormControl>
-) */
-
 let EditPersonalInfo = (props) => {
 	const { handleSubmit, submitting } = props;
 	return (

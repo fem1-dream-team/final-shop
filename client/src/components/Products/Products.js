@@ -75,7 +75,7 @@ const Products = (props) => {
 									<CardActions>
 
 										<Button size="small" variant="contained" color="primary" onClick={() => {
-											onBuyClick(item._id, item.price, item.image, item.name)
+											onBuyClick(item._id, item.image, item.name, item.price)
 										}}> Buy </Button>
 
 										<BasketProducts/>
