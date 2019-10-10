@@ -1,11 +1,7 @@
-import {
-	SHOW_ORDER_HISTORY,
-} from '../actions/types'
-
 const initialState = {
-	orders:[
+	orders: [
 		{
-			creationDate: "2019-09-09T15:50:53.142Z",
+			creationDate: '2019-09-09T15:50:53.142Z',
 			ordNo: '12345547',
 			deliveryStatus: 'In Process',
 			products: [
@@ -26,7 +22,7 @@ const initialState = {
 			]
 		},
 		{
-			creationDate: "2019-09-08T15:50:53.142Z",
+			creationDate: '2019-09-08T15:50:53.142Z',
 			ordNo: '12345237',
 			deliveryStatus: 'received',
 			products: [
@@ -74,36 +70,35 @@ const initialState = {
 
 			],
 
-		},],
+		}],
 	products: [
-	{
-		productId: '75',
-		price: '25',
-		image: 'Tart',
-		name: 'Tart2',
-		qty: '2',
-	},
-	{
-		productId: '57',
-		price: '52',
-		image: 'Tart',
-		name: 'Vanilla candy',
-		qty: '6',
-	},
-	{
-		productId: '52',
-		price: '20',
-		image: 'Tart',
-		name: 'Sweet candy',
-		qty: '1',
-	},
-]
-
+		{
+			productId: '75',
+			price: '25',
+			image: 'Tart',
+			name: 'Tart2',
+			qty: '2',
+		},
+		{
+			productId: '57',
+			price: '52',
+			image: 'Tart',
+			name: 'Vanilla candy',
+			qty: '6',
+		},
+		{
+			productId: '52',
+			price: '20',
+			image: 'Tart',
+			name: 'Sweet candy',
+			qty: '1',
+		},
+	]
 
 };
 
-const orderReducer = (state = initialState, action) => {
-			return state
+const orderReducer = (state = initialState) => {
+	return state
 };
 
 export default orderReducer

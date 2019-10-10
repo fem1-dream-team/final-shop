@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
-import { Container } from '@material-ui/core';
+import {Container} from '@material-ui/core';
 import s from './Products/category.module.css';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
-export class SimpleSlider extends Component {
+class SimpleSlider extends Component {
 	render () {
 		const settings = {
 			autoplay: true,
@@ -19,7 +21,9 @@ export class SimpleSlider extends Component {
 		};
 		return (
 			<Container>
-				<SliderConstructor>
+				<SliderConstructor onClick={() => {
+					this.props.history.push('/yummy/sale')
+				}}>
 					<SliderTitle></SliderTitle>
 					<Slider {...settings}>
 						<SliderImg1></SliderImg1>
@@ -40,9 +44,16 @@ export class SimpleSlider extends Component {
 	}
 }
 
+const mapStateToProps = state => {
+	return {}
+}
+
+export default connect(mapStateToProps, {})(withRouter(SimpleSlider))
+
 const SliderConstructor = styled.div`
 position: relative;
 background-color: transparent;
+cursor: pointer
 `;
 
 const SliderTitle = styled.div`
@@ -70,7 +81,6 @@ color: antiquewhite;
 font-size: 10px;
 text-align: center;
 text-transform: uppercase;
-vertical-align: center;
 `;
 
 const SliderImg1 = styled.div`

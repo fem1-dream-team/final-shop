@@ -20,7 +20,7 @@ export function * watchProductsSaga () {
 function * getProdCategorySaga (action) {
 	try {
 		const categoryName = action.payload
-		const response = yield call(() => axios.get(`http://localhost:3001/api/getData/${categoryName}`))
+		const response = yield call(() => axios.get(`http://localhost:3001/api/getData/yummy/${categoryName}`))
 		const data = response.data.data
 		yield put({
 			type: SET_PRODUCTS_LIST,
@@ -60,7 +60,7 @@ function * getDetailedProductSaga (action) {
 }
 
 function * goFromCollapseMenuSaga (action) {
-	console.log('im in goFromCollapseMenuSaga')
+	// console.log('im in goFromCollapseMenuSaga')
 	yield put(handleNavbar(false))
 	yield put(getProductCategories(action.payload))
 }

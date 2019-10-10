@@ -16,7 +16,6 @@ const mapStateToProps = state => {
 }
 
 const PersonalData = (props) => {
-	console.log(props);
 	return (
 		<Fragment>
 			<h3 className={classes.item}>Personal Data</h3>

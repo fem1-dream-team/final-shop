@@ -51,7 +51,6 @@ router.post('/login', (req, res) => {
 
 	//is form valid?
 	const { errors, isValid } = validateLoginInput(req.body);
-	console.log(req.body);
 	if (!isValid) { return res.status(400).json(errors) }
 
 //	let's find user by email and check if password matches
@@ -129,7 +128,6 @@ router.put('/edit',jsonParser, (req, res) => {
 				res.json({ success: true, token: 'Bearer' + token })
 			}
 		)
-		//res.send(user);
 	})
 });
 
