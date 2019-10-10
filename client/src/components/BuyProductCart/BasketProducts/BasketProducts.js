@@ -68,7 +68,7 @@ export const BasketProducts = (props) => {
 	// const totalPrice = priceArr.reduce(reducer, props.price)
 	const totalAmount = priceArr.length
 
-	const basePath = 'http://localhost:3000/'
+	const basePath = 'https://fem1-candy-factory.herokuapp.com/' || 'http://localhost:3000/'
 	return (
 		<div>
 			<Fade in={!isEmpty(props.productsBasket)}>
