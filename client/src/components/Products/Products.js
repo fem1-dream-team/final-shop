@@ -13,6 +13,7 @@ import {getProductCategories, getSearchProducts} from '../../actions/productsAct
 import {withRouter} from 'react-router-dom'
 import {buyBtnHandler} from '../../actions/basketActions'
 import BasketProducts from '../BuyProductCart/BasketProducts/BasketProducts'
+import {basePath} from '../../actions/types';
 
 const Products = (props) => {
 	// eslint-disable-next-line no-restricted-globals
@@ -63,7 +64,7 @@ const Products = (props) => {
 											component="img"
 											alt="Product image not found"
 											height="140"
-											image={`../${item.image}`}
+											image={`${basePath}${item.image}`}
 											title="Product"
 										/>
 										<CardContent>

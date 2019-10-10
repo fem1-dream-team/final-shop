@@ -1,31 +1,32 @@
 import React from 'react';
 import classes from './OrderHistory.module.css';
 import {connect} from 'react-redux';
-// import OrderHistoryItem from "./OrderHistoryItem/OrderHistoryItem";
 import orderReducer from '../../../reducers/orderReducer';
+import OrderHistoryItem from './OrderHistoryItem/OrderHistoryItem';
+import {withRouter} from 'react-router-dom';
 
 const OrderHistory = (props) => {
 	orderReducer();
-	console.log(props);
-	/* const productItems = props.orders;
-		const productList = productItems.map(item => {
+	console.log(props.orders.orders);
+	const orders = props.orders.orders;
+	const ordersList = orders.map(item => {
 		const id = item.ordNo;
-		return(
+		return (
 			<OrderHistoryItem
-	ordNo={item.ordNo}
-	creationDate={item.creationDate}
-	deliveryStatus={item.deliveryStatus}
-	key={id}
-	state={props}
-/>
+				ordNo={item.ordNo}
+				creationDate={item.creationDate}
+				deliveryStatus={item.deliveryStatus}
+				amount={item.amount}
+				key={id}
+				state={props}
+			/>
 		)
-	}); */
-
+	})
 	return (
 		<div className={classes.orderWrap}>
 			<h3>Order history</h3>
 			<div>
-				{/* {productList} */}
+				{ordersList}
 			</div>
 		</div>
 	)
@@ -36,4 +37,4 @@ const mapStateToProps = (state) => {
 	})
 }
 
-export default connect(mapStateToProps, {})(OrderHistory)
+export default connect(mapStateToProps, {})(withRouter(OrderHistory))
