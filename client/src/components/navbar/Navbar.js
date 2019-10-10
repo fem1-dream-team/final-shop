@@ -34,7 +34,6 @@ export const Navbar = (props) => {
 						<NavLink to="/yummy/cookies" onClick={() => { props.getProductCategories('cookies') }}>COOKIES</NavLink>
 						<NavLink to="/yummy/desserts" onClick={() => { props.getProductCategories('desserts') }}>DESSERTS</NavLink>
 						<NavLink to="/yummy/macaroons" onClick={() => { props.getProductCategories('macaroons') }}>MACAROONS</NavLink>
-						<NavLink to="/cart" >CART</NavLink>
 					</NavLinks>
 					<BurgerMenu/>
 				</FlexContainer>

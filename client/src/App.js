@@ -10,6 +10,7 @@ import 'typeface-roboto'
 import Navbar from './components/navbar/Navbar'
 import {Home, Page404} from './components'
 import Profile from './components/Profile/Profile'
+import OrderDetail from './components/Profile/OrderHistory/OrderDetail/OrderDetail'
 import {Cart} from './components/ComponentsForNavigation/Cart'
 
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage/UserIcon'
@@ -53,6 +54,7 @@ const App = (props) => {
 						<Route path='/cart' render={() => <Cart/>}/>
 						<Route exect path='/customer' component={LoginPage}/>
 						<Route exact path='/profile/:profileInfo' component={Profile}/>
+						<Route exact path='/profile/my-orders/:id' component={OrderDetail}/>
 						<Route path='*' component={Page404}/>
 					</Switch>
 				</Container>

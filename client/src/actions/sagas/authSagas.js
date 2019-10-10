@@ -68,8 +68,12 @@ function * editUserWorker (action) {
 	try {
 		yield put(isLoading(true))
 		const response = yield call(() => axios.put('http://localhost:3001/api/edit', action.payload));
-
 		console.log(response)
+
+		yield localStorage.removeItem('jwtToken')
+		yield localStorage.setItem('jwtToken', response.data.token)
+		yield put(checkIfIsLoggedIn())
+
 		yield put(isLoading(false))
 	} catch (err) {
 		console.log(err);

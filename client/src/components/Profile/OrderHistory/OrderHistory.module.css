@@ -1,3 +1,12 @@
+.orderWrap {
+    grid-area: profile;
+    padding: 25px;
+}
+
 .item {
     color: black;
+}
+
+.link{
+    color:black
 }

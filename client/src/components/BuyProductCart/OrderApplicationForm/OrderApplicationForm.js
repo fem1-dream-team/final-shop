@@ -1,48 +1,79 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from './OrderApplicationForm.module.css'
-import { buyBtnHandler } from '../../../actions/basketActions'
 import connect from 'react-redux/es/connect/connect'
+import { removeBtnHandler } from '../../../actions/basketActions'
+// import { Field, reduxForm } from 'redux-form'
 
 const OrderApplicationForm = (props) => {
-	console.log(props.productsBasket)
 	let priceArr, totalPrice, reducer;
-	const basePath = 'http://localhost:3000/'
+
+	const uniqIds = {};
+	const productsCart = props.productsBasket.filter(obj => !uniqIds[obj.id] && (uniqIds[obj.id] = true));
+	// поиск количества повтор. обьктов
+	const counter = props.productsBasket.reduce(function (object, index) {
+		// eslint-disable-next-line
+		if (!object.hasOwnProperty(index.id)) {
+			object[index.id] = 0;
+		}
+		object[index.id]++;
+		return object;
+	}, {});
+
+	let countProduct = counter
+	let priceId
+
+	const [count, setCount] = useState(counter);
+	let [price, setPrice] = useState();
+
+	// const clickMinus = () => {
+	// 	setCount(count - 1)
+	// 	// setPrice(price - priceId)
+	// }
+	// const clickPlus = () => {
+	// 	setCount(count + 1)
+	// 	// setPrice(price + priceId)
+	// }
+	const removeProduct = (id) => {
+		props.removeBtnHandler(id)
+	}
+	
+	const basePath = 'https://fem1-candy-factory.herokuapp.com/' || 'http://localhost:3000/'
 	return (
-		<div className={s.header}>
+		<form className={s.header}>
 			<h1 className={s.name}>Your order</h1>
 			<div className={s.line}></div>
 
 			{!props.productsBasket
 				? null
-				: props.productsBasket.map((item) => {
+				: productsCart.map((item) => {
 					priceArr = props.productsBasket.map((item) => { return (item.price) })
 					reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
 					totalPrice = Number(priceArr.reduce(reducer, 0))
 
+					countProduct = Number(counter[item.id])
+					priceId = Number(item.price)
+					price = (priceId * countProduct)
+
 					return (
-						<div className={s.descriptionOrder}>
+						<div className={s.descriptionOrder} key={item.id}>
 							<div className={s.imgSize}><img src={`${basePath}${item.image}`} alt="Product img"/></div>
 							<div className={s.nameProduct}>
 								<p>{item.name}</p>
 							</div>
+
 							<div className={s.plusMinusCount}>
-								<p className={s.plusMinus}>-</p>
-								<p></p>
+								<p className={s.plusMinus} onClick={() => { setCount(Number(count[item.id]) - 1); setPrice(price - priceId) }}>-</p>
+								<p>{Number(count[item.id])}</p>
 								<p className={s.plusMinus}>+</p>
 							</div>
-							<div className={s.priceContainer}>
-								{item.price} UAH
-							</div>
-							<props className="price log"></props>
-							<div className={s.delete} onClick={() => { props.productsBasket.filter(item => (item === item.id)) }}>+</div>
+							<div className={s.priceContainer}>{(priceId * countProduct)}UAH</div>
+							<div className={s.delete} onClick={() => removeProduct(item.id)}>+</div>
 						</div>
 					)
 				})
 			}
 			<div className={s.line}></div>
-
 			<div className={s.right}><span className={s.priceText}>Price:</span> {totalPrice} UAH</div>
-
 			<div className={s.inputContainer}>
 				<span className={s.headerInput}>Name</span>
 				<input className={s.inputStyle} type="text" name='name' placeholder='Your name'/>
@@ -70,26 +101,19 @@ const OrderApplicationForm = (props) => {
 				<textarea className={s.inputStyle} name='comment' rows='3'></textarea>
 				<div className={s.right}><span className={s.priceText}>Price:</span> {totalPrice} UAH</div>
 				<input className={s.inputStyle} type="submit" name='checkout' value='Checkout'/>
-
 			</div>
-
-		</div>
+		</form>
 	)
 }
+
 const mapStateToProps = (state) => {
 	return {
 		productsBasket: state.basket.productsBasket,
-		// totalAmount: state.basket.totalAmount,
-		// totalPrice: state.basket.productsBasket.totalPrice,
+		id: state.basket.productsBasket.id,
+		image: state.basket.productsBasket.image,
+		name: state.basket.productsBasket.name,
+		price: state.basket.productsBasket.price,
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		buyBtnHandler: (productID) => { dispatch(buyBtnHandler(productID)) },
-		// btnBasketHandler: (id, image, price, name) => { dispatch(btnBasketHandler(id, image, price, name)) },
-		// addToCart: (id, quantity) => { dispatch(addToCart(id, quantity)) },
-		// removeCart: (id) => { dispatch(removeCart(id)) },
-	}
-}
-export default connect(mapStateToProps, mapDispatchToProps)(OrderApplicationForm)
+export default connect(mapStateToProps, {removeBtnHandler})(OrderApplicationForm)

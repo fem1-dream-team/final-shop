@@ -31,7 +31,6 @@ const CollapseMenu = (props) => {
 					<li><NavLink to="/yummy/cookies" onClick={() => { onLinkClick('cookies') }}>COOKIES</NavLink></li>
 					<li><NavLink to="/yummy/desserts" onClick={() => { onLinkClick('desserts') }}>DESSERTS</NavLink></li>
 					<li><NavLink to="/yummy/macaroons" onClick={() => { onLinkClick('macaroons') }}>MACAROONS</NavLink></li>
-					<li><NavLink to="/cart" onClick={() => { props.handleNavbar(false) }}>CART</NavLink></li>
 				</NavLinks>
 			</CollapseWrapper>
 		)
