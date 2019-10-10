@@ -23,7 +23,7 @@ const OrderHistory = (props) => {
 	})
 	return (
 		<div className={classes.orderWrap}>
-			<h3>Order history</h3>
+			<h3 className={classes.title}>Order history</h3>
 			<div>
 				{ordersList}
 			</div>

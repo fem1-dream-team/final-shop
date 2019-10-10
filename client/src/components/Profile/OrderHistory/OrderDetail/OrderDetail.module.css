@@ -1,5 +1,56 @@
-.item{
-    margin: 5px 0 5px;
-    border: 1px solid black;
+.wrapDetailed{
 
+}
+
+.wrapOrderItem {
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    padding: 10px;
+    border-bottom: 2px solid #404040;
+    border-radius: 5px;
+    background-color: #ecfef9;
+}
+
+.itemStatus{
+    margin: 5px 0 5px;
+}
+
+.itemList {
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr 3fr;
+    align-items: center;
+    border-bottom: 2px solid #404040;
+    background-color: #ecfef9;
+    justify-content: end;
+}
+
+.itemImg{
+    width: 70px;
+    height: 70px;
+}
+
+.item{
+    padding-left: 15px;
+    padding-top: 5px;
+
+}
+
+.itemName{
+    font-weight: 700;
+}
+
+.itemNameTitle{
+    padding: 3px;
+}
+
+.goBack{
+    margin-left: 25px;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.title{
+    font-size: 1.3em;
+    padding: 5px;
 }

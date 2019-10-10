@@ -4,7 +4,7 @@ const initialState = {
 			creationDate: '2019-08-01',
 			ordNo: '12345547',
 			deliveryStatus: 'received',
-			amount: '321 UAH',
+			amount: '800 UAH',
 			products: [
 				{
 					productId: '5d83547a1c9d44000012dec2',
@@ -25,9 +25,9 @@ const initialState = {
 		},
 		{
 			creationDate: '2019-09-08',
-			ordNo: '12345237',
+			ordNo: '12345550',
 			deliveryStatus: 'received',
-			amount: '321 UAH',
+			amount: '720 UAH',
 			products: [
 				{
 					productId: '5d7782041c9d4400006794b8',
@@ -50,7 +50,7 @@ const initialState = {
 			creationDate: '2019-09-12',
 			ordNo: '12356452',
 			deliveryStatus: 'received',
-			amount: '321 UAH',
+			amount: '905 UAH',
 			products: [
 				{
 					productId: '5d8363801c9d44000012ded0',
@@ -65,15 +65,7 @@ const initialState = {
 					image: 'img/products/desserts/chocolate-mousse.jpg',
 					name: 'Chocolate pudding',
 					qty: '1',
-				},
-				{
-					productId: '5d8363801c9d44000012ded0',
-					price: '415',
-					image: 'img/products/cakes/4.jpg',
-					name: 'Strawberry cake',
-					qty: '1',
-				},
-
+				}
 			],
 
 		},
@@ -81,7 +73,7 @@ const initialState = {
 			creationDate: '2019-09-25',
 			ordNo: '12345987',
 			deliveryStatus: 'In Process',
-			amount: '321 UAH',
+			amount: '3133 UAH',
 			products: [
 				{
 					productId: '5d7782041c9d4400006794b8',

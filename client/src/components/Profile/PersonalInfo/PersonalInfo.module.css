@@ -1,8 +1,6 @@
 .personalWrap {
     grid-area: profile;
-    padding: 25px;
 }
-
 
 .button {
     padding: 10px 20px;
