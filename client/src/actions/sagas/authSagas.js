@@ -7,7 +7,6 @@ import { showAuthForm, showRegister } from '../authFormActions'
 import {POST_NEW_USER, LOGIN_USER, CHECK_LOGIN_SAGA, LOGOUT_CURRENT_USER_SAGA, RUN_SAGA_EDIT} from '../types'
 import { checkIfIsLoggedIn, logoutCurrentUser, setCurrentUser } from '../authActions'
 import setAuthToken from '../../utils/setAuthToken'
-import {rewriteCustomerState} from '../profileActions';
 
 export function * watchUserSaga () {
 	yield takeEvery(POST_NEW_USER, createNewUserWorker)

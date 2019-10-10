@@ -11,9 +11,9 @@ import GlobalStyle from './styles/Global'
 
 import {Home, Page404} from './components'
 import Profile from './components/Profile/Profile'
+import OrderDetail from './components/Profile/OrderHistory/OrderDetail/OrderDetail'
 import {Header} from './commons'
 import {Cart} from './components/ComponentsForNavigation/Cart'
-
 import LoginPage from './commons/Header/ContainerSearchLoginPage/LoginPage'
 import Products from './components/Products/Products'
 import ProductDetailed from './components/Products/ProductDetailed'
@@ -42,6 +42,7 @@ const App = (props) => {
 					<Route path='/cart' render={() => <Cart/>}/>
 					<Route exect path='/customer' component={LoginPage}/>
 					<Route exact path='/profile/:profileInfo' component={Profile}/>
+					<Route exact path='/profile/my-orders/:id' component={OrderDetail}/>
 					<Route path='*' component={Page404}/>
 				</Switch>
 

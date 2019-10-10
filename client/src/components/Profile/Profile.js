@@ -29,7 +29,8 @@ const Profile = (props) => {
 				}
 				{props.location.pathname === '/profile/my-orders'
 					? <OrderHistory/>
-					: null
+					:props.location.pathname === '/profile/my-orders/'
+						? null: null
 				}
 			</div>
 		</div>

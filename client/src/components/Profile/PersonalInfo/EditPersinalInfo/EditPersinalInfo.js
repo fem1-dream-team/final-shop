@@ -57,17 +57,9 @@ const renderTextField = ({label, input, meta: { touched, invalid, error }, ...cu
 	/>
 )
 
-/* const radioButton = ({ input, ...rest }) => (
-	<FormControl>
-		<RadioGroup {...input} {...rest}>
-			<FormControlLabel value="female" control={<Radio />} label="Female" />
-			<FormControlLabel value="male" control={<Radio />} label="Male" />
-		</RadioGroup>
-	</FormControl>
-) */
-
 let EditPersonalInfo = (props) => {
 	const { handleSubmit, submitting } = props;
+	console.log(props);
 	return (
 		<Fragment>
 			<h3 className={classes.item}>Edit your personal info</h3>
@@ -152,7 +144,7 @@ let EditPersonalInfo = (props) => {
 						/>
 					</label>
 				</div>
-				<button className={classes.button} onClick={() => { alert('HI') }} type='submit' disabled={submitting} >Save changes</button>
+				<button className={classes.button} type='submit' disabled={submitting} >Save changes</button>
 			</form>
 		</Fragment>
 	)
