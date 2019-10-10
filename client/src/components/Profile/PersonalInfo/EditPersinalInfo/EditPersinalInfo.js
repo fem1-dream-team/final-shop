@@ -58,7 +58,6 @@ const renderTextField = ({label, input, meta: { touched, invalid, error }, ...cu
 
 let EditPersonalInfo = (props) => {
 	const { handleSubmit, submitting } = props;
-	console.log(props);
 	return (
 		<Fragment>
 			<h3 className={classes.title}>Edit your personal info</h3>

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux'
 import { handleNavbar } from '../../actions/generalActions'
 // debugger
-const Burgermenu = (props) => {
+export const Burgermenu = (props) => {
 	const showMenu = () => {
 		props.handleNavbar(!props.navbarState)
 	}

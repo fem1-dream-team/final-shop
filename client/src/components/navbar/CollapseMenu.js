@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-
 import { useSpring, animated } from 'react-spring'
 import { NavLink } from 'react-router-dom'
 import { goFromCollapseMenu, handleNavbar } from '../../actions/generalActions'
