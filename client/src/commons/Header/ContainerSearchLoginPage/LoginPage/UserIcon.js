@@ -60,7 +60,8 @@ const useStyles = makeStyles(theme => ({
 	userIcon: {
 		position: 'static',
 		margin: '0 20px',
-		height: 25
+		height: 25,
+		cursor: 'pointer'
 	},
 	welcomeBtn: {
 		[theme.breakpoints.down('xs')]: {

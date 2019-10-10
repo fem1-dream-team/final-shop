@@ -67,12 +67,12 @@ export const BasketProducts = (props) => {
 	// const reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
 	// const totalPrice = priceArr.reduce(reducer, props.price)
 	const totalAmount = priceArr.length
-	
-	const basePath = 'http://localhost:3000/'
+
+	const basePath = 'https://fem1-candy-factory.herokuapp.com/' || 'http://localhost:3000/'
 	return (
 		<div>
 			<Fade in={!isEmpty(props.productsBasket)}>
-				<div onScroll='paper'>
+				<div>
 					<Button variant="contained" className={classes.button} onClick={handleOpenCart}>
 						<img className={s.imgBasket} src={`${basePath}img/basket/shopping-cart-728408_1280.png`} alt='basket'/>
 					</Button>

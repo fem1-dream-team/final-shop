@@ -60,7 +60,7 @@ function * getDetailedProductSaga (action) {
 }
 
 function * goFromCollapseMenuSaga (action) {
-	console.log('im in goFromCollapseMenuSaga')
+	// console.log('im in goFromCollapseMenuSaga')
 	yield put(handleNavbar(false))
 	yield put(getProductCategories(action.payload))
 }
