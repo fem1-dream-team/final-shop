@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import s from './OrderApplicationForm.module.css'
 import connect from 'react-redux/es/connect/connect'
 import { removeBtnHandler } from '../../../actions/basketActions'
+import {basePath} from '../../../actions/types';
 // import { Field, reduxForm } from 'redux-form'
 
 const OrderApplicationForm = (props) => {
@@ -37,7 +38,6 @@ const OrderApplicationForm = (props) => {
 		props.removeBtnHandler(id)
 	}
 
-	const basePath = 'https://fem1-candy-factory.herokuapp.com/' || 'http://localhost:3000/'
 	return (
 		<form className={s.header}>
 			<h1 className={s.name}>Your order</h1>
