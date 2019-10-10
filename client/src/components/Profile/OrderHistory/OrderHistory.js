@@ -7,7 +7,6 @@ import {withRouter} from 'react-router-dom';
 
 const OrderHistory = (props) => {
 	orderReducer();
-	console.log(props.orders.orders);
 	const orders = props.orders.orders;
 	const ordersList = orders.map(item => {
 		const id = item.ordNo;

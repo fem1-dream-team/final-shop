@@ -23,6 +23,7 @@ const PersonalInfo = (props) => {
 				:				<Fragment>
 					<PersonalData/>
 					<button className={classes.button} onClick={() => setEditProfile(true) }> Edit profile</button>
+
 				</Fragment>
 			}
 		</div>

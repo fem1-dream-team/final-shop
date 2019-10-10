@@ -11,7 +11,6 @@ const mapStateToProps = (state) => {
 }
 
 const OrderDetail = (props) => {
-	console.log(props.orders.orders);
 	const idOrder = props.match.params.id;
 	const productList = props.orders.orders;
 	const productItem = productList.map((item) => {

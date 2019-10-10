@@ -8,7 +8,6 @@ const mapStateToProps = (state) => {
 }
 
 const OrderHistoryItem = (props) => {
-	console.log(props);
 	const id = props.ordNo
 	return (
 		<div className={classes.item}>
