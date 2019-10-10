@@ -36,15 +36,30 @@
     padding: 0 0 5px 15px;
 }
 
-.sale {
-    color: red;
-    padding: 0 0 5px 15px;
-}
-.sale::after {
-    content: "Sale";
+.priceDetailed {
     color: black;
     font-weight: bold;
+    padding: 0 0 5px 5px;
+}
+
+.priceCrossed {
+    color: black;
+    text-decoration: line-through;
     padding: 0 0 5px 15px;
+}
+
+.saleContainer {
+    display: flex;
+}
+.sale {
+    color: red;
+    font-weight: bold;
+    padding: 0 0 5px 15px;
+}
+.saleDetailed {
+    color: red;
+    font-weight: bold;
+    padding: 0 0 5px 5px;
 }
 
 .description {
