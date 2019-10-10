@@ -59,7 +59,7 @@ const OrderApplicationForm = (props) => {
 					priceArr = props.productsBasket.map((item) => { return (item.price) })
 					reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
 					totalPrice = Number(priceArr.reduce(reducer, 0))
-    
+
 					const CountFunction = () => {
 						const priceId = Number(item.price)
 						const [count, setCount] = useState((Number(counter[item.id])));

@@ -3,10 +3,7 @@
     padding: 25px;
 }
 
-.item {
-    color: black;
-}
-
-.link{
-    color:black
+.title{
+    font-size: 1.3em;
+    padding: 5px;
 }

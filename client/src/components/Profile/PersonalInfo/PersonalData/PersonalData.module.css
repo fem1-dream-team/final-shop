@@ -1,7 +1,12 @@
-h3{
-    font-size:16px;
+.itemNameTitle{
+    padding: 3px;
 }
 
-.item {
-    padding-bottom: 15px;
+.itemName{
+    font-weight: 700;
+}
+
+.title{
+    font-size: 1.3em;
+    padding: 5px;
 }

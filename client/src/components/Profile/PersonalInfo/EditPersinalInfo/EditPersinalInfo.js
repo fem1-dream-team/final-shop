@@ -58,10 +58,9 @@ const renderTextField = ({label, input, meta: { touched, invalid, error }, ...cu
 
 let EditPersonalInfo = (props) => {
 	const { handleSubmit, submitting } = props;
-	console.log(props);
 	return (
 		<Fragment>
-			<h3 className={classes.item}>Edit your personal info</h3>
+			<h3 className={classes.title}>Edit your personal info</h3>
 			<form onSubmit={handleSubmit}>
 				<div className={classes.item}>
 					<label>
