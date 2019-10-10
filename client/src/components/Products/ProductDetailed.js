@@ -8,6 +8,7 @@ import s from './category.module.css'
 import {getDetailedProduct} from '../../actions/productsActions'
 import {buyBtnHandler} from '../../actions/basketActions';
 import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
 
 // debugger
 const ProductDetailed = (props) => {
@@ -86,9 +87,17 @@ const ProductDetailed = (props) => {
 										{productToShow.price} UAH
 									</Typography>
 								}
-								<Button size="small" variant="contained" color="primary" onClick={() => {
-									onBuyClick(productToShow._id, productToShow.image, productToShow.name, productToShow.price)
-								}}> Buy </Button>
+
+								{productToShow.status === 'sale'
+									? <Button size="small" variant="contained" color="primary" onClick={() => {
+										onBuyClick(productToShow._id, productToShow.image, productToShow.name, salePrice(productToShow.price))
+									}}> Buy </Button>
+
+									: <Button size="small" variant="contained" color="primary" onClick={() => {
+										onBuyClick(productToShow._id, productToShow.image, productToShow.name, productToShow.price)
+									}}> Buy </Button>
+								}
+
 							</Grid>
 						</Grid>
 					</Grid>
