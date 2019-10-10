@@ -37,7 +37,7 @@ const OrderApplicationForm = (props) => {
 		props.removeBtnHandler(id)
 	}
 
-	const basePath = 'https://fem1-candy-factory.herokuapp.com' || 'http://localhost:3000/'
+	const basePath = 'https://fem1-candy-factory.herokuapp.com/' || 'http://localhost:3000/'
 	return (
 		<form className={s.header}>
 			<h1 className={s.name}>Your order</h1>
