@@ -40,6 +40,7 @@ const OrderDetail = (props) => {
 				</div>
 			)
 		}
+		return null
 	})
 
 	return (
