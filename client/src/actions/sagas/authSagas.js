@@ -67,9 +67,12 @@ function * logoutUserWorker (action) {
 function * editUserWorker (action) {
 	try {
 		yield put(isLoading(true))
-		yield call(() => axios.put('https://fem1-candy-factory.herokuapp.com/api/edit', action.payload));
+		const response = yield call(() => axios.put('https://fem1-candy-factory.herokuapp.com/api/edit', action.payload));
 
-		// console.log(response)
+		yield localStorage.removeItem('jwtToken')
+		yield localStorage.setItem('jwtToken', response.data.token)
+		yield put(checkIfIsLoggedIn())
+
 		yield put(isLoading(false))
 	} catch (err) {
 		console.log(err);

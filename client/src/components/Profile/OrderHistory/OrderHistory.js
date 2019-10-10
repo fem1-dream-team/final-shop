@@ -1,12 +1,39 @@
 import React from 'react';
 import classes from './OrderHistory.module.css';
+import {connect} from 'react-redux';
+// import OrderHistoryItem from "./OrderHistoryItem/OrderHistoryItem";
+import orderReducer from '../../../reducers/orderReducer';
 
-const OrderHistory = () => {
+const OrderHistory = (props) => {
+	orderReducer();
+	console.log(props);
+	/* const productItems = props.orders;
+		const productList = productItems.map(item => {
+		const id = item.ordNo;
+		return(
+			<OrderHistoryItem
+	ordNo={item.ordNo}
+	creationDate={item.creationDate}
+	deliveryStatus={item.deliveryStatus}
+	key={id}
+	state={props}
+/>
+		)
+	}); */
+
 	return (
-		<div className={classes.item}>
-			<h3>here will be the order history</h3>
+		<div className={classes.orderWrap}>
+			<h3>Order history</h3>
+			<div>
+				{/* {productList} */}
+			</div>
 		</div>
 	)
 }
+const mapStateToProps = (state) => {
+	return ({
+		orders: state.orders
+	})
+}
 
-export default OrderHistory
+export default connect(mapStateToProps, {})(OrderHistory)
