@@ -15,122 +15,122 @@ import { buyBtnHandler } from '../../actions/basketActions'
 import BasketProducts from '../BuyProductCart/BasketProducts/BasketProducts'
 
 const Products = (props) => {
-  // eslint-disable-next-line no-restricted-globals
-  const q = window.location.search.split('q=')[1] ? location.search.split('q=')[1] : ''
+	// eslint-disable-next-line no-restricted-globals
+	const q = window.location.search.split('q=')[1] ? location.search.split('q=')[1] : ''
 
-  const categoryName = props.location.pathname.slice(7)
+	const categoryName = props.location.pathname.slice(7)
 
-  useEffect(() => {
-    props.location.pathname === '/search'
-      ? props.getSearchProducts(`${props.location.pathname}?q=${q}`)
-      : props.getProductCategories(categoryName)
-    // eslint-disable-next-line
+	useEffect(() => {
+		props.location.pathname === '/search'
+			? props.getSearchProducts(`${props.location.pathname}?q=${q}`)
+			: props.getProductCategories(categoryName)
+		// eslint-disable-next-line
   }, [])
 
-  return (
-    <Container>
-      <div className={s.container}>
-        <div className={s.text}> {
-          props.productsList
-            ? categoryName
-            : 'Loading...'
-        }
-        </div>
-      </div>
-      <Grid container compodnent="div" direction="row" justify='flex-start' spacing={4}>
+	return (
+		<Container>
+			<div className={s.container}>
+				<div className={s.text}> {
+					props.productsList
+						? categoryName
+						: 'Loading...'
+				}
+				</div>
+			</div>
+			<Grid container compodnent="div" direction="row" justify='flex-start' spacing={4}>
 
-        {!props.productsList
-          ? null
-          : props.productsList.map((item) => {
-            const detailedPath = item._id
+				{!props.productsList
+					? null
+					: props.productsList.map((item) => {
+						const detailedPath = item._id
 
-            // const priceArr = props.productsBasket.map((item) => { return (item.price) })
-            // const reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
-            // const totalPrice = priceArr.reduce(reducer, item.price)
-            // const totalAmount = priceArr.length
+						// const priceArr = props.productsBasket.map((item) => { return (item.price) })
+						// const reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
+						// const totalPrice = priceArr.reduce(reducer, item.price)
+						// const totalAmount = priceArr.length
 
-            const onBuyClick = (itemId, price, image, name) => {
-              // alert(totalPrice)
-              props.buyBtnHandler(itemId, price, image, name)
-            }
-            const salePrice = startPrice => {
-              return (startPrice / 10 * 9)
-            }
+						const onBuyClick = (itemId, price, image, name) => {
+							// alert(totalPrice)
+							props.buyBtnHandler(itemId, price, image, name)
+						}
+						const salePrice = startPrice => {
+							return (startPrice / 10 * 9)
+						}
 
-            return (
-              <Grid item component="div" sm={3} key={item._id}>
-                <Card className="div">
-                  <CardActionArea onClick={() => {
-                    props.history.push(`/yummy/detailed/${detailedPath}`)
-                  }}>
-                    <CardMedia
-                      component="img"
-                      alt="Product image not found"
-                      height="140"
-                      image={`../${item.image}`}
-                      title="Product"
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="h2" className={s.title}>
-                        {item.name}
-                      </Typography>
-                      <Typography className={s.description} variant="body2" color="textSecondary" component="div">
-                        <p className={s.truncate}>{item.description}</p>
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
+						return (
+							<Grid item component="div" sm={3} key={item._id}>
+								<Card className="div">
+									<CardActionArea onClick={() => {
+										props.history.push(`/yummy/detailed/${detailedPath}`)
+									}}>
+										<CardMedia
+											component="img"
+											alt="Product image not found"
+											height="140"
+											image={`../${item.image}`}
+											title="Product"
+										/>
+										<CardContent>
+											<Typography gutterBottom variant="h5" component="h2" className={s.title}>
+												{item.name}
+											</Typography>
+											<Typography className={s.description} variant="body2" color="textSecondary" component="div">
+												<p className={s.truncate}>{item.description}</p>
+											</Typography>
+										</CardContent>
+									</CardActionArea>
 
-                  {item.status === 'sale'
-                    ? <div className={s.saleContainer}>
-                      <Typography className={s.sale} variant="h6" component="h2">
-                        {salePrice(item.price)} UAH
-                      </Typography>
-                      <Typography className={s.priceCrossed} variant="subtitle2" component="h2">
-                        {item.price} UAH
-                      </Typography>
-                    </div>
+									{item.status === 'sale'
+										? <div className={s.saleContainer}>
+											<Typography className={s.sale} variant="h6" component="h2">
+												{salePrice(item.price)} UAH
+											</Typography>
+											<Typography className={s.priceCrossed} variant="subtitle2" component="h2">
+												{item.price} UAH
+											</Typography>
+										</div>
 
-                    : <Typography className={s.price} variant="h6" component="h2">
-                      {item.price} UAH
-                    </Typography>
-                  }
-                  <CardActions>
+										: <Typography className={s.price} variant="h6" component="h2">
+											{item.price} UAH
+										</Typography>
+									}
+									<CardActions>
 
-                    {item.status === 'sale'
-                      ? <Button size="small" variant="contained" color="primary" onClick={() => {
-                        onBuyClick(item._id, item.image, item.name, salePrice(item.price))
-                      }}> Buy </Button>
+										{item.status === 'sale'
+											? <Button size="small" variant="contained" color="primary" onClick={() => {
+												onBuyClick(item._id, item.image, item.name, salePrice(item.price))
+											}}> Buy </Button>
 
-                      : <Button size="small" variant="contained" color="primary" onClick={() => {
-                        onBuyClick(item._id, item.image, item.name, item.price)
-                      }}> Buy </Button>
-                    }
-                    <BasketProducts/>
-                    <Button onClick={() => {
-                      props.history.push(`/yummy/detailed/${detailedPath}`)
-                    }} size="small" color="primary">
+											: <Button size="small" variant="contained" color="primary" onClick={() => {
+												onBuyClick(item._id, item.image, item.name, item.price)
+											}}> Buy </Button>
+										}
+										<BasketProducts/>
+										<Button onClick={() => {
+											props.history.push(`/yummy/detailed/${detailedPath}`)
+										}} size="small" color="primary">
                       Details
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>)
-          })
-        }
-      </Grid>
-    </Container>
-  )
+										</Button>
+									</CardActions>
+								</Card>
+							</Grid>)
+					})
+				}
+			</Grid>
+		</Container>
+	)
 }
 
 const mapStateToProps = state => {
-  return {
-    productsList: state.products.productsList,
-    category: state.products.categoryName,
-    productsBasket: state.basket.productsBasket
-  }
+	return {
+		productsList: state.products.productsList,
+		category: state.products.categoryName,
+		productsBasket: state.basket.productsBasket
+	}
 }
 
 export default connect(mapStateToProps, {
-  getProductCategories,
-  buyBtnHandler,
-  getSearchProducts
+	getProductCategories,
+	buyBtnHandler,
+	getSearchProducts
 })(withRouter(Products))

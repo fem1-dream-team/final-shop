@@ -7,8 +7,6 @@ import s from './category.module.css'
 
 import {getDetailedProduct} from '../../actions/productsActions'
 import {buyBtnHandler} from '../../actions/basketActions';
-import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
 
 // debugger
 const ProductDetailed = (props) => {
