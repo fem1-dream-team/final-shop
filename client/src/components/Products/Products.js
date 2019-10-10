@@ -53,6 +53,10 @@ const Products = (props) => {
 							// alert(totalPrice)
 							props.buyBtnHandler(itemId, price, image, name)
 						}
+						const salePrice = startPrice => {
+							return (startPrice / 10 * 9)
+						}
+
 						return (
 							<Grid item component="div" sm={3} key={item._id}>
 								<Card className="div">
@@ -76,9 +80,20 @@ const Products = (props) => {
 										</CardContent>
 									</CardActionArea>
 
-									<Typography className={(item.status === 'sale') ? s.sale : s.price} variant="h6" component="h2">
-										{item.price} UAH
-									</Typography>
+									{item.status === 'sale'
+										? <div className={s.saleContainer}>
+											<Typography className={s.sale} variant="h6" component="h2">
+												{salePrice(item.price)} UAH
+											</Typography>
+											<Typography className={s.priceCrossed} variant="subtitle2" component="h2">
+												{item.price} UAH
+											</Typography>
+										</div>
+
+										: <Typography className={s.price} variant="h6" component="h2">
+											{item.price} UAH
+										</Typography>
+									}
 									<CardActions>
 
 										<Button size="small" variant="contained" color="primary" onClick={() => {
