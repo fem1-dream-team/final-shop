@@ -44,14 +44,7 @@ const Products = (props) => {
 					? null
 					: props.productsList.map((item) => {
 						const detailedPath = item._id
-
-						// const priceArr = props.productsBasket.map((item) => { return (item.price) })
-						// const reducer = (accumulator, currentVal) => { return Number(accumulator) + Number(currentVal) }
-						// const totalPrice = priceArr.reduce(reducer, item.price)
-						// const totalAmount = priceArr.length
-
 						const onBuyClick = (itemId, price, image, name) => {
-							// alert(totalPrice)
 							props.buyBtnHandler(itemId, price, image, name)
 						}
 						const salePrice = startPrice => {
@@ -101,7 +94,6 @@ const Products = (props) => {
 											? <Button size="small" variant="contained" color="primary" onClick={() => {
 												onBuyClick(item._id, item.image, item.name, salePrice(item.price))
 											}}> Buy </Button>
-
 											: <Button size="small" variant="contained" color="primary" onClick={() => {
 												onBuyClick(item._id, item.image, item.name, item.price)
 											}}> Buy </Button>

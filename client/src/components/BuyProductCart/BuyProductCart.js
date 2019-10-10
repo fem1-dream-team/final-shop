@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
+		width: '40%',
 	},
 	paper: {
 		backgroundColor: theme.palette.background.paper,
@@ -48,7 +49,7 @@ export const BuyProductCart = (props) => {
 	};
 
 	return (
-		<div onScroll='paper'>
+		<div style={{width: '36%'}}>
 			<Button variant="contained" className={classes.button} onClick={handleOpenCart}>
 				<img className={s.imgBasket} src='img/basket/shopping-cart-728408_1280.png' alt='basket'/>
 			</Button>
