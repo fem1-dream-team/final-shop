@@ -19,7 +19,6 @@ const basketReducer = (state = initialState, action) => {
 		}
 	}
 	case PLUS_ITEM_PRICE: {
-
 		return {
 			...state,
 			productsBasket: [...state.productsBasket, {
